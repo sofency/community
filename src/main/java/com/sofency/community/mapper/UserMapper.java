@@ -3,6 +3,7 @@ package com.sofency.community.mapper;
 import com.sofency.community.pojo.User;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Select;
 
 /**
  * @auther sofency
@@ -15,4 +16,6 @@ public interface UserMapper {
     @Insert("insert into user(account_id,name,token,gmt_create,gmt_modify) values(#{accountId},#{name},#{token},#{gmtCreate},#{gmtModify})")
     void insert(User user);
 
+    @Select("select * from user where token = #{token}")
+    User findByToken(String token);
 }

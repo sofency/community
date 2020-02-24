@@ -11,7 +11,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.util.UUID;
 
 /**
  * @auther sofency
@@ -36,7 +39,8 @@ public class AuthorizeController {
     @GetMapping("/callback")
     public String callback(@RequestParam(name="code") String code,
                            @RequestParam(name="state") String state,
-                           HttpServletRequest request){
+                           HttpServletRequest request,
+                           HttpServletResponse response){
         //java模拟http请求 使用okHttp
         accessTokenDTO.setState(state);
         accessTokenDTO.setCode(code);
@@ -49,16 +53,16 @@ public class AuthorizeController {
         if(githubUser!=null){
             //登陆成功  创建用户的信息
             User user = new User();
+            String token = UUID.randomUUID().toString();
             user.setAccountId(String.valueOf(githubUser.getId()));
             user.setName(githubUser.getLogin());
-            user.setToken(accessToken);
+            user.setToken(token);
             user.setGmtCreate(System.currentTimeMillis());
             user.setGmtModify(System.currentTimeMillis());
-
             //进行插入操作
             userMapper.insert(user);
             //存储会话
-            request.getSession().setAttribute("user",githubUser);
+            response.addCookie(new Cookie("token",token));
             return "redirect:/";
         }else{
             //登录失败
