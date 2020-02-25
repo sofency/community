@@ -55,13 +55,14 @@ public class publishController {
 
         //获取用户的id
         User user= (User) request.getSession().getAttribute("user");
+        System.out.println(user.toString());
         Question question= new Question();
         question.setTitle(title);
         question.setDescription(description);
         question.setTag(tag);
         question.setGmt_create(System.currentTimeMillis());
         question.setGmt_modify(System.currentTimeMillis());
-        question.setCreatorId(Integer.parseInt(user.getAccountId()));
+        question.setCreatorId(Integer.parseInt(user.getAccount_id()));
 
         publishMapper.insert(question);
         //返回页面

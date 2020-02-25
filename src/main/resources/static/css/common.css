@@ -1,0 +1,27 @@
+body{
+    background: url('https://elasticsearch.cn/static/css/default/img/bg.jpg');
+}
+.content{
+    margin:30px 80px 0px 80px;
+    background-color: #f7f7f7;
+}
+.content .padding{
+    padding: 10px;
+    border-right: 1px solid white;
+}
+.aw-user-name{
+    color: #666;
+    font-size: 12px;
+    line-height: 20px;
+    font-weight: normal;
+}
+.tip{
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+    line-height: 160%;
+    font-family: candara,"Helvetica Neue",Helvetica,Arial,"PingFang SC","Hiragino Sans GB","WenQuanYi Micro Hei","Microsoft Yahei",sans-serif, -apple-system;
+    -webkit-font-smoothing: antialiased;
+    box-sizing: border-box;
+    font-size: 12px;
+    font-weight: normal;
+    color: #999;
+}

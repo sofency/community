@@ -50,15 +50,17 @@ public class AuthorizeController {
         //根据返回回来的token去github拿取用户的信息
         GithubUser githubUser = githubProvider.getUser(accessToken);
 
+        System.out.println(githubUser.toString());
         if(githubUser!=null){
             //登陆成功  创建用户的信息
             User user = new User();
             String token = UUID.randomUUID().toString();
-            user.setAccountId(String.valueOf(githubUser.getId()));
+            user.setAccount_id(String.valueOf(githubUser.getId()));
             user.setName(githubUser.getLogin());
             user.setToken(token);
-            user.setGmtCreate(System.currentTimeMillis());
-            user.setGmtModify(System.currentTimeMillis());
+            user.setGmt_create(System.currentTimeMillis());
+            user.setGmt_modify(System.currentTimeMillis());
+            user.setAvatar_url(githubUser.getAvatar_url());
             //进行插入操作
             userMapper.insert(user);
             //存储会话

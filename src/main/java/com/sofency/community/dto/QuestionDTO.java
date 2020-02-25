@@ -1,14 +1,15 @@
-package com.sofency.community.pojo;
+package com.sofency.community.dto;
 
+import com.sofency.community.pojo.User;
 import lombok.Data;
 
 /**
  * @auther sofency
- * @date 2020/2/24 23:38
- * @package com.sofency.community.pojo
+ * @date 2020/2/25 17:11
+ * @package com.sofency.community.dto
  */
 @Data
-public class Question {
+public class QuestionDTO {
     private int id;
     private String title;
     private String description;
@@ -19,4 +20,5 @@ public class Question {
     private int view_count;//浏览人数
     private int like_count;//点赞人数
     private String tag;
+    private User user;
 }
