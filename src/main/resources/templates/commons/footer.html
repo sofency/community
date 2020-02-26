@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="col-lg-3 col-md-12 col-sm-12 col-xs-12" th:fragment="choice">
+    <div class="list-group">
+        <a th:href="@{'/profile/questions'}" th:class="${action} == 'questions'?'list-group-item active':'list-group-item'">我的问题</a>
+        <ul class="list-group">
+            <a th:href="@{'/profile/replies'}">
+                <li class="list-group-item" th:class="${action} == 'replies'?'list-group-item active':'list-group-item'">
+                    <span class="badge">14</span>
+                    最新回复
+                </li>
+            </a>
+        </ul>
+    </div>
+</div>
+</body>
+</html>

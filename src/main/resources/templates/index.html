@@ -3,48 +3,15 @@
 <head>
     <title>码匠社区</title>
     <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
-    <link rel="stylesheet" href="css/bootstrap.css">
-    <link rel="stylesheet" href="css/bootstrap-theme.css">
-    <link rel="stylesheet" href="css/common.css">
-    <script src="js/jquery.js"></script>
-    <script src="js/bootstrap.js"></script>
+    <link rel="stylesheet" href="/static/css/bootstrap.css">
+    <link rel="stylesheet" href="/static/css/bootstrap-theme.css">
+    <link rel="stylesheet" href="/static/css/common.css">
+    <script src="/static/js/jquery.js"></script>
+    <script src="/static/js/bootstrap.js"></script>
 
 </head>
 <body>
-<nav class="navbar navbar-default">
-    <div class="container-fluid">
-        <div class="navbar-header">
-            <!-- 起到动态变化的作用-->
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-                <span class="sr-only">码匠社区</span>
-            </button>
-            <a class="navbar-brand" href="#">码匠社区</a>
-        </div>
-
-        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-            <form class="navbar-form navbar-left">
-                <div class="form-group">
-                    <input type="text" class="form-control" placeholder="搜索问题">
-                </div>
-                <button type="submit" class="btn btn-default">搜索</button>
-            </form>
-            <ul class="nav navbar-nav navbar-right">
-                <li><a href="https://github.com/login/oauth/authorize?client_id=94d38df2b20a7acb563f&redirect_uri=http://localhost:8080/callback&scope=user&state=1">登录</a></li>
-                <li class="dropdown" th:if="${session.user} ne null">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                        <span th:text="${session.user.name}"></span>
-                        <span class="caret"></span>
-                    </a>
-                    <ul class="dropdown-menu" th:if="${session.user} ne null">
-                        <li><a href="#">消息中心</a></li>
-                        <li><a href="#">个人资料</a></li>
-                        <li><a href="#">退出登录</a></li>
-                    </ul>
-                </li>
-            </ul>
-        </div>
-    </div>
-</nav>
+<div th:replace="~{navigation::nav}"></div>
 <!--发布的内容标签-->
 <div class="container-fluid content">
     <div class="row">
@@ -55,20 +22,20 @@
             <div class="media" th:each="question:${questions.questionDTOS}">
                 <div class="media-left">
                     <a href="#">
-                        <img class="media-object img-rounded" th:src="${question.user.avatar_url}" alt="..." width="38" height="38">
+                        <img class="media-object img-rounded" th:src="${question.avatar_url}" alt="..." width="38" height="38">
                     </a>
                 </div>
                 <div class="media-body">
                     <h3 class="media-heading" th:text="${question.title}"></h3>
                     学习码匠笔记的视频是最好的选择你值得拥有<br>
-                    <a href="javascript:void(0)" class="aw-user-name" th:text="${question.user.name}"></a>
+                    <a href="javascript:void(0)" class="aw-user-name" th:text="${question.name}"></a>
                     <span class="tip">发起了问题 • <span th:text="${question.comment_count}"></span>个评论 • <span th:text="${question.view_count}"></span> 次浏览 • <span  th:text="${#dates.format(question.gmt_create,'yyyy-MM-dd HH:mm:ss')}" > 小时前</span></span>
                 </div>
             </div>
             <nav aria-label="Page navigation">
                 <ul class="pagination">
                     <li th:if="${questions.hasFirstPage}">
-                        <a href="#" aria-label="Previous">
+                        <a th:href="@{/page=1}" aria-label="Previous">
                             <span aria-hidden="true">&laquo;</span>
                         </a>
                     </li>
@@ -84,7 +51,7 @@
                         </a>
                     </li>
                     <li th:if="${questions.hasEndPage}">
-                        <a href="#" aria-label="Next">
+                        <a th:href="@{/(page=${questions.pages})}" aria-label="Next">
                             <span aria-hidden="true">&raquo;</span>
                         </a>
                     </li>

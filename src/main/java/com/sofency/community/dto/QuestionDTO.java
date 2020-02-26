@@ -20,5 +20,6 @@ public class QuestionDTO {
     private int view_count;//浏览人数
     private int like_count;//点赞人数
     private String tag;
-    private User user;
+    private String avatar_url;
+    private String name;
 }

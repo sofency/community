@@ -37,4 +37,10 @@ public interface publishMapper {
 
     @Select("select count(1) from question")
     Integer count();
+
+    @Select("select * from question where creatorId=#{creatorId} limit #{offset},#{size}")
+    List<Question> getAllQuestionById(@Param("creatorId") Integer creatorId,@Param("offset") Integer offset, @Param("size") Integer size);
+
+    @Select("select count(1) from question where creatorId= #{creatorId}")
+    Integer countById(@Param("creatorId") Integer creatorId);
 }

@@ -20,10 +20,9 @@ public class PaginationDTO {
     private boolean hasEndPage;//是否有最后一页
     private int currentPage;//当前页
     private List<Integer> pagesList= new ArrayList<>();//页面数
-
+    private Integer pages=0;
     //添加逻辑处理
     public void setPagination(Integer total,Integer page,Integer size){
-        int pages =0;
 
         if(page<1){page=1;}
         currentPage=page;//当前页等于page
