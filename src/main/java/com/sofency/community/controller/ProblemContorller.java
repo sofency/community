@@ -37,7 +37,7 @@ public class ProblemContorller {
         User user = (User)request.getSession().getAttribute("user");
         String creatorId=null;
         if(user!=null){
-            creatorId= user.getAccount_id();//获取账户id
+            creatorId= user.getAccountId();//获取账户id
         }
         PaginationDTO paginationDTO=null;
         if(creatorId!=null){

@@ -21,7 +21,7 @@
                 <span class="label label-default" >elasticsearch</span>
                 <span>作者:&nbsp;<a class="text-user" th:text="${questionDTO.user.name}"></a></span>
                 <span>发布于<span th:text="${time}"></span></span>
-                <span>阅读数:&nbsp;<span th:text="${questionDTO.view_count}"></span></span>
+                <span>阅读数:&nbsp;<span th:text="${questionDTO.viewCount}"></span></span>
             </em>
             <hr>
             <div th:text="${questionDTO.description}"></div>
@@ -29,7 +29,8 @@
             <div class="edit_tag" style="color: #999">
                 <span th:text="${time}" style="margin-right: 15px;"></span>
                 <a style="margin-right: 15px;color: #999;text-decoration: none; cursor: pointer"><span class="glyphicon glyphicon-comment"></span>添加评论</a>
-                <a style="margin-right: 15px;color: #999;text-decoration: none; cursor: pointer" th:if="${(session.user!=null) && (session.user.account_id == questionDTO.creatorId)}" th:href="@{'/publish/'+${questionDTO.id}}"><span class="glyphicon glyphicon-pencil"></span>编辑</a>
+                <!--/*@thymesVar id="accountId" type=""*/-->
+                <a style="margin-right: 15px;color: #999;text-decoration: none; cursor: pointer" th:if="${(session.user!=null) && (session.user.accountId == questionDTO.creatorid)}" th:href="@{'/publish/'+${questionDTO.id}}"><span class="glyphicon glyphicon-pencil"></span>编辑</a>
             </div>
 
         </div>
@@ -38,7 +39,7 @@
             <div class="media">
                 <div class="media-left">
                     <a href="#">
-                        <img class="media-object" th:src="${questionDTO.user.avatar_url}" alt="..." width="30" height="30">
+                        <img class="media-object" th:src="${questionDTO.user.avatarUrl}" alt="..." width="30" height="30">
                     </a>
                 </div>
                 <div class="media-body text-999">

@@ -2,6 +2,7 @@ package com.sofency.community.interceptor;
 
 import com.sofency.community.mapper.UserMapper;
 import com.sofency.community.pojo.User;
+import com.sofency.community.pojo.UserExample;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -12,6 +13,7 @@ import org.springframework.web.servlet.ModelAndView;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.util.List;
 
 /**
  * @auther sofency
@@ -33,9 +35,11 @@ public class SessionInterceptor implements HandlerInterceptor {
                     //判断cookie
                     String token = cookie.getValue();
                     //查找用户的信息
-                    User user = userMapper.findByToken(token);
-                    if(user!=null){
-                        request.getSession().setAttribute("user",user);
+                    UserExample example= new UserExample();
+                    example.createCriteria().andTokenEqualTo(token);
+                    List<User> user = userMapper.selectByExample(example);
+                    if(user.size()!=0){
+                        request.getSession().setAttribute("user",user.get(0));
                     }
                     break;
                 }

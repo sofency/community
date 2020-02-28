@@ -28,7 +28,7 @@ public class QuestionController {
     @GetMapping("/question/{id}")
     public String getQuestionById(@PathVariable("id") Integer id, Model model, HttpSession session){
         QuestionDTO questionDTO = questionService.getQuestionDTOById(id);
-        Long time=(System.currentTimeMillis()-questionDTO.getGmt_create())/1000;
+        Long time=(System.currentTimeMillis()-questionDTO.getGmtCreate())/1000;
         System.out.println(time);
         String timeStr = TimeUtil.publishTime(time);
         if(questionDTO!=null){
@@ -37,7 +37,7 @@ public class QuestionController {
         }else{
             model.addAttribute("error","error");//暂无用户信息
         }
-        System.out.println(((User)session.getAttribute("user")).getAccount_id());
+        System.out.println(((User)session.getAttribute("user")).getAccountId());
         return "questionDetail";
     }
 }

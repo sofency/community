@@ -17,12 +17,12 @@ public class PublishService {
     QuestionMapper questionMapper;
     public void createOrUpdate(Question question) {
         if(question.getId()==0){//说明是发布
-            question.setGmt_create(System.currentTimeMillis());//设置创建时间
+            question.setGmtCreate(System.currentTimeMillis());//设置创建时间
             questionMapper.insert(question);
         }else{//说明是修改
-            Question oldQuestion = questionMapper.getQuestionById(question.getId());
+            Question oldQuestion = questionMapper.selectByPrimaryKey(question.getId());
             if(!oldQuestion.equals(question)){
-                questionMapper.update(question);
+                questionMapper.updateByPrimaryKeySelective(question);
             }
         }
 

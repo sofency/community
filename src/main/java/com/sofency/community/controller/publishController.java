@@ -36,7 +36,7 @@ public class publishController {
 
     @GetMapping("/publish/{id}")
     public String change(Model model, @PathVariable("id") String id,HttpServletRequest request){
-        Question question = questionMapper.getQuestionById(Integer.parseInt(id));
+        Question question = questionMapper.selectByPrimaryKey(Integer.parseInt(id));
         model.addAttribute("title",question.getTitle());
         model.addAttribute("description",question.getDescription());
         model.addAttribute("tag",question.getTag());
@@ -71,8 +71,8 @@ public class publishController {
         question.setTitle(title);
         question.setDescription(description);
         question.setTag(tag);
-        question.setGmt_modify(System.currentTimeMillis());
-        question.setCreatorId(user.getAccount_id());
+        question.setGmtModify(System.currentTimeMillis());
+        question.setCreatorid(user.getAccountId());
         question.setId(Integer.parseInt(id));//设置id
         publishService.createOrUpdate(question);
         //返回页面

@@ -37,3 +37,7 @@ CREATE TABLE question
 )
   ENGINE = InnoDB;
 ```
+```bash
+#执行mybatis生成器
+mvn -Dmybatis.generator.overwrite=true mybatis-generator:generate
+```
