@@ -1,18 +1,16 @@
 package com.sofency.community.controller;
 
-import com.sofency.community.dto.PaginationDTO;
-import com.sofency.community.mapper.publishMapper;
+import com.sofency.community.mapper.QuestionMapper;
 import com.sofency.community.pojo.Question;
 import com.sofency.community.pojo.User;
-import com.sofency.community.service.QuestionService;
+import com.sofency.community.service.PublishService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -24,21 +22,32 @@ import javax.servlet.http.HttpServletRequest;
 @Controller
 public class publishController {
 
-    @Autowired
-    publishMapper publishMapper;
 
     @Autowired
-    QuestionService questionService;
+    PublishService publishService;
+
+    @Autowired
+    QuestionMapper questionMapper;
 
     @GetMapping("/publish")
     public String publish(){
         return "publish";
     }
 
+    @GetMapping("/publish/{id}")
+    public String change(Model model, @PathVariable("id") String id,HttpServletRequest request){
+        Question question = questionMapper.getQuestionById(Integer.parseInt(id));
+        model.addAttribute("title",question.getTitle());
+        model.addAttribute("description",question.getDescription());
+        model.addAttribute("tag",question.getTag());
+        model.addAttribute("contentId",id);
+        return "publish";
+    }
     @PostMapping("/publish")
     public String doPublish(@RequestParam(required = false) String title,
                             @RequestParam(required = false) String description,
                             @RequestParam(required = false) String tag,
+                            @RequestParam(required = false,defaultValue = "0") String id,
                             Model model,
                             HttpServletRequest request){
         //错误校验
@@ -55,22 +64,17 @@ public class publishController {
         if("".equals(tag)||null==tag){
             model.addAttribute("error","请填写标签");
         }
-
-        //文章写入数据库
-        System.out.println("添加用户");
-
         //获取用户的id
         User user= (User) request.getSession().getAttribute("user");
-        System.out.println(user.toString());
+
         Question question= new Question();
         question.setTitle(title);
         question.setDescription(description);
         question.setTag(tag);
-        question.setGmt_create(System.currentTimeMillis());
         question.setGmt_modify(System.currentTimeMillis());
-        question.setCreatorId(Integer.parseInt(user.getAccount_id()));
-
-        publishMapper.insert(question);
+        question.setCreatorId(user.getAccount_id());
+        question.setId(Integer.parseInt(id));//设置id
+        publishService.createOrUpdate(question);
         //返回页面
         return "publish";
     }

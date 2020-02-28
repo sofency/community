@@ -1,10 +1,7 @@
 package com.sofency.community.mapper;
 
 import com.sofency.community.pojo.Question;
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Param;
-import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.*;
 
 import javax.websocket.server.PathParam;
 import java.util.List;
@@ -15,7 +12,7 @@ import java.util.List;
  * @package com.sofency.community.mapper
  */
 @Mapper
-public interface publishMapper {
+public interface QuestionMapper {
 
     /**
      * 插入文章到数据库
@@ -39,8 +36,17 @@ public interface publishMapper {
     Integer count();
 
     @Select("select * from question where creatorId=#{creatorId} limit #{offset},#{size}")
-    List<Question> getAllQuestionById(@Param("creatorId") Integer creatorId,@Param("offset") Integer offset, @Param("size") Integer size);
+    List<Question> getAllQuestionById(@Param("creatorId") String creatorId,@Param("offset") Integer offset, @Param("size") Integer size);
 
     @Select("select count(1) from question where creatorId= #{creatorId}")
-    Integer countById(@Param("creatorId") Integer creatorId);
+    Integer countById(@Param("creatorId") String creatorId);
+
+
+    //根据id查找问题
+    @Select("select * from question where id= #{id}")
+    Question getQuestionById(@Param("id") Integer id);
+
+
+    @Update("update question set title=#{title},description=#{description},gmt_modify=#{gmt_modify},tag=#{tag} where id=#{id}")
+    void update(Question question);
 }

@@ -22,13 +22,13 @@
             <div class="media" th:each="questionId:${questionById.questionDTOS}">
                 <div class="media-left">
                     <a href="#">
-                        <img class="media-object img-rounded" th:src="${questionId.avatar_url}" alt="..." width="38" height="38">
+                        <img class="media-object img-rounded" th:src="${questionId.user.avatar_url}" alt="..." width="38" height="38">
                     </a>
                 </div>
                 <div class="media-body">
-                    <h3 class="media-heading" th:text="${questionId.title}"></h3>
+                    <h4 class="media-heading" th:text="${questionId.title}"></h4>
                     学习码匠笔记的视频是最好的选择你值得拥有<br>
-                    <a href="javascript:void(0)" class="aw-user-name" th:text="${questionId.name}"></a>
+                    <a href="javascript:void(0)" class="aw-user-name" th:text="${questionId.user.name}"></a>
                     <span class="tip">发起了问题 • <span th:text="${questionId.comment_count}"></span>个评论 • <span th:text="${questionId.view_count}"></span> 次浏览 • <span  th:text="${#dates.format(questionId.gmt_create,'yyyy-MM-dd HH:mm:ss')}" > 小时前</span></span>
                 </div>
             </div>

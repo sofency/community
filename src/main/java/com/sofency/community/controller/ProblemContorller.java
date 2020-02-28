@@ -41,8 +41,8 @@ public class ProblemContorller {
         }
         PaginationDTO paginationDTO=null;
         if(creatorId!=null){
-            Integer creator= Integer.valueOf(creatorId);
-            paginationDTO= questionService.getPaginationDto(creator,page,size);//获取页面的信息
+
+            paginationDTO= questionService.getPaginationDto(creatorId,page,size);//获取页面的信息
         }
 
 

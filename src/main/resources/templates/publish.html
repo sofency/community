@@ -19,6 +19,7 @@
             <h3><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>&nbsp;发布</h3>
             <hr>
             <form action="/publish" method="post">
+                <input type="hidden" name="id" th:value="${contentId}">
                 <div class="form-group">
                     <label for="title">问题标题(简单扼要)：</label>
                     <input type="text" class="form-control col-xs-8 col-md-8 col-sm-8 col-lg-8" id="title" th:value="${title}" placeholder="问题标题..." name="title">

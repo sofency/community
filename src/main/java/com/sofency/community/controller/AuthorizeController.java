@@ -5,6 +5,7 @@ import com.sofency.community.dto.GithubUser;
 import com.sofency.community.mapper.UserMapper;
 import com.sofency.community.pojo.User;
 import com.sofency.community.provider.GithubProvider;
+import com.sofency.community.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.stereotype.Controller;
@@ -34,7 +35,7 @@ public class AuthorizeController {
     private AccessTokenDTO accessTokenDTO;
 
     @Autowired
-    private UserMapper userMapper;//注入mapper
+    private UserService userService;//注入mapper
 
     @GetMapping("/callback")
     public String callback(@RequestParam(name="code") String code,
@@ -50,19 +51,16 @@ public class AuthorizeController {
         //根据返回回来的token去github拿取用户的信息
         GithubUser githubUser = githubProvider.getUser(accessToken);
 
-        System.out.println(githubUser.toString());
         if(githubUser!=null){
             //登陆成功  创建用户的信息
             User user = new User();
             String token = UUID.randomUUID().toString();
-            user.setAccount_id(String.valueOf(githubUser.getId()));
             user.setName(githubUser.getLogin());
             user.setToken(token);
-            user.setGmt_create(System.currentTimeMillis());
-            user.setGmt_modify(System.currentTimeMillis());
             user.setAvatar_url(githubUser.getAvatar_url());
+            user.setAccount_id(String.valueOf(githubUser.getId()));
             //进行插入操作
-            userMapper.insert(user);
+            userService.createOrInsert(user,githubUser);
             //存储会话
             response.addCookie(new Cookie("token",token));
             return "redirect:/";
@@ -70,6 +68,16 @@ public class AuthorizeController {
             //登录失败
             return "redirect:/";
         }
+    }
+
+    @GetMapping("/logout")
+    public String loginout(HttpServletRequest request,HttpServletResponse response){
+        request.getSession().removeAttribute("user");
+        //删除cookie
+        Cookie cookie = new Cookie("token",null);
+        cookie.setMaxAge(0);
+        response.addCookie(cookie);
+        return "redirect:/";
     }
 
 }

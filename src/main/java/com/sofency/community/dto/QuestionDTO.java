@@ -15,11 +15,10 @@ public class QuestionDTO {
     private String description;
     private Long gmt_create;
     private Long gmt_modify;
-    private int creatorId;//创建者id
+    private String creatorId;//创建者id
     private int comment_count;//评论数
     private int view_count;//浏览人数
     private int like_count;//点赞人数
     private String tag;
-    private String avatar_url;
-    private String name;
+    private User user;
 }

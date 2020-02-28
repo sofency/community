@@ -1,10 +1,7 @@
 package com.sofency.community.mapper;
 
 import com.sofency.community.pojo.User;
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Param;
-import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.*;
 
 /**
  * @auther sofency
@@ -35,5 +32,9 @@ public interface UserMapper {
      * @return
      */
     @Select("select * from user where account_id = #{creatorId}")
-    User findById(@Param("creatorId") int creatorId);
+    User findById(@Param("creatorId") String creatorId);
+
+
+    @Update("update user set name = #{name},avatar_url=#{avatar_url},gmt_modify=#{gmt_modify},token=#{token} where account_id=#{account_id}")
+    void update(User user);
 }

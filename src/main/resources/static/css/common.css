@@ -25,3 +25,17 @@ body{
     font-weight: normal;
     color: #999;
 }
+.tagInfo{
+    color: #999;
+    font-size: 12px;
+}
+.tagInfo span{
+    display: inline-block;
+    margin-right: 15px;
+}
+.text-user{
+    color: #155faa;
+}
+.text-999{
+    color: #999;
+}
