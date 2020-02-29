@@ -55,7 +55,7 @@ public class QuestionService {
     }
 
     //根据发起问题的用户id查找用户表发布过的问题
-    public PaginationDTO getPaginationDto(String creatorId,Integer page, Integer size){
+    public PaginationDTO getPaginationDto(Long creatorId,Integer page, Integer size){
 
         Integer offset = size*(page-1);//获取偏移的位置
         QuestionExample example = new QuestionExample();

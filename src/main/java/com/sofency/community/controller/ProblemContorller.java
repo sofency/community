@@ -38,7 +38,7 @@ public class ProblemContorller {
         //从session里面拿取用户的信息
         ModelAndView modelAndView = new ModelAndView();
         User user = (User)request.getSession().getAttribute("user");
-        String creatorId=null;
+        Long creatorId=null;
         if(user!=null){
             creatorId= user.getAccountId();//获取账户id
         }

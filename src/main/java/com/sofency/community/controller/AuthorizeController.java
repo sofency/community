@@ -60,7 +60,7 @@ public class AuthorizeController {
             user.setName(githubUser.getLogin());
             user.setToken(token);
             user.setAvatarUrl(githubUser.getAvatar_url());
-            user.setAccountId(String.valueOf(githubUser.getId()));
+            user.setAccountId(githubUser.getId());
             //进行插入操作
             userService.createOrInsert(user,githubUser);
             //存储会话
