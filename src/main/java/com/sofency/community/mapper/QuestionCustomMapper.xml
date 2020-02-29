@@ -4,4 +4,7 @@
   <update id="incrView" parameterType="Integer">
     UPDATE question set view_count=view_count+1 WHERE id=#{id}
   </update>
+  <update id="incrCommentCount" parameterType="com.sofency.community.pojo.Question">
+    UPDATE question set comment_count=comment_count+#{commentCount} WHERE id=#{id}
+  </update>
 </mapper>

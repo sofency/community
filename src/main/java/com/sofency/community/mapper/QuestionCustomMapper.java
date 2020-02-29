@@ -10,4 +10,5 @@ import com.sofency.community.pojo.Question;
 
 public interface QuestionCustomMapper {
     public void incrView(Integer id);
+    public void incrCommentCount(Question question);
 }
