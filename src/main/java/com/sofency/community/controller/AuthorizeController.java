@@ -2,6 +2,8 @@ package com.sofency.community.controller;
 
 import com.sofency.community.dto.AccessTokenDTO;
 import com.sofency.community.dto.GithubUser;
+import com.sofency.community.exception.CustomException;
+import com.sofency.community.exception.CustomExceptionCode;
 import com.sofency.community.mapper.UserMapper;
 import com.sofency.community.pojo.User;
 import com.sofency.community.provider.GithubProvider;
@@ -48,7 +50,7 @@ public class AuthorizeController {
 
         //获取github反馈回来的token
         String accessToken = githubProvider.getAccessToken(accessTokenDTO);
-        //根据返回回来的token去github拿取用户的信息
+        //根据返回的token去github拿取用户的信息
         GithubUser githubUser = githubProvider.getUser(accessToken);
 
         if(githubUser!=null){
@@ -65,8 +67,7 @@ public class AuthorizeController {
             response.addCookie(new Cookie("token",token));
             return "redirect:/";
         }else{
-            //登录失败
-            return "redirect:/";
+            throw new CustomException(CustomExceptionCode.AUTHORIZE_FAILED);
         }
     }
 

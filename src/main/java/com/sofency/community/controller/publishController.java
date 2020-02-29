@@ -1,5 +1,7 @@
 package com.sofency.community.controller;
 
+import com.sofency.community.exception.CustomException;
+import com.sofency.community.exception.CustomExceptionCode;
 import com.sofency.community.mapper.QuestionMapper;
 import com.sofency.community.pojo.Question;
 import com.sofency.community.pojo.User;
@@ -37,6 +39,9 @@ public class publishController {
     @GetMapping("/publish/{id}")
     public String change(Model model, @PathVariable("id") String id,HttpServletRequest request){
         Question question = questionMapper.selectByPrimaryKey(Integer.parseInt(id));
+        if(question==null){
+            throw new CustomException(CustomExceptionCode.QUESTION_NOT_FOUND);
+        }
         model.addAttribute("title",question.getTitle());
         model.addAttribute("description",question.getDescription());
         model.addAttribute("tag",question.getTag());

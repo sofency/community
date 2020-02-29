@@ -1,0 +1,24 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>码匠社区</title>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <link rel="stylesheet" href="/static/css/bootstrap.css">
+    <link rel="stylesheet" href="/static/css/bootstrap-theme.css">
+    <link rel="stylesheet" href="/static/css/common.css">
+    <script src="/static/js/jquery.js"></script>
+    <script src="/static/js/bootstrap.js"></script>
+
+</head>
+<body>
+<div th:replace="~{navigation::nav}"></div>
+<!--发布的内容标签-->
+
+<div class="jumbotron" style="padding: 20px;">
+    <h1>出错了</h1>
+    <!--/*@thymesVar id="message" type="com.sofency.community.advice.CustomizeExceptionHandler"*/-->
+    <p th:text="${message}">客官要不稍等一会再访问</p>
+    <p><a class="btn btn-primary btn-lg" href="/" role="button">返回首页</a></p>
+</div>
+</body>
+</html>

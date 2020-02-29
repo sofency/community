@@ -2,6 +2,8 @@ package com.sofency.community.controller;
 
 import com.sofency.community.dto.PaginationDTO;
 import com.sofency.community.dto.QuestionDTO;
+import com.sofency.community.exception.CustomException;
+import com.sofency.community.exception.CustomExceptionCode;
 import com.sofency.community.mapper.UserMapper;
 import com.sofency.community.pojo.User;
 import com.sofency.community.service.QuestionService;
@@ -34,7 +36,9 @@ public class IndexController {
                         @RequestParam(name = "page",defaultValue="1") Integer page,
                         @RequestParam(name = "size",defaultValue = "5") Integer size){
         PaginationDTO paginationDTO= questionService.getPaginationDto(page,size);//获取页面的信息
-
+        if(paginationDTO==null){
+            throw new CustomException(CustomExceptionCode.GET_INFO_FAILED);
+        }
         model.addAttribute("questions",paginationDTO);
         return "index";
     }

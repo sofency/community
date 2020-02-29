@@ -1,6 +1,8 @@
 package com.sofency.community.controller;
 
 import com.sofency.community.dto.PaginationDTO;
+import com.sofency.community.exception.CustomException;
+import com.sofency.community.exception.CustomExceptionCode;
 import com.sofency.community.mapper.UserMapper;
 import com.sofency.community.pojo.User;
 import com.sofency.community.service.QuestionService;
@@ -27,6 +29,7 @@ public class ProblemContorller {
     @Autowired
     QuestionService questionService;
 
+    //Restful接口要使用@PathVariable注解
     @GetMapping("/profile/{action}")
     public ModelAndView problem(HttpServletRequest request,
                                 @RequestParam(name = "page",defaultValue="1") Integer page,
@@ -41,10 +44,8 @@ public class ProblemContorller {
         }
         PaginationDTO paginationDTO=null;
         if(creatorId!=null){
-
             paginationDTO= questionService.getPaginationDto(creatorId,page,size);//获取页面的信息
         }
-
 
         if("replies".equals(action)){
             modelAndView.addObject("replies","testDemo");
@@ -56,7 +57,10 @@ public class ProblemContorller {
             modelAndView.addObject("type","我的问题");
             modelAndView.addObject("action","questions");
             modelAndView.setViewName("profile/questions");
+        }else{//访问非法的时候
+            throw new CustomException(CustomExceptionCode.PAGE_NOT_FOUND);
         }
+
         return modelAndView;//返回到problem下
     }
 }

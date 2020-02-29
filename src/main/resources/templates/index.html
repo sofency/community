@@ -27,7 +27,7 @@
                 </div>
                 <div class="media-body">
                     <a th:href="@{'/question/'+${question.id}}"><span class="media-heading" th:text="${question.title}"></span></a><br/>
-                    学习码匠笔记的视频是最好的选择你值得拥有<br>
+                    <div th:text="${question.description}" class="desc"></div>
                     <a href="javascript:void(0)" class="aw-user-name" th:text="${question.user.name}"></a>
                     <span class="tip">发起了问题 • <span th:text="${question.commentCount}"></span>个评论 • <span th:text="${question.viewCount}"></span> 次浏览 • <span  th:text="${#dates.format(question.gmtCreate,'yyyy-MM-dd HH:mm:ss')}" > 小时前</span></span>
                 </div>

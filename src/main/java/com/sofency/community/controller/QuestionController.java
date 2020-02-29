@@ -1,6 +1,8 @@
 package com.sofency.community.controller;
 
 import com.sofency.community.dto.QuestionDTO;
+import com.sofency.community.exception.CustomException;
+import com.sofency.community.exception.CustomExceptionCode;
 import com.sofency.community.pojo.User;
 import com.sofency.community.service.QuestionService;
 import com.sofency.community.utils.TimeUtil;
@@ -28,15 +30,14 @@ public class QuestionController {
     @GetMapping("/question/{id}")
     public String getQuestionById(@PathVariable("id") Integer id, Model model, HttpSession session){
         QuestionDTO questionDTO = questionService.getQuestionDTOById(id);
+        if(questionDTO==null){
+            throw new CustomException(CustomExceptionCode.QUESTION_NOT_FOUND);
+        }
         Long time=(System.currentTimeMillis()-questionDTO.getGmtCreate())/1000;
         System.out.println(time);
         String timeStr = TimeUtil.publishTime(time);
-        if(questionDTO!=null){
-            model.addAttribute("questionDTO",questionDTO);
-            model.addAttribute("time",timeStr);
-        }else{
-            model.addAttribute("error","error");//暂无用户信息
-        }
+        model.addAttribute("questionDTO",questionDTO);
+        model.addAttribute("time",timeStr);
         System.out.println(((User)session.getAttribute("user")).getAccountId());
         return "questionDetail";
     }

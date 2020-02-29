@@ -2,6 +2,9 @@ package com.sofency.community.service;
 
 import com.sofency.community.dto.PaginationDTO;
 import com.sofency.community.dto.QuestionDTO;
+import com.sofency.community.exception.CustomException;
+import com.sofency.community.exception.CustomExceptionCode;
+import com.sofency.community.mapper.QuestionCustomMapper;
 import com.sofency.community.mapper.UserMapper;
 import com.sofency.community.mapper.QuestionMapper;
 import com.sofency.community.pojo.*;
@@ -23,6 +26,9 @@ public class QuestionService {
 
     @Autowired
     QuestionMapper questionMapper;
+
+    @Autowired
+    QuestionCustomMapper questionCustomMapper;
 
     @Autowired
     UserMapper userMapper;
@@ -90,9 +96,11 @@ public class QuestionService {
     //根据id查找用户
     public QuestionDTO getQuestionDTOById(Integer id){
         Question question = questionMapper.selectByPrimaryKey(id);
-        QuestionDTO questionDTO = new QuestionDTO();
-        BeanUtils.copyProperties(question,questionDTO);
+        QuestionDTO questionDTO=null;
         if(question!=null){//如果没有该用户的话不进行写入信息
+            questionCustomMapper.incrView(id);//阅读数添加
+            questionDTO = new QuestionDTO();
+            BeanUtils.copyProperties(question,questionDTO);
             UserExample example = new UserExample();
             example.createCriteria().
                     andAccountIdEqualTo(question.getCreatorid());
@@ -101,6 +109,5 @@ public class QuestionService {
         }
         return  questionDTO;//返回用户要查找的信息
     }
-
 
 }

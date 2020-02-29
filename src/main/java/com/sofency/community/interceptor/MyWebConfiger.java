@@ -24,6 +24,7 @@ public class MyWebConfiger extends WebMvcConfigurationSupport {
     public HandlerInterceptor getSessionInterceptor(){//提前注入bean
         return new SessionInterceptor();
     }
+
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
         registry.addInterceptor(getSessionInterceptor()).addPathPatterns("/**").excludePathPatterns("/static/**").excludePathPatterns("*.html");
