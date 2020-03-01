@@ -15,10 +15,10 @@ public class QuestionDTO {
     private String description;
     private Long gmtCreate;
     private Long gmtModify;
-    private Long creatorid;//创建者id
-    private int commentCount;//评论数
-    private int viewCount;//浏览人数
-    private int likeCount;//点赞人数
+    private Long creatorId;//创建者id
+    private Integer commentCount;//评论数
+    private Integer viewCount;//浏览人数
+    private Integer likeCount;//点赞人数
     private String tag;
     private User user;
 }

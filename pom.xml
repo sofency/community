@@ -52,6 +52,12 @@
 			<scope>provided</scope>
 		</dependency>
 
+		<!--忽略null拷贝工具-->
+		<dependency>
+			<groupId>cn.hutool</groupId>
+			<artifactId>hutool-all</artifactId>
+			<version>4.1.14</version>
+		</dependency>
 		<!--json的处理-->
 		<dependency>
 			<groupId>com.alibaba</groupId>

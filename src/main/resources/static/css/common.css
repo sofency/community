@@ -46,3 +46,26 @@ body{
     overflow:hidden;           /* 内容超出宽度时隐藏超出部分的内容 */
     text-overflow:ellipsis;
 }
+.btn-comment{
+    margin-top: 10px;
+}
+.margin-top-0{
+    margin-top: 0;
+}
+.like-comment{
+    width: 64px;
+    display: flex;
+    border: 1px solid #fff;
+    flex-direction: row;
+    border-radius: 4px;
+    margin-top: 11px
+}
+.common{
+    font-size: 17px;
+    text-align: center;
+    width: 32px;
+    border-right: 1px solid #fff;
+}
+.common:hover{
+    background-color: #fff;
+}

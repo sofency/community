@@ -29,9 +29,11 @@ public class SessionInterceptor implements HandlerInterceptor {
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
         //获取cookie
         Cookie[] cookies = request.getCookies();
+        boolean flag = false;
         if(cookies!=null){
             for(Cookie cookie:cookies){
                 if("token".equals(cookie.getName())){
+                    flag=true;//表名可以登录
                     //判断cookie
                     String token = cookie.getValue();
                     //查找用户的信息
@@ -43,6 +45,12 @@ public class SessionInterceptor implements HandlerInterceptor {
                     }
                     break;
                 }
+            }
+            if(!flag){//游客方式的话可以进行查看
+                User user =  new User();
+                user.setAccountId(Long.parseLong("0"));
+                user.setName("游客");
+                request.getSession().setAttribute("user",user);
             }
         }
         return true;

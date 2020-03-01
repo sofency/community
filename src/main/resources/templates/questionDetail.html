@@ -1,13 +1,12 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>问题详情页</title>
-    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
-    <link rel="stylesheet" href="/static/css/bootstrap.css">
-    <link rel="stylesheet" href="/static/css/bootstrap-theme.css">
-    <link rel="stylesheet" href="/static/css/common.css">
-    <script src="/static/js/jquery.js"></script>
-    <script src="/static/js/bootstrap.js"></script>
+<title>问题详情页</title>
+<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+<link rel="stylesheet" href="/static/css/bootstrap.css">
+<link rel="stylesheet" href="/static/css/bootstrap-theme.css">
+<link rel="stylesheet" href="/static/css/common.css">
+<link rel="stylesheet" href="/static/css/font-awesome.css">
 </head>
 <body>
 <div th:replace="~{navigation::nav}"></div>
@@ -24,13 +23,54 @@
                 <span>阅读数:&nbsp;<span th:text="${questionDTO.viewCount}"></span></span>
             </em>
             <hr>
-            <div th:text="${questionDTO.description}"></div>
-            <hr>
-            <div class="edit_tag" style="color: #999">
-                <span th:text="${time}" style="margin-right: 15px;"></span>
-                <a style="margin-right: 15px;color: #999;text-decoration: none; cursor: pointer"><span class="glyphicon glyphicon-comment"></span>添加评论</a>
-                <!--/*@thymesVar id="accountId" type=""*/-->
-                <a style="margin-right: 15px;color: #999;text-decoration: none; cursor: pointer" th:if="${(session.user!=null) && (session.user.accountId == questionDTO.creatorid)}" th:href="@{'/publish/'+${questionDTO.id}}"><span class="glyphicon glyphicon-pencil"></span>编辑</a>
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 padding">
+                <div th:text="${questionDTO.description}"></div>
+                <hr>
+                <div class="edit_tag" style="color: #999">
+                    <span th:text="${time}" style="margin-right: 15px;"></span>
+                    <a style="margin-right: 15px;color: #999;text-decoration: none; cursor: pointer"><span class="glyphicon glyphicon-comment"></span>添加评论</a>
+                    <!--/*@thymesVar id="accountId" type=""*/-->
+                    <a style="margin-right: 15px;color: #999;text-decoration: none; cursor: pointer" th:if="${(session.user!=null) && (session.user.accountId == questionDTO.creatorId)}" th:href="@{'/publish/'+${questionDTO.id}}"><span class="glyphicon glyphicon-pencil"></span>编辑</a>
+                </div>
+            </div>
+
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 padding">
+                <h4 th:if="${comments} ne null" ><span th:text="${comments.size()}"></span>个回复</h4>
+                <hr class="margin-top-0">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="color: #999" th:if="${comments} ne null" th:each="comment:${comments}">
+                    <div class="media" style="margin-bottom: 10px">
+                        <div class="media-left">
+                            <a href="#">
+                                <img class="media-object img-rounded img-default" th:src="${comment.user.avatarUrl}" alt="..." width="30" height="30">
+                            </a>
+                        </div>
+                        <div class="media-body text-999">
+                            <span class="media-heading text-user" style="font-size: 14px" th:text="${comment.user.name}"></span><br>
+                            <div th:text="${comment.content}"></div>
+                            <div class="like-comment">
+                                <div class="common  like"><i class="fa fa-thumbs-o-up"></i></div>
+                                <div class="common comment" ><i class="fa fa-commenting-o"></i></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" id="comment-hidden">
+                <hr>
+                <input type="hidden" id="parentId" th:value="${questionDTO.id}">
+                <div class="media" style="margin-bottom: 10px">
+                    <div class="media-left">
+                        <a href="#">
+                            <img class="media-object img-default" th:src="${questionDTO.user.avatarUrl}" alt="..." width="30" height="30">
+                        </a>
+                    </div>
+                    <div class="media-body text-999">
+                        <span class="media-heading text-user" style="font-size: 14px" th:text="${questionDTO.user.name}"></span>
+                    </div>
+                </div>
+                <textarea class="form-control" rows="6" id="content"></textarea>
+                <button  class="btn btn-info btn-comment" onclick="comment(1)">评论</button>
             </div>
 
         </div>
@@ -39,7 +79,7 @@
             <div class="media">
                 <div class="media-left">
                     <a href="#">
-                        <img class="media-object" th:src="${questionDTO.user.avatarUrl}" alt="..." width="30" height="30">
+                        <img class="media-object img-default" th:src="${questionDTO.user.avatarUrl}" alt="..." width="30" height="30" onerror="this.src ='/static/images/error.jpg;'">
                     </a>
                 </div>
                 <div class="media-body text-999">
@@ -59,5 +99,17 @@
         </div>
     </div>
 </div>
+<script src="/static/js/jquery.js"></script>
+<script src="/static/js/bootstrap.js"></script>
+<script src="/static/js/comment.js"></script>
+<script>
+    $(window).load(function() {
+        $("img").each(function () {
+            if (!this.complete || typeof this.naturalWidth == "undefined" || this.naturalWidth == 0) {
+                this.src = "/static/images/error.jpg";
+            }
+        })
+    })
+</script>
 </body>
 </html>

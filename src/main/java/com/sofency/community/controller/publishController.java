@@ -37,8 +37,8 @@ public class publishController {
     }
 
     @GetMapping("/publish/{id}")
-    public String change(Model model, @PathVariable("id") String id,HttpServletRequest request){
-        Question question = questionMapper.selectByPrimaryKey(Integer.parseInt(id));
+    public String change(Model model, @PathVariable("id") Long id,HttpServletRequest request){
+        Question question = questionMapper.selectByPrimaryKey(id);
         if(question==null){
             throw new CustomException(CustomExceptionCode.QUESTION_NOT_FOUND);
         }
@@ -52,7 +52,7 @@ public class publishController {
     public String doPublish(@RequestParam(required = false) String title,
                             @RequestParam(required = false) String description,
                             @RequestParam(required = false) String tag,
-                            @RequestParam(required = false,defaultValue = "0") String id,
+                            @RequestParam(required = false,defaultValue = "0") Long id,
                             Model model,
                             HttpServletRequest request){
         //错误校验
@@ -77,8 +77,8 @@ public class publishController {
         question.setDescription(description);
         question.setTag(tag);
         question.setGmtModify(System.currentTimeMillis());
-        question.setCreatorid(user.getAccountId());
-        question.setId(Integer.parseInt(id));//设置id
+        question.setCreatorId(user.getAccountId());
+        question.setId(id);//设置id
         publishService.createOrUpdate(question);
         //返回页面
         return "publish";

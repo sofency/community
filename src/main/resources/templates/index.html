@@ -8,7 +8,16 @@
     <link rel="stylesheet" href="/static/css/common.css">
     <script src="/static/js/jquery.js"></script>
     <script src="/static/js/bootstrap.js"></script>
-
+    <script src="/static/js/default-image.js"></script>
+<script type="text/javascript">
+    window.onload=function(){
+        var flag = window.localStorage.getItem("closeable");
+        if(flag=="true"){
+            window.close()
+            window.localStorage.removeItem("closeable");
+        }
+    }
+</script>
 </head>
 <body>
 <div th:replace="~{navigation::nav}"></div>
@@ -22,7 +31,7 @@
             <div class="media" th:each="question:${questions.questionDTOS}">
                 <div class="media-left">
                     <a href="#">
-                        <img class="media-object img-rounded" th:src="${question.user.avatarUrl}" alt="..." width="38" height="38">
+                        <img class="media-object img-rounded img" th:src="${question.user.avatarUrl}" alt="..." width="38" height="38">
                     </a>
                 </div>
                 <div class="media-body">

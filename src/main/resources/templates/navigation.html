@@ -19,9 +19,9 @@
                 <button type="submit" class="btn btn-default">搜索</button>
             </form>
             <ul class="nav navbar-nav navbar-right">
-                <li th:if="${session.user} ne null"><a th:href="@{/publish}">提问</a></li>
-                <li th:if="${session.user} eq null"><a href="https://github.com/login/oauth/authorize?client_id=94d38df2b20a7acb563f&redirect_uri=http://localhost:8080/callback&scope=user&state=1">登录</a></li>
-                <li class="dropdown" th:if="${session.user} ne null">
+                <li th:if="${session.user !=null && session.user.accountId != 0 }"><a th:href="@{/publish}">提问</a></li>
+                <li th:if="${session.user==null ||session.user.accountId == 0 }"><a href="https://github.com/login/oauth/authorize?client_id=94d38df2b20a7acb563f&redirect_uri=http://localhost:8080/callback&scope=user&state=1">登录</a></li>
+                <li class="dropdown" th:if="${session.user !=null && session.user.accountId != 0 }">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
                         <span th:text="${session.user.name}"></span>
                         <span class="caret"></span>

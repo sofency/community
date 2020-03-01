@@ -1,19 +1,24 @@
 package com.sofency.community.service;
 
+import com.sofency.community.dto.CommentDTO;
 import com.sofency.community.enums.CommentTypeEnums;
 import com.sofency.community.exception.CustomException;
 import com.sofency.community.exception.CustomExceptionCode;
 import com.sofency.community.mapper.CommentMapper;
 import com.sofency.community.mapper.QuestionCustomMapper;
 import com.sofency.community.mapper.QuestionMapper;
-import com.sofency.community.pojo.Comment;
-import com.sofency.community.pojo.CommentExample;
-import com.sofency.community.pojo.Question;
+import com.sofency.community.mapper.UserMapper;
+import com.sofency.community.pojo.*;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 /**
  * @auther sofency
@@ -31,6 +36,9 @@ public class CommentService {
     @Autowired
     QuestionMapper questionMapper;
 
+    @Autowired
+    UserMapper userMapper;
+
     //事务的注解
     @Transactional
     public void insert(Comment comment) {
@@ -41,28 +49,61 @@ public class CommentService {
         if(comment.getType()==null || !CommentTypeEnums.isExists(comment.getType())){
             throw new CustomException(CustomExceptionCode.TYPE_PARAM_NOT_FOUNDED);
         }
-        CommentExample example = new CommentExample();
-        example.createCriteria().andParentIdEqualTo(comment.getParentId());
-        List<Comment> dbComment = commentMapper.selectByExample(example);
+
         if(comment.getType()==CommentTypeEnums.COMMENT.getType()){
             //回复评论
+            CommentExample example = new CommentExample();
+            example.createCriteria().andParentIdEqualTo(comment.getParentId());
+            List<Comment> dbComment = commentMapper.selectByExample(example);
             if(dbComment.size()==0){//针对正在写评论时  原贴主删除评论的情况
                 throw new CustomException(CustomExceptionCode.COMMENT_NOT_FOUND);
             }
-
-            commentMapper.insert(dbComment.get(0));
-        }else{
+            commentMapper.insert(comment);
+        }else if(comment.getType()==CommentTypeEnums.QUESTION.getType()){
             //回复问题
             //针对正在写评论  同时问题被删除的情况进行异常处理
             Question question = questionMapper.selectByPrimaryKey(comment.getParentId());
             if(question==null){
                 throw new CustomException(CustomExceptionCode.QUESTION_NOT_FOUND);
             }
-            commentMapper.insert(dbComment.get(0));
+            commentMapper.insert(comment);
             question.setCommentCount(1);
             questionCustomMapper.incrCommentCount(question);
+        }else{
+            throw new CustomException(CustomExceptionCode.UN_KNOW_ERROR);//未知错误
         }
 
 
+    }
+
+    //根据问题id查找评论
+    public List<CommentDTO> listByQuestionId(Long id) {
+
+        CommentExample example = new CommentExample();
+        example.createCriteria().andParentIdEqualTo(id)
+                        .andTypeEqualTo(CommentTypeEnums.QUESTION.getType());
+        List<Comment> comments = commentMapper.selectByExample(example);//查找 出对于该问题的评论
+
+        if(comments.size()==0){
+            return null;//返回空
+        }
+        //不为空找出所有评论过的用户id
+        Set<Long> commentors = comments.stream().map(comment -> comment.getCommentator()).collect(Collectors.toSet());
+
+        UserExample userExample = new UserExample();
+        List<Long> list = new ArrayList<>(commentors);
+        userExample.createCriteria().andAccountIdIn(list);//查找在list中的用户信息
+
+        List<User> users = userMapper.selectByExample(userExample);
+
+        Map<Long, User> usermap = users.stream().collect(Collectors.toMap(user -> user.getAccountId(), user -> user));
+
+        List<CommentDTO> commentDTOS = comments.stream().map(comment -> {
+            CommentDTO commentDTO = new CommentDTO();
+            BeanUtils.copyProperties(comment,commentDTO);
+            commentDTO.setUser(usermap.get(comment.getCommentator()));
+            return commentDTO;
+        }).collect(Collectors.toList());
+        return commentDTOS;
     }
 }

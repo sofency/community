@@ -1,9 +1,9 @@
 package com.sofency.community.service;
 
+import cn.hutool.core.bean.BeanUtil;
+import cn.hutool.core.bean.copier.CopyOptions;
 import com.sofency.community.dto.PaginationDTO;
 import com.sofency.community.dto.QuestionDTO;
-import com.sofency.community.exception.CustomException;
-import com.sofency.community.exception.CustomExceptionCode;
 import com.sofency.community.mapper.QuestionCustomMapper;
 import com.sofency.community.mapper.UserMapper;
 import com.sofency.community.mapper.QuestionMapper;
@@ -23,13 +23,10 @@ import java.util.List;
  */
 @Service
 public class QuestionService {
-
     @Autowired
     QuestionMapper questionMapper;
-
     @Autowired
     QuestionCustomMapper questionCustomMapper;
-
     @Autowired
     UserMapper userMapper;
     /**
@@ -59,7 +56,7 @@ public class QuestionService {
 
         Integer offset = size*(page-1);//获取偏移的位置
         QuestionExample example = new QuestionExample();
-        example.createCriteria().andCreatoridEqualTo(creatorId);
+        example.createCriteria().andCreatorIdEqualTo(creatorId);
 
         //分页查询信息
         List<Question> questions = questionMapper.selectByExampleWithBLOBsWithRowbounds(example,new RowBounds(offset,size));
@@ -70,7 +67,7 @@ public class QuestionService {
         //获取记录的总页数
 
         QuestionExample example1 = new QuestionExample();
-        example.createCriteria().andCreatoridEqualTo(creatorId);
+        example.createCriteria().andCreatorIdEqualTo(creatorId);
         Integer total= Math.toIntExact(questionMapper.countByExample(example1));
         paginationDTO.setPagination(total,page,size);//进行基本的初始化操作
         paginationDTO.setQuestionDTOS(questionDTOS);//添加问题列表
@@ -83,10 +80,10 @@ public class QuestionService {
         for(Question question: questions){
             UserExample example = new UserExample();
             example.createCriteria().
-                    andAccountIdEqualTo(question.getCreatorid());
+                    andAccountIdEqualTo(question.getCreatorId());
             List<User> user = userMapper.selectByExample(example);
             QuestionDTO questionDTO = new QuestionDTO();
-            BeanUtils.copyProperties(question,questionDTO);
+            BeanUtil.copyProperties(question,questionDTO, true, CopyOptions.create().setIgnoreNullValue(true).setIgnoreError(true));
             questionDTO.setGmtCreate(user.get(0).getGmtCreate());
             questionDTO.setUser(user.get(0));
             questionDTOS.add(questionDTO);//添加问题信息到列表中
@@ -94,16 +91,16 @@ public class QuestionService {
     }
 
     //根据id查找用户
-    public QuestionDTO getQuestionDTOById(Integer id){
+    public QuestionDTO getQuestionDTOById(Long id){
         Question question = questionMapper.selectByPrimaryKey(id);
         QuestionDTO questionDTO=null;
         if(question!=null){//如果没有该用户的话不进行写入信息
             questionCustomMapper.incrView(id);//阅读数添加
             questionDTO = new QuestionDTO();
-            BeanUtils.copyProperties(question,questionDTO);
+            BeanUtil.copyProperties(question,questionDTO,true, CopyOptions.create().setIgnoreNullValue(true).setIgnoreError(true));
             UserExample example = new UserExample();
             example.createCriteria().
-                    andAccountIdEqualTo(question.getCreatorid());
+                    andAccountIdEqualTo(question.getCreatorId());
             List<User> user =  userMapper.selectByExample(example);
             questionDTO.setUser(user.get(0));
         }

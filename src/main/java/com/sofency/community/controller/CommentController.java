@@ -1,8 +1,7 @@
 package com.sofency.community.controller;
 
-import com.sofency.community.dto.CommentDTO;
+import com.sofency.community.dto.CommentCreateDTO;
 import com.sofency.community.dto.ResultDTO;
-import com.sofency.community.exception.CustomException;
 import com.sofency.community.exception.CustomExceptionCode;
 import com.sofency.community.pojo.Comment;
 import com.sofency.community.pojo.User;
@@ -30,15 +29,15 @@ public class CommentController {
 
     @ResponseBody
     @RequestMapping(value = "/comment",method = RequestMethod.POST)
-    public Object post(@RequestBody CommentDTO commentDTO, HttpServletRequest request){
+    public Object post(@RequestBody CommentCreateDTO commentCreateDTO, HttpServletRequest request){
         Comment comment = new Comment();
 
         User user = (User)request.getSession().getAttribute("user");
-        if(user!=null){
+        if(user.getAccountId()!=0){
             comment.setCommentator(user.getAccountId());//设置评论人
-            comment.setParentId(commentDTO.getParentId());
-            comment.setType(commentDTO.getType());
-            comment.setContent(commentDTO.getComment());
+            comment.setParentId(commentCreateDTO.getParentId());
+            comment.setType(commentCreateDTO.getType());
+            comment.setContent(commentCreateDTO.getComment());
             comment.setGmtCreate(System.currentTimeMillis());
             comment.setGmtModify(System.currentTimeMillis());
             commentService.insert(comment);//插入成功之后返回相应的状态信息

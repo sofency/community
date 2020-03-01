@@ -40,9 +40,6 @@
         <table tableName="question" domainObjectName="Question" >
             <!-- <property name="useActualColumnNames" value="true"/>-->
         </table>
-        <table tableName="user" domainObjectName="User" >
-            <!-- <property name="useActualColumnNames" value="true"/>-->
-        </table>
         <table tableName="comment" domainObjectName="Comment" >
             <!-- <property name="useActualColumnNames" value="true"/>-->
         </table>
