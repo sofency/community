@@ -3,6 +3,8 @@ package com.sofency.community.dto;
 import com.sofency.community.pojo.User;
 import lombok.Data;
 
+import java.util.List;
+
 /**
  * @auther sofency
  * @date 2020/2/25 17:11
@@ -20,5 +22,6 @@ public class QuestionDTO {
     private Integer viewCount;//浏览人数
     private Integer likeCount;//点赞人数
     private String tag;
+    private List<String> tags;//标签集合
     private User user;
 }

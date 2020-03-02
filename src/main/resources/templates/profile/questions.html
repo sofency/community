@@ -22,7 +22,7 @@
             <div class="media" th:each="questionId:${questionById.questionDTOS}">
                 <div class="media-left">
                     <a href="#">
-                        <img class="media-object img-rounded img" th:src="${questionId.user.avatarUrl}" alt="..." width="38" height="38">
+                        <img class="media-object img-rounded img" th:src="${questionId.user.avatarUrl}" alt="..." width="38" height="38" onerror="nofind();">
                     </a>
                 </div>
                 <div class="media-body">

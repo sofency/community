@@ -32,6 +32,10 @@ function comment1(obj) {
 function comment2(obj) {
     var parentId = $(obj).attr("data-commentId");
     var comment = $("#evaluate"+parentId).val();
-    console.log(parentId+comment);
-    commonFunc(parentId,comment,2);
+    if(comment==""||comment==null){
+        alert("请输入文字再提交")
+    }else{
+        console.log(parentId+comment);
+        commonFunc(parentId,comment,2);
+    }
 }

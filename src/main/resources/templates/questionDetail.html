@@ -7,6 +7,12 @@
     <link rel="stylesheet" href="/static/css/bootstrap-theme.css">
     <link rel="stylesheet" href="/static/css/font-awesome.css">
     <link rel="stylesheet" href="/static/css/common.css">
+    <link rel="stylesheet" href="/static/css/editormd.preview.css">
+    <script src="/static/js/jquery.js"></script>
+    <script src="/static/js/editormd.js"></script>
+    <script src="/static/lib/marked.min.js"></script>
+    <script src="/static/lib/prettify.min.js"></script>
+    <script src="/static/js/bootstrap.js"></script>
 </head>
 <body>
 <div th:replace="~{navigation::nav}"></div>
@@ -18,14 +24,21 @@
             <hr>
             <!--标签-->
             <em class="tagInfo" style="color: #999"><!--th:text="${questionDTO.tag}"-->
-                <span class="label label-default" >elasticsearch</span>
+                <span th:each="tag: ${questionDTO.tags}" class="label label-default" th:text="${tag}"></span>
                 <span>作者:&nbsp;<a class="text-user" th:text="${questionDTO.user.name}"></a></span>
                 <span>发布于<span th:text="${time}"></span></span>
                 <span>阅读数:&nbsp;<span th:text="${questionDTO.viewCount}"></span></span>
             </em>
             <hr>
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 padding">
-                <div th:text="${questionDTO.description}"></div>
+                <div id="test-markdown-view">
+                    <textarea style="display: none;" th:text="${questionDTO.description}"></textarea>
+                </div>
+                <script type="text/javascript">
+                    $(function () {
+                        var testView =editormd.markdownToHTML("test-markdown-view",{})
+                    })
+                </script>
                 <hr>
                 <div class="edit_tag" style="color: #999">
                     <span th:text="${time}" style="margin-right: 15px;"></span>
@@ -41,7 +54,7 @@
                     <div class="media" style="margin-bottom: 10px">
                         <div class="media-left">
                             <a href="#">
-                                <img class="media-object img-rounded img-default" th:src="${comment.user.avatarUrl}" alt="..." width="30" height="30">
+                                <img class="media-object img-rounded img-default" th:src="${comment.user.avatarUrl}" alt="..." width="30" height="30" onerror="nofind();">
                             </a>
                         </div>
                         <div class="media-body text-999">
@@ -53,8 +66,8 @@
                             </div>
                             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 wrap-content collapse" th:id="'customerModel'+${comment.id}">
                                 <div th:id="'full-comment-second'+${comment.id}"></div>
-                                <textarea class="form-control m-bottom" th:id="'evaluate'+${comment.id}"></textarea>
-                                <button class="btn btn-default" th:data-commentId="${comment.id}" onclick="comment2(this)">提交</button>
+                                <input class="form-control m-bottom" th:id="'evaluate'+${comment.id}">
+                                <button class="btn btn-default" th:data-commentId="${comment.id}" onclick="comment2(this)" data-toggle="collapse" th:attr="data-target='#customerModel'+${comment.id}" aria-expanded="false">提交</button>
                             </div>
                         </div>
                     </div>
@@ -64,10 +77,11 @@
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" id="comment-hidden">
                 <hr>
                 <input type="hidden" id="parentId" th:value="${questionDTO.id}">
+                <h4>评论</h4>
                 <div class="media" style="margin-bottom: 10px">
                     <div class="media-left">
                         <a href="#">
-                            <img class="media-object img-default" th:src="${questionDTO.user.avatarUrl}" alt="..." width="30" height="30">
+                            <img class="media-object img-default img-rounded" th:src="${questionDTO.user.avatarUrl}" alt="..." width="30" height="30" onerror="nofind();">
                         </a>
                     </div>
                     <div class="media-body text-999">
@@ -84,7 +98,7 @@
             <div class="media">
                 <div class="media-left">
                     <a href="#">
-                        <img class="media-object img-default" th:src="${questionDTO.user.avatarUrl}" alt="..." width="30" height="30" onerror="this.src ='/static/images/error.jpg;'">
+                        <img class="media-object img-default img-rounded" th:src="${questionDTO.user.avatarUrl}" alt="..." width="30" height="30" onerror="nofind();">
                     </a>
                 </div>
                 <div class="media-body text-999">
@@ -104,9 +118,9 @@
         </div>
     </div>
 </div>
-<script src="/static/js/jquery.js"></script>
-<script src="/static/js/bootstrap.js"></script>
+
 <script src="/static/js/comment.js"></script>
+<script src="/static/js/default-image.js"></script>
 <script src="/static/js/getSecondComment.js"></script>
 </body>
 </html>

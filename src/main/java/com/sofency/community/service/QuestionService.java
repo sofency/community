@@ -14,6 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -102,6 +103,9 @@ public class QuestionService {
             example.createCriteria().
                     andAccountIdEqualTo(question.getCreatorId());
             List<User> user =  userMapper.selectByExample(example);
+            String[] tags = question.getTag().split(",");
+            List<String> tagsDto = Arrays.asList(tags);
+            questionDTO.setTags(tagsDto);
             questionDTO.setUser(user.get(0));
         }
         return  questionDTO;//返回用户要查找的信息

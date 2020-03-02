@@ -1,9 +1,5 @@
-var i=0;
-for(; i <  $(".img").length; i++){
-    $(".img").eq(i).onerror = function(obj){
-        console.log("sofency");
-        obj.src = "/static/images/error.jpg";
-    }
+function nofind(){
+    var img=event.srcElement;
+    img.src="/static/images/error.jpg";
+    img.οnerrοr=null;
 }
-
-

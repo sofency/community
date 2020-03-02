@@ -43,7 +43,6 @@ public class QuestionController {
         String timeStr = TimeUtil.publishTime(time);
         model.addAttribute("questionDTO",questionDTO);
         model.addAttribute("time",timeStr);
-
         //查找评论
         List<CommentDTO> comments = commentService.listByQuestionId(id);//根据id进行查找评论
 //        System.out.println(((User)session.getAttribute("user")).getName());
