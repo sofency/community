@@ -53,7 +53,7 @@ body{
     margin-top: 0;
 }
 .like-comment{
-    width: 64px;
+    width: 70px;
     display: flex;
     border: 1px solid #fff;
     flex-direction: row;
@@ -63,9 +63,26 @@ body{
 .common{
     font-size: 17px;
     text-align: center;
-    width: 32px;
+    width: 35px;
     border-right: 1px solid #fff;
+}
+.common span{
+    margin-left: 3px;
 }
 .common:hover{
     background-color: #fff;
+}
+.wrap-content{
+    margin-top: 10px;
+    padding: 10px;
+    border: 1px solid;
+    border-radius: 10px;
+}
+.second-comment{
+    margin-top: 10px;
+    padding: 10px;
+    border-bottom: 1px solid white;
+}
+.m-bottom{
+    margin-bottom: 10px;
 }

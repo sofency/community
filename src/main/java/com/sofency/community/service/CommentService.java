@@ -1,5 +1,7 @@
 package com.sofency.community.service;
 
+import cn.hutool.core.bean.BeanUtil;
+import cn.hutool.core.bean.copier.CopyOptions;
 import com.sofency.community.dto.CommentDTO;
 import com.sofency.community.enums.CommentTypeEnums;
 import com.sofency.community.exception.CustomException;
@@ -105,5 +107,37 @@ public class CommentService {
             return commentDTO;
         }).collect(Collectors.toList());
         return commentDTOS;
+    }
+
+
+    //根据父亲id查找二级评论
+    public List<CommentDTO> listByParentId(Long parentId){
+        CommentExample example = new CommentExample();
+        example.createCriteria()
+                .andTypeEqualTo(CommentTypeEnums.COMMENT.getType())
+                .andParentIdEqualTo(parentId);
+        List<Comment> comments  = commentMapper.selectByExample(example);
+        //根据评论的creator查询用户的信息
+        if(comments.size()!=0){
+            Set<Long> creatorsId = comments.stream().map(comment -> comment.getCommentator()).collect(Collectors.toSet());
+
+
+            //根据id查找用户
+            List<Long> listIds = new ArrayList<>(creatorsId);
+            UserExample userExample = new UserExample();
+            userExample.createCriteria().andAccountIdIn(listIds);
+            List<User> users = userMapper.selectByExample(userExample);
+
+            Map<Long, User> userMap = users.stream().collect(Collectors.toMap(user -> user.getAccountId(), user -> user));
+            List<CommentDTO> collect = comments.stream().map(comment -> {
+                CommentDTO commentDTO = new CommentDTO();
+                BeanUtil.copyProperties(comment, commentDTO, true, CopyOptions.create().setIgnoreNullValue(true).setIgnoreError(true));
+                commentDTO.setUser(userMap.get(comment.getCommentator()));
+                return commentDTO;
+            }).collect(Collectors.toList());
+            return collect;//返回二级评论的内容
+        }
+        return null;
+
     }
 }

@@ -1,8 +1,6 @@
-function comment(type) {
-    var parentId = $("#parentId").val();
-    var comment = $("#content").val();
+function commonFunc(parentId,comment,type){
     $.ajax({
-        url:"/comment",
+        url:"/commentSubmit",
         method:"POST",
         contentType:"application/json",
         dataType:"json",
@@ -25,5 +23,15 @@ function comment(type) {
 
         }
     })
-
+}
+function comment1(obj) {
+    var parentId = $("#parentId").val();
+    var comment = $("#content").val();
+    commonFunc(parentId,comment,1);
+}
+function comment2(obj) {
+    var parentId = $(obj).attr("data-commentId");
+    var comment = $("#evaluate"+parentId).val();
+    console.log(parentId+comment);
+    commonFunc(parentId,comment,2);
 }
