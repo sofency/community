@@ -37,6 +37,43 @@ CREATE TABLE question
 )
   ENGINE = InnoDB;
 ```
+评论表
+```sql
+CREATE TABLE comment
+(
+  id          BIGINT AUTO_INCREMENT
+    PRIMARY KEY,
+  parent_id   BIGINT          NOT NULL
+  COMMENT '问题的ID 依次来确认评论是哪个问题下的',
+  type        INT             NULL
+  COMMENT '表示评论是一级评论还是二级评论',
+  commentator BIGINT          NOT NULL
+  COMMENT '评论人的id',
+  content     VARCHAR(1024)   NOT NULL,
+  gmt_create  BIGINT          NULL,
+  like_count  INT DEFAULT '0' NULL,
+  gmt_modify  BIGINT          NULL
+)
+  ENGINE = InnoDB;
+```
+通知表
+```sql
+CREATE TABLE noticfiy
+(
+  id         INT AUTO_INCREMENT
+    PRIMARY KEY,
+  receiver   BIGINT          NOT NULL,
+  sender     BIGINT          NOT NULL,
+  gmt_create BIGINT          NOT NULL,
+  status     INT DEFAULT '0' NULL
+  COMMENT '是否被读 0表示未读',
+  type       INT             NOT NULL
+  COMMENT '区别是评论还是回复'
+)
+  COMMENT '通知消息'
+  ENGINE = InnoDB;
+
+```
 ```bash
 #执行mybatis生成器
 mvn -Dmybatis.generator.overwrite=true mybatis-generator:generate

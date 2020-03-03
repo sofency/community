@@ -43,11 +43,12 @@ public class QuestionService {
 
         List<QuestionDTO> questionDTOS = new ArrayList<>();
         this.forUtils(questions,questionDTOS);
-        PaginationDTO paginationDTO = new PaginationDTO();
+        //使用规范代码
+        PaginationDTO<QuestionDTO> paginationDTO = new PaginationDTO();
         //获取记录的总页数
         Integer total= Math.toIntExact(questionMapper.countByExample(null));
         paginationDTO.setPagination(total,page,size);//进行基本的初始化操作
-        paginationDTO.setQuestionDTOS(questionDTOS);//添加问题列表
+        paginationDTO.setData(questionDTOS);//添加问题列表
         System.out.println(paginationDTO.toString());
         return paginationDTO;//返回单个页面携带的详细信息
     }
@@ -64,14 +65,14 @@ public class QuestionService {
 
         List<QuestionDTO> questionDTOS = new ArrayList<>();
         this.forUtils(questions,questionDTOS);
-        PaginationDTO paginationDTO = new PaginationDTO();
+        PaginationDTO<QuestionDTO> paginationDTO = new PaginationDTO();
         //获取记录的总页数
 
         QuestionExample example1 = new QuestionExample();
         example.createCriteria().andCreatorIdEqualTo(creatorId);
         Integer total= Math.toIntExact(questionMapper.countByExample(example1));
         paginationDTO.setPagination(total,page,size);//进行基本的初始化操作
-        paginationDTO.setQuestionDTOS(questionDTOS);//添加问题列表
+        paginationDTO.setData(questionDTOS);//添加问题列表
         System.out.println(paginationDTO.toString());
         return paginationDTO;//返回单个页面携带的详细信息
     }

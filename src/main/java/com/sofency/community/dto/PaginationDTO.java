@@ -12,8 +12,8 @@ import java.util.List;
  * @description 页面分页显示信息 即每个页面携带的数据
  */
 @Data
-public class PaginationDTO {
-    private List<QuestionDTO> questionDTOS;//获取页面的信息
+public class PaginationDTO<T> {
+    private List<T> data;//获取页面的信息
     private boolean hasNext;//是否有下一页
     private boolean hasPrevious;//是否有前一页
     private boolean hasFirstPage;//是否有第一页
@@ -21,6 +21,7 @@ public class PaginationDTO {
     private int currentPage;//当前页
     private List<Integer> pagesList= new ArrayList<>();//页面数
     private Integer pages=0;
+    private Integer notifyNum;
     //添加逻辑处理
     public void setPagination(Integer total,Integer page,Integer size){
 

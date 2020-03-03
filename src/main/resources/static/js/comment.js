@@ -9,12 +9,13 @@ function commonFunc(parentId,comment,type){
             "comment":comment,
             "type":type
         }),
-        success:function(data){
-            if(data.code==200){
+        success:function(date){
+            console.log(date)
+            if(date.code=='200'){
                 $("#comment-hidden").hide();
             }else{
-                var accept = confirm(data.message);
-                console.log(accept)
+                var accept = confirm(date.message);
+                console.log(date.message)
                 if(accept){
                     window.open("https://github.com/login/oauth/authorize?client_id=94d38df2b20a7acb563f&redirect_uri=http://localhost:8080/callback&scope=user&state=1");
                     window.localStorage.setItem("closeable","true"); //存储的是key-value的形式
@@ -35,7 +36,6 @@ function comment2(obj) {
     if(comment==""||comment==null){
         alert("请输入文字再提交")
     }else{
-        console.log(parentId+comment);
         commonFunc(parentId,comment,2);
     }
 }

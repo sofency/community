@@ -22,10 +22,8 @@ import java.util.List;
 @Controller
 public class CommentController {
 
-
     @Autowired
     CommentService commentService;
-
     //负责写评论的信息
     @ResponseBody
     @RequestMapping(value = "/commentSubmit",method = RequestMethod.POST)
@@ -35,7 +33,7 @@ public class CommentController {
         User user = (User)request.getSession().getAttribute("user");
         if(user.getAccountId()!=0){//不是游客的话
             comment.setCommentator(user.getAccountId());//设置评论人
-            comment.setParentId(commentCreateDTO.getParentId());
+            comment.setParentId(commentCreateDTO.getParentId());//要么是问题id 或者评论的id是主键
             comment.setType(commentCreateDTO.getType());
             comment.setContent(commentCreateDTO.getComment());
             comment.setGmtCreate(System.currentTimeMillis());
@@ -46,7 +44,6 @@ public class CommentController {
             return ResultDTO.errorOf(CustomExceptionCode.NO_LOGIN);//用户没登录的情况
         }
     }
-
 
     @ResponseBody
     @RequestMapping(value = "/commentGetSecond",method = RequestMethod.GET)

@@ -1,10 +1,13 @@
 package com.sofency.community.controller;
 
+import com.sofency.community.dto.NotifyDTO;
 import com.sofency.community.dto.PaginationDTO;
+import com.sofency.community.dto.QuestionDTO;
 import com.sofency.community.exception.CustomException;
 import com.sofency.community.exception.CustomExceptionCode;
 import com.sofency.community.mapper.UserMapper;
 import com.sofency.community.pojo.User;
+import com.sofency.community.service.NotifyService;
 import com.sofency.community.service.QuestionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -15,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 /**
  * @auther sofency
@@ -28,6 +32,8 @@ public class ProblemContorller {
     UserMapper userMapper;
     @Autowired
     QuestionService questionService;
+    @Autowired
+    NotifyService notifyService;
 
     //Restful接口要使用@PathVariable注解
     @GetMapping("/profile/{action}")
@@ -42,15 +48,18 @@ public class ProblemContorller {
         if(user!=null){
             creatorId= user.getAccountId();//获取账户id
         }
-        PaginationDTO paginationDTO=null;
+        PaginationDTO<QuestionDTO> paginationDTO=null;
         if(creatorId!=null){
             paginationDTO= questionService.getPaginationDto(creatorId,page,size);//获取页面的信息
         }
-
         if("replies".equals(action)){
             modelAndView.addObject("replies","testDemo");
             modelAndView.addObject("action","replies");
             modelAndView.addObject("type","最近回复");
+            HttpSession session= request.getSession();
+            User user1 = (User)session.getAttribute("user");
+            PaginationDTO<NotifyDTO> notifyDTO = notifyService.getPaginationDto(page,size,user1.getAccountId());//从session里面拿取
+            modelAndView.addObject("notifyDTO",notifyDTO);
             modelAndView.setViewName("profile/replies");
         }else if("questions".equals(action)){
             modelAndView.addObject("questionById",paginationDTO);

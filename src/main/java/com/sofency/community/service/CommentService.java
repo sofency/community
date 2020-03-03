@@ -4,12 +4,10 @@ import cn.hutool.core.bean.BeanUtil;
 import cn.hutool.core.bean.copier.CopyOptions;
 import com.sofency.community.dto.CommentDTO;
 import com.sofency.community.enums.CommentTypeEnums;
+import com.sofency.community.enums.NotifyTypeEnums;
 import com.sofency.community.exception.CustomException;
 import com.sofency.community.exception.CustomExceptionCode;
-import com.sofency.community.mapper.CommentMapper;
-import com.sofency.community.mapper.QuestionCustomMapper;
-import com.sofency.community.mapper.QuestionMapper;
-import com.sofency.community.mapper.UserMapper;
+import com.sofency.community.mapper.*;
 import com.sofency.community.pojo.*;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,6 +39,9 @@ public class CommentService {
     @Autowired
     UserMapper userMapper;
 
+    @Autowired
+    NotifyMapper notifyMapper;
+
     //事务的注解
     @Transactional
     public void insert(Comment comment) {
@@ -53,14 +54,31 @@ public class CommentService {
         }
 
         if(comment.getType()==CommentTypeEnums.COMMENT.getType()){
-            //回复评论
+
+            CommentExample example1= new CommentExample();
+            example1.createCriteria().andIdEqualTo(comment.getParentId())
+                    .andTypeEqualTo(NotifyTypeEnums.NOTIFY_QUESTION.getType());
+            List<Comment> comment1= commentMapper.selectByExample(example1);//根据评论的父亲结点找到评论的结点
+
+            Question question=null;
+            if(comment1.size()!=0){
+                question = questionMapper.selectByPrimaryKey(comment1.get(0).getParentId());//
+            }else{
+                throw new CustomException(CustomExceptionCode.QUESTION_NOT_FOUND);
+            }
             CommentExample example = new CommentExample();
-            example.createCriteria().andParentIdEqualTo(comment.getParentId());
+            example.createCriteria().andIdEqualTo(comment.getParentId());  //id是问题或者评论的id
             List<Comment> dbComment = commentMapper.selectByExample(example);
             if(dbComment.size()==0){//针对正在写评论时  原贴主删除评论的情况
                 throw new CustomException(CustomExceptionCode.COMMENT_NOT_FOUND);
             }
-            commentMapper.insert(comment);
+            commentMapper.insert(comment);//添加评论
+            //通知用户
+            Long parentId = comment.getParentId();
+            Long receiver = commentMapper.selectByPrimaryKey(comment.getParentId()).getCommentator();
+            int type=NotifyTypeEnums.NOTIFY_COMMENT.getType();
+            this.insertNotify(comment,type,receiver,question.getId());
+
         }else if(comment.getType()==CommentTypeEnums.QUESTION.getType()){
             //回复问题
             //针对正在写评论  同时问题被删除的情况进行异常处理
@@ -69,13 +87,27 @@ public class CommentService {
                 throw new CustomException(CustomExceptionCode.QUESTION_NOT_FOUND);
             }
             commentMapper.insert(comment);
+            //通知用户
+            Long parentId = comment.getParentId();
+            Long receiver=questionMapper.selectByPrimaryKey(comment.getParentId()).getCreatorId();
+            int type=NotifyTypeEnums.NOTIFY_QUESTION.getType();
+            this.insertNotify(comment,type,receiver,parentId);
             question.setCommentCount(1);
             questionCustomMapper.incrCommentCount(question);
         }else{
             throw new CustomException(CustomExceptionCode.UN_KNOW_ERROR);//未知错误
         }
-
-
+    }
+    //通知的公用方法
+    private void insertNotify(Comment comment,Integer type,Long receiver,Long parentId){
+        Notify notify = new Notify();//通知的对象
+        notify.setGmtCreate(System.currentTimeMillis());
+        notify.setReceiver(receiver);
+        notify.setParentId(parentId);
+        notify.setSender(comment.getCommentator());
+        notify.setType(type);//通知的类型
+        notify.setStatus(0);//未读
+        notifyMapper.insert(notify);//添加通知
     }
 
     //根据问题id查找评论
