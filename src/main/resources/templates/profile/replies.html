@@ -22,7 +22,9 @@
             <ul class="list-group list-group-flush">
                 <li class="list-group-item" th:each="notify:${notifyDTO.data}">
                     <span th:text="${notify.user.name}" style=""></span><span th:text="${notify.typeName}"></span>
-                    <a th:href="@{'/notification/'+${notify.question.id}}"><span th:text="${notify.question.title}"></span></a>
+                    <a th:href="@{'/notification/'+${notify.question.id}+'/'+${notify.id}}"><span th:text="${notify.question.title}"></span></a>
+                    <span class="label label-info" th:if="${notify.status==0}">未读</span>
+                    <span class="pull-right" th:text="${#dates.format(notify.gmtCreate,'yyyy-MM-dd HH:mm:ss')}"></span>
                 </li>
             </ul>
             <hr>

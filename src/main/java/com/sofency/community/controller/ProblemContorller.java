@@ -52,7 +52,7 @@ public class ProblemContorller {
         if(creatorId!=null){
             paginationDTO= questionService.getPaginationDto(creatorId,page,size);//获取页面的信息
         }
-        if("replies".equals(action)){
+        if("reply".equals(action)){
             modelAndView.addObject("replies","testDemo");
             modelAndView.addObject("action","replies");
             modelAndView.addObject("type","最近回复");

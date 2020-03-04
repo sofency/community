@@ -1,8 +1,20 @@
 package com.sofency.community.controller;
 
+import com.sofency.community.enums.NotifyStatusEnums;
+import com.sofency.community.exception.CustomException;
+import com.sofency.community.exception.CustomExceptionCode;
+import com.sofency.community.mapper.NotifyMapper;
+import com.sofency.community.mapper.QuestionMapper;
+import com.sofency.community.pojo.Notify;
+import com.sofency.community.pojo.Question;
+import com.sofency.community.pojo.User;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 /**
  * @auther sofency
@@ -13,11 +25,32 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class NotificationController {
 
-    @RequestMapping("/notification/questionId}/{id}")
-    public String read(@PathVariable("questionId")Long questionId, @PathVariable("id") int id){
+    @Autowired
+    QuestionMapper questionMapper;
 
-
-
-        return "";
+    @Autowired
+    NotifyMapper notifyMapper;
+    @RequestMapping("/notification/{questionId}/{id}")
+    /**
+     * 问题的id和通知的id
+     */
+    public String read(@PathVariable("questionId")Long questionId, @PathVariable("id") int id, HttpServletRequest request){
+        HttpSession session = request.getSession();
+        User user = (User) session.getAttribute("user");
+        Question question = questionMapper.selectByPrimaryKey(questionId);
+        if(question==null){
+            throw new CustomException(CustomExceptionCode.QUESTION_NOT_FOUND);//问题不存在
+        }
+        System.out.println(question.getCreatorId().hashCode()+"--"+user.getAccountId().hashCode());
+        Notify notify = notifyMapper.selectByPrimaryKey(id);
+        if(notify!=null && (!notify.getReceiver().equals(user.getAccountId()))){
+            throw new CustomException(CustomExceptionCode.FOUND_OTHER_QUESTION);//查看他人的评论信息
+        }
+        if(notify.getStatus()==NotifyStatusEnums.READ.getStatus()){
+            return "redirect:/question/"+questionId;//到问题详情页
+        }
+        notify.setStatus(NotifyStatusEnums.READ.getStatus());
+        notifyMapper.updateByPrimaryKey(notify);
+        return "redirect:/question/"+questionId;//到问题详情页
     }
 }

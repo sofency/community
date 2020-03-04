@@ -9,9 +9,9 @@
     <div class="list-group">
         <a th:href="@{'/profile/questions'}" th:class="${action} == 'questions'?'list-group-item active':'list-group-item'">我的问题</a>
         <ul class="list-group">
-            <a th:href="@{'/profile/replies'}">
+            <a th:href="@{'/profile/reply'}">
                 <li class="list-group-item" th:class="${action} == 'replies'?'list-group-item active':'list-group-item'">
-                    <span class="badge" th:text="${notifyDTO.data.size()}"></span>
+                    <span class="badge" th:if="${notifyDTO!=null && notifyDTO.data !=null}" th:text="${notifyDTO.data.size()}"></span>
                     最新回复
                 </li>
             </a>
