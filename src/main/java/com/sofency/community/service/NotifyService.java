@@ -23,7 +23,6 @@ import java.util.List;
  * @date 2020/3/3 18:22
  * @package com.sofency.community.controller
  */
-
 /**
  * 通知层
  */
@@ -37,20 +36,23 @@ public class NotifyService {
     @Autowired
     QuestionMapper questionMapper;
 
+    //查询未查看的通知的个数
     public int count(Long currentId){//查询通知
         NotifyExample example = new NotifyExample();
         example.createCriteria().
                 andReceiverEqualTo(currentId).
-                andStatusNotEqualTo(NotifyStatusEnums.UNREAD.getStatus());
-
+                andStatusEqualTo(NotifyStatusEnums.UNREAD.getStatus());
         Integer num = Math.toIntExact(notifyMapper.countByExample(example));//查询出未读的个数
+        System.out.println(num);
         return num;
     }
+    //获取分页的信息
     public PaginationDTO getPaginationDto(Integer page, Integer size,Long receiver){
         Integer offset = size*(page-1);//获取偏移的位置
         NotifyExample notifyExample = new NotifyExample();
         notifyExample.createCriteria()
                 .andReceiverEqualTo(receiver);
+        notifyExample.setOrderByClause("status ASC,gmt_create desc");//按照状态进行升序  按照时间降序
         List<Notify> notifies = notifyMapper.selectByExampleWithRowbounds(notifyExample,new RowBounds(offset,size));
 
         List<NotifyDTO> notifyDTOS = new ArrayList<>();
@@ -58,7 +60,6 @@ public class NotifyService {
         //使用规范代码
         PaginationDTO<NotifyDTO> paginationDTO = new PaginationDTO();
         //获取记录的总页数
-
         Integer total= Math.toIntExact(notifyMapper.countByExample(notifyExample));
         System.out.println(total);
         paginationDTO.setPagination(total,page,size);//进行基本的初始化操作

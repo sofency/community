@@ -22,9 +22,10 @@ public class PaginationDTO<T> {
     private List<Integer> pagesList= new ArrayList<>();//页面数
     private Integer pages=0;
     private Integer notifyNum;
+    private Integer totalNum;//总数据量
     //添加逻辑处理
     public void setPagination(Integer total,Integer page,Integer size){
-
+        totalNum=total;
         if(page<1){page=1;}
         currentPage=page;//当前页等于page
 

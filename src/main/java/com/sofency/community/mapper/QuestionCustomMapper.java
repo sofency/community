@@ -1,6 +1,7 @@
 package com.sofency.community.mapper;
-
 import com.sofency.community.pojo.Question;
+import org.apache.ibatis.session.RowBounds;
+import java.util.List;
 
 /**
  * @auther sofency
@@ -9,6 +10,8 @@ import com.sofency.community.pojo.Question;
  */
 
 public interface QuestionCustomMapper {
-    public void incrView(Long id);
-    public void incrCommentCount(Question question);
+     void incrView(Long id);
+     void incrCommentCount(Question question);
+     //返回搜索的问题列表
+     List<Question> selectBySearchName(String search, RowBounds rowBounds);
 }

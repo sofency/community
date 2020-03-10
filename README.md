@@ -78,3 +78,5 @@ CREATE TABLE noticfiy
 #执行mybatis生成器
 mvn -Dmybatis.generator.overwrite=true mybatis-generator:generate
 ```
+开源markdown语法库地址
+[Edit.md](https://pandao.github.io/editor.md/en.html)

@@ -31,6 +31,9 @@ public class QuestionController {
     @Autowired
     QuestionService questionService;
 
+    /**
+     * 查找问题到问题的详情页
+     */
     @Autowired
     CommentService commentService;
     @GetMapping("/question/{id}")
@@ -45,7 +48,6 @@ public class QuestionController {
         model.addAttribute("time",timeStr);
         //查找评论
         List<CommentDTO> comments = commentService.listByQuestionId(id);//根据id进行查找评论
-//        System.out.println(((User)session.getAttribute("user")).getName());
         model.addAttribute("comments",comments);
         return "questionDetail";
     }

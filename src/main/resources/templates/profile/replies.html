@@ -31,23 +31,23 @@
             <nav aria-label="Page navigation">
                 <ul class="pagination">
                     <li th:if="${notifyDTO.hasFirstPage}">
-                        <a th:href="@{/page=1}" aria-label="Previous">
+                        <a href="@{'/profile/' +${action}(page=1)}" aria-label="Previous">
                             <span aria-hidden="true">&laquo;</span>
                         </a>
                     </li>
                     <li th:if="${notifyDTO.hasPrevious}">
-                        <a th:href="@{/(page=${notifyDTO.currentPage -1})}" aria-label="Previous">
+                        <a th:href="@{'/profile/' +${action}(page=${notifyDTO.currentPage -1})}" aria-label="Previous">
                             <span aria-hidden="true">&lt;</span>
                         </a>
                     </li>
-                    <li th:each="page: ${notifyDTO.pagesList}" th:class="${notifyDTO.currentPage == page}?'active':''"><a th:href="@{/(page=${page})}" th:text="${page}" ></a></li>
+                    <li th:each="page: ${notifyDTO.pagesList}" th:class="${notifyDTO.currentPage == page}?'active':''"><a th:href="@{'/profile/'+${action}(page=${page})}" th:text="${page}" ></a></li>
                     <li th:if="${notifyDTO.hasNext}">
-                        <a th:href="@{/(page=${notifyDTO.currentPage +1})}" aria-label="Next">
+                        <a th:href="@{'/profile/' +${action}(page=${notifyDTO.currentPage +1})}" aria-label="Next">
                             <span aria-hidden="true">&gt;</span>
                         </a>
                     </li>
                     <li th:if="${notifyDTO.hasEndPage}">
-                        <a th:href="@{/(page=${notifyDTO.pages})}" aria-label="Next">
+                        <a href="@{'/profile/' +${action}(page=${notifyDTO.pages})}" aria-label="Next">
                             <span aria-hidden="true">&raquo;</span>
                         </a>
                     </li>

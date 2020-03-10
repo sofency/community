@@ -9,7 +9,6 @@ import com.sofency.community.mapper.UserMapper;
 import com.sofency.community.mapper.QuestionMapper;
 import com.sofency.community.pojo.*;
 import org.apache.ibatis.session.RowBounds;
-import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -26,6 +25,7 @@ import java.util.List;
 public class QuestionService {
     @Autowired
     QuestionMapper questionMapper;
+
     @Autowired
     QuestionCustomMapper questionCustomMapper;
     @Autowired
@@ -35,18 +35,29 @@ public class QuestionService {
      * @return
      * @param page
      * @param size
+     * @param search
      */
-    public PaginationDTO getPaginationDto(Integer page, Integer size){
+    public PaginationDTO getPaginationDto(Integer page, Integer size, String search){
         Integer offset = size*(page-1);//获取偏移的位置
-
-        List<Question> questions = questionMapper.selectByExampleWithBLOBsWithRowbounds(new QuestionExample(),new RowBounds(offset,size));
-
+        List<Question> questions =null;
+        Integer total=0;
+        if(search==""){
+            questions = questionMapper.selectByExampleWithBLOBsWithRowbounds(new QuestionExample(),new RowBounds(offset,size));
+            total= Math.toIntExact(questionMapper.countByExample(null));
+        }else{
+            //搜索属性的封装类
+            RowBounds rowBounds = new RowBounds(offset,size);
+            questions = questionCustomMapper.selectBySearchName(search,rowBounds);
+            QuestionExample example = new QuestionExample();
+            example.createCriteria().andTitleLike("%"+search+"%");
+            total= Math.toIntExact(questionMapper.countByExample(example));
+            System.out.println("查询结果的总数"+total);
+        }
         List<QuestionDTO> questionDTOS = new ArrayList<>();
         this.forUtils(questions,questionDTOS);
         //使用规范代码
         PaginationDTO<QuestionDTO> paginationDTO = new PaginationDTO();
         //获取记录的总页数
-        Integer total= Math.toIntExact(questionMapper.countByExample(null));
         paginationDTO.setPagination(total,page,size);//进行基本的初始化操作
         paginationDTO.setData(questionDTOS);//添加问题列表
         System.out.println(paginationDTO.toString());

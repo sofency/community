@@ -3,9 +3,11 @@ package com.sofency.community.controller;
 import com.sofency.community.dto.NotifyDTO;
 import com.sofency.community.dto.PaginationDTO;
 import com.sofency.community.dto.QuestionDTO;
+import com.sofency.community.enums.NotifyStatusEnums;
 import com.sofency.community.exception.CustomException;
 import com.sofency.community.exception.CustomExceptionCode;
 import com.sofency.community.mapper.UserMapper;
+import com.sofency.community.pojo.NotifyExample;
 import com.sofency.community.pojo.User;
 import com.sofency.community.service.NotifyService;
 import com.sofency.community.service.QuestionService;
@@ -27,14 +29,12 @@ import javax.servlet.http.HttpSession;
  */
 @Controller
 public class ProblemContorller {
-
     @Autowired
     UserMapper userMapper;
     @Autowired
     QuestionService questionService;
     @Autowired
     NotifyService notifyService;
-
     //Restful接口要使用@PathVariable注解
     @GetMapping("/profile/{action}")
     public ModelAndView problem(HttpServletRequest request,
@@ -54,10 +54,11 @@ public class ProblemContorller {
         }
         if("reply".equals(action)){
             modelAndView.addObject("replies","testDemo");
-            modelAndView.addObject("action","replies");
+            modelAndView.addObject("action","reply");
             modelAndView.addObject("type","最近回复");
             HttpSession session= request.getSession();
             User user1 = (User)session.getAttribute("user");
+
             PaginationDTO<NotifyDTO> notifyDTO = notifyService.getPaginationDto(page,size,user1.getAccountId());//从session里面拿取
             modelAndView.addObject("notifyDTO",notifyDTO);
             modelAndView.setViewName("profile/replies");

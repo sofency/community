@@ -36,17 +36,28 @@ public class IndexController {
     public String index(Model model,
                         @RequestParam(name = "page",defaultValue="1") Integer page,
                         @RequestParam(name = "size",defaultValue = "4") Integer size,HttpServletRequest request){
+        PaginationDTO paginationDTO=null;
+        String search = request.getParameter("search");
+        System.out.println(search);
+        if(search==""||search==null){
+            paginationDTO= questionService.getPaginationDto(page,size,"");//获取页面的信息
+        }else{
+            paginationDTO= questionService.getPaginationDto(page,size,search);//获取页面的信息
+        }
         HttpSession session = request.getSession();
         User user = (User)session.getAttribute("user");
-        PaginationDTO paginationDTO= questionService.getPaginationDto(page,size);//获取页面的信息
-
         if(paginationDTO==null){
             throw new CustomException(CustomExceptionCode.GET_INFO_FAILED);
         }
         if(user.getAccountId()!=0){//判断不是游客
             paginationDTO.setNotifyNum(notifyService.count(user.getAccountId()));//设置返回信息的个数
         }
+        //统计未读消息的个数到session中
+        Integer num = notifyService.count(user.getAccountId());
+        //存储到session中  未读消息
+        session.setAttribute("unreadCount",num);
         model.addAttribute("questions",paginationDTO);
+        model.addAttribute("search",search);
         return "index";
     }
 }

@@ -28,12 +28,12 @@ public class NotificationController {
     @Autowired
     QuestionMapper questionMapper;
 
-    @Autowired
-    NotifyMapper notifyMapper;
-    @RequestMapping("/notification/{questionId}/{id}")
     /**
      * 问题的id和通知的id
      */
+    @Autowired
+    NotifyMapper notifyMapper;
+    @RequestMapping("/notification/{questionId}/{id}")
     public String read(@PathVariable("questionId")Long questionId, @PathVariable("id") int id, HttpServletRequest request){
         HttpSession session = request.getSession();
         User user = (User) session.getAttribute("user");
@@ -41,7 +41,7 @@ public class NotificationController {
         if(question==null){
             throw new CustomException(CustomExceptionCode.QUESTION_NOT_FOUND);//问题不存在
         }
-        System.out.println(question.getCreatorId().hashCode()+"--"+user.getAccountId().hashCode());
+
         Notify notify = notifyMapper.selectByPrimaryKey(id);
         if(notify!=null && (!notify.getReceiver().equals(user.getAccountId()))){
             throw new CustomException(CustomExceptionCode.FOUND_OTHER_QUESTION);//查看他人的评论信息
