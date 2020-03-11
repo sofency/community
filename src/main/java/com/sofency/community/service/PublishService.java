@@ -3,6 +3,8 @@ package com.sofency.community.service;
 import com.sofency.community.mapper.QuestionMapper;
 import com.sofency.community.pojo.Question;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CachePut;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 /**
@@ -15,7 +17,8 @@ public class PublishService {
 
     @Autowired
     QuestionMapper questionMapper;
-    public void createOrUpdate(Question question) {
+    @CachePut(cacheNames = "question",key = "#question.id")
+    public Question createOrUpdate(Question question) {
         if(question.getId()==0){//说明是发布
             question.setGmtCreate(System.currentTimeMillis());//设置创建时间
             questionMapper.insert(question);
@@ -25,6 +28,6 @@ public class PublishService {
                 questionMapper.updateByPrimaryKeySelective(question);
             }
         }
-
+        return question;
     }
 }

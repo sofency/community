@@ -10,8 +10,8 @@ import com.sofency.community.mapper.QuestionMapper;
 import com.sofency.community.pojo.*;
 import org.apache.ibatis.session.RowBounds;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -37,6 +37,7 @@ public class QuestionService {
      * @param size
      * @param search
      */
+    @Cacheable(cacheNames = "questions",key = "#page" ,condition = "#search==''")
     public PaginationDTO getPaginationDto(Integer page, Integer size, String search){
         Integer offset = size*(page-1);//获取偏移的位置
         List<Question> questions =null;
@@ -60,11 +61,11 @@ public class QuestionService {
         //获取记录的总页数
         paginationDTO.setPagination(total,page,size);//进行基本的初始化操作
         paginationDTO.setData(questionDTOS);//添加问题列表
-        System.out.println(paginationDTO.toString());
         return paginationDTO;//返回单个页面携带的详细信息
     }
 
     //根据发起问题的用户id查找用户表发布过的问题
+    @Cacheable(cacheNames = "question",key = "#creatorId+':'+#page")
     public PaginationDTO getPaginationDto(Long creatorId,Integer page, Integer size){
 
         Integer offset = size*(page-1);//获取偏移的位置
@@ -84,7 +85,6 @@ public class QuestionService {
         Integer total= Math.toIntExact(questionMapper.countByExample(example1));
         paginationDTO.setPagination(total,page,size);//进行基本的初始化操作
         paginationDTO.setData(questionDTOS);//添加问题列表
-        System.out.println(paginationDTO.toString());
         return paginationDTO;//返回单个页面携带的详细信息
     }
 
@@ -104,6 +104,7 @@ public class QuestionService {
     }
 
     //根据id查找用户
+    @Cacheable(cacheNames = "question",key = "#id")
     public QuestionDTO getQuestionDTOById(Long id){
         Question question = questionMapper.selectByPrimaryKey(id);
         QuestionDTO questionDTO=null;

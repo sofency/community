@@ -1,5 +1,6 @@
-package com.sofency.community.interceptor;
+package com.sofency.community.component;
 
+import com.sofency.community.interceptor.SessionInterceptor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.HandlerInterceptor;

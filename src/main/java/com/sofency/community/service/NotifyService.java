@@ -13,6 +13,7 @@ import com.sofency.community.mapper.UserMapper;
 import com.sofency.community.pojo.*;
 import org.apache.ibatis.session.RowBounds;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -47,6 +48,7 @@ public class NotifyService {
         return num;
     }
     //获取分页的信息
+    @Cacheable(cacheNames ="notify",key = "#page")
     public PaginationDTO getPaginationDto(Integer page, Integer size,Long receiver){
         Integer offset = size*(page-1);//获取偏移的位置
         NotifyExample notifyExample = new NotifyExample();
@@ -54,17 +56,15 @@ public class NotifyService {
                 .andReceiverEqualTo(receiver);
         notifyExample.setOrderByClause("status ASC,gmt_create desc");//按照状态进行升序  按照时间降序
         List<Notify> notifies = notifyMapper.selectByExampleWithRowbounds(notifyExample,new RowBounds(offset,size));
-
         List<NotifyDTO> notifyDTOS = new ArrayList<>();
         this.forUtils(notifies,notifyDTOS);
         //使用规范代码
         PaginationDTO<NotifyDTO> paginationDTO = new PaginationDTO();
         //获取记录的总页数
         Integer total= Math.toIntExact(notifyMapper.countByExample(notifyExample));
-        System.out.println(total);
+
         paginationDTO.setPagination(total,page,size);//进行基本的初始化操作
         paginationDTO.setData(notifyDTOS);//添加问题列表
-        System.out.println(paginationDTO.toString());
         return paginationDTO;//返回单个页面携带的详细信息
     }
     private void forUtils(List<Notify> notifies, List<NotifyDTO> notifyDTOS){

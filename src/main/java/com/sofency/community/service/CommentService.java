@@ -11,6 +11,7 @@ import com.sofency.community.mapper.*;
 import com.sofency.community.pojo.*;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -32,13 +33,10 @@ public class CommentService {
     CommentMapper commentMapper;
     @Autowired
     QuestionCustomMapper questionCustomMapper;
-
     @Autowired
     QuestionMapper questionMapper;
-
     @Autowired
     UserMapper userMapper;
-
     @Autowired
     NotifyMapper notifyMapper;
 
@@ -74,7 +72,6 @@ public class CommentService {
             }
             commentMapper.insert(comment);//添加评论
             //通知用户
-            Long parentId = comment.getParentId();
             Long receiver = commentMapper.selectByPrimaryKey(comment.getParentId()).getCommentator();
             int type=NotifyTypeEnums.NOTIFY_COMMENT.getType();
             this.insertNotify(comment,type,receiver,question.getId());
@@ -111,6 +108,7 @@ public class CommentService {
     }
 
     //根据问题id查找评论
+    @Cacheable(cacheNames = "commentFirst",key = "#id")
     public List<CommentDTO> listByQuestionId(Long id) {
 
         CommentExample example = new CommentExample();
@@ -143,6 +141,7 @@ public class CommentService {
 
 
     //根据父亲id查找二级评论
+    @Cacheable(cacheNames = "commentSecond",key = "#parentId")
     public List<CommentDTO> listByParentId(Long parentId){
         CommentExample example = new CommentExample();
         example.createCriteria()
@@ -152,7 +151,6 @@ public class CommentService {
         //根据评论的creator查询用户的信息
         if(comments.size()!=0){
             Set<Long> creatorsId = comments.stream().map(comment -> comment.getCommentator()).collect(Collectors.toSet());
-
 
             //根据id查找用户
             List<Long> listIds = new ArrayList<>(creatorsId);
@@ -170,6 +168,5 @@ public class CommentService {
             return collect;//返回二级评论的内容
         }
         return null;
-
     }
 }
