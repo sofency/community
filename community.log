@@ -304,3 +304,30 @@
 2020-03-17 00:31:59.308 DEBUG 13984 --- [http-nio-8080-exec-2] c.s.c.mapper.ForumUsersMapper.insert     : ==>  Preparing: insert into forumusers (id, password, email, github_url, gmt_create, tags ) values (?, ?, ?, ?, ?, ? ) 
 2020-03-17 00:31:59.309 DEBUG 13984 --- [http-nio-8080-exec-2] c.s.c.mapper.ForumUsersMapper.insert     : ==> Parameters: null, 12(String), sofen2cy@qq.com(String), null, 1584376319307(Long), null
 2020-03-17 00:31:59.316 DEBUG 13984 --- [http-nio-8080-exec-2] c.s.c.mapper.ForumUsersMapper.insert     : <==    Updates: 1
+2020-03-17 00:32:21.082  INFO 13620 --- [main] c.s.community.CommunityApplication       : Starting CommunityApplication on DESKTOP-VCDINT4 with PID 13620 (E:\Java\community\target\classes started by sofency in E:\Java\community)
+2020-03-17 00:32:21.085  INFO 13620 --- [main] c.s.community.CommunityApplication       : No active profile set, falling back to default profiles: default
+2020-03-17 00:32:21.595  INFO 13620 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2020-03-17 00:32:21.597  INFO 13620 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2020-03-17 00:32:21.621  INFO 13620 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 14ms. Found 0 Redis repository interfaces.
+2020-03-17 00:32:21.814  INFO 13620 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-03-17 00:32:21.965  INFO 13620 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2020-03-17 00:32:21.970  INFO 13620 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2020-03-17 00:32:21.971  INFO 13620 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.30]
+2020-03-17 00:32:22.036  INFO 13620 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2020-03-17 00:32:22.036  INFO 13620 --- [main] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 905 ms
+2020-03-17 00:32:22.636  INFO 13620 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2020-03-17 00:32:22.637  INFO 13620 --- [main] c.s.community.CommunityApplication       : Started CommunityApplication in 1.836 seconds (JVM running for 2.521)
+2020-03-17 00:32:29.702  INFO 13620 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2020-03-17 00:32:29.702  INFO 13620 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2020-03-17 00:32:29.708  INFO 13620 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 6 ms
+2020-03-17 00:32:29.795  INFO 13620 --- [http-nio-8080-exec-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2020-03-17 00:32:30.298  INFO 13620 --- [http-nio-8080-exec-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2020-03-17 00:32:30.304 DEBUG 13620 --- [http-nio-8080-exec-1] c.s.c.m.F.selectByExample                : ==>  Preparing: select id, password, email, github_url, gmt_create, tags from forumusers WHERE ( email = ? ) 
+2020-03-17 00:32:30.320 DEBUG 13620 --- [http-nio-8080-exec-1] c.s.c.m.F.selectByExample                : ==> Parameters: sofen2cy@qq.com(String)
+2020-03-17 00:32:30.335 DEBUG 13620 --- [http-nio-8080-exec-1] c.s.c.m.F.selectByExample                : <==      Total: 1
+2020-03-17 00:32:41.752 DEBUG 13620 --- [http-nio-8080-exec-2] c.s.c.m.F.selectByExample                : ==>  Preparing: select id, password, email, github_url, gmt_create, tags from forumusers WHERE ( email = ? ) 
+2020-03-17 00:32:41.752 DEBUG 13620 --- [http-nio-8080-exec-2] c.s.c.m.F.selectByExample                : ==> Parameters: sofenq2cy@qq.com(String)
+2020-03-17 00:32:41.753 DEBUG 13620 --- [http-nio-8080-exec-2] c.s.c.m.F.selectByExample                : <==      Total: 0
+2020-03-17 00:32:41.753 DEBUG 13620 --- [http-nio-8080-exec-2] c.s.c.mapper.ForumUsersMapper.insert     : ==>  Preparing: insert into forumusers (id, password, email, github_url, gmt_create, tags ) values (?, ?, ?, ?, ?, ? ) 
+2020-03-17 00:32:41.754 DEBUG 13620 --- [http-nio-8080-exec-2] c.s.c.mapper.ForumUsersMapper.insert     : ==> Parameters: null, 12(String), sofenq2cy@qq.com(String), null, 1584376361753(Long), null
+2020-03-17 00:32:41.758 DEBUG 13620 --- [http-nio-8080-exec-2] c.s.c.mapper.ForumUsersMapper.insert     : <==    Updates: 1
