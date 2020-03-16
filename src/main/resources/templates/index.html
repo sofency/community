@@ -6,21 +6,103 @@
     <link rel="stylesheet" href="/static/css/bootstrap.css">
     <link rel="stylesheet" href="/static/css/bootstrap-theme.css">
     <link rel="stylesheet" href="/static/css/common.css">
-    <script src="/static/js/jquery.js"></script>
-    <script src="/static/js/bootstrap.js"></script>
     <script src="/static/js/default-image.js"></script>
-<script type="text/javascript">
-    window.onload=function(){
-        var flag = window.localStorage.getItem("closeable");
-        if(flag=="true"){
-            window.close()
-            window.localStorage.removeItem("closeable");
+    <script type="text/javascript">
+        window.onload=function(){
+            const flag = window.localStorage.getItem("closeable");
+            if(flag=="true"){
+                window.close()
+                window.localStorage.removeItem("closeable");
+            }
         }
-    }
-</script>
+        function checkPwd() {
+            const firstPwd = $("#inputPassword").val();
+            const secondPwd = $("#confirm").val();
+            console.log(firstPwd+":"+secondPwd);
+            if(firstPwd != secondPwd){
+                $("#errorPwd").text("两次输入的密码不一致").css({"display":"block"});//text可以动态修改内容 而innerHtml不能
+            }else{
+                $("#errorPwd").css("display","none");
+            }
+        }
+        //表单的提交
+        function submitForm() {
+            const password=$("#inputPassword").val();
+            const email=$("#email").val();
+            $.ajax({
+                url:"/register",
+                method:"post",
+                contentType:"application/json",
+                dataType:"json",
+                data:JSON.stringify({
+                    "password":password,
+                    "email":email
+                }),
+                success:function (data) {
+                    if(data.registered==false){
+                        $("#isRegister").text("你已注册过，请登录");
+                    }else{
+                        //跳转到登录的
+                    }
+                }
+            })
+        }
+    </script>
 </head>
 <body>
 <div th:replace="~{navigation::nav}"></div>
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <ul class="nav nav-tabs">
+                    <li role="presentation" class="active"><a href="#">注册</a></li>
+                    <li role="presentation"><a href="#">登录</a></li>
+                </ul>
+            </div>
+            <div class="modal-body clearfix" >
+                <form class="col-lg-10 col-lg-offset-1">
+                    <div class="form-group row">
+                        <label for="inputPassword" class="col-sm-3 col-form-label">密码</label>
+                        <div class="col-sm-9">
+                            <input type="password" class="form-control" id="inputPassword" placeholder="请输入密码" name="password">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="confirm" class="col-sm-3 col-form-label">请确认密码</label>
+                        <div class="col-sm-9">
+                            <input type="password" class="form-control" id="confirm" placeholder="请输入密码"><br>
+                            <span id="errorPwd" style="color: red;font-size: 12px;display: none"></span>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="email" class="col-sm-3 col-form-label">邮箱</label>
+                        <div class="col-sm-9">
+                            <input type="email" class="form-control" id="email" placeholder="邮箱地址" name="email" onfocus="checkPwd()">
+                        </div>
+                    </div>
+                    <button type="button" class="btn btn-primary" onclick="submitForm()">注册</button><span id="isRegister"></span>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <h3>第三方登录</h3>
+                <div class="row">
+                    <div class="text-center col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                        <span>QQ登录</span><br>
+                        <a href="#"><img src="/static/images/QQ.jpg" width="60px" height="60px" style="border-radius: 50%;"></a>
+                    </div>
+                    <div class="text-center col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                        <span>Github</span><br>
+                        <a href="https://github.com/login/oauth/authorize?client_id=94d38df2b20a7acb563f&redirect_uri=http://localhost:8080/callback&scope=user&state=1"><img src="/static/images/Github.jpeg" width="60px" height="60px" style="border-radius: 50%;"></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
 <!--发布的内容标签-->
 <div class="container-fluid content">
     <div class="row">
@@ -77,5 +159,7 @@
         </div>
     </div>
 </div>
+<script src="/static/js/jquery.js"></script>
+<script src="/static/js/bootstrap.js"></script>
 </body>
 </html>

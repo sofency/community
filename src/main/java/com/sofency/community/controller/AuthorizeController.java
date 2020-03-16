@@ -49,12 +49,10 @@ public class AuthorizeController {
         //java模拟http请求 使用okHttp
         accessTokenDTO.setState(state);
         accessTokenDTO.setCode(code);
-
         //获取github反馈回来的token
         String accessToken = githubProvider.getAccessToken(accessTokenDTO);
         //根据返回的token去github拿取用户的信息
         GithubUser githubUser = githubProvider.getUser(accessToken);
-
         if(githubUser!=null){
             //登陆成功  创建用户的信息
             User user = new User();
@@ -66,7 +64,7 @@ public class AuthorizeController {
             //进行插入操作
             userService.createOrInsert(user,githubUser);
             //存储会话
-            response.addCookie(new Cookie("token",token));
+            response.addCookie(new Cookie("token",token));//登录之后
             return "redirect:/";
         }else{
             throw new CustomException(CustomExceptionCode.AUTHORIZE_FAILED);

@@ -34,17 +34,17 @@
             <property name="enableSubPackages" value="true" />
         </javaClientGenerator>
 
-        <table tableName="user" domainObjectName="User" >
-           <!-- <property name="useActualColumnNames" value="true"/>-->
-        </table>
-        <table tableName="question" domainObjectName="Question" >
-            <!-- <property name="useActualColumnNames" value="true"/>-->
-        </table>
-        <table tableName="comment" domainObjectName="Comment" >
-            <!-- <property name="useActualColumnNames" value="true"/>-->
-        </table>
-        <table tableName="notify" domainObjectName="Notify" >
-            <!-- <property name="useActualColumnNames" value="true"/>-->
-        </table>
+        <table tableName="forumusers" domainObjectName="ForumUsers" ></table>
+<!--           &lt;!&ndash; <property name="useActualColumnNames" value="true"/>&ndash;&gt;-->
+<!--        </table>-->
+<!--        <table tableName="question" domainObjectName="Question" >-->
+<!--            &lt;!&ndash; <property name="useActualColumnNames" value="true"/>&ndash;&gt;-->
+<!--        </table>-->
+<!--        <table tableName="comment" domainObjectName="Comment" >-->
+<!--            &lt;!&ndash; <property name="useActualColumnNames" value="true"/>&ndash;&gt;-->
+<!--        </table>-->
+<!--        <table tableName="notify" domainObjectName="Notify" >-->
+<!--            &lt;!&ndash; <property name="useActualColumnNames" value="true"/>&ndash;&gt;-->
+<!--        </table>-->
     </context>
 </generatorConfiguration>
