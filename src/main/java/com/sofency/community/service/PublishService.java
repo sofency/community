@@ -14,10 +14,12 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class PublishService {
-
+    private QuestionMapper questionMapper;
     @Autowired
-    QuestionMapper questionMapper;
-    @CachePut(cacheNames = "question",key = "#question.id")
+    public PublishService(QuestionMapper questionMapper){
+        this.questionMapper= questionMapper;
+    }
+//    @CachePut(cacheNames = "question",key = "#question.id")
     public Question createOrUpdate(Question question) {
         if(question.getId()==0){//说明是发布
             question.setGmtCreate(System.currentTimeMillis());//设置创建时间

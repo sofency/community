@@ -21,15 +21,18 @@ import java.util.List;
  */
 @Controller
 public class CommentController {
-
+    private CommentService commentService;
+    //构造器注入
     @Autowired
-    CommentService commentService;
+    public CommentController(CommentService commentService){
+        this.commentService=commentService;
+    }
+
     //负责写评论的信息
     @ResponseBody
     @RequestMapping(value = "/commentSubmit",method = RequestMethod.POST)
     public Object post(@RequestBody CommentCreateDTO commentCreateDTO, HttpServletRequest request){
         Comment comment = new Comment();
-
         User user = (User)request.getSession().getAttribute("user");
         if(user.getAccountId()!=0){//不是游客的话
             comment.setCommentator(user.getAccountId());//设置评论人

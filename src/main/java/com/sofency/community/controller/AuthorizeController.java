@@ -29,15 +29,17 @@ import java.util.UUID;
 @EnableConfigurationProperties(AccessTokenDTO.class)
 public class AuthorizeController {
 
-    @Autowired
     private GithubProvider githubProvider;//github认证的工具类
     //可以使用@Value()的方式进行注入
-
-    @Autowired
     private AccessTokenDTO accessTokenDTO;
+    private UserService userService;//注入mapper
 
     @Autowired
-    private UserService userService;//注入mapper
+    public AuthorizeController(GithubProvider githubProvider,AccessTokenDTO accessTokenDTO,UserService userService){
+        this.accessTokenDTO=accessTokenDTO;
+        this.githubProvider=githubProvider;
+        this.userService=userService;
+    }
 
     @GetMapping("/callback")
     public String callback(@RequestParam(name="code") String code,

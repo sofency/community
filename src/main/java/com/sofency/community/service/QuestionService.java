@@ -23,13 +23,15 @@ import java.util.List;
  */
 @Service
 public class QuestionService {
+    private QuestionMapper questionMapper;
+    private QuestionCustomMapper questionCustomMapper;
+    private UserMapper userMapper;
     @Autowired
-    QuestionMapper questionMapper;
-
-    @Autowired
-    QuestionCustomMapper questionCustomMapper;
-    @Autowired
-    UserMapper userMapper;
+    public  QuestionService(QuestionMapper questionMapper,QuestionCustomMapper questionCustomMapper,UserMapper userMapper){
+        this.questionMapper =questionMapper;
+        this.questionCustomMapper=questionCustomMapper;
+        this.userMapper=userMapper;
+    }
     /**
      * 获取问题列表
      * @return
@@ -37,7 +39,7 @@ public class QuestionService {
      * @param size
      * @param search
      */
-    @Cacheable(cacheNames = "questions",key = "#page" ,condition = "#search==''")
+//    @Cacheable(cacheNames = "questions",key = "#page" ,condition = "#search==''")
     public PaginationDTO getPaginationDto(Integer page, Integer size, String search){
         Integer offset = size*(page-1);//获取偏移的位置
         List<Question> questions =null;
@@ -65,7 +67,7 @@ public class QuestionService {
     }
 
     //根据发起问题的用户id查找用户表发布过的问题
-    @Cacheable(cacheNames = "question",key = "#creatorId+':'+#page")
+//    @Cacheable(cacheNames = "question",key = "#creatorId+':'+#page")
     public PaginationDTO getPaginationDto(Long creatorId,Integer page, Integer size){
 
         Integer offset = size*(page-1);//获取偏移的位置
@@ -104,7 +106,7 @@ public class QuestionService {
     }
 
     //根据id查找用户
-    @Cacheable(cacheNames = "question",key = "#id")
+//    @Cacheable(cacheNames = "question",key = "#id")
     public QuestionDTO getQuestionDTOById(Long id){
         Question question = questionMapper.selectByPrimaryKey(id);
         QuestionDTO questionDTO=null;

@@ -14,7 +14,8 @@ public enum CustomExceptionCode{
     AUTHORIZE_FAILED(2005,"GitHub授权失败"),
     GET_INFO_FAILED(2006,"客官糟了，服务器崩溃了"),
     TYPE_PARAM_NOT_FOUNDED(2007,"类型错误"),
-    COMMENT_NOT_FOUND(2008,"原回复被删除了"), UN_KNOW_ERROR(2009,"未知错误" ), FOUND_OTHER_QUESTION(2019,"客官,你再查看其他人的评论呀，这是不允许的" );
+    COMMENT_NOT_FOUND(2008,"原回复被删除了"),
+    UN_KNOW_ERROR(2009,"未知错误" ), FOUND_OTHER_QUESTION(2019,"客官,你再查看其他人的评论呀，这是不允许的" );
 
     private String message;
     private Integer code;

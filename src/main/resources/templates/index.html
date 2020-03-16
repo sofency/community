@@ -28,7 +28,7 @@
             <h3><span class="glyphicon glyphicon-list" aria-hidden="true"></span>&nbsp;发现</h3>
             <hr>
             <!--问题列表-->
-            <div class="media" th:each="question:${questions.data}">
+            <div class="media" th:if="${questions!=null}" th:each="question:${questions.data}">
                 <div class="media-left">
                     <a href="#">
                         <img class="media-object img-rounded img" th:src="${question.user.avatarUrl}" alt="..." width="38" height="38" onerror="nofind();">

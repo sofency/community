@@ -6,6 +6,7 @@ import com.sofency.community.dto.QuestionDTO;
 import com.sofency.community.enums.NotifyStatusEnums;
 import com.sofency.community.exception.CustomException;
 import com.sofency.community.exception.CustomExceptionCode;
+import com.sofency.community.mapper.NotifyMapper;
 import com.sofency.community.mapper.UserMapper;
 import com.sofency.community.pojo.NotifyExample;
 import com.sofency.community.pojo.User;
@@ -28,13 +29,16 @@ import javax.servlet.http.HttpSession;
  * @package com.sofency.community.controller
  */
 @Controller
-public class ProblemContorller {
+public class ProblemController {
+    private UserMapper userMapper;
+    private QuestionService questionService;
+    private NotifyService notifyService;
     @Autowired
-    UserMapper userMapper;
-    @Autowired
-    QuestionService questionService;
-    @Autowired
-    NotifyService notifyService;
+    public ProblemController(UserMapper userMapper, QuestionService questionService, NotifyService notifyService){
+        this.userMapper=userMapper;
+        this.notifyService=notifyService;
+        this.questionService =questionService;
+    }
     //Restful接口要使用@PathVariable注解
     @GetMapping("/profile/{action}")
     public ModelAndView problem(HttpServletRequest request,

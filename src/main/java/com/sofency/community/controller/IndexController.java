@@ -23,14 +23,13 @@ import javax.servlet.http.HttpSession;
  */
 @Controller
 public class IndexController {
+    private QuestionService questionService;
+    private NotifyService notifyService;
     @Autowired
-    UserMapper userMapper;
-
-    @Autowired
-    QuestionService questionService;
-
-    @Autowired
-    NotifyService notifyService;
+    public IndexController(QuestionService questionService,NotifyService notifyService){
+        this.notifyService=notifyService;
+        this.questionService=questionService;
+    }
 
     @GetMapping("/")
     public String index(Model model,
@@ -46,16 +45,18 @@ public class IndexController {
         }
         HttpSession session = request.getSession();
         User user = (User)session.getAttribute("user");
-        if(paginationDTO==null){
-            throw new CustomException(CustomExceptionCode.GET_INFO_FAILED);
-        }
+//        if(paginationDTO==null){
+//            throw new CustomException(CustomExceptionCode.GET_INFO_FAILED);
+//        }
         if(user.getAccountId()!=0){//判断不是游客
             paginationDTO.setNotifyNum(notifyService.count(user.getAccountId()));//设置返回信息的个数
+            //统计未读消息的个数到session中
+            Integer num = notifyService.count(user.getAccountId());
+            //存储到session中  未读消息
+            session.setAttribute("unreadCount",num);
+        }else{
+            session.setAttribute("unreadCount",0);//默认是0
         }
-        //统计未读消息的个数到session中
-        Integer num = notifyService.count(user.getAccountId());
-        //存储到session中  未读消息
-        session.setAttribute("unreadCount",num);
         model.addAttribute("questions",paginationDTO);
         model.addAttribute("search",search);
         return "index";

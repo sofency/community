@@ -28,17 +28,21 @@ import java.util.stream.Collectors;
  */
 @Service
 public class CommentService {
+    private CommentMapper commentMapper;
+    private QuestionCustomMapper questionCustomMapper;
+    private QuestionMapper questionMapper;
+    private UserMapper userMapper;
+    private NotifyMapper notifyMapper;
 
     @Autowired
-    CommentMapper commentMapper;
-    @Autowired
-    QuestionCustomMapper questionCustomMapper;
-    @Autowired
-    QuestionMapper questionMapper;
-    @Autowired
-    UserMapper userMapper;
-    @Autowired
-    NotifyMapper notifyMapper;
+    public CommentService(CommentMapper commentMapper, QuestionCustomMapper questionCustomMapper,
+                          QuestionMapper questionMapper, UserMapper userMapper, NotifyMapper notifyMapper) {
+        this.commentMapper = commentMapper;
+        this.questionCustomMapper = questionCustomMapper;
+        this.questionMapper = questionMapper;
+        this.userMapper = userMapper;
+        this.notifyMapper = notifyMapper;
+    }
 
     //事务的注解
     @Transactional
@@ -108,7 +112,7 @@ public class CommentService {
     }
 
     //根据问题id查找评论
-    @Cacheable(cacheNames = "commentFirst",key = "#id")
+//    @Cacheable(cacheNames = "commentFirst",key = "#id")
     public List<CommentDTO> listByQuestionId(Long id) {
 
         CommentExample example = new CommentExample();
@@ -138,7 +142,6 @@ public class CommentService {
         }).collect(Collectors.toList());
         return commentDTOS;
     }
-
 
     //根据父亲id查找二级评论
     @Cacheable(cacheNames = "commentSecond",key = "#parentId")

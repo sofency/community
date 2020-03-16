@@ -27,13 +27,14 @@
   </resultMap>
   <!--增加浏览人数-->
   <update id="incrView" parameterType="Long">
-    UPDATE question set view_count=view_count+1 WHERE id=#{id}
+    UPDATE question set view_count=ifnull(view_count,0) +1 WHERE id=#{id};
   </update>
 
   <!--增加评论数-->
   <update id="incrCommentCount" parameterType="com.sofency.community.pojo.Question">
-    UPDATE question set comment_count=comment_count+#{commentCount} WHERE id=#{id}
+    UPDATE question set comment_count=ifnull(comment_count,0) + #{commentCount} WHERE id=#{id};
   </update>
+
   <!--正则匹配且搜索相关的问题-->
   <select id="selectBySearchName" parameterType="String" resultMap="ResultMapWithBLOBs">
      SELECT * from question where title LIKE  concat('%',#{search},'%')

@@ -28,14 +28,17 @@ import java.util.List;
 
 @Controller
 public class QuestionController {
-    @Autowired
-    QuestionService questionService;
-
+    private QuestionService questionService;
+    private CommentService commentService;
     /**
      * 查找问题到问题的详情页
      */
     @Autowired
-    CommentService commentService;
+    public QuestionController(QuestionService questionService,CommentService commentService){
+        this.commentService=commentService;
+        this.questionService=questionService;
+    }
+
     @GetMapping("/question/{id}")
     public String getQuestionById(@PathVariable("id") Long id, Model model, HttpSession session){
         QuestionDTO questionDTO = questionService.getQuestionDTOById(id);

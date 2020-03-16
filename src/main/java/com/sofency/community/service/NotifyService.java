@@ -29,13 +29,15 @@ import java.util.List;
  */
 @Service
 public class NotifyService {
-
+    private UserMapper userMapper;
+    private NotifyMapper notifyMapper;
+    private QuestionMapper questionMapper;
     @Autowired
-    UserMapper userMapper;
-    @Autowired
-    NotifyMapper notifyMapper;
-    @Autowired
-    QuestionMapper questionMapper;
+    public NotifyService(UserMapper userMapper, NotifyMapper notifyMapper, QuestionMapper questionMapper) {
+        this.userMapper = userMapper;
+        this.notifyMapper = notifyMapper;
+        this.questionMapper = questionMapper;
+    }
 
     //查询未查看的通知的个数
     public int count(Long currentId){//查询通知
@@ -48,7 +50,7 @@ public class NotifyService {
         return num;
     }
     //获取分页的信息
-    @Cacheable(cacheNames ="notify",key = "#page")
+//    @Cacheable(cacheNames ="notify",key = "#page")
     public PaginationDTO getPaginationDto(Integer page, Integer size,Long receiver){
         Integer offset = size*(page-1);//获取偏移的位置
         NotifyExample notifyExample = new NotifyExample();

@@ -24,13 +24,14 @@ import javax.servlet.http.HttpServletRequest;
 @Controller
 public class publishController {
 
+    private PublishService publishService;
+    private QuestionMapper questionMapper;
 
     @Autowired
-    PublishService publishService;
-
-    @Autowired
-    QuestionMapper questionMapper;
-
+    public publishController(PublishService publishService,QuestionMapper questionMapper){
+        this.publishService=publishService;
+        this.questionMapper=questionMapper;
+    }
     @GetMapping("/publish")
     public String publish(){
         return "publish";

@@ -24,15 +24,17 @@ import javax.servlet.http.HttpSession;
 
 @Controller
 public class NotificationController {
-
+    private QuestionMapper questionMapper;
+    private NotifyMapper notifyMapper;
     @Autowired
-    QuestionMapper questionMapper;
+    public NotificationController(QuestionMapper questionMapper,NotifyMapper notifyMapper){
+        this.questionMapper=questionMapper;
+        this.notifyMapper=notifyMapper;
+    }
 
     /**
      * 问题的id和通知的id
      */
-    @Autowired
-    NotifyMapper notifyMapper;
     @RequestMapping("/notification/{questionId}/{id}")
     public String read(@PathVariable("questionId")Long questionId, @PathVariable("id") int id, HttpServletRequest request){
         HttpSession session = request.getSession();
