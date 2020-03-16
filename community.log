@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 2020-03-17 00:19:34.706  INFO 16576 --- [main] c.s.community.CommunityApplication       : Starting CommunityApplication on DESKTOP-VCDINT4 with PID 16576 (E:\Java\community\target\classes started by sofency in E:\Java\community)
 2020-03-17 00:19:34.712  INFO 16576 --- [main] c.s.community.CommunityApplication       : No active profile set, falling back to default profiles: default
 2020-03-17 00:19:35.219  INFO 16576 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
@@ -331,3 +332,503 @@
 2020-03-17 00:32:41.753 DEBUG 13620 --- [http-nio-8080-exec-2] c.s.c.mapper.ForumUsersMapper.insert     : ==>  Preparing: insert into forumusers (id, password, email, github_url, gmt_create, tags ) values (?, ?, ?, ?, ?, ? ) 
 2020-03-17 00:32:41.754 DEBUG 13620 --- [http-nio-8080-exec-2] c.s.c.mapper.ForumUsersMapper.insert     : ==> Parameters: null, 12(String), sofenq2cy@qq.com(String), null, 1584376361753(Long), null
 2020-03-17 00:32:41.758 DEBUG 13620 --- [http-nio-8080-exec-2] c.s.c.mapper.ForumUsersMapper.insert     : <==    Updates: 1
+=======
+2020-03-12 08:52:06.573  INFO 24236 --- [main] c.s.community.CommunityApplication       : Starting CommunityApplication on sofency with PID 24236 (H:\JAVA\community\target\classes started by sofency in H:\JAVA\community)
+2020-03-12 08:52:06.579  INFO 24236 --- [main] c.s.community.CommunityApplication       : No active profile set, falling back to default profiles: default
+2020-03-12 08:52:08.493  INFO 24236 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2020-03-12 08:52:08.497  INFO 24236 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2020-03-12 08:52:08.605  INFO 24236 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 70ms. Found 0 Redis repository interfaces.
+2020-03-12 08:52:09.283  INFO 24236 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-03-12 08:52:09.987  INFO 24236 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2020-03-12 08:52:09.999  INFO 24236 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2020-03-12 08:52:10.000  INFO 24236 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.30]
+2020-03-12 08:52:10.002  INFO 24236 --- [main] o.a.catalina.core.AprLifecycleListener   : An older version [1.2.21] of the APR based Apache Tomcat Native library is installed, while Tomcat recommends a minimum version of [1.2.23]
+2020-03-12 08:52:10.002  INFO 24236 --- [main] o.a.catalina.core.AprLifecycleListener   : Loaded APR based Apache Tomcat Native library [1.2.21] using APR version [1.6.5].
+2020-03-12 08:52:10.002  INFO 24236 --- [main] o.a.catalina.core.AprLifecycleListener   : APR capabilities: IPv6 [true], sendfile [true], accept filters [false], random [true].
+2020-03-12 08:52:10.003  INFO 24236 --- [main] o.a.catalina.core.AprLifecycleListener   : APR/OpenSSL configuration: useAprConnector [false], useOpenSSL [true]
+2020-03-12 08:52:10.167  INFO 24236 --- [main] o.a.catalina.core.AprLifecycleListener   : OpenSSL successfully initialized [OpenSSL 1.1.1a  20 Nov 2018]
+2020-03-12 08:52:10.403  INFO 24236 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2020-03-12 08:52:10.403  INFO 24236 --- [main] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 3638 ms
+2020-03-12 08:52:12.808  INFO 24236 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2020-03-12 08:52:12.817  INFO 24236 --- [main] c.s.community.CommunityApplication       : Started CommunityApplication in 8.456 seconds (JVM running for 13.081)
+2020-03-12 08:52:23.570  INFO 24236 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2020-03-12 08:52:23.570  INFO 24236 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2020-03-12 08:52:23.581  INFO 24236 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 10 ms
+2020-03-12 08:52:23.751  INFO 24236 --- [http-nio-8080-exec-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2020-03-12 08:52:26.501  INFO 24236 --- [http-nio-8080-exec-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2020-03-12 08:52:26.520 DEBUG 24236 --- [http-nio-8080-exec-1] c.s.c.mapper.UserMapper.selectByExample  : ==>  Preparing: select generate_id, account_id, name, token, gmt_create, gmt_modify, avatar_url from user WHERE ( token = ? ) 
+2020-03-12 08:52:26.598 DEBUG 24236 --- [http-nio-8080-exec-1] c.s.c.mapper.UserMapper.selectByExample  : ==> Parameters: e7b4c5d8-444b-49ae-ac76-a6a9ca43a0c5(String)
+2020-03-12 08:52:27.127 DEBUG 24236 --- [http-nio-8080-exec-1] c.s.c.mapper.UserMapper.selectByExample  : <==      Total: 1
+2020-03-12 08:52:27.669 DEBUG 24236 --- [http-nio-8080-exec-1] c.s.c.m.NotifyMapper.countByExample      : ==>  Preparing: select count(*) from notify WHERE ( receiver = ? and status = ? ) 
+2020-03-12 08:52:27.670 DEBUG 24236 --- [http-nio-8080-exec-1] c.s.c.m.NotifyMapper.countByExample      : ==> Parameters: 48281891(Long), 0(Integer)
+2020-03-12 08:52:27.879 DEBUG 24236 --- [http-nio-8080-exec-1] c.s.c.m.NotifyMapper.countByExample      : <==      Total: 1
+2020-03-12 08:52:27.881 DEBUG 24236 --- [http-nio-8080-exec-1] c.s.c.m.NotifyMapper.countByExample      : ==>  Preparing: select count(*) from notify WHERE ( receiver = ? and status = ? ) 
+2020-03-12 08:52:27.882 DEBUG 24236 --- [http-nio-8080-exec-1] c.s.c.m.NotifyMapper.countByExample      : ==> Parameters: 48281891(Long), 0(Integer)
+2020-03-12 08:52:27.889 DEBUG 24236 --- [http-nio-8080-exec-1] c.s.c.m.NotifyMapper.countByExample      : <==      Total: 1
+2020-03-12 08:52:28.481 DEBUG 24236 --- [http-nio-8080-exec-2] c.s.c.mapper.UserMapper.selectByExample  : ==>  Preparing: select generate_id, account_id, name, token, gmt_create, gmt_modify, avatar_url from user WHERE ( token = ? ) 
+2020-03-12 08:52:28.487 DEBUG 24236 --- [http-nio-8080-exec-2] c.s.c.mapper.UserMapper.selectByExample  : ==> Parameters: e7b4c5d8-444b-49ae-ac76-a6a9ca43a0c5(String)
+2020-03-12 08:52:28.489 DEBUG 24236 --- [http-nio-8080-exec-2] c.s.c.mapper.UserMapper.selectByExample  : <==      Total: 1
+2020-03-12 08:52:28.698 DEBUG 24236 --- [http-nio-8080-exec-2] c.s.c.m.NotifyMapper.countByExample      : ==>  Preparing: select count(*) from notify WHERE ( receiver = ? and status = ? ) 
+2020-03-12 08:52:28.699 DEBUG 24236 --- [http-nio-8080-exec-2] c.s.c.m.NotifyMapper.countByExample      : ==> Parameters: 48281891(Long), 0(Integer)
+2020-03-12 08:52:28.708 DEBUG 24236 --- [http-nio-8080-exec-2] c.s.c.m.NotifyMapper.countByExample      : <==      Total: 1
+2020-03-12 08:52:28.711 DEBUG 24236 --- [http-nio-8080-exec-2] c.s.c.m.NotifyMapper.countByExample      : ==>  Preparing: select count(*) from notify WHERE ( receiver = ? and status = ? ) 
+2020-03-12 08:52:28.713 DEBUG 24236 --- [http-nio-8080-exec-2] c.s.c.m.NotifyMapper.countByExample      : ==> Parameters: 48281891(Long), 0(Integer)
+2020-03-12 08:52:28.715 DEBUG 24236 --- [http-nio-8080-exec-2] c.s.c.m.NotifyMapper.countByExample      : <==      Total: 1
+2020-03-12 08:53:47.750 DEBUG 24236 --- [http-nio-8080-exec-9] c.s.c.mapper.UserMapper.selectByExample  : ==>  Preparing: select generate_id, account_id, name, token, gmt_create, gmt_modify, avatar_url from user WHERE ( token = ? ) 
+2020-03-12 08:53:47.751 DEBUG 24236 --- [http-nio-8080-exec-9] c.s.c.mapper.UserMapper.selectByExample  : ==> Parameters: e7b4c5d8-444b-49ae-ac76-a6a9ca43a0c5(String)
+2020-03-12 08:53:47.753 DEBUG 24236 --- [http-nio-8080-exec-9] c.s.c.mapper.UserMapper.selectByExample  : <==      Total: 1
+2020-03-12 08:53:47.962 DEBUG 24236 --- [http-nio-8080-exec-9] c.s.c.m.NotifyMapper.countByExample      : ==>  Preparing: select count(*) from notify WHERE ( receiver = ? and status = ? ) 
+2020-03-12 08:53:47.962 DEBUG 24236 --- [http-nio-8080-exec-9] c.s.c.m.NotifyMapper.countByExample      : ==> Parameters: 48281891(Long), 0(Integer)
+2020-03-12 08:53:47.966 DEBUG 24236 --- [http-nio-8080-exec-9] c.s.c.m.NotifyMapper.countByExample      : <==      Total: 1
+2020-03-12 08:53:47.968 DEBUG 24236 --- [http-nio-8080-exec-9] c.s.c.m.NotifyMapper.countByExample      : ==>  Preparing: select count(*) from notify WHERE ( receiver = ? and status = ? ) 
+2020-03-12 08:53:47.968 DEBUG 24236 --- [http-nio-8080-exec-9] c.s.c.m.NotifyMapper.countByExample      : ==> Parameters: 48281891(Long), 0(Integer)
+2020-03-12 08:53:47.970 DEBUG 24236 --- [http-nio-8080-exec-9] c.s.c.m.NotifyMapper.countByExample      : <==      Total: 1
+2020-03-12 08:54:19.297 DEBUG 24236 --- [http-nio-8080-exec-3] c.s.c.m.NotifyMapper.countByExample      : ==>  Preparing: select count(*) from notify WHERE ( receiver = ? and status = ? ) 
+2020-03-12 08:54:19.298 DEBUG 24236 --- [http-nio-8080-exec-3] c.s.c.m.NotifyMapper.countByExample      : ==> Parameters: 0(Long), 0(Integer)
+2020-03-12 08:54:19.388 DEBUG 24236 --- [http-nio-8080-exec-3] c.s.c.m.NotifyMapper.countByExample      : <==      Total: 1
+2020-03-12 08:55:28.235  INFO 21608 --- [main] c.s.community.CommunityApplication       : Starting CommunityApplication on sofency with PID 21608 (H:\JAVA\community\target\classes started by sofency in H:\JAVA\community)
+2020-03-12 08:55:28.504  INFO 21608 --- [main] c.s.community.CommunityApplication       : No active profile set, falling back to default profiles: default
+2020-03-12 08:55:31.184  INFO 21608 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2020-03-12 08:55:31.189  INFO 21608 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2020-03-12 08:55:31.355  INFO 21608 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 96ms. Found 0 Redis repository interfaces.
+2020-03-12 08:55:32.369  INFO 21608 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-03-12 08:55:32.948  INFO 21608 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2020-03-12 08:55:32.965  INFO 21608 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2020-03-12 08:55:32.966  INFO 21608 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.30]
+2020-03-12 08:55:32.968  INFO 21608 --- [main] o.a.catalina.core.AprLifecycleListener   : An older version [1.2.21] of the APR based Apache Tomcat Native library is installed, while Tomcat recommends a minimum version of [1.2.23]
+2020-03-12 08:55:32.969  INFO 21608 --- [main] o.a.catalina.core.AprLifecycleListener   : Loaded APR based Apache Tomcat Native library [1.2.21] using APR version [1.6.5].
+2020-03-12 08:55:32.969  INFO 21608 --- [main] o.a.catalina.core.AprLifecycleListener   : APR capabilities: IPv6 [true], sendfile [true], accept filters [false], random [true].
+2020-03-12 08:55:32.969  INFO 21608 --- [main] o.a.catalina.core.AprLifecycleListener   : APR/OpenSSL configuration: useAprConnector [false], useOpenSSL [true]
+2020-03-12 08:55:32.975  INFO 21608 --- [main] o.a.catalina.core.AprLifecycleListener   : OpenSSL successfully initialized [OpenSSL 1.1.1a  20 Nov 2018]
+2020-03-12 08:55:33.169  INFO 21608 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2020-03-12 08:55:33.169  INFO 21608 --- [main] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 4418 ms
+2020-03-12 08:55:35.290  INFO 21608 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2020-03-12 08:55:35.294  INFO 21608 --- [main] c.s.community.CommunityApplication       : Started CommunityApplication in 8.671 seconds (JVM running for 11.466)
+2020-03-12 08:55:39.147  INFO 21608 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2020-03-12 08:55:39.149  INFO 21608 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2020-03-12 08:55:39.179  INFO 21608 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 30 ms
+2020-03-12 08:55:39.926  INFO 21608 --- [http-nio-8080-exec-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2020-03-12 08:55:41.939  INFO 21608 --- [http-nio-8080-exec-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2020-03-12 08:55:41.955 DEBUG 21608 --- [http-nio-8080-exec-1] c.s.c.m.NotifyMapper.countByExample      : ==>  Preparing: select count(*) from notify WHERE ( receiver = ? and status = ? ) 
+2020-03-12 08:55:41.997 DEBUG 21608 --- [http-nio-8080-exec-1] c.s.c.m.NotifyMapper.countByExample      : ==> Parameters: 0(Long), 0(Integer)
+2020-03-12 08:55:42.094 DEBUG 21608 --- [http-nio-8080-exec-1] c.s.c.m.NotifyMapper.countByExample      : <==      Total: 1
+2020-03-12 08:56:34.278  INFO 9952 --- [main] c.s.community.CommunityApplication       : Starting CommunityApplication on sofency with PID 9952 (H:\JAVA\community\target\classes started by sofency in H:\JAVA\community)
+2020-03-12 08:56:34.287  INFO 9952 --- [main] c.s.community.CommunityApplication       : No active profile set, falling back to default profiles: default
+2020-03-12 08:56:37.012  INFO 9952 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2020-03-12 08:56:37.015  INFO 9952 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2020-03-12 08:56:37.166  INFO 9952 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 68ms. Found 0 Redis repository interfaces.
+2020-03-12 08:56:38.437  INFO 9952 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-03-12 08:56:39.268  INFO 9952 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2020-03-12 08:56:39.299  INFO 9952 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2020-03-12 08:56:39.300  INFO 9952 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.30]
+2020-03-12 08:56:39.310  INFO 9952 --- [main] o.a.catalina.core.AprLifecycleListener   : An older version [1.2.21] of the APR based Apache Tomcat Native library is installed, while Tomcat recommends a minimum version of [1.2.23]
+2020-03-12 08:56:39.319  INFO 9952 --- [main] o.a.catalina.core.AprLifecycleListener   : Loaded APR based Apache Tomcat Native library [1.2.21] using APR version [1.6.5].
+2020-03-12 08:56:39.320  INFO 9952 --- [main] o.a.catalina.core.AprLifecycleListener   : APR capabilities: IPv6 [true], sendfile [true], accept filters [false], random [true].
+2020-03-12 08:56:39.320  INFO 9952 --- [main] o.a.catalina.core.AprLifecycleListener   : APR/OpenSSL configuration: useAprConnector [false], useOpenSSL [true]
+2020-03-12 08:56:39.333  INFO 9952 --- [main] o.a.catalina.core.AprLifecycleListener   : OpenSSL successfully initialized [OpenSSL 1.1.1a  20 Nov 2018]
+2020-03-12 08:56:39.568  INFO 9952 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2020-03-12 08:56:39.571  INFO 9952 --- [main] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 5051 ms
+2020-03-12 08:56:43.543  INFO 9952 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2020-03-12 08:56:43.549  INFO 9952 --- [main] c.s.community.CommunityApplication       : Started CommunityApplication in 11.534 seconds (JVM running for 16.739)
+2020-03-12 08:56:43.660  INFO 9952 --- [http-nio-8080-exec-2] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2020-03-12 08:56:43.660  INFO 9952 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2020-03-12 08:56:43.670  INFO 9952 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed initialization in 10 ms
+2020-03-12 08:56:44.495  INFO 9952 --- [http-nio-8080-exec-2] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2020-03-12 08:56:46.181  INFO 9952 --- [http-nio-8080-exec-2] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2020-03-12 08:56:46.192 DEBUG 9952 --- [http-nio-8080-exec-2] c.s.c.m.NotifyMapper.countByExample      : ==>  Preparing: select count(*) from notify WHERE ( receiver = ? and status = ? ) 
+2020-03-12 08:56:46.233 DEBUG 9952 --- [http-nio-8080-exec-2] c.s.c.m.NotifyMapper.countByExample      : ==> Parameters: 0(Long), 0(Integer)
+2020-03-12 08:56:46.316 DEBUG 9952 --- [http-nio-8080-exec-2] c.s.c.m.NotifyMapper.countByExample      : <==      Total: 1
+2020-03-12 09:06:53.308  INFO 19620 --- [main] c.s.community.CommunityApplication       : Starting CommunityApplication on sofency with PID 19620 (H:\JAVA\community\target\classes started by sofency in H:\JAVA\community)
+2020-03-12 09:06:53.316  INFO 19620 --- [main] c.s.community.CommunityApplication       : No active profile set, falling back to default profiles: default
+2020-03-12 09:06:55.029  INFO 19620 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2020-03-12 09:06:55.032  INFO 19620 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2020-03-12 09:06:55.161  INFO 19620 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 73ms. Found 0 Redis repository interfaces.
+2020-03-12 09:06:55.817  INFO 19620 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-03-12 09:06:56.475  INFO 19620 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2020-03-12 09:06:56.501  INFO 19620 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2020-03-12 09:06:56.502  INFO 19620 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.30]
+2020-03-12 09:06:56.504  INFO 19620 --- [main] o.a.catalina.core.AprLifecycleListener   : An older version [1.2.21] of the APR based Apache Tomcat Native library is installed, while Tomcat recommends a minimum version of [1.2.23]
+2020-03-12 09:06:56.506  INFO 19620 --- [main] o.a.catalina.core.AprLifecycleListener   : Loaded APR based Apache Tomcat Native library [1.2.21] using APR version [1.6.5].
+2020-03-12 09:06:56.506  INFO 19620 --- [main] o.a.catalina.core.AprLifecycleListener   : APR capabilities: IPv6 [true], sendfile [true], accept filters [false], random [true].
+2020-03-12 09:06:56.506  INFO 19620 --- [main] o.a.catalina.core.AprLifecycleListener   : APR/OpenSSL configuration: useAprConnector [false], useOpenSSL [true]
+2020-03-12 09:06:56.684  INFO 19620 --- [main] o.a.catalina.core.AprLifecycleListener   : OpenSSL successfully initialized [OpenSSL 1.1.1a  20 Nov 2018]
+2020-03-12 09:06:57.298  INFO 19620 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2020-03-12 09:06:57.299  INFO 19620 --- [main] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 3790 ms
+2020-03-12 09:07:00.019  INFO 19620 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2020-03-12 09:07:00.024  INFO 19620 --- [main] c.s.community.CommunityApplication       : Started CommunityApplication in 7.803 seconds (JVM running for 14.976)
+2020-03-12 09:07:05.360  INFO 19620 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2020-03-12 09:07:05.361  INFO 19620 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2020-03-12 09:07:05.374  INFO 19620 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 13 ms
+2020-03-12 09:07:06.213  INFO 19620 --- [http-nio-8080-exec-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2020-03-12 09:07:09.204  INFO 19620 --- [http-nio-8080-exec-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2020-03-12 09:07:09.217 DEBUG 19620 --- [http-nio-8080-exec-1] c.s.c.m.NotifyMapper.countByExample      : ==>  Preparing: select count(*) from notify WHERE ( receiver = ? and status = ? ) 
+2020-03-12 09:07:09.266 DEBUG 19620 --- [http-nio-8080-exec-1] c.s.c.m.NotifyMapper.countByExample      : ==> Parameters: 0(Long), 0(Integer)
+2020-03-12 09:07:09.757 DEBUG 19620 --- [http-nio-8080-exec-1] c.s.c.m.NotifyMapper.countByExample      : <==      Total: 1
+2020-03-12 09:47:32.433  INFO 22704 --- [main] c.s.community.CommunityApplication       : Starting CommunityApplication on sofency with PID 22704 (H:\JAVA\community\target\classes started by sofency in H:\JAVA\community)
+2020-03-12 09:47:32.438  INFO 22704 --- [main] c.s.community.CommunityApplication       : No active profile set, falling back to default profiles: default
+2020-03-12 09:47:34.069  INFO 22704 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2020-03-12 09:47:34.074  INFO 22704 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2020-03-12 09:47:34.234  INFO 22704 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 107ms. Found 0 Redis repository interfaces.
+2020-03-12 09:47:34.822  INFO 22704 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-03-12 09:47:35.569  INFO 22704 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2020-03-12 09:47:35.609  INFO 22704 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2020-03-12 09:47:35.610  INFO 22704 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.30]
+2020-03-12 09:47:35.612  INFO 22704 --- [main] o.a.catalina.core.AprLifecycleListener   : An older version [1.2.21] of the APR based Apache Tomcat Native library is installed, while Tomcat recommends a minimum version of [1.2.23]
+2020-03-12 09:47:35.612  INFO 22704 --- [main] o.a.catalina.core.AprLifecycleListener   : Loaded APR based Apache Tomcat Native library [1.2.21] using APR version [1.6.5].
+2020-03-12 09:47:35.612  INFO 22704 --- [main] o.a.catalina.core.AprLifecycleListener   : APR capabilities: IPv6 [true], sendfile [true], accept filters [false], random [true].
+2020-03-12 09:47:35.614  INFO 22704 --- [main] o.a.catalina.core.AprLifecycleListener   : APR/OpenSSL configuration: useAprConnector [false], useOpenSSL [true]
+2020-03-12 09:47:35.701  INFO 22704 --- [main] o.a.catalina.core.AprLifecycleListener   : OpenSSL successfully initialized [OpenSSL 1.1.1a  20 Nov 2018]
+2020-03-12 09:47:36.122  INFO 22704 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2020-03-12 09:47:36.122  INFO 22704 --- [main] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 3543 ms
+2020-03-12 09:47:40.590  INFO 22704 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2020-03-12 09:47:40.594  INFO 22704 --- [main] c.s.community.CommunityApplication       : Started CommunityApplication in 9.373 seconds (JVM running for 15.597)
+2020-03-12 09:48:01.421  INFO 22704 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2020-03-12 09:48:01.422  INFO 22704 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2020-03-12 09:48:01.430  INFO 22704 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 8 ms
+2020-03-12 09:48:02.144  INFO 22704 --- [http-nio-8080-exec-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2020-03-12 09:48:04.848  INFO 22704 --- [http-nio-8080-exec-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2020-03-12 09:48:04.866 DEBUG 22704 --- [http-nio-8080-exec-1] c.s.c.m.NotifyMapper.countByExample      : ==>  Preparing: select count(*) from notify WHERE ( receiver = ? and status = ? ) 
+2020-03-12 09:48:04.923 DEBUG 22704 --- [http-nio-8080-exec-1] c.s.c.m.NotifyMapper.countByExample      : ==> Parameters: 0(Long), 0(Integer)
+2020-03-12 09:48:05.449 DEBUG 22704 --- [http-nio-8080-exec-1] c.s.c.m.NotifyMapper.countByExample      : <==      Total: 1
+2020-03-12 09:50:45.270 DEBUG 22704 --- [http-nio-8080-exec-6] c.s.c.m.NotifyMapper.countByExample      : ==>  Preparing: select count(*) from notify WHERE ( receiver = ? and status = ? ) 
+2020-03-12 09:50:45.271 DEBUG 22704 --- [http-nio-8080-exec-6] c.s.c.m.NotifyMapper.countByExample      : ==> Parameters: 0(Long), 0(Integer)
+2020-03-12 09:50:45.301 DEBUG 22704 --- [http-nio-8080-exec-6] c.s.c.m.NotifyMapper.countByExample      : <==      Total: 1
+2020-03-12 09:51:00.243  INFO 19504 --- [main] c.s.community.CommunityApplication       : Starting CommunityApplication on sofency with PID 19504 (H:\JAVA\community\target\classes started by sofency in H:\JAVA\community)
+2020-03-12 09:51:00.260  INFO 19504 --- [main] c.s.community.CommunityApplication       : No active profile set, falling back to default profiles: default
+2020-03-12 09:51:03.207  INFO 19504 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2020-03-12 09:51:03.212  INFO 19504 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2020-03-12 09:51:03.415  INFO 19504 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 131ms. Found 0 Redis repository interfaces.
+2020-03-12 09:51:05.695  INFO 19504 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-03-12 09:51:07.330  INFO 19504 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2020-03-12 09:51:07.346  INFO 19504 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2020-03-12 09:51:07.346  INFO 19504 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.30]
+2020-03-12 09:51:07.349  INFO 19504 --- [main] o.a.catalina.core.AprLifecycleListener   : An older version [1.2.21] of the APR based Apache Tomcat Native library is installed, while Tomcat recommends a minimum version of [1.2.23]
+2020-03-12 09:51:07.350  INFO 19504 --- [main] o.a.catalina.core.AprLifecycleListener   : Loaded APR based Apache Tomcat Native library [1.2.21] using APR version [1.6.5].
+2020-03-12 09:51:07.351  INFO 19504 --- [main] o.a.catalina.core.AprLifecycleListener   : APR capabilities: IPv6 [true], sendfile [true], accept filters [false], random [true].
+2020-03-12 09:51:07.352  INFO 19504 --- [main] o.a.catalina.core.AprLifecycleListener   : APR/OpenSSL configuration: useAprConnector [false], useOpenSSL [true]
+2020-03-12 09:51:07.366  INFO 19504 --- [main] o.a.catalina.core.AprLifecycleListener   : OpenSSL successfully initialized [OpenSSL 1.1.1a  20 Nov 2018]
+2020-03-12 09:51:07.622  INFO 19504 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2020-03-12 09:51:07.622  INFO 19504 --- [main] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 7127 ms
+2020-03-12 09:51:13.872  INFO 19504 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2020-03-12 09:51:13.876  INFO 19504 --- [main] c.s.community.CommunityApplication       : Started CommunityApplication in 15.007 seconds (JVM running for 18.466)
+2020-03-12 09:51:42.747  INFO 19504 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2020-03-12 09:51:42.747  INFO 19504 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2020-03-12 09:51:42.763  INFO 19504 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 15 ms
+2020-03-12 09:51:43.497  INFO 19504 --- [http-nio-8080-exec-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2020-03-12 09:51:45.223  INFO 19504 --- [http-nio-8080-exec-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2020-03-12 09:51:45.235 DEBUG 19504 --- [http-nio-8080-exec-1] c.s.c.m.NotifyMapper.countByExample      : ==>  Preparing: select count(*) from notify WHERE ( receiver = ? and status = ? ) 
+2020-03-12 09:51:45.291 DEBUG 19504 --- [http-nio-8080-exec-1] c.s.c.m.NotifyMapper.countByExample      : ==> Parameters: 0(Long), 0(Integer)
+2020-03-12 09:51:45.486 DEBUG 19504 --- [http-nio-8080-exec-1] c.s.c.m.NotifyMapper.countByExample      : <==      Total: 1
+2020-03-12 10:12:46.911  INFO 11480 --- [main] c.s.community.CommunityApplication       : Starting CommunityApplication on sofency with PID 11480 (H:\JAVA\community\target\classes started by sofency in H:\JAVA\community)
+2020-03-12 10:12:46.932  INFO 11480 --- [main] c.s.community.CommunityApplication       : No active profile set, falling back to default profiles: default
+2020-03-12 10:12:49.424  INFO 11480 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2020-03-12 10:12:49.429  INFO 11480 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2020-03-12 10:12:49.682  INFO 11480 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 130ms. Found 0 Redis repository interfaces.
+2020-03-12 10:12:51.341  INFO 11480 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-03-12 10:12:53.751  INFO 11480 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2020-03-12 10:12:53.799  INFO 11480 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2020-03-12 10:12:53.800  INFO 11480 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.30]
+2020-03-12 10:12:53.804  INFO 11480 --- [main] o.a.catalina.core.AprLifecycleListener   : An older version [1.2.21] of the APR based Apache Tomcat Native library is installed, while Tomcat recommends a minimum version of [1.2.23]
+2020-03-12 10:12:53.804  INFO 11480 --- [main] o.a.catalina.core.AprLifecycleListener   : Loaded APR based Apache Tomcat Native library [1.2.21] using APR version [1.6.5].
+2020-03-12 10:12:53.805  INFO 11480 --- [main] o.a.catalina.core.AprLifecycleListener   : APR capabilities: IPv6 [true], sendfile [true], accept filters [false], random [true].
+2020-03-12 10:12:53.806  INFO 11480 --- [main] o.a.catalina.core.AprLifecycleListener   : APR/OpenSSL configuration: useAprConnector [false], useOpenSSL [true]
+2020-03-12 10:12:55.000  INFO 11480 --- [main] o.a.catalina.core.AprLifecycleListener   : OpenSSL successfully initialized [OpenSSL 1.1.1a  20 Nov 2018]
+2020-03-12 10:12:55.456  INFO 11480 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2020-03-12 10:12:55.458  INFO 11480 --- [main] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 8261 ms
+2020-03-12 10:13:01.346  INFO 11480 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2020-03-12 10:13:01.354  INFO 11480 --- [main] c.s.community.CommunityApplication       : Started CommunityApplication in 16.43 seconds (JVM running for 29.596)
+2020-03-12 10:14:10.603  INFO 11480 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2020-03-12 10:14:10.606  INFO 11480 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2020-03-12 10:14:10.619  INFO 11480 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 13 ms
+2020-03-12 10:14:13.044  INFO 11480 --- [http-nio-8080-exec-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2020-03-12 10:14:15.821  INFO 11480 --- [http-nio-8080-exec-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2020-03-12 10:14:15.837 DEBUG 11480 --- [http-nio-8080-exec-1] c.s.c.m.NotifyMapper.countByExample      : ==>  Preparing: select count(*) from notify WHERE ( receiver = ? and status = ? ) 
+2020-03-12 10:14:15.918 DEBUG 11480 --- [http-nio-8080-exec-1] c.s.c.m.NotifyMapper.countByExample      : ==> Parameters: 0(Long), 0(Integer)
+2020-03-12 10:14:16.191 DEBUG 11480 --- [http-nio-8080-exec-1] c.s.c.m.NotifyMapper.countByExample      : <==      Total: 1
+2020-03-12 10:16:56.830  INFO 22536 --- [main] c.s.community.CommunityApplication       : Starting CommunityApplication on sofency with PID 22536 (H:\JAVA\community\target\classes started by sofency in H:\JAVA\community)
+2020-03-12 10:16:56.853  INFO 22536 --- [main] c.s.community.CommunityApplication       : No active profile set, falling back to default profiles: default
+2020-03-12 10:17:00.794  INFO 22536 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2020-03-12 10:17:00.798  INFO 22536 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2020-03-12 10:17:01.088  INFO 22536 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 233ms. Found 0 Redis repository interfaces.
+2020-03-12 10:17:02.800  INFO 22536 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-03-12 10:17:04.014  INFO 22536 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2020-03-12 10:17:04.029  INFO 22536 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2020-03-12 10:17:04.030  INFO 22536 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.30]
+2020-03-12 10:17:04.033  INFO 22536 --- [main] o.a.catalina.core.AprLifecycleListener   : An older version [1.2.21] of the APR based Apache Tomcat Native library is installed, while Tomcat recommends a minimum version of [1.2.23]
+2020-03-12 10:17:04.034  INFO 22536 --- [main] o.a.catalina.core.AprLifecycleListener   : Loaded APR based Apache Tomcat Native library [1.2.21] using APR version [1.6.5].
+2020-03-12 10:17:04.034  INFO 22536 --- [main] o.a.catalina.core.AprLifecycleListener   : APR capabilities: IPv6 [true], sendfile [true], accept filters [false], random [true].
+2020-03-12 10:17:04.034  INFO 22536 --- [main] o.a.catalina.core.AprLifecycleListener   : APR/OpenSSL configuration: useAprConnector [false], useOpenSSL [true]
+2020-03-12 10:17:04.104  INFO 22536 --- [main] o.a.catalina.core.AprLifecycleListener   : OpenSSL successfully initialized [OpenSSL 1.1.1a  20 Nov 2018]
+2020-03-12 10:17:37.881  INFO 22536 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2020-03-12 10:17:37.882  INFO 22536 --- [main] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 40766 ms
+2020-03-12 10:17:42.537  INFO 22536 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2020-03-12 10:17:42.541  INFO 22536 --- [main] c.s.community.CommunityApplication       : Started CommunityApplication in 47.572 seconds (JVM running for 60.903)
+2020-03-12 10:17:45.689  INFO 22536 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2020-03-12 10:17:45.690  INFO 22536 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2020-03-12 10:17:45.701  INFO 22536 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 11 ms
+2020-03-12 10:17:47.719  INFO 22536 --- [http-nio-8080-exec-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2020-03-12 10:17:51.218  INFO 22536 --- [http-nio-8080-exec-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2020-03-12 10:17:51.238 DEBUG 22536 --- [http-nio-8080-exec-1] c.s.c.m.NotifyMapper.countByExample      : ==>  Preparing: select count(*) from notify WHERE ( receiver = ? and status = ? ) 
+2020-03-12 10:17:51.305 DEBUG 22536 --- [http-nio-8080-exec-1] c.s.c.m.NotifyMapper.countByExample      : ==> Parameters: 0(Long), 0(Integer)
+2020-03-12 10:17:51.393 DEBUG 22536 --- [http-nio-8080-exec-1] c.s.c.m.NotifyMapper.countByExample      : <==      Total: 1
+2020-03-12 10:27:33.883  INFO 19676 --- [main] c.s.community.CommunityApplication       : Starting CommunityApplication on sofency with PID 19676 (H:\JAVA\community\target\classes started by sofency in H:\JAVA\community)
+2020-03-12 10:27:33.889  INFO 19676 --- [main] c.s.community.CommunityApplication       : No active profile set, falling back to default profiles: default
+2020-03-12 10:27:36.617  INFO 19676 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2020-03-12 10:27:36.621  INFO 19676 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2020-03-12 10:27:36.828  INFO 19676 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 118ms. Found 0 Redis repository interfaces.
+2020-03-12 10:27:38.048  INFO 19676 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-03-12 10:27:39.342  INFO 19676 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2020-03-12 10:27:39.366  INFO 19676 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2020-03-12 10:27:39.367  INFO 19676 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.30]
+2020-03-12 10:27:39.369  INFO 19676 --- [main] o.a.catalina.core.AprLifecycleListener   : An older version [1.2.21] of the APR based Apache Tomcat Native library is installed, while Tomcat recommends a minimum version of [1.2.23]
+2020-03-12 10:27:39.370  INFO 19676 --- [main] o.a.catalina.core.AprLifecycleListener   : Loaded APR based Apache Tomcat Native library [1.2.21] using APR version [1.6.5].
+2020-03-12 10:27:39.370  INFO 19676 --- [main] o.a.catalina.core.AprLifecycleListener   : APR capabilities: IPv6 [true], sendfile [true], accept filters [false], random [true].
+2020-03-12 10:27:39.377  INFO 19676 --- [main] o.a.catalina.core.AprLifecycleListener   : APR/OpenSSL configuration: useAprConnector [false], useOpenSSL [true]
+2020-03-12 10:27:39.551  INFO 19676 --- [main] o.a.catalina.core.AprLifecycleListener   : OpenSSL successfully initialized [OpenSSL 1.1.1a  20 Nov 2018]
+2020-03-12 10:27:40.323  INFO 19676 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2020-03-12 10:27:40.323  INFO 19676 --- [main] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 6040 ms
+2020-03-12 10:27:49.961  INFO 19676 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2020-03-12 10:27:49.966  INFO 19676 --- [main] c.s.community.CommunityApplication       : Started CommunityApplication in 17.721 seconds (JVM running for 26.652)
+2020-03-12 10:27:52.651  INFO 19676 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2020-03-12 10:27:52.652  INFO 19676 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2020-03-12 10:27:52.662  INFO 19676 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 10 ms
+2020-03-12 10:27:54.026  INFO 19676 --- [http-nio-8080-exec-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2020-03-12 10:27:58.252  INFO 19676 --- [http-nio-8080-exec-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2020-03-12 10:27:58.276 DEBUG 19676 --- [http-nio-8080-exec-1] c.s.c.m.NotifyMapper.countByExample      : ==>  Preparing: select count(*) from notify WHERE ( receiver = ? and status = ? ) 
+2020-03-12 10:27:58.385 DEBUG 19676 --- [http-nio-8080-exec-1] c.s.c.m.NotifyMapper.countByExample      : ==> Parameters: 0(Long), 0(Integer)
+2020-03-12 10:27:58.780 DEBUG 19676 --- [http-nio-8080-exec-1] c.s.c.m.NotifyMapper.countByExample      : <==      Total: 1
+2020-03-12 16:31:33.197  INFO 11140 --- [main] c.s.community.CommunityApplication       : Starting CommunityApplication on sofency with PID 11140 (H:\JAVA\community\target\classes started by sofency in H:\JAVA\community)
+2020-03-12 16:31:33.213  INFO 11140 --- [main] c.s.community.CommunityApplication       : No active profile set, falling back to default profiles: default
+2020-03-12 16:31:35.556  INFO 11140 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2020-03-12 16:31:35.556  INFO 11140 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2020-03-12 16:31:35.666  INFO 11140 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 66ms. Found 0 Redis repository interfaces.
+2020-03-12 16:31:36.478  INFO 11140 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-03-12 16:31:37.868  INFO 11140 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2020-03-12 16:31:37.899  INFO 11140 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2020-03-12 16:31:37.899  INFO 11140 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.30]
+2020-03-12 16:31:37.899  INFO 11140 --- [main] o.a.catalina.core.AprLifecycleListener   : An older version [1.2.21] of the APR based Apache Tomcat Native library is installed, while Tomcat recommends a minimum version of [1.2.23]
+2020-03-12 16:31:37.899  INFO 11140 --- [main] o.a.catalina.core.AprLifecycleListener   : Loaded APR based Apache Tomcat Native library [1.2.21] using APR version [1.6.5].
+2020-03-12 16:31:37.899  INFO 11140 --- [main] o.a.catalina.core.AprLifecycleListener   : APR capabilities: IPv6 [true], sendfile [true], accept filters [false], random [true].
+2020-03-12 16:31:37.899  INFO 11140 --- [main] o.a.catalina.core.AprLifecycleListener   : APR/OpenSSL configuration: useAprConnector [false], useOpenSSL [true]
+2020-03-12 16:31:37.899  INFO 11140 --- [main] o.a.catalina.core.AprLifecycleListener   : OpenSSL successfully initialized [OpenSSL 1.1.1a  20 Nov 2018]
+2020-03-12 16:31:38.243  INFO 11140 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2020-03-12 16:31:38.243  INFO 11140 --- [main] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 4796 ms
+2020-03-12 16:31:41.336  INFO 11140 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2020-03-12 16:31:41.336  INFO 11140 --- [main] c.s.community.CommunityApplication       : Started CommunityApplication in 9.929 seconds (JVM running for 23.902)
+2020-03-12 16:32:14.653  INFO 11140 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2020-03-12 16:32:14.654  INFO 11140 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2020-03-12 16:32:14.654  INFO 11140 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 0 ms
+2020-03-12 16:32:49.588  WARN 11140 --- [http-nio-8080-exec-10] o.s.web.servlet.PageNotFound             : No mapping for GET /favicon.ico
+2020-03-12 16:34:27.208  INFO 11140 --- [http-nio-8080-exec-7] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2020-03-12 16:34:28.803  INFO 11140 --- [http-nio-8080-exec-7] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2020-03-12 16:34:28.817 DEBUG 11140 --- [http-nio-8080-exec-7] c.s.c.m.NotifyMapper.countByExample      : ==>  Preparing: select count(*) from notify WHERE ( receiver = ? and status = ? ) 
+2020-03-12 16:34:28.852 DEBUG 11140 --- [http-nio-8080-exec-7] c.s.c.m.NotifyMapper.countByExample      : ==> Parameters: 0(Long), 0(Integer)
+2020-03-12 16:34:29.058 DEBUG 11140 --- [http-nio-8080-exec-7] c.s.c.m.NotifyMapper.countByExample      : <==      Total: 1
+2020-03-12 16:36:04.825  INFO 13632 --- [main] c.s.community.CommunityApplication       : Starting CommunityApplication on sofency with PID 13632 (H:\JAVA\community\target\classes started by sofency in H:\JAVA\community)
+2020-03-12 16:36:04.856  INFO 13632 --- [main] c.s.community.CommunityApplication       : No active profile set, falling back to default profiles: default
+2020-03-12 16:36:06.341  INFO 13632 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2020-03-12 16:36:06.341  INFO 13632 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2020-03-12 16:36:06.419  INFO 13632 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 47ms. Found 0 Redis repository interfaces.
+2020-03-12 16:36:06.887  INFO 13632 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-03-12 16:36:07.340  INFO 13632 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2020-03-12 16:36:07.356  INFO 13632 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2020-03-12 16:36:07.356  INFO 13632 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.30]
+2020-03-12 16:36:07.356  INFO 13632 --- [main] o.a.catalina.core.AprLifecycleListener   : An older version [1.2.21] of the APR based Apache Tomcat Native library is installed, while Tomcat recommends a minimum version of [1.2.23]
+2020-03-12 16:36:07.356  INFO 13632 --- [main] o.a.catalina.core.AprLifecycleListener   : Loaded APR based Apache Tomcat Native library [1.2.21] using APR version [1.6.5].
+2020-03-12 16:36:07.356  INFO 13632 --- [main] o.a.catalina.core.AprLifecycleListener   : APR capabilities: IPv6 [true], sendfile [true], accept filters [false], random [true].
+2020-03-12 16:36:07.356  INFO 13632 --- [main] o.a.catalina.core.AprLifecycleListener   : APR/OpenSSL configuration: useAprConnector [false], useOpenSSL [true]
+2020-03-12 16:36:07.356  INFO 13632 --- [main] o.a.catalina.core.AprLifecycleListener   : OpenSSL successfully initialized [OpenSSL 1.1.1a  20 Nov 2018]
+2020-03-12 16:36:07.481  INFO 13632 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2020-03-12 16:36:07.481  INFO 13632 --- [main] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 2375 ms
+2020-03-12 16:36:09.059  INFO 13632 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2020-03-12 16:36:09.059  INFO 13632 --- [main] c.s.community.CommunityApplication       : Started CommunityApplication in 5.787 seconds (JVM running for 9.04)
+2020-03-12 16:36:38.102  INFO 13632 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2020-03-12 16:36:38.103  INFO 13632 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2020-03-12 16:36:38.132  INFO 13632 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 28 ms
+2020-03-12 16:36:38.593  INFO 13632 --- [http-nio-8080-exec-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2020-03-12 16:36:39.387  INFO 13632 --- [http-nio-8080-exec-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2020-03-12 16:36:39.399 DEBUG 13632 --- [http-nio-8080-exec-1] c.s.c.m.NotifyMapper.countByExample      : ==>  Preparing: select count(*) from notify WHERE ( receiver = ? and status = ? ) 
+2020-03-12 16:36:39.429 DEBUG 13632 --- [http-nio-8080-exec-1] c.s.c.m.NotifyMapper.countByExample      : ==> Parameters: 0(Long), 0(Integer)
+2020-03-12 16:36:39.454 DEBUG 13632 --- [http-nio-8080-exec-1] c.s.c.m.NotifyMapper.countByExample      : <==      Total: 1
+2020-03-12 16:38:27.045  INFO 7844 --- [main] c.s.community.CommunityApplication       : Starting CommunityApplication on sofency with PID 7844 (H:\JAVA\community\target\classes started by sofency in H:\JAVA\community)
+2020-03-12 16:38:27.045  INFO 7844 --- [main] c.s.community.CommunityApplication       : No active profile set, falling back to default profiles: default
+2020-03-12 16:38:28.154  INFO 7844 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2020-03-12 16:38:28.154  INFO 7844 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2020-03-12 16:38:28.232  INFO 7844 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 37ms. Found 0 Redis repository interfaces.
+2020-03-12 16:38:28.685  INFO 7844 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-03-12 16:38:29.075  INFO 7844 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2020-03-12 16:38:29.075  INFO 7844 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2020-03-12 16:38:29.075  INFO 7844 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.30]
+2020-03-12 16:38:29.075  INFO 7844 --- [main] o.a.catalina.core.AprLifecycleListener   : An older version [1.2.21] of the APR based Apache Tomcat Native library is installed, while Tomcat recommends a minimum version of [1.2.23]
+2020-03-12 16:38:29.075  INFO 7844 --- [main] o.a.catalina.core.AprLifecycleListener   : Loaded APR based Apache Tomcat Native library [1.2.21] using APR version [1.6.5].
+2020-03-12 16:38:29.075  INFO 7844 --- [main] o.a.catalina.core.AprLifecycleListener   : APR capabilities: IPv6 [true], sendfile [true], accept filters [false], random [true].
+2020-03-12 16:38:29.075  INFO 7844 --- [main] o.a.catalina.core.AprLifecycleListener   : APR/OpenSSL configuration: useAprConnector [false], useOpenSSL [true]
+2020-03-12 16:38:29.091  INFO 7844 --- [main] o.a.catalina.core.AprLifecycleListener   : OpenSSL successfully initialized [OpenSSL 1.1.1a  20 Nov 2018]
+2020-03-12 16:38:29.169  INFO 7844 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2020-03-12 16:38:29.169  INFO 7844 --- [main] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 2046 ms
+2020-03-12 16:38:30.638  INFO 7844 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2020-03-12 16:38:30.638  INFO 7844 --- [main] c.s.community.CommunityApplication       : Started CommunityApplication in 4.231 seconds (JVM running for 8.631)
+2020-03-12 16:38:33.859  INFO 7844 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2020-03-12 16:38:33.860  INFO 7844 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2020-03-12 16:38:33.871  INFO 7844 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 10 ms
+2020-03-12 16:38:34.361  INFO 7844 --- [http-nio-8080-exec-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2020-03-12 16:38:35.189  INFO 7844 --- [http-nio-8080-exec-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2020-03-12 16:38:35.197 DEBUG 7844 --- [http-nio-8080-exec-1] c.s.c.m.NotifyMapper.countByExample      : ==>  Preparing: select count(*) from notify WHERE ( receiver = ? and status = ? ) 
+2020-03-12 16:38:35.233 DEBUG 7844 --- [http-nio-8080-exec-1] c.s.c.m.NotifyMapper.countByExample      : ==> Parameters: 0(Long), 0(Integer)
+2020-03-12 16:38:35.257 DEBUG 7844 --- [http-nio-8080-exec-1] c.s.c.m.NotifyMapper.countByExample      : <==      Total: 1
+2020-03-12 16:41:02.101  INFO 10016 --- [main] c.s.community.CommunityApplication       : Starting CommunityApplication on sofency with PID 10016 (H:\JAVA\community\target\classes started by sofency in H:\JAVA\community)
+2020-03-12 16:41:02.163  INFO 10016 --- [main] c.s.community.CommunityApplication       : No active profile set, falling back to default profiles: default
+2020-03-12 16:41:03.355  INFO 10016 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2020-03-12 16:41:03.358  INFO 10016 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2020-03-12 16:41:03.401  INFO 10016 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 34ms. Found 0 Redis repository interfaces.
+2020-03-12 16:41:04.604  INFO 10016 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-03-12 16:41:05.149  INFO 10016 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2020-03-12 16:41:05.161  INFO 10016 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2020-03-12 16:41:05.162  INFO 10016 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.30]
+2020-03-12 16:41:05.163  INFO 10016 --- [main] o.a.catalina.core.AprLifecycleListener   : An older version [1.2.21] of the APR based Apache Tomcat Native library is installed, while Tomcat recommends a minimum version of [1.2.23]
+2020-03-12 16:41:05.173  INFO 10016 --- [main] o.a.catalina.core.AprLifecycleListener   : Loaded APR based Apache Tomcat Native library [1.2.21] using APR version [1.6.5].
+2020-03-12 16:41:05.174  INFO 10016 --- [main] o.a.catalina.core.AprLifecycleListener   : APR capabilities: IPv6 [true], sendfile [true], accept filters [false], random [true].
+2020-03-12 16:41:05.174  INFO 10016 --- [main] o.a.catalina.core.AprLifecycleListener   : APR/OpenSSL configuration: useAprConnector [false], useOpenSSL [true]
+2020-03-12 16:41:05.179  INFO 10016 --- [main] o.a.catalina.core.AprLifecycleListener   : OpenSSL successfully initialized [OpenSSL 1.1.1a  20 Nov 2018]
+2020-03-12 16:41:05.336  INFO 10016 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2020-03-12 16:41:05.337  INFO 10016 --- [main] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 3064 ms
+2020-03-12 16:41:07.556  INFO 10016 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2020-03-12 16:41:07.561  INFO 10016 --- [main] c.s.community.CommunityApplication       : Started CommunityApplication in 6.479 seconds (JVM running for 11.376)
+2020-03-12 16:41:07.848  INFO 10016 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2020-03-12 16:41:07.849  INFO 10016 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2020-03-12 16:41:07.864  INFO 10016 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 15 ms
+2020-03-12 16:41:08.533  INFO 10016 --- [http-nio-8080-exec-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2020-03-12 16:41:09.549  INFO 10016 --- [http-nio-8080-exec-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2020-03-12 16:41:09.560 DEBUG 10016 --- [http-nio-8080-exec-1] c.s.c.m.NotifyMapper.countByExample      : ==>  Preparing: select count(*) from notify WHERE ( receiver = ? and status = ? ) 
+2020-03-12 16:41:09.619 DEBUG 10016 --- [http-nio-8080-exec-1] c.s.c.m.NotifyMapper.countByExample      : ==> Parameters: 0(Long), 0(Integer)
+2020-03-12 16:41:09.649 DEBUG 10016 --- [http-nio-8080-exec-1] c.s.c.m.NotifyMapper.countByExample      : <==      Total: 1
+2020-03-12 16:42:26.095  INFO 4236 --- [main] c.s.community.CommunityApplication       : Starting CommunityApplication on sofency with PID 4236 (H:\JAVA\community\target\classes started by sofency in H:\JAVA\community)
+2020-03-12 16:42:26.095  INFO 4236 --- [main] c.s.community.CommunityApplication       : No active profile set, falling back to default profiles: default
+2020-03-12 16:42:27.579  INFO 4236 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2020-03-12 16:42:27.579  INFO 4236 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2020-03-12 16:42:27.704  INFO 4236 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 41ms. Found 0 Redis repository interfaces.
+2020-03-12 16:42:28.126  INFO 4236 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-03-12 16:42:28.533  INFO 4236 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2020-03-12 16:42:28.545  INFO 4236 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2020-03-12 16:42:28.546  INFO 4236 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.30]
+2020-03-12 16:42:28.548  INFO 4236 --- [main] o.a.catalina.core.AprLifecycleListener   : An older version [1.2.21] of the APR based Apache Tomcat Native library is installed, while Tomcat recommends a minimum version of [1.2.23]
+2020-03-12 16:42:28.548  INFO 4236 --- [main] o.a.catalina.core.AprLifecycleListener   : Loaded APR based Apache Tomcat Native library [1.2.21] using APR version [1.6.5].
+2020-03-12 16:42:28.549  INFO 4236 --- [main] o.a.catalina.core.AprLifecycleListener   : APR capabilities: IPv6 [true], sendfile [true], accept filters [false], random [true].
+2020-03-12 16:42:28.549  INFO 4236 --- [main] o.a.catalina.core.AprLifecycleListener   : APR/OpenSSL configuration: useAprConnector [false], useOpenSSL [true]
+2020-03-12 16:42:28.555  INFO 4236 --- [main] o.a.catalina.core.AprLifecycleListener   : OpenSSL successfully initialized [OpenSSL 1.1.1a  20 Nov 2018]
+2020-03-12 16:42:28.671  INFO 4236 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2020-03-12 16:42:28.671  INFO 4236 --- [main] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 2435 ms
+2020-03-12 16:42:31.707  INFO 4236 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2020-03-12 16:42:31.710  INFO 4236 --- [main] c.s.community.CommunityApplication       : Started CommunityApplication in 6.322 seconds (JVM running for 10.917)
+2020-03-12 16:42:36.537  INFO 4236 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2020-03-12 16:42:36.538  INFO 4236 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2020-03-12 16:42:36.554  INFO 4236 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 16 ms
+2020-03-12 16:42:37.063  INFO 4236 --- [http-nio-8080-exec-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2020-03-12 16:42:38.436  INFO 4236 --- [http-nio-8080-exec-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2020-03-12 16:42:38.447 DEBUG 4236 --- [http-nio-8080-exec-1] c.s.c.m.NotifyMapper.countByExample      : ==>  Preparing: select count(*) from notify WHERE ( receiver = ? and status = ? ) 
+2020-03-12 16:42:38.487 DEBUG 4236 --- [http-nio-8080-exec-1] c.s.c.m.NotifyMapper.countByExample      : ==> Parameters: 0(Long), 0(Integer)
+2020-03-12 16:42:38.522 DEBUG 4236 --- [http-nio-8080-exec-1] c.s.c.m.NotifyMapper.countByExample      : <==      Total: 1
+2020-03-12 16:44:36.463  INFO 12728 --- [main] c.s.community.CommunityApplication       : Starting CommunityApplication on sofency with PID 12728 (H:\JAVA\community\target\classes started by sofency in H:\JAVA\community)
+2020-03-12 16:44:36.463  INFO 12728 --- [main] c.s.community.CommunityApplication       : No active profile set, falling back to default profiles: default
+2020-03-12 16:44:37.478  INFO 12728 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2020-03-12 16:44:37.494  INFO 12728 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2020-03-12 16:44:37.541  INFO 12728 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 31ms. Found 0 Redis repository interfaces.
+2020-03-12 16:44:37.994  INFO 12728 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-03-12 16:44:38.353  INFO 12728 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2020-03-12 16:44:38.369  INFO 12728 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2020-03-12 16:44:38.369  INFO 12728 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.30]
+2020-03-12 16:44:38.369  INFO 12728 --- [main] o.a.catalina.core.AprLifecycleListener   : An older version [1.2.21] of the APR based Apache Tomcat Native library is installed, while Tomcat recommends a minimum version of [1.2.23]
+2020-03-12 16:44:38.369  INFO 12728 --- [main] o.a.catalina.core.AprLifecycleListener   : Loaded APR based Apache Tomcat Native library [1.2.21] using APR version [1.6.5].
+2020-03-12 16:44:38.369  INFO 12728 --- [main] o.a.catalina.core.AprLifecycleListener   : APR capabilities: IPv6 [true], sendfile [true], accept filters [false], random [true].
+2020-03-12 16:44:38.369  INFO 12728 --- [main] o.a.catalina.core.AprLifecycleListener   : APR/OpenSSL configuration: useAprConnector [false], useOpenSSL [true]
+2020-03-12 16:44:38.369  INFO 12728 --- [main] o.a.catalina.core.AprLifecycleListener   : OpenSSL successfully initialized [OpenSSL 1.1.1a  20 Nov 2018]
+2020-03-12 16:44:38.494  INFO 12728 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2020-03-12 16:44:38.494  INFO 12728 --- [main] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 1906 ms
+2020-03-12 16:44:40.290  INFO 12728 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2020-03-12 16:44:40.306  INFO 12728 --- [main] c.s.community.CommunityApplication       : Started CommunityApplication in 4.633 seconds (JVM running for 9.28)
+2020-03-12 16:44:46.738  INFO 12728 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2020-03-12 16:44:46.738  INFO 12728 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2020-03-12 16:44:46.746  INFO 12728 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 7 ms
+2020-03-12 16:44:47.249  INFO 12728 --- [http-nio-8080-exec-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2020-03-12 16:44:48.293  INFO 12728 --- [http-nio-8080-exec-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2020-03-12 16:44:48.305 DEBUG 12728 --- [http-nio-8080-exec-1] c.s.c.m.NotifyMapper.countByExample      : ==>  Preparing: select count(*) from notify WHERE ( receiver = ? and status = ? ) 
+2020-03-12 16:44:48.344 DEBUG 12728 --- [http-nio-8080-exec-1] c.s.c.m.NotifyMapper.countByExample      : ==> Parameters: 0(Long), 0(Integer)
+2020-03-12 16:44:48.374 DEBUG 12728 --- [http-nio-8080-exec-1] c.s.c.m.NotifyMapper.countByExample      : <==      Total: 1
+2020-03-12 17:12:02.080 DEBUG 12728 --- [http-nio-8080-exec-4] c.s.c.m.NotifyMapper.countByExample      : ==>  Preparing: select count(*) from notify WHERE ( receiver = ? and status = ? ) 
+2020-03-12 17:12:02.081 DEBUG 12728 --- [http-nio-8080-exec-4] c.s.c.m.NotifyMapper.countByExample      : ==> Parameters: 0(Long), 0(Integer)
+2020-03-12 17:12:02.126 DEBUG 12728 --- [http-nio-8080-exec-4] c.s.c.m.NotifyMapper.countByExample      : <==      Total: 1
+2020-03-12 17:13:31.507  INFO 12308 --- [main] c.s.community.CommunityApplication       : Starting CommunityApplication on sofency with PID 12308 (H:\JAVA\community\target\classes started by sofency in H:\JAVA\community)
+2020-03-12 17:13:31.515  INFO 12308 --- [main] c.s.community.CommunityApplication       : No active profile set, falling back to default profiles: default
+2020-03-12 17:13:33.273  INFO 12308 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2020-03-12 17:13:33.276  INFO 12308 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2020-03-12 17:13:33.343  INFO 12308 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 45ms. Found 0 Redis repository interfaces.
+2020-03-12 17:13:33.887  INFO 12308 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-03-12 17:13:34.423  INFO 12308 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2020-03-12 17:13:34.456  INFO 12308 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2020-03-12 17:13:34.457  INFO 12308 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.30]
+2020-03-12 17:13:34.459  INFO 12308 --- [main] o.a.catalina.core.AprLifecycleListener   : An older version [1.2.21] of the APR based Apache Tomcat Native library is installed, while Tomcat recommends a minimum version of [1.2.23]
+2020-03-12 17:13:34.459  INFO 12308 --- [main] o.a.catalina.core.AprLifecycleListener   : Loaded APR based Apache Tomcat Native library [1.2.21] using APR version [1.6.5].
+2020-03-12 17:13:34.459  INFO 12308 --- [main] o.a.catalina.core.AprLifecycleListener   : APR capabilities: IPv6 [true], sendfile [true], accept filters [false], random [true].
+2020-03-12 17:13:34.459  INFO 12308 --- [main] o.a.catalina.core.AprLifecycleListener   : APR/OpenSSL configuration: useAprConnector [false], useOpenSSL [true]
+2020-03-12 17:13:34.486  INFO 12308 --- [main] o.a.catalina.core.AprLifecycleListener   : OpenSSL successfully initialized [OpenSSL 1.1.1a  20 Nov 2018]
+2020-03-12 17:13:34.665  INFO 12308 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2020-03-12 17:13:34.665  INFO 12308 --- [main] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 2678 ms
+2020-03-12 17:13:36.670  INFO 12308 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2020-03-12 17:13:36.674  INFO 12308 --- [main] c.s.community.CommunityApplication       : Started CommunityApplication in 5.922 seconds (JVM running for 11.554)
+2020-03-12 17:13:45.162  INFO 12308 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2020-03-12 17:13:45.163  INFO 12308 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2020-03-12 17:13:45.174  INFO 12308 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 11 ms
+2020-03-12 17:13:45.667  INFO 12308 --- [http-nio-8080-exec-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2020-03-12 17:13:46.952  INFO 12308 --- [http-nio-8080-exec-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2020-03-12 17:13:46.966 DEBUG 12308 --- [http-nio-8080-exec-1] c.s.c.m.NotifyMapper.countByExample      : ==>  Preparing: select count(*) from notify WHERE ( receiver = ? and status = ? ) 
+2020-03-12 17:13:47.006 DEBUG 12308 --- [http-nio-8080-exec-1] c.s.c.m.NotifyMapper.countByExample      : ==> Parameters: 0(Long), 0(Integer)
+2020-03-12 17:13:47.038 DEBUG 12308 --- [http-nio-8080-exec-1] c.s.c.m.NotifyMapper.countByExample      : <==      Total: 1
+2020-03-12 17:14:32.829 DEBUG 12308 --- [http-nio-8080-exec-5] c.s.c.mapper.UserMapper.selectByExample  : ==>  Preparing: select generate_id, account_id, name, token, gmt_create, gmt_modify, avatar_url from user WHERE ( account_id = ? ) 
+2020-03-12 17:14:32.829 DEBUG 12308 --- [http-nio-8080-exec-5] c.s.c.mapper.UserMapper.selectByExample  : ==> Parameters: 48281891(Long)
+2020-03-12 17:14:32.999 DEBUG 12308 --- [http-nio-8080-exec-5] c.s.c.mapper.UserMapper.selectByExample  : <==      Total: 1
+2020-03-12 17:14:33.003 DEBUG 12308 --- [http-nio-8080-exec-5] c.s.c.m.U.updateByExampleSelective       : ==>  Preparing: update user SET generate_id = ?, account_id = ?, name = ?, token = ?, gmt_create = ?, gmt_modify = ?, avatar_url = ? WHERE ( account_id = ? ) 
+2020-03-12 17:14:33.005 DEBUG 12308 --- [http-nio-8080-exec-5] c.s.c.m.U.updateByExampleSelective       : ==> Parameters: 26(Integer), 48281891(Long), sofencyXiao(String), d53c070d-d3f3-4a6c-895f-a1d067c4276d(String), 1582728039800(Long), 1584004472999(Long), https://avatars2.githubusercontent.com/u/48281891?v=4(String), 48281891(Long)
+2020-03-12 17:14:33.337 DEBUG 12308 --- [http-nio-8080-exec-5] c.s.c.m.U.updateByExampleSelective       : <==    Updates: 1
+2020-03-12 17:14:33.362 DEBUG 12308 --- [http-nio-8080-exec-6] c.s.c.mapper.UserMapper.selectByExample  : ==>  Preparing: select generate_id, account_id, name, token, gmt_create, gmt_modify, avatar_url from user WHERE ( token = ? ) 
+2020-03-12 17:14:33.363 DEBUG 12308 --- [http-nio-8080-exec-6] c.s.c.mapper.UserMapper.selectByExample  : ==> Parameters: d53c070d-d3f3-4a6c-895f-a1d067c4276d(String)
+2020-03-12 17:14:33.365 DEBUG 12308 --- [http-nio-8080-exec-6] c.s.c.mapper.UserMapper.selectByExample  : <==      Total: 1
+2020-03-12 17:14:33.563 DEBUG 12308 --- [http-nio-8080-exec-6] c.s.c.m.NotifyMapper.countByExample      : ==>  Preparing: select count(*) from notify WHERE ( receiver = ? and status = ? ) 
+2020-03-12 17:14:33.564 DEBUG 12308 --- [http-nio-8080-exec-6] c.s.c.m.NotifyMapper.countByExample      : ==> Parameters: 48281891(Long), 0(Integer)
+2020-03-12 17:14:33.595 DEBUG 12308 --- [http-nio-8080-exec-6] c.s.c.m.NotifyMapper.countByExample      : <==      Total: 1
+2020-03-12 17:14:33.596 DEBUG 12308 --- [http-nio-8080-exec-6] c.s.c.m.NotifyMapper.countByExample      : ==>  Preparing: select count(*) from notify WHERE ( receiver = ? and status = ? ) 
+2020-03-12 17:14:33.596 DEBUG 12308 --- [http-nio-8080-exec-6] c.s.c.m.NotifyMapper.countByExample      : ==> Parameters: 48281891(Long), 0(Integer)
+2020-03-12 17:14:33.598 DEBUG 12308 --- [http-nio-8080-exec-6] c.s.c.m.NotifyMapper.countByExample      : <==      Total: 1
+2020-03-12 17:14:59.045 DEBUG 12308 --- [http-nio-8080-exec-8] c.s.c.mapper.UserMapper.selectByExample  : ==>  Preparing: select generate_id, account_id, name, token, gmt_create, gmt_modify, avatar_url from user WHERE ( token = ? ) 
+2020-03-12 17:14:59.046 DEBUG 12308 --- [http-nio-8080-exec-8] c.s.c.mapper.UserMapper.selectByExample  : ==> Parameters: d53c070d-d3f3-4a6c-895f-a1d067c4276d(String)
+2020-03-12 17:14:59.048 DEBUG 12308 --- [http-nio-8080-exec-8] c.s.c.mapper.UserMapper.selectByExample  : <==      Total: 1
+2020-03-12 17:14:59.297 DEBUG 12308 --- [http-nio-8080-exec-8] c.s.c.m.NotifyMapper.countByExample      : ==>  Preparing: select count(*) from notify WHERE ( receiver = ? and status = ? ) 
+2020-03-12 17:14:59.298 DEBUG 12308 --- [http-nio-8080-exec-8] c.s.c.m.NotifyMapper.countByExample      : ==> Parameters: 48281891(Long), 0(Integer)
+2020-03-12 17:14:59.300 DEBUG 12308 --- [http-nio-8080-exec-8] c.s.c.m.NotifyMapper.countByExample      : <==      Total: 1
+2020-03-12 17:14:59.301 DEBUG 12308 --- [http-nio-8080-exec-8] c.s.c.m.NotifyMapper.countByExample      : ==>  Preparing: select count(*) from notify WHERE ( receiver = ? and status = ? ) 
+2020-03-12 17:14:59.302 DEBUG 12308 --- [http-nio-8080-exec-8] c.s.c.m.NotifyMapper.countByExample      : ==> Parameters: 48281891(Long), 0(Integer)
+2020-03-12 17:14:59.304 DEBUG 12308 --- [http-nio-8080-exec-8] c.s.c.m.NotifyMapper.countByExample      : <==      Total: 1
+2020-03-12 17:50:11.774 DEBUG 12308 --- [http-nio-8080-exec-1] c.s.c.mapper.UserMapper.selectByExample  : ==>  Preparing: select generate_id, account_id, name, token, gmt_create, gmt_modify, avatar_url from user WHERE ( token = ? ) 
+2020-03-12 17:50:11.781 DEBUG 12308 --- [http-nio-8080-exec-1] c.s.c.mapper.UserMapper.selectByExample  : ==> Parameters: d53c070d-d3f3-4a6c-895f-a1d067c4276d(String)
+2020-03-12 17:50:11.922 DEBUG 12308 --- [http-nio-8080-exec-1] c.s.c.mapper.UserMapper.selectByExample  : <==      Total: 1
+2020-03-12 17:50:12.149 DEBUG 12308 --- [http-nio-8080-exec-1] c.s.c.m.Q.selectByPrimaryKey             : ==>  Preparing: select id, title, tag, like_count, view_count, creator_id, comment_count, gmt_create, gmt_modify , description from question where id = ? 
+2020-03-12 17:50:12.149 DEBUG 12308 --- [http-nio-8080-exec-1] c.s.c.m.Q.selectByPrimaryKey             : ==> Parameters: 1(Long)
+2020-03-12 17:50:12.327 DEBUG 12308 --- [http-nio-8080-exec-1] c.s.c.m.Q.selectByPrimaryKey             : <==      Total: 1
+2020-03-12 17:50:12.328 DEBUG 12308 --- [http-nio-8080-exec-1] c.s.c.m.QuestionCustomMapper.incrView    : ==>  Preparing: UPDATE question set view_count=view_count+1 WHERE id=? 
+2020-03-12 17:50:12.328 DEBUG 12308 --- [http-nio-8080-exec-1] c.s.c.m.QuestionCustomMapper.incrView    : ==> Parameters: 1(Long)
+2020-03-12 17:50:12.577 DEBUG 12308 --- [http-nio-8080-exec-1] c.s.c.m.QuestionCustomMapper.incrView    : <==    Updates: 1
+2020-03-12 17:50:12.617 DEBUG 12308 --- [http-nio-8080-exec-1] c.s.c.mapper.UserMapper.selectByExample  : ==>  Preparing: select generate_id, account_id, name, token, gmt_create, gmt_modify, avatar_url from user WHERE ( account_id = ? ) 
+2020-03-12 17:50:12.617 DEBUG 12308 --- [http-nio-8080-exec-1] c.s.c.mapper.UserMapper.selectByExample  : ==> Parameters: 48281891(Long)
+2020-03-12 17:50:12.619 DEBUG 12308 --- [http-nio-8080-exec-1] c.s.c.mapper.UserMapper.selectByExample  : <==      Total: 1
+2020-03-12 17:56:50.377 DEBUG 12308 --- [http-nio-8080-exec-4] c.s.c.mapper.UserMapper.selectByExample  : ==>  Preparing: select generate_id, account_id, name, token, gmt_create, gmt_modify, avatar_url from user WHERE ( token = ? ) 
+2020-03-12 17:56:50.378 DEBUG 12308 --- [http-nio-8080-exec-4] c.s.c.mapper.UserMapper.selectByExample  : ==> Parameters: d53c070d-d3f3-4a6c-895f-a1d067c4276d(String)
+2020-03-12 17:56:50.380 DEBUG 12308 --- [http-nio-8080-exec-4] c.s.c.mapper.UserMapper.selectByExample  : <==      Total: 1
+2020-03-12 17:58:33.713 DEBUG 12308 --- [http-nio-8080-exec-7] c.s.c.mapper.UserMapper.selectByExample  : ==>  Preparing: select generate_id, account_id, name, token, gmt_create, gmt_modify, avatar_url from user WHERE ( token = ? ) 
+2020-03-12 17:58:33.713 DEBUG 12308 --- [http-nio-8080-exec-7] c.s.c.mapper.UserMapper.selectByExample  : ==> Parameters: d53c070d-d3f3-4a6c-895f-a1d067c4276d(String)
+2020-03-12 17:58:33.715 DEBUG 12308 --- [http-nio-8080-exec-7] c.s.c.mapper.UserMapper.selectByExample  : <==      Total: 1
+2020-03-12 18:36:53.416 DEBUG 12308 --- [http-nio-8080-exec-6] c.s.c.mapper.UserMapper.selectByExample  : ==>  Preparing: select generate_id, account_id, name, token, gmt_create, gmt_modify, avatar_url from user WHERE ( token = ? ) 
+2020-03-12 18:36:53.424 DEBUG 12308 --- [http-nio-8080-exec-6] c.s.c.mapper.UserMapper.selectByExample  : ==> Parameters: d53c070d-d3f3-4a6c-895f-a1d067c4276d(String)
+2020-03-12 18:36:53.566 DEBUG 12308 --- [http-nio-8080-exec-6] c.s.c.mapper.UserMapper.selectByExample  : <==      Total: 1
+2020-03-12 18:39:27.441 DEBUG 12308 --- [http-nio-8080-exec-7] c.s.c.mapper.UserMapper.selectByExample  : ==>  Preparing: select generate_id, account_id, name, token, gmt_create, gmt_modify, avatar_url from user WHERE ( token = ? ) 
+2020-03-12 18:39:27.442 DEBUG 12308 --- [http-nio-8080-exec-7] c.s.c.mapper.UserMapper.selectByExample  : ==> Parameters: d53c070d-d3f3-4a6c-895f-a1d067c4276d(String)
+2020-03-12 18:39:27.444 DEBUG 12308 --- [http-nio-8080-exec-7] c.s.c.mapper.UserMapper.selectByExample  : <==      Total: 1
+>>>>>>> c464ff6c24045290c1cd781ef34f8f78a2575f61

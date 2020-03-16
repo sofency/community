@@ -21,7 +21,9 @@
             <ul class="nav navbar-nav navbar-right">
                 <li th:if="${session.user !=null && session.user.accountId != 0 }"> <a href="#">通知<span class="badge"   style="margin-left:10px;" th:text="${session.unreadCount}"></span></a></li>
                 <li th:if="${session.user !=null && session.user.accountId != 0 }"><a th:href="@{/publish}">提问</a></li>
+
                 <li th:if="${session.user==null ||session.user.accountId == 0 }"><a href="javascript:void(0)" style="cursor: pointer" data-toggle="modal" data-target="#myModal">登录</a></li>
+
                 <li th:if="${session.user==null ||session.user.accountId == 0 }"><a onclick="showLogin()"style="cursor: pointer">登录</a></li>
                 <li class="dropdown" th:if="${session.user !=null && session.user.accountId != 0 }">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
@@ -35,6 +37,22 @@
                     </ul>
                 </li>
             </ul>
+        </div>
+    </div>
+    <!--登录界面-->
+    <div class="login" style="position: fixed;width: 100%;height: 100%; top: 0px;left: 0px;background-color:rgba(133,159,161,0.4);z-index: 999;display: none;">
+        <div class="row col-lg-4 col-lg-offset-4 col-md-4 col-md-offset-4 col-sm-4 col-sm-offset-4 col-xs-4 col-xs-offset-4" style="text-align: center;margin-top: 18%; border: 1px solid white; min-height: 300px;background-color: white; border-radius: 5px;">
+            <h2 style="margin-bottom: 47px">选择登录方式</h2>
+            <div class="row">
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                    <label>QQ</label><br>
+                    <a href=""><img src="/static/images/QQ.jpg" style="width: 60px;border-radius: 50%;"></a>
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                    <label>Github</label><br>
+                    <a href="https://github.com/login/oauth/authorize?client_id=94d38df2b20a7acb563f&redirect_uri=http://localhost:8080/callback&scope=user&state=1" onclick="hiddenLogin()"><img src="/static/images/Github.jpeg" style="width: 60px;border-radius: 50%;"></a>
+                </div>
+            </div>
         </div>
     </div>
 </nav>
