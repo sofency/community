@@ -2,6 +2,7 @@ package com.sofency.community.service;
 
 import cn.hutool.core.bean.BeanUtil;
 import cn.hutool.core.bean.copier.CopyOptions;
+import com.sofency.community.dto.CommentCreateDTO;
 import com.sofency.community.dto.CommentDTO;
 import com.sofency.community.enums.CommentTypeEnums;
 import com.sofency.community.enums.NotifyTypeEnums;
@@ -56,7 +57,6 @@ public class CommentService {
         }
 
         if(comment.getType()==CommentTypeEnums.COMMENT.getType()){
-
             CommentExample example1= new CommentExample();
             example1.createCriteria().andIdEqualTo(comment.getParentId())
                     .andTypeEqualTo(NotifyTypeEnums.NOTIFY_QUESTION.getType());
@@ -144,7 +144,7 @@ public class CommentService {
     }
 
     //根据父亲id查找二级评论
-    @Cacheable(cacheNames = "commentSecond",key = "#parentId")
+//    @Cacheable(cacheNames = "commentSecond",key = "#parentId")
     public List<CommentDTO> listByParentId(Long parentId){
         CommentExample example = new CommentExample();
         example.createCriteria()
@@ -153,8 +153,8 @@ public class CommentService {
         List<Comment> comments  = commentMapper.selectByExample(example);
         //根据评论的creator查询用户的信息
         if(comments.size()!=0){
-            Set<Long> creatorsId = comments.stream().map(comment -> comment.getCommentator()).collect(Collectors.toSet());
-
+            Set<Long> creatorsId = comments.stream()
+                    .map(comment -> comment.getCommentator()).collect(Collectors.toSet());
             //根据id查找用户
             List<Long> listIds = new ArrayList<>(creatorsId);
             UserExample userExample = new UserExample();
@@ -171,5 +171,21 @@ public class CommentService {
             return collect;//返回二级评论的内容
         }
         return null;
+    }
+
+    //选择插入评论信息
+    public void chooseInsert(User user,CommentCreateDTO commentCreateDTO) {
+        Comment comment = new Comment();
+        comment.setParentId(commentCreateDTO.getParentId());//要么是问题id 或者评论的id是主键
+        comment.setType(commentCreateDTO.getType());
+        comment.setContent(commentCreateDTO.getComment());
+        comment.setGmtCreate(System.currentTimeMillis());
+        comment.setGmtModify(System.currentTimeMillis());
+        if(user!=null){
+            comment.setCommentator(user.getAccountId());//设置评论人
+        }else{
+            throw new CustomException(CustomExceptionCode.UN_KNOW_ERROR);
+        }
+        insert(comment);//插入评论
     }
 }

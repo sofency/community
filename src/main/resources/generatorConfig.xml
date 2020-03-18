@@ -34,7 +34,7 @@
             <property name="enableSubPackages" value="true" />
         </javaClientGenerator>
 
-        <table tableName="forumusers" domainObjectName="ForumUsers" ></table>
+        <table tableName="user" domainObjectName="User" ></table>
 <!--           &lt;!&ndash; <property name="useActualColumnNames" value="true"/>&ndash;&gt;-->
 <!--        </table>-->
 <!--        <table tableName="question" domainObjectName="Question" >-->

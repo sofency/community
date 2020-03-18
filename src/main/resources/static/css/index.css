@@ -6,9 +6,6 @@
     display: inline-block;
     margin-right: 5px;
 }
-.modal-content{
-    width: 400px;
-}
 .title .active{
     color: #ea6f5a;
     border-bottom: 2px solid #ea6f5a;
@@ -38,6 +35,7 @@ table{
     border-radius: 10px;
     width: 300px;
     min-width: 300px !important;
+    position: relative;
 }
 table tr{
     border: 1px solid #c0c0c0;
@@ -48,6 +46,15 @@ table tr td:first-child{
 }
 table tr td:last-child{
     width: 270px;
+}
+#errorPwd{
+    height: 50px;
+    width: 142px;
+    position: absolute;
+    line-height: 50px;
+    color: red;
+    margin-left: 5px;
+    right: -146px;
 }
 table input{
     background-color:hsla(0,0%,100%,.1);
@@ -69,6 +76,9 @@ table input{
     border: none;
     background: #3db922;
     color: white;
+}
+button:focus{
+    outline: 0;
 }
 .sign-up-msg{
     margin: 10px 0;

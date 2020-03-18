@@ -29,6 +29,9 @@ body{
     color: #999;
     font-size: 12px;
 }
+.tagInfo a:hover{
+    text-decoration: none;
+}
 .tagInfo span{
     display: inline-block;
     margin-right: 15px;
@@ -36,6 +39,7 @@ body{
 .text-user{
     color: #155faa;
 }
+
 .text-999{
     color: #999;
 }

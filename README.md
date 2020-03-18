@@ -12,14 +12,19 @@ create table user
 (
     generate_id int auto_increment
         primary key,
-    account_id  varchar(50)  null,
+    account_id  bigint       null,
     name        varchar(30)  null,
     token       varchar(50)  null,
     gmt_create  bigint       null,
     gmt_modify  bigint       null,
-    avatar_url  varchar(100) null
+    avatar_url  varchar(100) null,
+    email       varchar(20)  null,
+    tags        varchar(40)  null,
+    password    varchar(30)  null,
+    github_url  int          null,
+    constraint user_email_uindex
+        unique (email)
 );
-  ENGINE = InnoDB;
 ```
 文章表
 ```sql
@@ -38,7 +43,6 @@ create table question
     like_count    int default 0 null
 );
 
-  ENGINE = InnoDB;
 ```
 评论表
 ```sql
@@ -69,6 +73,7 @@ create table notify
     parent_id  bigint        null
 )
     comment '通知消息';
+
 ```
 ```bash
 #执行mybatis生成器

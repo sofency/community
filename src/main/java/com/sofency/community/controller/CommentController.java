@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
-
 /**
  * @auther sofency
  * @date 2020/2/29 22:57
@@ -27,35 +26,31 @@ public class CommentController {
     public CommentController(CommentService commentService){
         this.commentService=commentService;
     }
-
     //负责写评论的信息
     @ResponseBody
     @RequestMapping(value = "/commentSubmit",method = RequestMethod.POST)
     public Object post(@RequestBody CommentCreateDTO commentCreateDTO, HttpServletRequest request){
         Comment comment = new Comment();
-        User user = (User)request.getSession().getAttribute("user");
-        if(user.getAccountId()!=0){//不是游客的话
-            comment.setCommentator(user.getAccountId());//设置评论人
-            comment.setParentId(commentCreateDTO.getParentId());//要么是问题id 或者评论的id是主键
-            comment.setType(commentCreateDTO.getType());
-            comment.setContent(commentCreateDTO.getComment());
-            comment.setGmtCreate(System.currentTimeMillis());
-            comment.setGmtModify(System.currentTimeMillis());
-            commentService.insert(comment);//插入成功之后返回相应的状态信息
-            return ResultDTO.okOf(null);//表示请求成功
-        }else{
+        //第三方登录
+        User user = (User) request.getSession().getAttribute("user");
+        //进行判断
+        if(user==null){
             return ResultDTO.errorOf(CustomExceptionCode.NO_LOGIN);//用户没登录的情况
+        }else{
+            if(user.getAccountId()==0){//游客方式
+                return ResultDTO.errorOf(CustomExceptionCode.NO_LOGIN);//用户没登录的情况
+            }else{
+                commentService.chooseInsert(user,commentCreateDTO);
+                return ResultDTO.okOf(null);//表示请求成功
+            }
         }
     }
 
     @ResponseBody
     @RequestMapping(value = "/commentGetSecond",method = RequestMethod.GET)
     public Object get(@RequestParam("parentId") Long parentId, HttpServletRequest request){
-        User user = (User)request.getSession().getAttribute("user");
-        if(user.getAccountId()!=0) {//不是游客的话
-            List<CommentDTO> commentDTOS = commentService.listByParentId(parentId);
-            return ResultDTO.okOf(commentDTOS);//返回封装的对象
-        }
-        return null;
+        List<CommentDTO> commentDTOS = commentService.listByParentId(parentId);
+        return ResultDTO.okOf(commentDTOS);//返回封装的对象
+
     }
 }

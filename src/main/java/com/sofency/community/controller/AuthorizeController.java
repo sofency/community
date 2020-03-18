@@ -28,7 +28,6 @@ import java.util.UUID;
 @Controller
 @EnableConfigurationProperties(AccessTokenDTO.class)
 public class AuthorizeController {
-
     private GithubProvider githubProvider;//github认证的工具类
     //可以使用@Value()的方式进行注入
     private AccessTokenDTO accessTokenDTO;
@@ -41,6 +40,15 @@ public class AuthorizeController {
         this.userService=userService;
     }
 
+    /**
+     * \
+     * @param code
+     * @param state
+     * @param request
+     * @param response
+     * @return
+     * 第三方登录使用user表存储
+     */
     @GetMapping("/callback")
     public String callback(@RequestParam(name="code") String code,
                            @RequestParam(name="state") String state,
@@ -62,7 +70,7 @@ public class AuthorizeController {
             user.setAvatarUrl(githubUser.getAvatar_url());
             user.setAccountId(githubUser.getId());
             //进行插入操作
-            userService.createOrInsert(user,githubUser);
+            userService.updateOrInsert(user);
             //存储会话
             response.addCookie(new Cookie("token",token));//登录之后
             return "redirect:/";

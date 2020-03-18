@@ -28,7 +28,8 @@ public class MyWebConfiger extends WebMvcConfigurationSupport {
 
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
-        registry.addInterceptor(getSessionInterceptor()).addPathPatterns("/**").excludePathPatterns("/static/**").excludePathPatterns("*.html");
+        registry.addInterceptor(getSessionInterceptor()).addPathPatterns("/**").
+                excludePathPatterns("/static/**").excludePathPatterns("*.html").excludePathPatterns("/login","/register","/","/commentGetSecond");
     }
     @Override
     protected void addResourceHandlers(ResourceHandlerRegistry registry) {

@@ -1,9 +1,6 @@
 package com.sofency.community.controller;
 
 import com.sofency.community.dto.PaginationDTO;
-import com.sofency.community.exception.CustomException;
-import com.sofency.community.exception.CustomExceptionCode;
-import com.sofency.community.mapper.UserMapper;
 import com.sofency.community.pojo.User;
 import com.sofency.community.service.NotifyService;
 import com.sofency.community.service.QuestionService;
@@ -15,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.util.Random;
 
 /**
  * @auther sofency
@@ -35,30 +33,41 @@ public class IndexController {
     public String index(Model model,
                         @RequestParam(name = "page",defaultValue="1") Integer page,
                         @RequestParam(name = "size",defaultValue = "4") Integer size,HttpServletRequest request){
+
         PaginationDTO paginationDTO=null;
-        String search = request.getParameter("search");
-        System.out.println(search);
-        if(search==""||search==null){
-            paginationDTO= questionService.getPaginationDto(page,size,"");//获取页面的信息
-        }else{
-            paginationDTO= questionService.getPaginationDto(page,size,search);//获取页面的信息
-        }
+
+        Integer unreadCount =0;//存储未读的信息
+
+        String search = request.getParameter("search");//获取请求参数
+        paginationDTO= questionService.getPaginationDto(page,size,search);//获取页面的信息
         HttpSession session = request.getSession();
-        User user = (User)session.getAttribute("user");
-//        if(paginationDTO==null){
-//            throw new CustomException(CustomExceptionCode.GET_INFO_FAILED);
-//        }
-        if(user.getAccountId()!=0){//判断不是游客
+        User user = (User) session.getAttribute("user");
+
+        if(user!=null&&user.getAccountId()!=0){//判断不是游客
             paginationDTO.setNotifyNum(notifyService.count(user.getAccountId()));//设置返回信息的个数
-            //统计未读消息的个数到session中
-            Integer num = notifyService.count(user.getAccountId());
-            //存储到session中  未读消息
-            session.setAttribute("unreadCount",num);
-        }else{
-            session.setAttribute("unreadCount",0);//默认是0
+            unreadCount = notifyService.count(user.getAccountId());//统计未读消息的个数到session中
         }
+
+        session.setAttribute("unreadCount",unreadCount);
         model.addAttribute("questions",paginationDTO);
         model.addAttribute("search",search);
         return "index";
+    }
+    private String getRandomCharacter(){
+        String val = "";
+        Random random = new Random();
+        //参数length，表示生成几位随机数
+        for(int i = 0; i < 16; i++) {
+            String charOrNum = random.nextInt(2) % 2 == 0 ? "char" : "num";
+            //输出字母还是数字
+            if( "char".equalsIgnoreCase(charOrNum) ) {
+                //输出是大写字母还是小写字母
+                int temp = random.nextInt(2) % 2 == 0 ? 65 : 97;
+                val += (char)(random.nextInt(26) + temp);
+            } else if( "num".equalsIgnoreCase(charOrNum) ) {
+                val += String.valueOf(random.nextInt(10));
+            }
+        }
+        return val;
     }
 }

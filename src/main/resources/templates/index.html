@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="/static/css/common.css">
     <link rel="stylesheet" href="/static/css/index.css">
     <script src="/static/js/default-image.js"></script>
+    <script src="/static/js/login.js"></script>
     <script type="text/javascript">
         window.onload=function(){
             const flag = window.localStorage.getItem("closeable");
@@ -16,140 +17,10 @@
                 window.localStorage.removeItem("closeable");
             }
         }
-        function checkPwd() {
-            const firstPwd = $("#inputPassword").val();
-            const secondPwd = $("#confirm").val();
-            console.log(firstPwd+":"+secondPwd);
-            if(firstPwd != secondPwd){
-                $("#errorPwd").text("两次输入的密码不一致").css({"display":"block"});//text可以动态修改内容 而innerHtml不能
-            }else{
-                $("#errorPwd").css("display","none");
-            }
-        }
-        //表单的提交
-        function submitForm() {
-            const password=$("#inputPassword").val();
-            const email=$("#email").val();
-            $.ajax({
-                url:"/register",
-                method:"post",
-                contentType:"application/json",
-                dataType:"json",
-                data:JSON.stringify({
-                    "password":password,
-                    "email":email
-                }),
-                success:function (data) {
-                    if(data.registered==false){
-                        $("#isRegister").text("你已注册过，请登录");
-                    }else{
-                        //跳转到登录的
-                    }
-                }
-            })
-        }
-        function showUnderline(obj) {
-            $(obj).css({
-                "border-bottom":"2px solid red"
-            })
-        }
-        function hiddenLine(obj) {
-            $(obj).css({
-                "border-bottom":"none"
-            })
-        }
-        //登录的表单
-        function submitLoginForm() {
-
-        }
-        function choose(obj) {
-            console.log(obj)
-            const register= $(".regist");
-            const login = $(".login-btn");
-            if(Object.is(obj,register[0])){//注册
-                $(login).removeClass("active");
-                $(obj).addClass("active");
-                $(".register").css("display","block");//显示注解界面
-                $(".register-btn").css("display","block");
-                $(".login").css("display","none");//显示注解界面
-                $(".btn-div-login").css("display","none");
-
-            }else{
-                $(obj).addClass("active");
-                $(register).removeClass("active");
-                $(".register").css("display","none");//显示注解界面
-                $(".register-btn").css("display","none");
-                $(".login").css("display","block");//显示注解界面
-                $(".btn-div-login").css("display","block");
-            }
-        }
     </script>
 </head>
 <body>
 <div th:replace="~{navigation::nav}"></div>
-<!-- Modal -->
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <h4 class="title">
-                <div class="col-lg-8 col-lg-offset-2 text-center">
-                    <a href="#" class="common-a active regist" onmouseover="showUnderline(this)" onmouseout="hiddenLine(this)" onclick="choose(this)">注册</a>
-                    <span class="circle"></span>
-                    <a href="#" class="common-a login-btn" onmouseover="showUnderline(this)" onmouseout="hiddenLine(this)" onclick="choose(this)">登录</a>
-                </div>
-            </h4>
-            <div class="modal-body clearfix">
-                <!---注册的选项-->
-                <table class="self-table register">
-                    <tr>
-                        <td><span class="glyphicon glyphicon-lock"></span></td>
-                        <td><input type="password" name="password" placeholder="请输入密码" id="inputPassword"></td>
-                    </tr>
-                    <tr>
-                        <td><span class="glyphicon glyphicon-lock"></span></td>
-                        <td><input type="password" placeholder="请确认密码" id="confirm"></td>
-                    </tr>
-                    <tr>
-                        <td><span class="glyphicon glyphicon-user"></span></td>
-                        <td><input type="email" name="email" placeholder="请输入邮箱" id="email" onfocus="checkPwd()"></td>
-                    </tr>
-                </table>
-                <div class="btn-div register-btn">
-                    <input type="button" value="注册" id="register-btn" onclick="submitForm()">
-                    <p class="sign-up-msg">点击 “注册” 即表示您同意并愿意遵守论坛<br>
-                        用户协议 和 隐私政策 。
-                    </p>
-                </div>
-                <!--登录的选项-->
-                <table class="self-table login" style="display: none">
-                    <tr>
-                        <td><span class="glyphicon glyphicon-user"></span></td>
-                        <td><input type="email" name="email" placeholder="请输入邮箱" id="login_email"></td>
-                    </tr>
-                    <tr>
-                        <td><span class="glyphicon glyphicon-lock"></span></td>
-                        <td><input type="password" placeholder="请确认密码" id="login_password"></td>
-                    </tr>
-                </table>
-                <div class="btn-div btn-div-login" style="display: none">
-                    <input type="button" value="登录" id="btn-login" onclick="submitLoginForm()">
-                </div>
-                <div class="more-sign">
-                    <h6>社交账号直接登录</h6>
-                    <ul>
-                        <li>
-                            <a href="#"><img src="/static/images/QQ.jpg" ></a>
-                        </li>
-                        <li>
-                            <a href="https://github.com/login/oauth/authorize?client_id=94d38df2b20a7acb563f&redirect_uri=http://localhost:8080/callback&scope=user&state=1"><img src="/static/images/Github.jpeg"></a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
 <!--发布的内容标签-->
 <div class="container-fluid content">
     <div class="row">

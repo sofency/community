@@ -1,16 +1,15 @@
 package com.sofency.community.controller;
 
-import com.sofency.community.mapper.ForumUsersMapper;
-import com.sofency.community.pojo.ForumUsers;
-import com.sofency.community.pojo.ForumUsersExample;
+import com.sofency.community.mapper.UserMapper;
+import com.sofency.community.pojo.User;
+import com.sofency.community.pojo.UserExample;
+import com.sofency.community.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-
-import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -23,27 +22,33 @@ import java.util.Map;
  */
 @Controller
 public class RegisterController {
-    private ForumUsersMapper forumUsersMapper;
-
+    /**
+     * @param forumUsers
+     * @param session
+     * @return
+     * 注册完成之后直接到登录
+     */
+    private UserService userService;
+    private UserMapper userMapper;
     @Autowired
-    public RegisterController(ForumUsersMapper forumUsersMapper){
-        this.forumUsersMapper=forumUsersMapper;
+    public RegisterController(UserMapper userMapper,UserService userService){
+        this.userMapper=userMapper;
+        this.userService=userService;
     }
+
     @ResponseBody
     @RequestMapping("/register")
-    public Map<String, Boolean> register(@RequestBody ForumUsers forumUsers){
+    public Map<String, Boolean> register(@RequestBody User user, HttpSession session){
         //首先检查下是否注册过
-        ForumUsersExample example = new ForumUsersExample();
-        example.createCriteria().andEmailEqualTo(forumUsers.getEmail());
-        List<ForumUsers> demo= forumUsersMapper.selectByExample(example);
+        UserExample example = new UserExample();
+        example.createCriteria().andEmailEqualTo(user.getEmail());
+        List<User> demo= userMapper.selectByExample(example);
         Map<String,Boolean> map = new HashMap<>();
         if(demo.size()!=0){//说明注册过
             map.put("registered",false);
             return map;
         }
-        forumUsers.setGmtCreate(System.currentTimeMillis());
-        int num = forumUsersMapper.insert(forumUsers);//添加用户的信息
-        System.out.println("插入数据的返回值"+num);//
+        userService.updateOrInsert(user);//添加用户的信息  成功之后返回1 不成功返回0
         map.put("registered",true);
         return map;
     }

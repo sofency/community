@@ -31,7 +31,6 @@ public class NotificationController {
         this.questionMapper=questionMapper;
         this.notifyMapper=notifyMapper;
     }
-
     /**
      * 问题的id和通知的id
      */
@@ -40,6 +39,7 @@ public class NotificationController {
         HttpSession session = request.getSession();
         User user = (User) session.getAttribute("user");
         Question question = questionMapper.selectByPrimaryKey(questionId);
+
         if(question==null){
             throw new CustomException(CustomExceptionCode.QUESTION_NOT_FOUND);//问题不存在
         }

@@ -44,7 +44,7 @@ public class QuestionService {
         Integer offset = size*(page-1);//获取偏移的位置
         List<Question> questions =null;
         Integer total=0;
-        if(search==""){
+        if(search==""||search==null){
             questions = questionMapper.selectByExampleWithBLOBsWithRowbounds(new QuestionExample(),new RowBounds(offset,size));
             total= Math.toIntExact(questionMapper.countByExample(null));
         }else{

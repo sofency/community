@@ -3,12 +3,9 @@ package com.sofency.community.controller;
 import com.sofency.community.dto.NotifyDTO;
 import com.sofency.community.dto.PaginationDTO;
 import com.sofency.community.dto.QuestionDTO;
-import com.sofency.community.enums.NotifyStatusEnums;
 import com.sofency.community.exception.CustomException;
 import com.sofency.community.exception.CustomExceptionCode;
-import com.sofency.community.mapper.NotifyMapper;
 import com.sofency.community.mapper.UserMapper;
-import com.sofency.community.pojo.NotifyExample;
 import com.sofency.community.pojo.User;
 import com.sofency.community.service.NotifyService;
 import com.sofency.community.service.QuestionService;
@@ -16,7 +13,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -47,10 +43,12 @@ public class ProblemController {
                                 @PathVariable("action") String action){
         //从session里面拿取用户的信息
         ModelAndView modelAndView = new ModelAndView();
-        User user = (User)request.getSession().getAttribute("user");
+        User user= (User) request.getSession().getAttribute("user");
         Long creatorId=null;
         if(user!=null){
-            creatorId= user.getAccountId();//获取账户id
+            creatorId = user.getAccountId();//获取账户id
+        }else{
+            throw new CustomException(CustomExceptionCode.NO_LOGIN);
         }
         PaginationDTO<QuestionDTO> paginationDTO=null;
         if(creatorId!=null){
@@ -61,9 +59,8 @@ public class ProblemController {
             modelAndView.addObject("action","reply");
             modelAndView.addObject("type","最近回复");
             HttpSession session= request.getSession();
-            User user1 = (User)session.getAttribute("user");
 
-            PaginationDTO<NotifyDTO> notifyDTO = notifyService.getPaginationDto(page,size,user1.getAccountId());//从session里面拿取
+            PaginationDTO<NotifyDTO> notifyDTO = notifyService.getPaginationDto(page,size,creatorId);//从session里面拿取
             modelAndView.addObject("notifyDTO",notifyDTO);
             modelAndView.setViewName("profile/replies");
         }else if("questions".equals(action)){

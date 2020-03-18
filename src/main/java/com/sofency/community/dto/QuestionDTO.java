@@ -21,7 +21,7 @@ public class QuestionDTO {
     private Integer commentCount;//评论数
     private Integer viewCount;//浏览人数
     private Integer likeCount;//点赞人数
-    private String tag;
+    private String tag;//标签
     private List<String> tags;//标签集合
     private User user;
 }

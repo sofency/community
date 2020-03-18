@@ -8,11 +8,34 @@
     <link rel="stylesheet" href="/static/css/font-awesome.css">
     <link rel="stylesheet" href="/static/css/common.css">
     <link rel="stylesheet" href="/static/css/editormd.preview.css">
+    <link rel="stylesheet" href="/static/css/index.css">
     <script src="/static/js/jquery.js"></script>
     <script src="/static/js/editormd.js"></script>
     <script src="/static/lib/marked.min.js"></script>
     <script src="/static/lib/prettify.min.js"></script>
     <script src="/static/js/bootstrap.js"></script>
+    <script src="/static/js/login.js"></script>
+    <style>
+        #full-comment-second5 > div > div.col-lg-2.col-md-2.col-sm-2.col-xs-2 > a{
+            display: flex;
+        }
+        #full-comment-second5 > div > div.media.col-lg-10.col-md-10.col-sm-10.col-xs-10 > div.media-body.text-999 > a:hover{
+            text-decoration: none;
+            color: black;
+            cursor: text;
+        }
+        #full-comment-second5 > div> div.media.col-lg-10.col-md-10.col-sm-10.col-xs-10 > div.media-body.text-999 > a > div{
+            color: #999;
+        }
+        #full-comment-second5 > div> div.col-lg-2.col-md-2.col-sm-2.col-xs-2 > a:hover{
+            text-decoration: none;
+            color: black;
+            cursor: text;
+        }
+        #full-comment-second5 > div > div.col-lg-2.col-md-2.col-sm-2.col-xs-2{
+            display: inline-flex;
+        }
+    </style>
 </head>
 <body>
 <div th:replace="~{navigation::nav}"></div>
@@ -36,7 +59,7 @@
                 </div>
                 <script type="text/javascript">
                     $(function () {
-                        var testView =editormd.markdownToHTML("test-markdown-view",{})
+                        const testView =editormd.markdownToHTML("test-markdown-view",{})
                     })
                 </script>
                 <hr>
