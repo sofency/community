@@ -36,6 +36,13 @@ public class RegisterController {
         this.userService=userService;
     }
 
+    /**
+     * 逻辑 首先根据用户输入的邮箱进行查询是否该用户注册过
+     * 如果没有注册过就进行注册  否则注册失败
+     * @param user
+     * @param session
+     * @return json 注册的结果信息
+     */
     @ResponseBody
     @RequestMapping("/register")
     public Map<String, Boolean> register(@RequestBody User user, HttpSession session){

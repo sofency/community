@@ -31,8 +31,13 @@ public class NotificationController {
         this.questionMapper=questionMapper;
         this.notifyMapper=notifyMapper;
     }
+
     /**
-     * 问题的id和通知的id
+     *
+     * @param questionId 问题的id
+     * @param id  通知的id
+     * @param request
+     * @return  用户查看通知 设置状态为0
      */
     @RequestMapping("/notification/{questionId}/{id}")
     public String read(@PathVariable("questionId")Long questionId, @PathVariable("id") int id, HttpServletRequest request){
@@ -45,7 +50,7 @@ public class NotificationController {
         }
 
         Notify notify = notifyMapper.selectByPrimaryKey(id);
-        if(notify!=null && (!notify.getReceiver().equals(user.getAccountId()))){
+        if(notify!=null && (!notify.getReceiver().equals(user.getGenerateId()))){
             throw new CustomException(CustomExceptionCode.FOUND_OTHER_QUESTION);//查看他人的评论信息
         }
         if(notify.getStatus()==NotifyStatusEnums.READ.getStatus()){

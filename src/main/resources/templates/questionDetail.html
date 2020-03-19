@@ -3,17 +3,15 @@
 <head>
     <title>问题详情页</title>
     <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
-    <link rel="stylesheet" href="/static/css/bootstrap.css">
-    <link rel="stylesheet" href="/static/css/bootstrap-theme.css">
+    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="/static/css/font-awesome.css">
     <link rel="stylesheet" href="/static/css/common.css">
     <link rel="stylesheet" href="/static/css/editormd.preview.css">
     <link rel="stylesheet" href="/static/css/index.css">
-    <script src="/static/js/jquery.js"></script>
+    <script src="https://cdn.staticfile.org/jquery/3.2.1/jquery.min.js"></script>
     <script src="/static/js/editormd.js"></script>
     <script src="/static/lib/marked.min.js"></script>
     <script src="/static/lib/prettify.min.js"></script>
-    <script src="/static/js/bootstrap.js"></script>
     <script src="/static/js/login.js"></script>
     <style>
         #full-comment-second5 > div > div.col-lg-2.col-md-2.col-sm-2.col-xs-2 > a{
@@ -39,7 +37,7 @@
 </head>
 <body>
 <div th:replace="~{navigation::nav}"></div>
-<div class="container-fluid content">
+<div class="container content col-lg-10">
     <div class="row">
         <div class="col-lg-9 col-md-12 col-sm-12 col-xs-12 padding" >
             <!--问题标题-->
@@ -66,7 +64,7 @@
                 <div class="edit_tag" style="color: #999">
                     <span th:text="${time}" style="margin-right: 15px;"></span>
                     <a style="margin-right: 15px;color: #999;text-decoration: none; cursor: pointer"><span class="glyphicon glyphicon-comment"></span>添加评论</a>
-                    <a style="margin-right: 15px;color: #999;text-decoration: none; cursor: pointer" th:if="${(session.user!=null) && (session.user.accountId == questionDTO.creatorId)}" th:href="@{'/publish/'+${questionDTO.id}}"><span class="glyphicon glyphicon-pencil"></span>编辑</a>
+                    <a style="margin-right: 15px;color: #999;text-decoration: none; cursor: pointer" th:if="${(session.user!=null) && (session.user.generateId == questionDTO.creatorId)}" th:href="@{'/publish/'+${questionDTO.id}}"><span class="glyphicon glyphicon-pencil"></span>编辑</a>
                 </div>
             </div>
             <!--回复模块-->
@@ -75,11 +73,7 @@
                 <hr class="margin-top-0">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="color: #999" th:if="${comments} ne null" th:each="comment:${comments}">
                     <div class="media" style="margin-bottom: 10px">
-                        <div class="media-left">
-                            <a href="#">
-                                <img class="media-object img-rounded img-default" th:src="${comment.user.avatarUrl}" alt="..." width="30" height="30" onerror="nofind();">
-                            </a>
-                        </div>
+                        <img class="media-object img-rounded img-default mr-3" th:src="${comment.user.avatarUrl}" alt="..." width="30" height="30" onerror="nofind();">
                         <div class="media-body text-999">
                             <span class="media-heading text-user" style="font-size: 14px" th:text="${comment.user.name}"></span><br>
                             <div th:text="${comment.content}"></div>
@@ -102,11 +96,7 @@
                 <input type="hidden" id="parentId" th:value="${questionDTO.id}">
                 <h4>评论</h4>
                 <div class="media" style="margin-bottom: 10px">
-                    <div class="media-left">
-                        <a href="#">
-                            <img class="media-object img-default img-rounded" th:src="${questionDTO.user.avatarUrl}" alt="..." width="30" height="30" onerror="nofind();">
-                        </a>
-                    </div>
+                    <img class="media-object img-default img-rounded mr-2" th:src="${questionDTO.user.avatarUrl}" alt="..." width="30" height="30" onerror="nofind();">
                     <div class="media-body text-999">
                         <span class="media-heading text-user" style="font-size: 14px" th:text="${questionDTO.user.name}"></span>
                     </div>
@@ -118,11 +108,7 @@
         <div class="col-lg-3 col-md-12 col-sm-12 col-xs-12">
             <h3>发起人</h3>
             <div class="media">
-                <div class="media-left">
-                    <a href="#">
-                        <img class="media-object img-default img-rounded" th:src="${questionDTO.user.avatarUrl}" alt="..." width="30" height="30" onerror="nofind();">
-                    </a>
-                </div>
+                <img class="media-object img-default img-rounded mr-2" th:src="${questionDTO.user.avatarUrl}" alt="..." width="30" height="30" onerror="nofind();">
                 <div class="media-body text-999">
                     <span class="media-heading text-user" style="font-size: 14px" th:text="${questionDTO.user.name}"></span><br>
                     西安工程大学
@@ -144,5 +130,7 @@
 <script src="/static/js/comment.js"></script>
 <script src="/static/js/default-image.js"></script>
 <script src="/static/js/getSecondComment.js"></script>
+<script src="https://cdn.staticfile.org/popper.js/1.15.0/umd/popper.min.js"></script>
+<script src="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
 </body>
 </html>

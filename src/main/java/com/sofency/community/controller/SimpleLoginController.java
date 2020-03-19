@@ -14,6 +14,7 @@ import javax.servlet.http.HttpSession;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.UUID;
 
 /**
  * @author sofency
@@ -31,6 +32,15 @@ public class SimpleLoginController{
         this.userService=userService;
     }
 
+    //通过邮箱方式进行普通登录
+
+    /**
+     *逻辑： 通过比较查询邮箱和密码 如果返回结果的list集合不为0的话就说明存在该用户登录成功
+     * @param user
+     * @param session
+     * @param response
+     * @return
+     */
     @RequestMapping("/login")
     public String login(User user, HttpSession session, HttpServletResponse response){
 
@@ -41,11 +51,9 @@ public class SimpleLoginController{
         Map<String,Boolean> map = new HashMap<>();
         if(users.size()==1){
             map.put("login",true);
-            response.addCookie(new Cookie("token",String.valueOf(users.get(0).getGmtCreate())));//登录之后
-            UserExample example1 = new UserExample();
-            example1.createCriteria().andEmailEqualTo(user.getEmail());
-            List<User> users1 = userMapper.selectByExample(example1);
-            session.setAttribute("user",users1.get(0));
+            String UUID = java.util.UUID.randomUUID().toString();
+            response.addCookie(new Cookie("token",users.get(0).getToken()));//登录之后
+            session.setAttribute("user",users.get(0));//返回用户的所有信息作为连接信息
         }else{
             map.put("login",false);
         }

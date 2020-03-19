@@ -37,7 +37,7 @@ public class CommentController {
         if(user==null){
             return ResultDTO.errorOf(CustomExceptionCode.NO_LOGIN);//用户没登录的情况
         }else{
-            if(user.getAccountId()==0){//游客方式
+            if(user.getGenerateId()==0){//游客方式
                 return ResultDTO.errorOf(CustomExceptionCode.NO_LOGIN);//用户没登录的情况
             }else{
                 commentService.chooseInsert(user,commentCreateDTO);

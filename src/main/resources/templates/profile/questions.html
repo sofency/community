@@ -3,24 +3,22 @@
 <head>
     <title>码匠社区</title>
     <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
-    <link rel="stylesheet" href="/static/css/bootstrap.css">
+    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="/static/css/bootstrap-theme.css">
     <link rel="stylesheet" href="/static/css/common.css">
-    <script src="/static/js/jquery.js"></script>
-    <script src="/static/js/bootstrap.js"></script>
     <script src="/static/js/default-image.js"></script>
 </head>
 <body>
 <div th:replace="~{navigation::nav}"></div>
 <!--发布的内容标签-->
-<div class="container-fluid content">
+<div class="container content col-lg-10">
     <div class="row">
         <div class="col-lg-9 col-md-12 col-sm-12 col-xs-12 padding" >
             <h3><span class="glyphicon glyphicon-list" aria-hidden="true"></span>&nbsp;<span th:text="${type}"></span></h3>
             <hr>
             <!--问题列表-->
             <div class="media" th:each="questionId:${questionById.data}">
-                <div class="media-left">
+                <div class="media-left mr-2">
                     <a href="#">
                         <img class="media-object img-rounded img" th:src="${questionId.user.avatarUrl}" alt="..." width="38" height="38" onerror="nofind();">
                     </a>
@@ -32,27 +30,19 @@
                     <span class="tip">发起了问题 • <span th:text="${questionId.commentCount}"></span>个评论 • <span th:text="${questionId.viewCount}"></span> 次浏览 • <span  th:text="${#dates.format(questionId.gmtCreate,'yyyy-MM-dd HH:mm:ss')}" > 小时前</span></span>
                 </div>
             </div>
-            <nav aria-label="Page navigation">
+            <nav aria-label="Page navigation" class="mt-2">
                 <ul class="pagination">
-                    <li th:if="${questionById.hasFirstPage}">
-                        <a href="@{'/profile/' +${action}(page=1)}" aria-label="Previous">
-                            <span aria-hidden="true">&laquo;</span>
-                        </a>
-                    </li>
-                    <li th:if="${questionById.hasPrevious}">
-                        <a th:href="@{'/profile/' +${action}(page=${questionById.currentPage -1})}" aria-label="Previous">
+                    <li th:if="${questionById.hasPrevious}" class="page-item">
+                        <a th:href="@{'/profile/' +${action}(page=${questionById.currentPage -1})}" aria-label="Previous" class="page-link">
                             <span aria-hidden="true">&lt;</span>
                         </a>
                     </li>
-                    <li th:each="page: ${questionById.pagesList}" th:class="${questionById.currentPage == page}?'active':''"><a th:href="@{'/profile/'+${action}(page=${page})}" th:text="${page}" ></a></li>
-                    <li th:if="${questionById.hasNext}">
-                        <a th:href="@{'/profile/' +${action}(page=${questionById.currentPage +1})}" aria-label="Next">
-                            <span aria-hidden="true">&gt;</span>
-                        </a>
+                    <li th:each="page: ${questionById.pagesList}" th:class="${questionById.currentPage == page}?'active':''" class="page-item">
+                        <a th:href="@{'/profile/'+${action}(page=${page})}" th:text="${page}" class="page-link" ></a>
                     </li>
-                    <li th:if="${questionById.hasEndPage}">
-                        <a href="@{'/profile/' +${action}(page=${questionById.pages})}" aria-label="Next">
-                            <span aria-hidden="true">&raquo;</span>
+                    <li th:if="${questionById.hasNext}" class="page-item">
+                        <a th:href="@{'/profile/' +${action}(page=${questionById.currentPage +1})}" aria-label="Next" class="page-link">
+                            <span aria-hidden="true">&gt;</span>
                         </a>
                     </li>
                 </ul>
@@ -61,5 +51,8 @@
         <div th:replace="~{commons/footer::choice}"></div>
     </div>
 </div>
+<script src="https://cdn.staticfile.org/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://cdn.staticfile.org/popper.js/1.15.0/umd/popper.min.js"></script>
+<script src="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
 </body>
 </html>

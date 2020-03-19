@@ -37,6 +37,14 @@ public class publishController {
         return "publish";
     }
 
+    //要进行修改时查看问题的详细信息
+
+    /**
+     * @param model
+     * @param id
+     * @param request
+     * @return  问题的信息 数据的回显
+     */
     @GetMapping("/publish/{id}")
     public String change(Model model, @PathVariable("id") Long id,HttpServletRequest request){
         Question question = questionMapper.selectByPrimaryKey(id);
@@ -49,6 +57,18 @@ public class publishController {
         model.addAttribute("contentId",id);
         return "publish";
     }
+    //提交问题
+
+    /**
+     *
+     * @param title  问题的标题
+     * @param description 问题的描述
+     * @param tag  问题的标签
+     * @param id
+     * @param model
+     * @param request
+     * @return
+     */
     @PostMapping("/publish")
     public String doPublish(@RequestParam(required = false) String title,
                             @RequestParam(required = false) String description,
@@ -60,7 +80,6 @@ public class publishController {
         model.addAttribute("title",title);
         model.addAttribute("description",description);
         model.addAttribute("tag",tag);
-
         if("".equals(title)||null==title){
             model.addAttribute("error","请填写标题");
         }
@@ -78,8 +97,8 @@ public class publishController {
         question.setDescription(description);
         question.setTag(tag);
         question.setGmtModify(System.currentTimeMillis());
-        question.setCreatorId(user.getAccountId());
-        question.setId(id);//设置id
+        question.setCreatorId(user.getGenerateId());
+        question.setId(id);//设置id  如果没有传入id说明是创建  传入id说明是修改
         publishService.createOrUpdate(question);
         //返回页面
         return "publish";

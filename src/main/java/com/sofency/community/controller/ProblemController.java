@@ -46,7 +46,7 @@ public class ProblemController {
         User user= (User) request.getSession().getAttribute("user");
         Long creatorId=null;
         if(user!=null){
-            creatorId = user.getAccountId();//获取账户id
+            creatorId = user.getGenerateId();//获取账户id
         }else{
             throw new CustomException(CustomExceptionCode.NO_LOGIN);
         }

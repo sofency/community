@@ -3,11 +3,8 @@
 <head>
     <title>码匠社区</title>
     <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
-    <link rel="stylesheet" href="/static/css/bootstrap.css">
-    <link rel="stylesheet" href="/static/css/bootstrap-theme.css">
+    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="/static/css/common.css">
-    <script src="/static/js/jquery.js"></script>
-    <script src="/static/js/bootstrap.js"></script>
     <script src="/static/js/default-image.js"></script>
 </head>
 <body>
@@ -23,32 +20,24 @@
                 <li class="list-group-item" th:each="notify:${notifyDTO.data}">
                     <span th:text="${notify.user.name}" style=""></span><span th:text="${notify.typeName}"></span>
                     <a th:href="@{'/notification/'+${notify.question.id}+'/'+${notify.id}}"><span th:text="${notify.question.title}"></span></a>
-                    <span class="label label-info" th:if="${notify.status==0}">未读</span>
-                    <span class="pull-right" th:text="${#dates.format(notify.gmtCreate,'yyyy-MM-dd HH:mm:ss')}"></span>
+                    <span class="badge badge-info" th:if="${notify.status==0}">未读</span>
+                    <span class="float-right" th:text="${#dates.format(notify.gmtCreate,'yyyy-MM-dd HH:mm:ss')}"></span>
                 </li>
             </ul>
             <hr>
-            <nav aria-label="Page navigation">
+            <nav aria-label="Page navigation" class="mt-2">
                 <ul class="pagination">
-                    <li th:if="${notifyDTO.hasFirstPage}">
-                        <a href="@{'/profile/' +${action}(page=1)}" aria-label="Previous">
-                            <span aria-hidden="true">&laquo;</span>
-                        </a>
-                    </li>
-                    <li th:if="${notifyDTO.hasPrevious}">
-                        <a th:href="@{'/profile/' +${action}(page=${notifyDTO.currentPage -1})}" aria-label="Previous">
+                    <li th:if="${notifyDTO.hasPrevious}" class="page-item">
+                        <a th:href="@{'/profile/' +${action}(page=${notifyDTO.currentPage -1})}" aria-label="Previous" class="page-link">
                             <span aria-hidden="true">&lt;</span>
                         </a>
                     </li>
-                    <li th:each="page: ${notifyDTO.pagesList}" th:class="${notifyDTO.currentPage == page}?'active':''"><a th:href="@{'/profile/'+${action}(page=${page})}" th:text="${page}" ></a></li>
-                    <li th:if="${notifyDTO.hasNext}">
-                        <a th:href="@{'/profile/' +${action}(page=${notifyDTO.currentPage +1})}" aria-label="Next">
-                            <span aria-hidden="true">&gt;</span>
-                        </a>
+                    <li th:each="page: ${notifyDTO.pagesList}" th:class="${notifyDTO.currentPage == page}?'active':''" class="page-item">
+                        <a th:href="@{'/profile/'+${action}(page=${page})}" th:text="${page}" class="page-link"></a>
                     </li>
-                    <li th:if="${notifyDTO.hasEndPage}">
-                        <a href="@{'/profile/' +${action}(page=${notifyDTO.pages})}" aria-label="Next">
-                            <span aria-hidden="true">&raquo;</span>
+                    <li th:if="${notifyDTO.hasNext}" class="page-item">
+                        <a th:href="@{'/profile/' +${action}(page=${notifyDTO.currentPage +1})}" aria-label="Next" class="page-link">
+                            <span aria-hidden="true">&gt;</span>
                         </a>
                     </li>
                 </ul>
@@ -57,5 +46,8 @@
         <div th:replace="~{commons/footer::choice}"></div>
     </div>
 </div>
+<script src="https://cdn.staticfile.org/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://cdn.staticfile.org/popper.js/1.15.0/umd/popper.min.js"></script>
+<script src="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
 </body>
 </html>

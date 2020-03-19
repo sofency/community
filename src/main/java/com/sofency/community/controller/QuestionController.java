@@ -39,6 +39,13 @@ public class QuestionController {
         this.questionService=questionService;
     }
 
+    /**
+     * 根据问题的id查询问题的详细信息
+     * @param id
+     * @param model
+     * @param session
+     * @return  返回的数据包括 问题的详情 以及对该问题评论的用户 以及相关的评论信息
+     */
     @GetMapping("/question/{id}")
     public String getQuestionById(@PathVariable("id") Long id, Model model, HttpSession session){
         QuestionDTO questionDTO = questionService.getQuestionDTOById(id);

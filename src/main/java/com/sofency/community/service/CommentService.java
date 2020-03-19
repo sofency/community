@@ -114,7 +114,6 @@ public class CommentService {
     //根据问题id查找评论
 //    @Cacheable(cacheNames = "commentFirst",key = "#id")
     public List<CommentDTO> listByQuestionId(Long id) {
-
         CommentExample example = new CommentExample();
         example.createCriteria().andParentIdEqualTo(id)
                         .andTypeEqualTo(CommentTypeEnums.QUESTION.getType());
@@ -128,11 +127,11 @@ public class CommentService {
 
         UserExample userExample = new UserExample();
         List<Long> list = new ArrayList<>(commentors);
-        userExample.createCriteria().andAccountIdIn(list);//查找在list中的用户信息
+        userExample.createCriteria().andGenerateIdIn(list);//查找在list中的用户信息
 
         List<User> users = userMapper.selectByExample(userExample);
 
-        Map<Long, User> usermap = users.stream().collect(Collectors.toMap(user -> user.getAccountId(), user -> user));
+        Map<Long, User> usermap = users.stream().collect(Collectors.toMap(user -> user.getGenerateId(), user -> user));
 
         List<CommentDTO> commentDTOS = comments.stream().map(comment -> {
             CommentDTO commentDTO = new CommentDTO();
@@ -158,10 +157,10 @@ public class CommentService {
             //根据id查找用户
             List<Long> listIds = new ArrayList<>(creatorsId);
             UserExample userExample = new UserExample();
-            userExample.createCriteria().andAccountIdIn(listIds);
+            userExample.createCriteria().andGenerateIdIn(listIds);
             List<User> users = userMapper.selectByExample(userExample);
 
-            Map<Long, User> userMap = users.stream().collect(Collectors.toMap(user -> user.getAccountId(), user -> user));
+            Map<Long, User> userMap = users.stream().collect(Collectors.toMap(user -> user.getGenerateId(), user -> user));
             List<CommentDTO> collect = comments.stream().map(comment -> {
                 CommentDTO commentDTO = new CommentDTO();
                 BeanUtil.copyProperties(comment, commentDTO, true, CopyOptions.create().setIgnoreNullValue(true).setIgnoreError(true));
@@ -182,7 +181,7 @@ public class CommentService {
         comment.setGmtCreate(System.currentTimeMillis());
         comment.setGmtModify(System.currentTimeMillis());
         if(user!=null){
-            comment.setCommentator(user.getAccountId());//设置评论人
+            comment.setCommentator(user.getGenerateId());//设置评论人
         }else{
             throw new CustomException(CustomExceptionCode.UN_KNOW_ERROR);
         }

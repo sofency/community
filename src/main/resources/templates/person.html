@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>个人资料</title>
+    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/static/css/person.css">
+    <link rel="stylesheet" href="/static/css/index.css">
+    <script>
+        function chooseImg(){
+            console.log(123);
+            //获取input file的files文件数组;
+            //$('#filed')获取的是jQuery对象，.get(0)转为原生对象;
+            //这边默认只能选一个，但是存放形式仍然是数组，所以取第一个元素使用[0];
+            const file = $('#filed').get(0).files[0];
+            //创建用来读取此文件的对象
+            const reader = new FileReader();
+            //使用该对象读取file文件
+            reader.readAsDataURL(file);
+            //读取文件成功后执行的方法函数
+            reader.onload=function(e){
+                console.log(e);
+                //选择所要显示图片的img，要赋值给img的src就是e中target下result里面
+                //的base64编码格式的地址
+                $('#imgShow').get(0).src = e.target.result;
+            }
+        }
+        function changeBtn() {
+            $(".info-detail").css("display","none");
+            $(".info-change").css("display","block");
+        }
+        function cancelInfo() {
+            $(".info-detail").css("display","block");
+            $(".info-change").css("display","none");
+        }
+        function submitForm() {
+
+        }
+    </script>
+</head>
+<body>
+<div class="container"   style="padding-top: 30px;">
+    <h1>个人资料</h1>
+    <hr>
+    <div class="content">
+        <div class="information col-lg-12 col-md-12 col-sm-12 col-xs-12" style="display: flex">
+            <div class="left col-lg-8 col-md-8 col-sm-8 col-xs-8" style="display: flex">
+                <div class="user-info img col-lg-2 info-left">
+                    <span>头像:</span>
+                </div>
+                <div class="col-lg-8">
+                    <form method="post" enctype="multipart/form-data">
+                        <img id="imgShow" th:src="${userDTO.avatarUrl}" width="80px" height="80px" style="border-radius: 50%">
+                    </form>
+                </div>
+            </div>
+            <div class="choose col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                <input type="file" id="filed" value="点击选择图片" accept="image/jpeg,image/png,image/jpg" onchange="chooseImg()">
+            </div>
+        </div>
+        <div class="information  col-lg-12 col-md-12 col-sm-12 col-xs-12" style="display: flex">
+            <!--资料详情页-->
+            <ul class="left col-lg-8 col-md-8 col-sm-8 col-xs-8 info-detail" style="display: block">
+                <li>账户ID:<span th:text="${userDTO.generateId}"></span></li>
+                <li>昵称:<span th:text="${userDTO.name}"></span></li>
+                <li>邮箱:<span th:text="${userDTO.email}"></span></li>
+                <li>githubUrl:<span th:text="${userDTO.githubUrl}"></span></li>
+                <li>
+                    擅长领域:
+                    <span th:each="tag:${userDTO.tags}" th:text="tag" class="badge badge-info"></span>
+                </li>
+                <li>入站日期:<span th:text="${#dates.format(userDTO.gmtCreate,'yyyy-MM-dd HH:mm:ss')}"></span><li>
+            </ul>
+            <!--修改界面-->
+            <ul class="left col-lg-8 col-md-8 col-sm-8 col-xs-8 info-change" style="display: none">
+                <form role="form" class="form-change">
+                  <input type="hidden" name="accountId" th:value="${userDTO.generateId}">
+                    <li>
+                        <div class="form-group form-inline">
+                            <label for="name" class="col-lg-2 info-left">昵称:</label>
+                            <input class="form-control" type="text" name="name" th:value="${userDTO.name}" id="name">
+                        </div>
+                    </li>
+                    <li>
+                        <div class="form-group form-inline">
+                            <label for="email" class="col-lg-2 info-left" >邮箱:</label>
+                            <input class="form-control" type="email" name="name" th:value="${userDTO.email}" id="email">
+                        </div>
+                    </li>
+                    <li>
+                        <div class="form-group form-inline">
+                            <label for="githubUrl" class="col-lg-2 info-left">githubUrl:</label>
+                            <input class="form-control" type="text" name="name" value="www.sofency.top" id="githubUrl">
+                        </div>
+                    </li>
+                    <li>
+                        <div class="form-group form-inline">
+                            <label for="tags" class="col-lg-2 info-left">擅长领域:</label>
+                            <input class="form-control" type="text" name="name" th:value="${userDTO.tags}" id="tags"><span class="ml-2" style="font-size: 10px;color: red">请使用逗号分隔开</span>
+                        </div>
+                    </li>
+                    <li class="form-btn text-center">
+                        <div class="form-group form-inline">
+                            <button type="button" class="btn btn-secondary" onclick="cancelInfo()">取消</button>
+                            <button type="button" class="btn btn-primary">修改</button>
+                        </div>
+                    </li>
+                </form>
+            </ul>
+            <div class="info-change-btn col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                <input  type="button" value="修改资料" onclick="changeBtn()">
+            </div>
+        </div>
+    </div>
+</div>
+<script src="https://cdn.staticfile.org/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://cdn.staticfile.org/popper.js/1.15.0/umd/popper.min.js"></script>
+<script src="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</body>
+</html>

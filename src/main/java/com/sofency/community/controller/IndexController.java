@@ -35,39 +35,19 @@ public class IndexController {
                         @RequestParam(name = "size",defaultValue = "4") Integer size,HttpServletRequest request){
 
         PaginationDTO paginationDTO=null;
-
         Integer unreadCount =0;//存储未读的信息
-
         String search = request.getParameter("search");//获取请求参数
         paginationDTO= questionService.getPaginationDto(page,size,search);//获取页面的信息
         HttpSession session = request.getSession();
         User user = (User) session.getAttribute("user");
-
-        if(user!=null&&user.getAccountId()!=0){//判断不是游客
-            paginationDTO.setNotifyNum(notifyService.count(user.getAccountId()));//设置返回信息的个数
-            unreadCount = notifyService.count(user.getAccountId());//统计未读消息的个数到session中
+        if(user!=null&&user.getGenerateId()!=0){//判断不是游客
+            paginationDTO.setNotifyNum(notifyService.count(user.getGenerateId()));//设置返回信息的个数
+            unreadCount = notifyService.count(user.getGenerateId());//统计未读消息的个数到session中
         }
 
         session.setAttribute("unreadCount",unreadCount);
         model.addAttribute("questions",paginationDTO);
         model.addAttribute("search",search);
         return "index";
-    }
-    private String getRandomCharacter(){
-        String val = "";
-        Random random = new Random();
-        //参数length，表示生成几位随机数
-        for(int i = 0; i < 16; i++) {
-            String charOrNum = random.nextInt(2) % 2 == 0 ? "char" : "num";
-            //输出字母还是数字
-            if( "char".equalsIgnoreCase(charOrNum) ) {
-                //输出是大写字母还是小写字母
-                int temp = random.nextInt(2) % 2 == 0 ? 65 : 97;
-                val += (char)(random.nextInt(26) + temp);
-            } else if( "num".equalsIgnoreCase(charOrNum) ) {
-                val += String.valueOf(random.nextInt(10));
-            }
-        }
-        return val;
     }
 }

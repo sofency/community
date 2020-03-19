@@ -95,7 +95,7 @@ public class QuestionService {
         for(Question question: questions){
             UserExample example = new UserExample();
             example.createCriteria().
-                    andAccountIdEqualTo(question.getCreatorId());
+                    andGenerateIdEqualTo(question.getCreatorId());
             List<User> user = userMapper.selectByExample(example);
             QuestionDTO questionDTO = new QuestionDTO();
             BeanUtil.copyProperties(question,questionDTO, true, CopyOptions.create().setIgnoreNullValue(true).setIgnoreError(true));
@@ -116,7 +116,7 @@ public class QuestionService {
             BeanUtil.copyProperties(question,questionDTO,true, CopyOptions.create().setIgnoreNullValue(true).setIgnoreError(true));
             UserExample example = new UserExample();
             example.createCriteria().
-                    andAccountIdEqualTo(question.getCreatorId());
+                    andGenerateIdEqualTo(question.getCreatorId());
             List<User> user =  userMapper.selectByExample(example);
             String[] tags = question.getTag().split(",");
             List<String> tagsDto = Arrays.asList(tags);

@@ -25,16 +25,15 @@ public class MyWebConfiger extends WebMvcConfigurationSupport {
     public HandlerInterceptor getSessionInterceptor(){//提前注入bean
         return new SessionInterceptor();
     }
-
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
         registry.addInterceptor(getSessionInterceptor()).addPathPatterns("/**").
-                excludePathPatterns("/static/**").excludePathPatterns("*.html").excludePathPatterns("/login","/register","/","/commentGetSecond");
+                excludePathPatterns("/static/**").excludePathPatterns("*.html")
+                .excludePathPatterns("/login","/register","/","/commentGetSecond");
     }
     @Override
     protected void addResourceHandlers(ResourceHandlerRegistry registry) {
         registry.addResourceHandler("/static/**").addResourceLocations("classpath:/static/");
         super.addResourceHandlers(registry);
     }
-
 }

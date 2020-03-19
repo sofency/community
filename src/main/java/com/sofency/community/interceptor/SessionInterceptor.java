@@ -1,5 +1,7 @@
 package com.sofency.community.interceptor;
 
+import com.sofency.community.exception.CustomException;
+import com.sofency.community.exception.CustomExceptionCode;
 import com.sofency.community.mapper.UserMapper;
 import com.sofency.community.pojo.User;
 import com.sofency.community.pojo.UserExample;
@@ -35,6 +37,8 @@ public class SessionInterceptor implements HandlerInterceptor {
                     List<User> user = userMapper.selectByExample(example);
                     if (user.size() != 0) {
                         request.getSession().setAttribute("user", user.get(0));
+                    }else{//说明没有该用户的信息
+                        throw new CustomException(CustomExceptionCode.LOGIN_EXCEPTION);
                     }
                     break;
                 }

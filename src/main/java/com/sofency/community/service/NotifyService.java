@@ -73,7 +73,7 @@ public class NotifyService {
         for(Notify notify: notifies){
             UserExample example = new UserExample();
             example.createCriteria().
-                    andAccountIdEqualTo(notify.getSender());//获取sender的用户信息
+                    andGenerateIdEqualTo(notify.getSender());//获取sender的用户信息
             List<User> user = userMapper.selectByExample(example);
             Question question = questionMapper.selectByPrimaryKey(notify.getParentId());
             NotifyDTO notifyDTO = new NotifyDTO();

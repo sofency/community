@@ -17,7 +17,9 @@ public enum CustomExceptionCode{
     COMMENT_NOT_FOUND(2008,"原回复被删除了"),
     UN_KNOW_ERROR(2009,"未知错误" ),
     FOUND_OTHER_QUESTION(2019,"客官,你再查看其他人的评论呀，这是不允许的" ),
-    ACCOUNT_EXCEPTION(2010,"账号异常");
+    ACCOUNT_EXCEPTION(2010,"账号异常"),
+    USER_NOT_EXIST(2012,"用户不存在"),
+    LOGIN_EXCEPTION(2011,"登录异常");
     private String message;
     private Integer code;
     CustomExceptionCode(Integer code,String message) {
