@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="/static/css/person.css">
     <link rel="stylesheet" href="/static/css/index.css">
+    <script src="/static/js/default-image.js"></script>
     <script>
         function chooseImg(){
             console.log(123);
@@ -33,8 +34,51 @@
             $(".info-detail").css("display","block");
             $(".info-change").css("display","none");
         }
-        function submitForm() {
+        function  changeImgInfo() {
+            const files = document.getElementById("filed").files;
+            const generateId = document.getElementById("imgGenerateId").valueOf();
+            console.log(files);
+            console.log(generateId);
+            if(files==null||files.length==0){
+                alert("请选择要上传的图片");
+            }else{
+                const  object = document.getElementById("uploadImg");
+                const formData = new FormData(object);
+                console.log(formData);
+                $.ajax({
+                    url:"/upload",
+                    type:"post",
+                    data:formData,
+                    contentType:false, //- 必须false才会自动加上正确的Content-Type
+                    processData: false, //- 必须false才会避开jQuery对 formdata 的默认处理,XMLHttpRequest会对 formdata 进行正确的处理
+                    success:function(res) {
+                        if (res.flag == true) {
+                            alert("图片更新成功");
+                        } else {
+                            alert("图片更新失败");
+                        }
+                    }
+                });
+            }
+        }
 
+        function changeInfo() {
+            const  object = document.getElementById("changeInfoForm");
+            const formData = new FormData(object);
+            $.ajax({
+                url:"/changeInfo",
+                type:"post",
+                data:formData,
+                contentType:false, //- 必须false才会自动加上正确的Content-Type
+                processData: false, //- 必须false才会避开jQuery对 formdata 的默认处理,XMLHttpRequest会对 formdata 进行正确的处理
+                success:function(res) {
+                    if (res.flag == true) {
+                        alert("资料更新完毕");
+                    } else {
+                        alert("资料更新失败");
+                    }
+                }
+            });
         }
     </script>
 </head>
@@ -49,13 +93,17 @@
                     <span>头像:</span>
                 </div>
                 <div class="col-lg-8">
-                    <form method="post" enctype="multipart/form-data">
-                        <img id="imgShow" th:src="${userDTO.avatarUrl}" width="80px" height="80px" style="border-radius: 50%">
-                    </form>
+                    <img id="imgShow"
+                         th:src="${#strings.substring(userDTO.avatarUrl,1,userDTO.avatarUrl.length()-1)}"
+                         width="80px" height="80px" style="border-radius: 50%" onerror="nofind()">
                 </div>
             </div>
             <div class="choose col-lg-4 col-md-4 col-sm-4 col-xs-4">
-                <input type="file" id="filed" value="点击选择图片" accept="image/jpeg,image/png,image/jpg" onchange="chooseImg()">
+                <form method="post" enctype="multipart/form-data" style="display: flex;"  id="uploadImg">
+                    <input type="hidden" name="generateId" id="imgGenerateId" th:value="${userDTO.generateId}">
+                    <input type="file" name="file" id="filed" value="点击选择图片" accept="image/jpeg,image/png,image/jpg" onchange="chooseImg()">
+                    <input type="button" value="替换" onclick="changeImgInfo()">
+                </form>
             </div>
         </div>
         <div class="information  col-lg-12 col-md-12 col-sm-12 col-xs-12" style="display: flex">
@@ -73,8 +121,8 @@
             </ul>
             <!--修改界面-->
             <ul class="left col-lg-8 col-md-8 col-sm-8 col-xs-8 info-change" style="display: none">
-                <form role="form" class="form-change">
-                  <input type="hidden" name="accountId" th:value="${userDTO.generateId}">
+                <form role="form" class="form-change" action="" id="changeInfoForm">
+                  <input type="hidden" name="generateId" th:value="${userDTO.generateId}">
                     <li>
                         <div class="form-group form-inline">
                             <label for="name" class="col-lg-2 info-left">昵称:</label>
@@ -84,25 +132,25 @@
                     <li>
                         <div class="form-group form-inline">
                             <label for="email" class="col-lg-2 info-left" >邮箱:</label>
-                            <input class="form-control" type="email" name="name" th:value="${userDTO.email}" id="email">
+                            <input class="form-control" type="email" name="email" th:value="${userDTO.email}" id="email">
                         </div>
                     </li>
                     <li>
                         <div class="form-group form-inline">
                             <label for="githubUrl" class="col-lg-2 info-left">githubUrl:</label>
-                            <input class="form-control" type="text" name="name" value="www.sofency.top" id="githubUrl">
+                            <input class="form-control" type="text" name="githubUrl" th:value="${userDTO.githubUrl}" id="githubUrl">
                         </div>
                     </li>
                     <li>
                         <div class="form-group form-inline">
                             <label for="tags" class="col-lg-2 info-left">擅长领域:</label>
-                            <input class="form-control" type="text" name="name" th:value="${userDTO.tags}" id="tags"><span class="ml-2" style="font-size: 10px;color: red">请使用逗号分隔开</span>
+                            <input class="form-control" type="text" name="tags" th:value="${userDTO.tags}" id="tags"><span class="ml-2" style="font-size: 10px;color: red">请使用逗号分隔开</span>
                         </div>
                     </li>
                     <li class="form-btn text-center">
                         <div class="form-group form-inline">
                             <button type="button" class="btn btn-secondary" onclick="cancelInfo()">取消</button>
-                            <button type="button" class="btn btn-primary">修改</button>
+                            <button type="button" class="btn btn-primary" onclick="changeInfo()">修改</button>
                         </div>
                     </li>
                 </form>

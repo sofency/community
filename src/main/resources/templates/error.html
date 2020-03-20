@@ -10,12 +10,13 @@
 <body>
 <div th:replace="~{navigation::nav}"></div>
 <!--发布的内容标签-->
-
-<div class="jumbotron" style="padding: 20px;">
-    <h1>出错了</h1>
-    <!--/*@thymesVar id="message" type="com.sofency.community.advice.CustomizeExceptionHandler"*/-->
-    <p th:text="${message}">客官要不稍等一会再访问</p>
-    <p><a class="btn btn-primary btn-lg" href="/" role="button">返回首页</a></p>
+<div class="container col-lg-10">
+    <div class="jumbotron" style="padding: 20px;">
+        <h1>出错了</h1>
+        <!--/*@thymesVar id="message" type="com.sofency.community.advice.CustomizeExceptionHandler"*/-->
+        <p th:text="${message}">客官要不稍等一会再访问</p>
+        <p><a class="btn btn-primary btn-lg" href="/" role="button">返回首页</a></p>
+    </div>
 </div>
 <script src="https://cdn.staticfile.org/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://cdn.staticfile.org/popper.js/1.15.0/umd/popper.min.js"></script>
