@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="/static/css/common.css">
     <link rel="stylesheet" href="/static/css/index.css">
+    <link rel="stylesheet" href="/static/css/font-awesome.css">
     <script src="/static/js/default-image.js"></script>
     <script src="/static/js/login.js"></script>
     <script type="text/javascript">
@@ -55,12 +56,18 @@
             </nav>
         </div>
         <div class="col-lg-3 col-md-12 col-sm-12 col-xs-12">
-            <h3>热门话题</h3>
-            <ul>
-                <li>问题标签：请用简洁的语言描述问题,不超过25个字</li>
-                <li>问题补充: 详细补充你的问题,并确保问题描述的直观,并提供一些相关的资料</li>
-                <li>选择标签：选择一个或多个合适的标签,用逗号隔开，每个标签不超过10个字</li>
-            </ul>
+            <div>
+                <h3>热门话题</h3>
+                <ul class="hotQuest">
+                    <li th:each="hot:${hotQues}">
+                        <a th:href="@{'/question/'+${hot.id}}" th:text="${hot.title}"></a>
+                        <a style="float: right">
+                            <i class="fa fa-fire" aria-hidden="true" style="color: red"></i>
+                            <span th:text="${hot.view_count}"> </span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
         </div>
     </div>
 </div>

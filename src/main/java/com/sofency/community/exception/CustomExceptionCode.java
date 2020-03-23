@@ -19,6 +19,7 @@ public enum CustomExceptionCode{
     FOUND_OTHER_QUESTION(2019,"客官,你再查看其他人的评论呀，这是不允许的" ),
     ACCOUNT_EXCEPTION(2010,"账号异常"),
     USER_NOT_EXIST(2012,"用户不存在"),
+    CHANGE_EXCEPTION(2013,"无法更改别人文章"),
     LOGIN_EXCEPTION(2011,"登录异常");
     private String message;
     private Integer code;

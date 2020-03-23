@@ -11,16 +11,22 @@
     <script src="/static/js/editormd.min.js"></script>
     <script src="/static/js/default-image.js"></script>
     <script src="/static/js/login.js"></script>
+    <style>
+        .tags button{
+            margin-top: 10px;
+            margin-right: 20px;
+        }
+    </style>
 </head>
 <body>
 <div th:replace="~{navigation::nav}"></div>
 <!--发布的内容标签-->
-<div class="container-fluid content">
+<div class="container content col-lg-10">
     <div class="row">
-        <div class="col-lg-9 col-md-12 col-sm-12 col-xs-12 padding" >
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 padding" >
             <h3><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>&nbsp;发布</h3>
             <hr>
-            <form action="/publish" method="post">
+            <form action="/publish" method="post" onsubmit="return checkContent()">
                 <input type="hidden" name="id" th:value="${contentId}">
                 <div class="form-group">
                     <label for="title">问题标题(简单扼要)：</label>
@@ -28,24 +34,44 @@
                 </div>
                 <div class="form-group">
                     <label for="description">问题描述（必填,请参照右侧提示）:</label>
-                    <div id="test-editor">
-                        <textarea  id="description"  name="description" style="display:none;" th:text="${description}"></textarea>
+                    <div id="test-editor" >
+                        <textarea  id="description" name="description" style="display:none;" th:text="${description}"></textarea>
                     </div>
                     <script type="text/javascript">
                         $(function() {
-                            var editor = editormd("test-editor", {
-                                 width  : "100%",
-                                 height : "400px",
-                                 path   : "/static/lib/",
-                                 delay  : 0,
-                                 saveHTMLToTextarea: true
+                            const editor = editormd("test-editor", {
+                                width  : "100%",
+                                height : "400px",
+                                path   : "/static/js/lib/",
+                                delay  : 0,
+                                saveHTMLToTextarea: true,
+                                imageUpload : true,
+                                imageFormats : ["jpg", "jpeg", "gif", "png", "bmp", "webp"],
+                                imageUploadURL : "/upload",
+                                saveHTMLToTextarea : true
                             });
                         });
                     </script>
                 </div>
                 <div class="form-group">
                     <label for="tag">添加标签：</label>
-                    <input type="text" class="form-control" id="tag" placeholder="输入标签，以逗号隔开" name="tag" th:value="${tag}">
+                    <input type="text" class="form-control" id="tag" placeholder="输入标签，以逗号隔开" name="tag" th:value="${tag}" readonly>
+                    <div class="tags">
+                        <button type="button" class="btn ">数据库</button>
+                        <button type="button" class="btn ">JAVA</button>
+                        <button type="button" class="btn ">MYSQL</button>
+                        <button type="button" class="btn ">LINUX</button>
+                        <button type="button" class="btn ">Spring</button>
+                        <button type="button" class="btn ">SpringBoot</button>
+                        <button type="button" class="btn ">Bootstrap</button>
+                        <button type="button" class="btn ">微信小程序</button>
+                        <button type="button" class="btn ">JavaWeb</button>
+                        <button type="button" class="btn ">Git</button>
+                        <button type="button" class="btn ">Python</button>
+                        <button type="button" class="btn ">JavaScript</button>
+                        <button type="button" class="btn ">Mybatis</button>
+                        <button type="button" class="btn ">springMvc</button>
+                    </div>
                 </div>
                 <div class="form-group">
                     <div class="col-lg-3 col-md-12 col-sm-12 col-xs-12" style="padding-left: 0">
@@ -56,21 +82,67 @@
                         <div class="alert alert-danger" role="alert" th:text="${error}"></div>
                     </div>
                 </div>
-
             </form>
-        </div>
-        <div class="col-lg-3 col-md-12 col-sm-12 col-xs-12">
-            <h3>问题发起指南</h3>
-            <ul>
-                <li>问题标签：请用简洁的语言描述问题,不超过25个字</li>
-                <li>问题补充: 详细补充你的问题,并确保问题描述的直观,并提供一些相关的资料</li>
-                <li>选择标签：选择一个或多个合适的标签,用逗号隔开，每个标签不超过10个字</li>
-            </ul>
         </div>
     </div>
 </div>
 <script src="https://cdn.staticfile.org/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://cdn.staticfile.org/popper.js/1.15.0/umd/popper.min.js"></script>
 <script src="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<script type="application/javascript">
+    const buttons = $(".tags button");
+    let arrClass =[
+        "btn-outline-primary",
+        "btn-outline-secondary",
+        "btn-outline-success",
+        "btn-outline-danger",
+        "btn-outline-warning",
+        "btn-outline-info",
+        "btn-outline-dark"
+    ]
+    for(let i =0;i<buttons.length;i++){
+        $(buttons.eq(i)).addClass(arrClass[i%7])
+        buttons.eq(i)[0].addEventListener("click",function () {
+            addClick(this)
+        })
+    }
+    function addClick(obj) {
+        let value = $("#tag").val();
+        let content=$(obj)[0].innerText;
+        console.log(content)
+        if(value==""){
+            value=content;
+        }else{
+            //检查下标签数是否超过3个
+            if(value.indexOf(content)==0){//说明匹配到
+                if(value==content){
+                    value="";
+                }else{
+                    value = value.replace(content+",","")
+                }
+            }else if(value.indexOf(content)>0){
+                value = value.replace(","+content,"")
+            }else{//没有匹配直接添加到后面
+                let tags = value.split(",");
+                if(tags.length>3){
+                    alert("选择太多标签,请慎重选择");
+                }else{
+                    value=value+","+content;
+                }
+            }
+        }
+        $("#tag").val(value);
+    }
+
+    function checkContent(){
+        const  length = $("#description").val().length;
+        if(length<50){
+            alert("请输入详细的描述再进行提交")
+            return false;
+        }else{
+            return true;
+        }
+    }
+</script>
 </body>
 </html>

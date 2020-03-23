@@ -20,9 +20,10 @@ public class PaginationDTO<T> {
     private boolean hasEndPage;//是否有最后一页
     private int currentPage;//当前页
     private List<Integer> pagesList= new ArrayList<>();//页面数
-    private Integer pages=0;
-    private Integer notifyNum;
+    private Integer pages=0;//初始总页数
+    private Integer notifyNum;//通知的数据
     private Integer totalNum;//总数据量
+    private List<Integer> hotQuestionId;//热门话题的问题id
     //添加逻辑处理
     public void setPagination(Integer total,Integer page,Integer size){
         totalNum=total;
@@ -57,14 +58,12 @@ public class PaginationDTO<T> {
         }else{
             hasFirstPage=false;
         }
-
         //是否有最后一个
         if(page<pages-3){
             hasEndPage=true;
         }else{
             hasEndPage=false;
         }
-
         //写list<Integer>
         if(page>3){
             for(int i=page-3;i<=page+3&&i<=pages;i++){

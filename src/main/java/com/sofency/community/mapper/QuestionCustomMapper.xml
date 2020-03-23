@@ -39,4 +39,8 @@
   <select id="selectBySearchName" parameterType="String" resultMap="ResultMapWithBLOBs">
      SELECT * from question where title LIKE  concat('%',#{search},'%')
   </select>
+
+  <select id="getViewMore" resultType="com.sofency.community.dto.HotQuesDTO" parameterType="Integer">
+    select id,title,view_count from question order by view_count desc limit #{size};
+  </select>
 </mapper>

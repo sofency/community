@@ -1,5 +1,6 @@
 package com.sofency.community.controller;
 
+import com.sofency.community.dto.HotQuesDTO;
 import com.sofency.community.dto.PaginationDTO;
 import com.sofency.community.pojo.User;
 import com.sofency.community.service.NotifyService;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.util.List;
 import java.util.Random;
 
 /**
@@ -44,10 +46,12 @@ public class IndexController {
             paginationDTO.setNotifyNum(notifyService.count(user.getGenerateId()));//设置返回信息的个数
             unreadCount = notifyService.count(user.getGenerateId());//统计未读消息的个数到session中
         }
-
         session.setAttribute("unreadCount",unreadCount);
         model.addAttribute("questions",paginationDTO);
         model.addAttribute("search",search);
+        //热门的问题
+        List<HotQuesDTO> hotQuesDTO = questionService.getViewCountMore(5);
+        model.addAttribute("hotQues",hotQuesDTO);
         return "index";
     }
 }

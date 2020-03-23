@@ -9,10 +9,7 @@ import com.sofency.community.service.PublishService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -23,10 +20,8 @@ import javax.servlet.http.HttpServletRequest;
  */
 @Controller
 public class publishController {
-
     private PublishService publishService;
     private QuestionMapper questionMapper;
-
     @Autowired
     public publishController(PublishService publishService,QuestionMapper questionMapper){
         this.publishService=publishService;
@@ -51,14 +46,20 @@ public class publishController {
         if(question==null){
             throw new CustomException(CustomExceptionCode.QUESTION_NOT_FOUND);
         }
-        model.addAttribute("title",question.getTitle());
-        model.addAttribute("description",question.getDescription());
-        model.addAttribute("tag",question.getTag());
-        model.addAttribute("contentId",id);
+        //需要检查当前用户是否为该问题的作者
+        Long creatorId = question.getCreatorId();//获取问题的创建者
+        User user = (User) request.getSession().getAttribute("user");
+        if(creatorId!=user.getGenerateId()){
+            throw new CustomException(CustomExceptionCode.CHANGE_EXCEPTION);
+        }else{
+            model.addAttribute("title",question.getTitle());
+            model.addAttribute("description",question.getDescription());
+            model.addAttribute("tag",question.getTag());
+            model.addAttribute("contentId",id);
+        }
         return "publish";
     }
     //提交问题
-
     /**
      *
      * @param title  问题的标题
@@ -80,6 +81,8 @@ public class publishController {
         model.addAttribute("title",title);
         model.addAttribute("description",description);
         model.addAttribute("tag",tag);
+
+
         if("".equals(title)||null==title){
             model.addAttribute("error","请填写标题");
         }
@@ -89,8 +92,11 @@ public class publishController {
         if("".equals(tag)||null==tag){
             model.addAttribute("error","请填写标签");
         }
+
+
         //获取用户的id
         User user= (User) request.getSession().getAttribute("user");
+        //防止重复提交
 
         Question question= new Question();
         question.setTitle(title);

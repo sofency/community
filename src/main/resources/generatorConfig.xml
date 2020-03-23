@@ -34,17 +34,6 @@
             <property name="enableSubPackages" value="true" />
         </javaClientGenerator>
 
-        <table tableName="user" domainObjectName="User" ></table>
-<!--           &lt;!&ndash; <property name="useActualColumnNames" value="true"/>&ndash;&gt;-->
-<!--        </table>-->
-<!--        <table tableName="question" domainObjectName="Question" >-->
-<!--            &lt;!&ndash; <property name="useActualColumnNames" value="true"/>&ndash;&gt;-->
-<!--        </table>-->
-<!--        <table tableName="comment" domainObjectName="Comment" >-->
-<!--            &lt;!&ndash; <property name="useActualColumnNames" value="true"/>&ndash;&gt;-->
-<!--        </table>-->
-<!--        <table tableName="notify" domainObjectName="Notify" >-->
-<!--            &lt;!&ndash; <property name="useActualColumnNames" value="true"/>&ndash;&gt;-->
-<!--        </table>-->
+        <table tableName="question" domainObjectName="Question" ></table>
     </context>
 </generatorConfiguration>

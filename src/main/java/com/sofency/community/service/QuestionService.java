@@ -2,6 +2,7 @@ package com.sofency.community.service;
 
 import cn.hutool.core.bean.BeanUtil;
 import cn.hutool.core.bean.copier.CopyOptions;
+import com.sofency.community.dto.HotQuesDTO;
 import com.sofency.community.dto.PaginationDTO;
 import com.sofency.community.dto.QuestionDTO;
 import com.sofency.community.mapper.QuestionCustomMapper;
@@ -39,7 +40,6 @@ public class QuestionService {
      * @param size
      * @param search
      */
-//    @Cacheable(cacheNames = "questions",key = "#page" ,condition = "#search==''")
     public PaginationDTO getPaginationDto(Integer page, Integer size, String search){
         Integer offset = size*(page-1);//获取偏移的位置
         List<Question> questions =null;
@@ -67,7 +67,6 @@ public class QuestionService {
     }
 
     //根据发起问题的用户id查找用户表发布过的问题
-//    @Cacheable(cacheNames = "question",key = "#creatorId+':'+#page")
     public PaginationDTO getPaginationDto(Long creatorId,Integer page, Integer size){
 
         Integer offset = size*(page-1);//获取偏移的位置
@@ -106,7 +105,6 @@ public class QuestionService {
     }
 
     //根据id查找用户
-//    @Cacheable(cacheNames = "question",key = "#id")
     public QuestionDTO getQuestionDTOById(Long id){
         Question question = questionMapper.selectByPrimaryKey(id);
         QuestionDTO questionDTO=null;
@@ -124,5 +122,13 @@ public class QuestionService {
             questionDTO.setUser(user.get(0));
         }
         return  questionDTO;//返回用户要查找的信息
+    }
+
+    //获取阅读最多的7位
+    public List<HotQuesDTO> getViewCountMore(int size){
+//        questionMapper.
+        List<HotQuesDTO> list = questionCustomMapper.getViewMore(size);
+        System.out.println(list.toArray()[0].toString());
+        return list;
     }
 }

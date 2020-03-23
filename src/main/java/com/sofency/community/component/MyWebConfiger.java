@@ -19,7 +19,7 @@ public class MyWebConfiger extends WebMvcConfigurationSupport {
     //添加不拦截的路径
     public void addViewControllers(ViewControllerRegistry registry){
         registry.addViewController("/").setViewName("index");
-        registry.addViewController("/questions.html").setViewName("question");
+        registry.addViewController("/questions.html").setViewName("questions");
     }
     @Bean
     public HandlerInterceptor getSessionInterceptor(){//提前注入bean
@@ -28,7 +28,7 @@ public class MyWebConfiger extends WebMvcConfigurationSupport {
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
         registry.addInterceptor(getSessionInterceptor()).addPathPatterns("/**").
-                excludePathPatterns("/static/**").excludePathPatterns("*.html")
+                excludePathPatterns("/static/**/**").excludePathPatterns("*.html").excludePathPatterns("/static/js/plugins/**/*.js")
                 .excludePathPatterns("/login","/register","/","/commentGetSecond");
     }
     @Override

@@ -45,6 +45,7 @@ public class CustomizeExceptionHandler {
             }
             return null;
         }else{
+            System.out.println(ex.getMessage());
             if(ex instanceof CustomException){
                 model.addObject("message",ex.getMessage());
             }else {

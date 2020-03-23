@@ -1,27 +1,19 @@
 package com.sofency.community.controller;
 
+import com.alibaba.fastjson.JSONObject;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.sofency.community.dto.UserDTO;
 import com.sofency.community.enums.PersonInfoChangeEnums;
 import com.sofency.community.mapper.UserMapper;
 import com.sofency.community.pojo.User;
-import com.sofency.community.pojo.UserExample;
 import com.sofency.community.service.NginxService;
-import com.sofency.community.service.UserService;
-import com.sun.org.apache.xpath.internal.operations.Bool;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
-
-import java.util.HashMap;
-import java.util.Map;
 
 /**
  * @author sofency
@@ -44,29 +36,41 @@ public class NginxController {
      * 可上传图片、视频，只需在nginx配置中配置可识别的后缀
      */
     @PostMapping("/upload")
-    public  Map<String,Boolean> pictureUpload(@RequestParam(value = "file") MultipartFile image,
-                                @RequestParam(value = "generateId") Long generateId,
-                                Model model) {
+    public JSONObject pictureUpload(@RequestParam(value = "file",required = false) MultipartFile image,
+                                    @RequestParam(value = "editormd-image-file",required = false) MultipartFile file,
+                                    @RequestParam(value = "generateId",required = false) Long generateId,
+                                    Model model) {
         //根据id查找到用户的信息 并且修改图片的url
-        long begin = System.currentTimeMillis();
-        Map<String,Boolean> map= new HashMap<>();
+        JSONObject jsonObject=new JSONObject();
         String imgUrl = "";
-        if(image==null){
-            map.put("flag",PersonInfoChangeEnums.UNCHANGED_IMAGE.getFlag());
-            return map;
+        if(file!=null){//说明没有传入值 是文章上传图片
+            Object result = nginxService.uploadPicture(file);
+            try {
+                imgUrl = new ObjectMapper().writeValueAsString(result);
+                imgUrl = imgUrl.substring(1,imgUrl.length()-1);
+            } catch (JsonProcessingException e) {
+                e.printStackTrace();
+            }
+            jsonObject.put("success", 1);
+            jsonObject.put("message", "上传成功");
+            jsonObject.put("url", imgUrl);
         }
-        try {
+        if(image!=null){//是用户修改图片
+            long begin = System.currentTimeMillis();
             Object result = nginxService.uploadPicture(image);
-            imgUrl = new ObjectMapper().writeValueAsString(result);
+            try {
+                imgUrl = new ObjectMapper().writeValueAsString(result);
+                imgUrl = imgUrl.substring(1,imgUrl.length()-1);
+            } catch (JsonProcessingException e) {
+                e.printStackTrace();
+            }
             User user = userMapper.selectByPrimaryKey(generateId);
             user.setAvatarUrl(imgUrl);
             userMapper.updateByPrimaryKey(user);//更新信息
-        } catch (JsonProcessingException e) {
-            e.printStackTrace();
+            long end = System.currentTimeMillis();
+            log.info("任务结束，共耗时：[" + (end-begin) + "]毫秒");
+            jsonObject.put("flag", PersonInfoChangeEnums.CHANGED_IMAGE_SUCCESS.getFlag());
         }
-        long end = System.currentTimeMillis();
-        log.info("任务结束，共耗时：[" + (end-begin) + "]毫秒");
-        map.put("flag",PersonInfoChangeEnums.CHANGED_IMAGE_SUCCESS.getFlag());
-        return map;
+        return jsonObject;
     }
 }

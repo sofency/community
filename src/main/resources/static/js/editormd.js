@@ -510,7 +510,7 @@
                 {
                     editormd.loadScript(loadPath + "raphael.min", function() {
 
-                        editormd.loadScript(loadPath + "underscore.min", function() {  
+                        editormd.loadScript(loadPath + "underscore.min", function() {
 
                             if (!settings.flowChart && settings.sequenceDiagram) 
                             {

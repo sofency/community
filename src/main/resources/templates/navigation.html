@@ -7,14 +7,14 @@
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto col-lg-8">
-                <li class="nav-item active col-lg-1">
-                    <a class="nav-link" href="/"  style="height: 100%;line-height: 220%;">首页<span class="sr-only">(current)</span></a>
+            <ul class="navbar-nav mr-auto mt-2 mt-lg-1">
+                <li class="nav-item active" style="margin-right: 20px">
+                    <a class="nav-link" href="/">首页<span class="sr-only">(current)</span></a>
                 </li>
-                <li class="nav-item col-lg-1">
-                    <a class="nav-link" href="#" style="height: 100%;line-height: 220%;">看看</a>
+                <li class="nav-item" style="margin-right: 20px">
+                    <a class="nav-link" href="#" >看看</a>
                 </li>
-                <li class="nav-link col-lg-6">
+                <li class="nav-item" style="margin-right: 20px">
                     <form class="navbar-form navbar-left form-inline" action="/">
                         <div class="form-group">
                             <input type="text" class="form-control" placeholder="搜索问题" name="search">
@@ -23,33 +23,55 @@
                     </form>
                 </li>
             </ul>
-            <ul class="nav navbar-nav navbar-right col-lg-3" style="text-align: center">
-                <li th:if="${session.user !=null && session.user.generateId != 0 }" class="col-lg-5">
-                    <div class="mr-1">
+            <form class="form-inline my-2 my-lg-0" th:if="${session.user==null ||session.user.generateId == 0 }">
+                <a href="javascript:void(0)" style="cursor: pointer" data-toggle="modal" data-target="#myModal">登录</a>
+            </form>
+            <form class="form-inline my-2 my-lg-0" th:if="${session.user !=null && session.user.generateId != 0 }">
+                <ul class="navbar-nav mr-auto mt-2 mt-lg-1">
+                    <li class="nav-item" style="margin-right: 20px">
                         <h5 style="line-height: 220%;font-size: 16px">通知<span class="badge badge-primary badge-pill"   style="margin-left:10px;" th:text="${session.unreadCount}"></span></h5>
-                    </div>
-                </li>
-                <li th:if="${session.user !=null && session.user.generateId != 0 }" class="col-lg-2">
-                    <div class="mr-1">
+                    </li>
+                    <li class="nav-item" style="margin-right: 20px">
                         <a th:href="@{/publish}" style="height: 100%;display: block;line-height: 220%;">提问</a>
-                    </div>
-                </li>
-                <li th:if="${session.user==null ||session.user.generateId == 0 }">
-                    <a href="javascript:void(0)" style="cursor: pointer" data-toggle="modal" data-target="#myModal">登录</a>
-                </li>
-                <li class="dropdown col-lg-5" th:if="${session.user !=null && session.user.generateId != 0 }" style="background-color: rgba(255,255,255,.5)">
-                    <button  class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
-                             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
-                             style="border: none;background-color: rgba(255,255,255,0.5);color: black;">
-                        用户&nbsp;<span th:text="${session.user.generateId}"></span>
-                    </button>
-                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" th:if="${session.user} ne null">
-                        <a class="dropdown-item"th:href="@{/profile/questions}">我的问题</a>
-                        <a class="dropdown-item" th:href="@{'/personInfo/'+${session.user.generateId}}">个人资料</a>
-                        <a class="dropdown-item"th:href="@{/logout}">退出登录</a>
-                    </div>
-                </li>
-            </ul>
+                    </li>
+                    <li class="nav-item  dropdown" style="margin-right: 20px">
+                        <button  class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
+                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+                                 style="border: none;background-color: rgba(255,255,255,0.5);color: black;padding-left: 0;">
+                            用户&nbsp;<span th:text="${session.user.generateId}"></span>
+                        </button>
+                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton" th:if="${session.user} ne null">
+                            <a class="dropdown-item"th:href="@{/profile/questions}">我的问题</a>
+                            <a class="dropdown-item" th:href="@{'/personInfo/'+${session.user.generateId}}">个人资料</a>
+                            <a class="dropdown-item"th:href="@{/logout}">退出登录</a>
+                        </div>
+                    </li>
+                </ul>
+            </form>
+<!--            <ul class="nav navbar-nav navbar-right col-lg-3" style="text-align: center" th:if="${session.user !=null && session.user.generateId != 0 }">-->
+<!--                <li  class="col-lg-5">-->
+<!--                    <div class="mr-1">-->
+<!--                       -->
+<!--                    </div>-->
+<!--                </li>-->
+<!--                <li class="col-lg-2">-->
+<!--                    <div class="mr-1">-->
+<!--                        <a th:href="@{/publish}" style="height: 100%;display: block;line-height: 220%;">提问</a>-->
+<!--                    </div>-->
+<!--                </li>-->
+<!--                <li class="dropdown col-lg-5" th:if="${session.user !=null && session.user.generateId != 0 }" style="background-color: rgba(255,255,255,.5)">-->
+<!--                    <button  class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"-->
+<!--                             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"-->
+<!--                             style="border: none;background-color: rgba(255,255,255,0.5);color: black;">-->
+<!--                        用户&nbsp;<span th:text="${session.user.generateId}"></span>-->
+<!--                    </button>-->
+<!--                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" th:if="${session.user} ne null">-->
+<!--                        <a class="dropdown-item"th:href="@{/profile/questions}">我的问题</a>-->
+<!--                        <a class="dropdown-item" th:href="@{'/personInfo/'+${session.user.generateId}}">个人资料</a>-->
+<!--                        <a class="dropdown-item"th:href="@{/logout}">退出登录</a>-->
+<!--                    </div>-->
+<!--                </li>-->
+<!--            </ul>-->
         </div>
         <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
             <div class="modal-dialog" role="document">
