@@ -8,7 +8,7 @@
     <context id="DB2Tables" targetRuntime="MyBatis3">
         <plugin type="org.mybatis.generator.plugins.RowBoundsPlugin"></plugin>
         <jdbcConnection driverClass="com.mysql.cj.jdbc.Driver"
-                        connectionURL="jdbc:mysql://localhost:3306/community"
+                        connectionURL="jdbc:mysql://localhost:3306/EngineerHub"
                         userId="root"
                         password="19980120">
             <property name="serverTimezone" value="UTC"/>
@@ -34,6 +34,6 @@
             <property name="enableSubPackages" value="true" />
         </javaClientGenerator>
 
-        <table tableName="question" domainObjectName="Question" ></table>
+        <table tableName="message" domainObjectName="Message" ></table>
     </context>
 </generatorConfiguration>

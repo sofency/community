@@ -44,7 +44,7 @@
             <h3><span th:text="${questionDTO.title}"></span></h3>
             <hr>
             <!--标签-->
-            <em class="tagInfo" style="color: #999"><!--th:text="${questionDTO.tag}"-->
+            <em class="tagInfo" style="color: #999">
                 <span th:each="tag: ${questionDTO.tags}" class="label label-default" th:text="${tag}"></span>
                 <span>作者:&nbsp;<a class="text-user" th:text="${questionDTO.user.name}"></a></span>
                 <span>发布于<span th:text="${time}"></span></span>
@@ -116,13 +116,20 @@
             </div>
             <!--擅长话题-->
             <div class="tags">
-                <span>擅长话题</span>
-                <span class="label label-default" th:text="${questionDTO.tag}"></span>
-                <span class="label label-primary" th:text="${questionDTO.tag}"></span>
+                <span class="label label-default">擅长话题:&nbsp;</span>
+                <span class="label label-default" th:each="userTag: ${questionDTO.userTags}" th:text="${userTag}+'&nbsp;'"></span>
             </div>
             <hr>
             <h3>相关问题</h3>
-            <ul></ul>
+            <ul class="relativeQuestion">
+                <li th:each="relative:${questionDTO.relativeQuestions}">
+                    <a th:href="@{'/question/'+${relative.id}}" th:text="${relative.title}"></a>
+                    <a style="float: right">
+                        <i class="fa fa-fire" aria-hidden="true" style="color: red"></i>
+                        <span th:text="${relative.viewCount}"> </span>
+                    </a>
+                </li>
+            </ul>
         </div>
     </div>
 </div>

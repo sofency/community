@@ -10,12 +10,15 @@ import com.sofency.community.mapper.UserMapper;
 import com.sofency.community.mapper.QuestionMapper;
 import com.sofency.community.pojo.*;
 import org.apache.ibatis.session.RowBounds;
+import org.apache.tomcat.util.threads.ThreadPoolExecutor;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.concurrent.Callable;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.FutureTask;
 
 /**
  * @auther sofency
@@ -104,8 +107,8 @@ public class QuestionService {
         }
     }
 
-    //根据id查找用户
     public QuestionDTO getQuestionDTOById(Long id){
+        //查询问题的详情
         Question question = questionMapper.selectByPrimaryKey(id);
         QuestionDTO questionDTO=null;
         if(question!=null){//如果没有该用户的话不进行写入信息
@@ -115,11 +118,26 @@ public class QuestionService {
             UserExample example = new UserExample();
             example.createCriteria().
                     andGenerateIdEqualTo(question.getCreatorId());
+
             List<User> user =  userMapper.selectByExample(example);
             String[] tags = question.getTag().split(",");
             List<String> tagsDto = Arrays.asList(tags);
             questionDTO.setTags(tagsDto);
             questionDTO.setUser(user.get(0));
+            //处理用户的擅长领域
+            String[] userTags = user.get(0).getTags().split(",");
+            List<String> userTagsDto = Arrays.asList(userTags);
+            questionDTO.setUserTags(userTagsDto);
+            //查询相关的问题数据
+            List<Question> questions =null;
+            try {
+                questions = this.relativeQuestion(tagsDto);
+                questionDTO.setRelativeQuestions(questions);
+            } catch (ExecutionException e) {
+                e.printStackTrace();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
         }
         return  questionDTO;//返回用户要查找的信息
     }
@@ -130,5 +148,43 @@ public class QuestionService {
         List<HotQuesDTO> list = questionCustomMapper.getViewMore(size);
         System.out.println(list.toArray()[0].toString());
         return list;
+    }
+
+
+    //根据标签查询相关的文章
+    public List<Question> relativeQuestion(List<String> tags) throws ExecutionException, InterruptedException {
+        //多线程查询
+        List<Question> questions = new ArrayList<>();
+        List<FutureTask<Question>> list = new ArrayList<>();
+        for(String tag:tags){
+            ThreadDemo3 threadDemo3 = new ThreadDemo3(questionCustomMapper,tag);
+            FutureTask<Question> futureTask = new FutureTask<>(threadDemo3);
+            list.add(futureTask);
+        }
+        for(FutureTask<Question> futureTask: list){
+            new Thread(futureTask).start();
+        }
+
+        for(FutureTask<Question> futureTask: list){
+            Question question = futureTask.get();
+            System.out.println(question.toString());
+            questions.add(question);
+        }
+        return questions;
+    }
+    static class ThreadDemo3 implements Callable<Question>{
+        private String tag;
+        private QuestionCustomMapper questionCustomMapper;
+        public ThreadDemo3(QuestionCustomMapper questionCustomMapper,String tag) {
+            this.tag = tag;
+            this.questionCustomMapper=questionCustomMapper;
+        }
+
+        @Override
+        public Question call() throws Exception {
+            List<Question> question = questionCustomMapper.relativeQuestions(tag);
+            System.out.println(question);
+            return question.get(0);
+        }
     }
 }

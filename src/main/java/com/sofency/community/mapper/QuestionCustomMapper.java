@@ -22,4 +22,7 @@ public interface QuestionCustomMapper {
 
      //获取阅读最多的文章的id
      List<HotQuesDTO> getViewMore(int size);
+
+     //根据标签查询相关的文章信息
+     List<Question> relativeQuestions(String tag);
 }

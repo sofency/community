@@ -125,19 +125,19 @@ button:focus{
     height: 50px;
     border-radius: 50%;
 }
-.hotQuest{
+.hotQuest,.relativeQuestion{
     list-style: none;
     padding-left: 0;
     margin-top: 10px;
 }
-.hotQuest li{
+.hotQuest li,.relativeQuestion li{
     border-bottom: 1px solid #c0c0c0;
     height: 40px;
     line-height: 40px;
 }
-.hotQuest li a{
+.hotQuest li a,.relativeQuestion li a{
     color: black;
 }
-.hotQuest li a:hover{
+.hotQuest li a:hover,.relativeQuestion li a:hover{
     color: red;
 }

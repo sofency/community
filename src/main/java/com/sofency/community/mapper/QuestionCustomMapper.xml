@@ -43,4 +43,10 @@
   <select id="getViewMore" resultType="com.sofency.community.dto.HotQuesDTO" parameterType="Integer">
     select id,title,view_count from question order by view_count desc limit #{size};
   </select>
+
+
+
+  <select id="relativeQuestions" resultType="com.sofency.community.pojo.Question" parameterType="String">
+    select id,title,view_count from question where tag = #{tag} limit 4;
+  </select>
 </mapper>

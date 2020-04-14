@@ -6,6 +6,7 @@ import com.sofency.community.mapper.UserMapper;
 import com.sofency.community.pojo.User;
 import com.sofency.community.pojo.UserExample;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.HandlerInterceptor;
 
 import javax.servlet.http.Cookie;
