@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<head>
+    <title>码匠社区</title>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <link rel="stylesheet" href="/static/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/static/css/common.css">
+    <link rel="stylesheet" href="/static/css/index.css">
+    <link rel="stylesheet" href="/static/css/font-awesome.css">
+    <style type="text/css">
+        .newsContent li{
+            list-style: none;
+            margin-bottom: 20px;
+        }
+        .newsContent li:first-child{
+            margin-top: 20px;
+        }
+        .innerbox{
+            background-color: #fff;width: 850px;height: 188px;
+        }
+        .innerbox .img-left{
+            width: 300px;
+            height: 188px;
+            float: left;
+            position: relative;
+            z-index: 100;
+            overflow: hidden;
+        }
+        .innerbox .img-left a{
+            text-decoration:  none;
+        }
+        .innerbox .img-left a img{
+            width: 300px;
+            height: 188px;
+            transition: transform 1s;
+        }
+        .innerbox .title-right{
+            width: 520px;
+            float: right;
+            padding: 24px 0px 0px 10px;
+            position: relative;
+        }
+        .innerbox .title-right h4{
+            font-size: 18px;
+            line-height: 1.2em;
+            color: #404040;
+            width: 435px;
+            height: 22px;
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+        }
+        .innerbox .title-right p{
+            line-height: 180%;
+            font-size: 14px;
+            color: #747474;
+            padding-right: 8px;
+            height: 50px;
+            overflow: hidden;
+        }
+    </style>
+    <script src="/static/js/default-image.js"></script>
+    <script src="/static/js/login.js"></script>
+    <script type="text/javascript">
+        window.onload=function(){
+            const flag = window.localStorage.getItem("closeable");
+            if(flag=="true"){
+                window.close()
+                window.localStorage.removeItem("closeable");
+            }
+        }
+    </script>
+</head>
+<body>
+<div th:replace="~{navigation::nav}"></div>
+<div class="container">
+    <ul class="newsContent">
+        <li th:each="news:${news}">
+            <div class="innerbox">
+                <div class="img-left" >
+                    <a th:href="${news.contentUrl}"><img th:src="${news.imgUrl}"/></a>
+                </div>
+                <div class="title-right">
+                    <a th:href="${news.contentUrl}"><h4 th:text="${news.title}"></h4></a>
+                    <p th:text="${news.getDateTxt()}"></p>
+                </div>
+            </div>
+        </li>
+    </ul>
+</div>
+<div class="footer" style="text-align: center">
+    <p>所有文章抓取于<a href="http://internet.cnmo.com/news/">CNMO</a>网站,如若侵权，联系立即删除</p>
+    <p>email:&nbsp;sofency@qq.com</p>
+</div>
+</body>
+</html>

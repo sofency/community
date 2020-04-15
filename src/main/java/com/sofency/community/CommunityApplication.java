@@ -7,12 +7,14 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.context.annotation.Import;
+import org.springframework.scheduling.annotation.EnableScheduling;
 
 @MapperScan("com.sofency.community.mapper")
 @Import({SessionInterceptor.class})
 @SpringBootApplication
 @EnableConfigurationProperties
 @EnableCaching  //开启缓存
+@EnableScheduling
 public class CommunityApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(CommunityApplication.class, args);

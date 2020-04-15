@@ -39,7 +39,7 @@ public class ProblemController {
     @GetMapping("/profile/{action}")
     public ModelAndView problem(HttpServletRequest request,
                                 @RequestParam(name = "page",defaultValue="1") Integer page,
-                                @RequestParam(name = "size",defaultValue = "5") Integer size,
+                                @RequestParam(name = "size",defaultValue = "8") Integer size,
                                 @PathVariable("action") String action){
         //从session里面拿取用户的信息
         ModelAndView modelAndView = new ModelAndView();

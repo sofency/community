@@ -39,9 +39,7 @@ public class AuthorizeController {
         this.githubProvider=githubProvider;
         this.userService=userService;
     }
-
     /**
-     * \
      * @param code
      * @param state
      * @param request
