@@ -4880,3 +4880,531 @@ org.thymeleaf.exceptions.TemplateInputException: Error resolving fragment: "~{na
 2020-04-15 11:04:09.513 DEBUG 3252 --- [http-nio-8088-exec-10] c.s.c.m.Q.getViewMore                    : ==>  Preparing: select id,title,view_count from question order by view_count desc limit ?; 
 2020-04-15 11:04:09.513 DEBUG 3252 --- [http-nio-8088-exec-10] c.s.c.m.Q.getViewMore                    : ==> Parameters: 5(Integer)
 2020-04-15 11:04:09.514 DEBUG 3252 --- [http-nio-8088-exec-10] c.s.c.m.Q.getViewMore                    : <==      Total: 5
+2020-04-15 17:33:29.493  INFO 4996 --- [main] c.s.community.CommunityApplication       : Starting CommunityApplication on DESKTOP-VCDINT4 with PID 4996 (E:\Java\community\target\classes started by sofency in E:\Java\community)
+2020-04-15 17:33:29.496  INFO 4996 --- [main] c.s.community.CommunityApplication       : No active profile set, falling back to default profiles: default
+2020-04-15 17:33:30.172  INFO 4996 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2020-04-15 17:33:30.179  INFO 4996 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2020-04-15 17:33:30.275  INFO 4996 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 34ms. Found 0 Redis repository interfaces.
+2020-04-15 17:33:30.615  INFO 4996 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-04-15 17:33:30.858  INFO 4996 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8088 (http)
+2020-04-15 17:33:30.869  INFO 4996 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2020-04-15 17:33:30.869  INFO 4996 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.30]
+2020-04-15 17:33:30.957  INFO 4996 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2020-04-15 17:33:30.958  INFO 4996 --- [main] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 1414 ms
+2020-04-15 17:33:31.983  INFO 4996 --- [main] o.s.s.c.ThreadPoolTaskScheduler          : Initializing ExecutorService 'taskScheduler'
+2020-04-15 17:33:32.077  INFO 4996 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8088 (http) with context path ''
+2020-04-15 17:33:32.080  INFO 4996 --- [main] c.s.community.CommunityApplication       : Started CommunityApplication in 2.894 seconds (JVM running for 3.839)
+2020-04-15 17:33:40.554  INFO 4996 --- [http-nio-8088-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2020-04-15 17:33:40.554  INFO 4996 --- [http-nio-8088-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2020-04-15 17:33:40.558  INFO 4996 --- [http-nio-8088-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 4 ms
+2020-04-15 17:33:40.605  INFO 4996 --- [http-nio-8088-exec-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2020-04-15 17:33:41.093  INFO 4996 --- [http-nio-8088-exec-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2020-04-15 17:33:41.099 DEBUG 4996 --- [http-nio-8088-exec-1] .Q.selectByExampleWithBLOBsWithRowbounds : ==>  Preparing: select id, title, tag, gmt_create, gmt_modify, creator_id, comment_count, view_count, like_count, recommend , description from question 
+2020-04-15 17:33:41.115 DEBUG 4996 --- [http-nio-8088-exec-1] .Q.selectByExampleWithBLOBsWithRowbounds : ==> Parameters: 
+2020-04-15 17:33:41.152 DEBUG 4996 --- [http-nio-8088-exec-1] c.s.c.m.QuestionMapper.countByExample    : ==>  Preparing: select count(*) from question 
+2020-04-15 17:33:41.152 DEBUG 4996 --- [http-nio-8088-exec-1] c.s.c.m.QuestionMapper.countByExample    : ==> Parameters: 
+2020-04-15 17:33:41.169 DEBUG 4996 --- [http-nio-8088-exec-1] c.s.c.m.QuestionMapper.countByExample    : <==      Total: 1
+2020-04-15 17:33:41.179 DEBUG 4996 --- [http-nio-8088-exec-1] c.s.c.mapper.UserMapper.selectByExample  : ==>  Preparing: select generate_id, name, token, gmt_create, gmt_modify, avatar_url, email, tags, password, github_url from user WHERE ( generate_id = ? ) 
+2020-04-15 17:33:41.180 DEBUG 4996 --- [http-nio-8088-exec-1] c.s.c.mapper.UserMapper.selectByExample  : ==> Parameters: 4(Long)
+2020-04-15 17:33:41.186 DEBUG 4996 --- [http-nio-8088-exec-1] c.s.c.mapper.UserMapper.selectByExample  : <==      Total: 1
+2020-04-15 17:33:41.201 DEBUG 4996 --- [http-nio-8088-exec-1] c.s.c.mapper.UserMapper.selectByExample  : ==>  Preparing: select generate_id, name, token, gmt_create, gmt_modify, avatar_url, email, tags, password, github_url from user WHERE ( generate_id = ? ) 
+2020-04-15 17:33:41.201 DEBUG 4996 --- [http-nio-8088-exec-1] c.s.c.mapper.UserMapper.selectByExample  : ==> Parameters: 5(Long)
+2020-04-15 17:33:41.203 DEBUG 4996 --- [http-nio-8088-exec-1] c.s.c.mapper.UserMapper.selectByExample  : <==      Total: 1
+2020-04-15 17:33:41.204 DEBUG 4996 --- [http-nio-8088-exec-1] c.s.c.mapper.UserMapper.selectByExample  : ==>  Preparing: select generate_id, name, token, gmt_create, gmt_modify, avatar_url, email, tags, password, github_url from user WHERE ( generate_id = ? ) 
+2020-04-15 17:33:41.204 DEBUG 4996 --- [http-nio-8088-exec-1] c.s.c.mapper.UserMapper.selectByExample  : ==> Parameters: 4(Long)
+2020-04-15 17:33:41.206 DEBUG 4996 --- [http-nio-8088-exec-1] c.s.c.mapper.UserMapper.selectByExample  : <==      Total: 1
+2020-04-15 17:33:41.207 DEBUG 4996 --- [http-nio-8088-exec-1] c.s.c.mapper.UserMapper.selectByExample  : ==>  Preparing: select generate_id, name, token, gmt_create, gmt_modify, avatar_url, email, tags, password, github_url from user WHERE ( generate_id = ? ) 
+2020-04-15 17:33:41.207 DEBUG 4996 --- [http-nio-8088-exec-1] c.s.c.mapper.UserMapper.selectByExample  : ==> Parameters: 4(Long)
+2020-04-15 17:33:41.208 DEBUG 4996 --- [http-nio-8088-exec-1] c.s.c.mapper.UserMapper.selectByExample  : <==      Total: 1
+2020-04-15 17:33:41.209 DEBUG 4996 --- [http-nio-8088-exec-1] c.s.c.mapper.UserMapper.selectByExample  : ==>  Preparing: select generate_id, name, token, gmt_create, gmt_modify, avatar_url, email, tags, password, github_url from user WHERE ( generate_id = ? ) 
+2020-04-15 17:33:41.209 DEBUG 4996 --- [http-nio-8088-exec-1] c.s.c.mapper.UserMapper.selectByExample  : ==> Parameters: 4(Long)
+2020-04-15 17:33:41.210 DEBUG 4996 --- [http-nio-8088-exec-1] c.s.c.mapper.UserMapper.selectByExample  : <==      Total: 1
+2020-04-15 17:33:41.211 DEBUG 4996 --- [http-nio-8088-exec-1] c.s.c.mapper.UserMapper.selectByExample  : ==>  Preparing: select generate_id, name, token, gmt_create, gmt_modify, avatar_url, email, tags, password, github_url from user WHERE ( generate_id = ? ) 
+2020-04-15 17:33:41.211 DEBUG 4996 --- [http-nio-8088-exec-1] c.s.c.mapper.UserMapper.selectByExample  : ==> Parameters: 4(Long)
+2020-04-15 17:33:41.212 DEBUG 4996 --- [http-nio-8088-exec-1] c.s.c.mapper.UserMapper.selectByExample  : <==      Total: 1
+2020-04-15 17:33:41.213 DEBUG 4996 --- [http-nio-8088-exec-1] c.s.c.mapper.UserMapper.selectByExample  : ==>  Preparing: select generate_id, name, token, gmt_create, gmt_modify, avatar_url, email, tags, password, github_url from user WHERE ( generate_id = ? ) 
+2020-04-15 17:33:41.213 DEBUG 4996 --- [http-nio-8088-exec-1] c.s.c.mapper.UserMapper.selectByExample  : ==> Parameters: 4(Long)
+2020-04-15 17:33:41.214 DEBUG 4996 --- [http-nio-8088-exec-1] c.s.c.mapper.UserMapper.selectByExample  : <==      Total: 1
+2020-04-15 17:33:41.215 DEBUG 4996 --- [http-nio-8088-exec-1] c.s.c.mapper.UserMapper.selectByExample  : ==>  Preparing: select generate_id, name, token, gmt_create, gmt_modify, avatar_url, email, tags, password, github_url from user WHERE ( generate_id = ? ) 
+2020-04-15 17:33:41.215 DEBUG 4996 --- [http-nio-8088-exec-1] c.s.c.mapper.UserMapper.selectByExample  : ==> Parameters: 5(Long)
+2020-04-15 17:33:41.216 DEBUG 4996 --- [http-nio-8088-exec-1] c.s.c.mapper.UserMapper.selectByExample  : <==      Total: 1
+2020-04-15 17:33:41.220 DEBUG 4996 --- [http-nio-8088-exec-1] c.s.c.m.Q.getViewMore                    : ==>  Preparing: select id,title,view_count from question order by view_count desc limit ?; 
+2020-04-15 17:33:41.220 DEBUG 4996 --- [http-nio-8088-exec-1] c.s.c.m.Q.getViewMore                    : ==> Parameters: 5(Integer)
+2020-04-15 17:33:41.224 DEBUG 4996 --- [http-nio-8088-exec-1] c.s.c.m.Q.getViewMore                    : <==      Total: 5
+2020-04-15 17:33:42.006  WARN 4996 --- [http-nio-8088-exec-7] o.s.web.servlet.PageNotFound             : No mapping for GET /favicon.ico
+2020-04-15 17:40:54.414 DEBUG 4996 --- [http-nio-8088-exec-1] .Q.selectByExampleWithBLOBsWithRowbounds : ==>  Preparing: select id, title, tag, gmt_create, gmt_modify, creator_id, comment_count, view_count, like_count, recommend , description from question 
+2020-04-15 17:40:54.414 DEBUG 4996 --- [http-nio-8088-exec-1] .Q.selectByExampleWithBLOBsWithRowbounds : ==> Parameters: 
+2020-04-15 17:40:54.421 DEBUG 4996 --- [http-nio-8088-exec-1] c.s.c.m.QuestionMapper.countByExample    : ==>  Preparing: select count(*) from question 
+2020-04-15 17:40:54.421 DEBUG 4996 --- [http-nio-8088-exec-1] c.s.c.m.QuestionMapper.countByExample    : ==> Parameters: 
+2020-04-15 17:40:54.427 DEBUG 4996 --- [http-nio-8088-exec-1] c.s.c.m.QuestionMapper.countByExample    : <==      Total: 1
+2020-04-15 17:40:54.427 DEBUG 4996 --- [http-nio-8088-exec-1] c.s.c.mapper.UserMapper.selectByExample  : ==>  Preparing: select generate_id, name, token, gmt_create, gmt_modify, avatar_url, email, tags, password, github_url from user WHERE ( generate_id = ? ) 
+2020-04-15 17:40:54.428 DEBUG 4996 --- [http-nio-8088-exec-1] c.s.c.mapper.UserMapper.selectByExample  : ==> Parameters: 4(Long)
+2020-04-15 17:40:54.429 DEBUG 4996 --- [http-nio-8088-exec-1] c.s.c.mapper.UserMapper.selectByExample  : <==      Total: 1
+2020-04-15 17:40:54.430 DEBUG 4996 --- [http-nio-8088-exec-1] c.s.c.mapper.UserMapper.selectByExample  : ==>  Preparing: select generate_id, name, token, gmt_create, gmt_modify, avatar_url, email, tags, password, github_url from user WHERE ( generate_id = ? ) 
+2020-04-15 17:40:54.430 DEBUG 4996 --- [http-nio-8088-exec-1] c.s.c.mapper.UserMapper.selectByExample  : ==> Parameters: 5(Long)
+2020-04-15 17:40:54.431 DEBUG 4996 --- [http-nio-8088-exec-1] c.s.c.mapper.UserMapper.selectByExample  : <==      Total: 1
+2020-04-15 17:40:54.431 DEBUG 4996 --- [http-nio-8088-exec-1] c.s.c.mapper.UserMapper.selectByExample  : ==>  Preparing: select generate_id, name, token, gmt_create, gmt_modify, avatar_url, email, tags, password, github_url from user WHERE ( generate_id = ? ) 
+2020-04-15 17:40:54.432 DEBUG 4996 --- [http-nio-8088-exec-1] c.s.c.mapper.UserMapper.selectByExample  : ==> Parameters: 4(Long)
+2020-04-15 17:40:54.446 DEBUG 4996 --- [http-nio-8088-exec-1] c.s.c.mapper.UserMapper.selectByExample  : <==      Total: 1
+2020-04-15 17:40:54.448 DEBUG 4996 --- [http-nio-8088-exec-1] c.s.c.mapper.UserMapper.selectByExample  : ==>  Preparing: select generate_id, name, token, gmt_create, gmt_modify, avatar_url, email, tags, password, github_url from user WHERE ( generate_id = ? ) 
+2020-04-15 17:40:54.448 DEBUG 4996 --- [http-nio-8088-exec-1] c.s.c.mapper.UserMapper.selectByExample  : ==> Parameters: 4(Long)
+2020-04-15 17:40:54.449 DEBUG 4996 --- [http-nio-8088-exec-1] c.s.c.mapper.UserMapper.selectByExample  : <==      Total: 1
+2020-04-15 17:40:54.450 DEBUG 4996 --- [http-nio-8088-exec-1] c.s.c.mapper.UserMapper.selectByExample  : ==>  Preparing: select generate_id, name, token, gmt_create, gmt_modify, avatar_url, email, tags, password, github_url from user WHERE ( generate_id = ? ) 
+2020-04-15 17:40:54.450 DEBUG 4996 --- [http-nio-8088-exec-1] c.s.c.mapper.UserMapper.selectByExample  : ==> Parameters: 4(Long)
+2020-04-15 17:40:54.451 DEBUG 4996 --- [http-nio-8088-exec-1] c.s.c.mapper.UserMapper.selectByExample  : <==      Total: 1
+2020-04-15 17:40:54.451 DEBUG 4996 --- [http-nio-8088-exec-1] c.s.c.mapper.UserMapper.selectByExample  : ==>  Preparing: select generate_id, name, token, gmt_create, gmt_modify, avatar_url, email, tags, password, github_url from user WHERE ( generate_id = ? ) 
+2020-04-15 17:40:54.451 DEBUG 4996 --- [http-nio-8088-exec-1] c.s.c.mapper.UserMapper.selectByExample  : ==> Parameters: 4(Long)
+2020-04-15 17:40:54.453 DEBUG 4996 --- [http-nio-8088-exec-1] c.s.c.mapper.UserMapper.selectByExample  : <==      Total: 1
+2020-04-15 17:40:54.454 DEBUG 4996 --- [http-nio-8088-exec-1] c.s.c.mapper.UserMapper.selectByExample  : ==>  Preparing: select generate_id, name, token, gmt_create, gmt_modify, avatar_url, email, tags, password, github_url from user WHERE ( generate_id = ? ) 
+2020-04-15 17:40:54.454 DEBUG 4996 --- [http-nio-8088-exec-1] c.s.c.mapper.UserMapper.selectByExample  : ==> Parameters: 4(Long)
+2020-04-15 17:40:54.455 DEBUG 4996 --- [http-nio-8088-exec-1] c.s.c.mapper.UserMapper.selectByExample  : <==      Total: 1
+2020-04-15 17:40:54.456 DEBUG 4996 --- [http-nio-8088-exec-1] c.s.c.mapper.UserMapper.selectByExample  : ==>  Preparing: select generate_id, name, token, gmt_create, gmt_modify, avatar_url, email, tags, password, github_url from user WHERE ( generate_id = ? ) 
+2020-04-15 17:40:54.456 DEBUG 4996 --- [http-nio-8088-exec-1] c.s.c.mapper.UserMapper.selectByExample  : ==> Parameters: 5(Long)
+2020-04-15 17:40:54.458 DEBUG 4996 --- [http-nio-8088-exec-1] c.s.c.mapper.UserMapper.selectByExample  : <==      Total: 1
+2020-04-15 17:40:54.460 DEBUG 4996 --- [http-nio-8088-exec-1] c.s.c.m.Q.getViewMore                    : ==>  Preparing: select id,title,view_count from question order by view_count desc limit ?; 
+2020-04-15 17:40:54.460 DEBUG 4996 --- [http-nio-8088-exec-1] c.s.c.m.Q.getViewMore                    : ==> Parameters: 5(Integer)
+2020-04-15 17:40:54.462 DEBUG 4996 --- [http-nio-8088-exec-1] c.s.c.m.Q.getViewMore                    : <==      Total: 5
+2020-04-15 17:42:31.015  INFO 4388 --- [main] c.s.community.CommunityApplication       : Starting CommunityApplication on DESKTOP-VCDINT4 with PID 4388 (E:\Java\community\target\classes started by sofency in E:\Java\community)
+2020-04-15 17:42:31.019  INFO 4388 --- [main] c.s.community.CommunityApplication       : No active profile set, falling back to default profiles: default
+2020-04-15 17:42:31.623  INFO 4388 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2020-04-15 17:42:31.625  INFO 4388 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2020-04-15 17:42:31.654  INFO 4388 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 14ms. Found 0 Redis repository interfaces.
+2020-04-15 17:42:31.845  INFO 4388 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-04-15 17:42:32.020  INFO 4388 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8088 (http)
+2020-04-15 17:42:32.027  INFO 4388 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2020-04-15 17:42:32.028  INFO 4388 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.30]
+2020-04-15 17:42:32.092  INFO 4388 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2020-04-15 17:42:32.092  INFO 4388 --- [main] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 995 ms
+2020-04-15 17:42:32.740  INFO 4388 --- [main] o.s.s.c.ThreadPoolTaskScheduler          : Initializing ExecutorService 'taskScheduler'
+2020-04-15 17:42:32.799  INFO 4388 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8088 (http) with context path ''
+2020-04-15 17:42:32.801  INFO 4388 --- [main] c.s.community.CommunityApplication       : Started CommunityApplication in 2.09 seconds (JVM running for 2.752)
+2020-04-15 17:42:48.931  INFO 4388 --- [http-nio-8088-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2020-04-15 17:42:48.931  INFO 4388 --- [http-nio-8088-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2020-04-15 17:42:48.937  INFO 4388 --- [http-nio-8088-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 6 ms
+2020-04-15 17:42:48.989  INFO 4388 --- [http-nio-8088-exec-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2020-04-15 17:42:49.452  INFO 4388 --- [http-nio-8088-exec-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2020-04-15 17:42:49.458 DEBUG 4388 --- [http-nio-8088-exec-1] .Q.selectByExampleWithBLOBsWithRowbounds : ==>  Preparing: select id, title, tag, gmt_create, gmt_modify, creator_id, comment_count, view_count, like_count, recommend , description from question 
+2020-04-15 17:42:49.473 DEBUG 4388 --- [http-nio-8088-exec-1] .Q.selectByExampleWithBLOBsWithRowbounds : ==> Parameters: 
+2020-04-15 17:42:49.500 DEBUG 4388 --- [http-nio-8088-exec-1] c.s.c.m.QuestionMapper.countByExample    : ==>  Preparing: select count(*) from question 
+2020-04-15 17:42:49.500 DEBUG 4388 --- [http-nio-8088-exec-1] c.s.c.m.QuestionMapper.countByExample    : ==> Parameters: 
+2020-04-15 17:42:49.503 DEBUG 4388 --- [http-nio-8088-exec-1] c.s.c.m.QuestionMapper.countByExample    : <==      Total: 1
+2020-04-15 17:42:49.513 DEBUG 4388 --- [http-nio-8088-exec-1] c.s.c.mapper.UserMapper.selectByExample  : ==>  Preparing: select generate_id, name, token, gmt_create, gmt_modify, avatar_url, email, tags, password, github_url from user WHERE ( generate_id = ? ) 
+2020-04-15 17:42:49.513 DEBUG 4388 --- [http-nio-8088-exec-1] c.s.c.mapper.UserMapper.selectByExample  : ==> Parameters: 4(Long)
+2020-04-15 17:42:49.515 DEBUG 4388 --- [http-nio-8088-exec-1] c.s.c.mapper.UserMapper.selectByExample  : <==      Total: 1
+2020-04-15 17:42:49.526 DEBUG 4388 --- [http-nio-8088-exec-1] c.s.c.mapper.UserMapper.selectByExample  : ==>  Preparing: select generate_id, name, token, gmt_create, gmt_modify, avatar_url, email, tags, password, github_url from user WHERE ( generate_id = ? ) 
+2020-04-15 17:42:49.526 DEBUG 4388 --- [http-nio-8088-exec-1] c.s.c.mapper.UserMapper.selectByExample  : ==> Parameters: 5(Long)
+2020-04-15 17:42:49.527 DEBUG 4388 --- [http-nio-8088-exec-1] c.s.c.mapper.UserMapper.selectByExample  : <==      Total: 1
+2020-04-15 17:42:49.528 DEBUG 4388 --- [http-nio-8088-exec-1] c.s.c.mapper.UserMapper.selectByExample  : ==>  Preparing: select generate_id, name, token, gmt_create, gmt_modify, avatar_url, email, tags, password, github_url from user WHERE ( generate_id = ? ) 
+2020-04-15 17:42:49.528 DEBUG 4388 --- [http-nio-8088-exec-1] c.s.c.mapper.UserMapper.selectByExample  : ==> Parameters: 4(Long)
+2020-04-15 17:42:49.530 DEBUG 4388 --- [http-nio-8088-exec-1] c.s.c.mapper.UserMapper.selectByExample  : <==      Total: 1
+2020-04-15 17:42:49.530 DEBUG 4388 --- [http-nio-8088-exec-1] c.s.c.mapper.UserMapper.selectByExample  : ==>  Preparing: select generate_id, name, token, gmt_create, gmt_modify, avatar_url, email, tags, password, github_url from user WHERE ( generate_id = ? ) 
+2020-04-15 17:42:49.530 DEBUG 4388 --- [http-nio-8088-exec-1] c.s.c.mapper.UserMapper.selectByExample  : ==> Parameters: 4(Long)
+2020-04-15 17:42:49.531 DEBUG 4388 --- [http-nio-8088-exec-1] c.s.c.mapper.UserMapper.selectByExample  : <==      Total: 1
+2020-04-15 17:42:49.532 DEBUG 4388 --- [http-nio-8088-exec-1] c.s.c.mapper.UserMapper.selectByExample  : ==>  Preparing: select generate_id, name, token, gmt_create, gmt_modify, avatar_url, email, tags, password, github_url from user WHERE ( generate_id = ? ) 
+2020-04-15 17:42:49.532 DEBUG 4388 --- [http-nio-8088-exec-1] c.s.c.mapper.UserMapper.selectByExample  : ==> Parameters: 4(Long)
+2020-04-15 17:42:49.534 DEBUG 4388 --- [http-nio-8088-exec-1] c.s.c.mapper.UserMapper.selectByExample  : <==      Total: 1
+2020-04-15 17:42:49.535 DEBUG 4388 --- [http-nio-8088-exec-1] c.s.c.mapper.UserMapper.selectByExample  : ==>  Preparing: select generate_id, name, token, gmt_create, gmt_modify, avatar_url, email, tags, password, github_url from user WHERE ( generate_id = ? ) 
+2020-04-15 17:42:49.535 DEBUG 4388 --- [http-nio-8088-exec-1] c.s.c.mapper.UserMapper.selectByExample  : ==> Parameters: 4(Long)
+2020-04-15 17:42:49.536 DEBUG 4388 --- [http-nio-8088-exec-1] c.s.c.mapper.UserMapper.selectByExample  : <==      Total: 1
+2020-04-15 17:42:49.537 DEBUG 4388 --- [http-nio-8088-exec-1] c.s.c.mapper.UserMapper.selectByExample  : ==>  Preparing: select generate_id, name, token, gmt_create, gmt_modify, avatar_url, email, tags, password, github_url from user WHERE ( generate_id = ? ) 
+2020-04-15 17:42:49.537 DEBUG 4388 --- [http-nio-8088-exec-1] c.s.c.mapper.UserMapper.selectByExample  : ==> Parameters: 4(Long)
+2020-04-15 17:42:49.538 DEBUG 4388 --- [http-nio-8088-exec-1] c.s.c.mapper.UserMapper.selectByExample  : <==      Total: 1
+2020-04-15 17:42:49.539 DEBUG 4388 --- [http-nio-8088-exec-1] c.s.c.mapper.UserMapper.selectByExample  : ==>  Preparing: select generate_id, name, token, gmt_create, gmt_modify, avatar_url, email, tags, password, github_url from user WHERE ( generate_id = ? ) 
+2020-04-15 17:42:49.540 DEBUG 4388 --- [http-nio-8088-exec-1] c.s.c.mapper.UserMapper.selectByExample  : ==> Parameters: 5(Long)
+2020-04-15 17:42:49.541 DEBUG 4388 --- [http-nio-8088-exec-1] c.s.c.mapper.UserMapper.selectByExample  : <==      Total: 1
+2020-04-15 17:42:49.544 DEBUG 4388 --- [http-nio-8088-exec-1] c.s.c.m.Q.getViewMore                    : ==>  Preparing: select id,title,view_count from question order by view_count desc limit ?; 
+2020-04-15 17:42:49.545 DEBUG 4388 --- [http-nio-8088-exec-1] c.s.c.m.Q.getViewMore                    : ==> Parameters: 5(Integer)
+2020-04-15 17:42:49.546 DEBUG 4388 --- [http-nio-8088-exec-1] c.s.c.m.Q.getViewMore                    : <==      Total: 5
+2020-04-15 17:50:30.980 DEBUG 4388 --- [http-nio-8088-exec-10] c.s.c.mapper.UserMapper.selectByExample  : ==>  Preparing: select generate_id, name, token, gmt_create, gmt_modify, avatar_url, email, tags, password, github_url from user WHERE ( email = ? and password = ? ) 
+2020-04-15 17:50:30.981 DEBUG 4388 --- [http-nio-8088-exec-10] c.s.c.mapper.UserMapper.selectByExample  : ==> Parameters: alice@qq.com(String), 110(String)
+2020-04-15 17:50:30.985 DEBUG 4388 --- [http-nio-8088-exec-10] c.s.c.mapper.UserMapper.selectByExample  : <==      Total: 1
+2020-04-15 17:50:30.995 DEBUG 4388 --- [http-nio-8088-exec-8] .Q.selectByExampleWithBLOBsWithRowbounds : ==>  Preparing: select id, title, tag, gmt_create, gmt_modify, creator_id, comment_count, view_count, like_count, recommend , description from question 
+2020-04-15 17:50:30.996 DEBUG 4388 --- [http-nio-8088-exec-8] .Q.selectByExampleWithBLOBsWithRowbounds : ==> Parameters: 
+2020-04-15 17:50:31.000 DEBUG 4388 --- [http-nio-8088-exec-8] c.s.c.m.QuestionMapper.countByExample    : ==>  Preparing: select count(*) from question 
+2020-04-15 17:50:31.000 DEBUG 4388 --- [http-nio-8088-exec-8] c.s.c.m.QuestionMapper.countByExample    : ==> Parameters: 
+2020-04-15 17:50:31.003 DEBUG 4388 --- [http-nio-8088-exec-8] c.s.c.m.QuestionMapper.countByExample    : <==      Total: 1
+2020-04-15 17:50:31.005 DEBUG 4388 --- [http-nio-8088-exec-8] c.s.c.mapper.UserMapper.selectByExample  : ==>  Preparing: select generate_id, name, token, gmt_create, gmt_modify, avatar_url, email, tags, password, github_url from user WHERE ( generate_id = ? ) 
+2020-04-15 17:50:31.006 DEBUG 4388 --- [http-nio-8088-exec-8] c.s.c.mapper.UserMapper.selectByExample  : ==> Parameters: 4(Long)
+2020-04-15 17:50:31.007 DEBUG 4388 --- [http-nio-8088-exec-8] c.s.c.mapper.UserMapper.selectByExample  : <==      Total: 1
+2020-04-15 17:50:31.007 DEBUG 4388 --- [http-nio-8088-exec-8] c.s.c.mapper.UserMapper.selectByExample  : ==>  Preparing: select generate_id, name, token, gmt_create, gmt_modify, avatar_url, email, tags, password, github_url from user WHERE ( generate_id = ? ) 
+2020-04-15 17:50:31.008 DEBUG 4388 --- [http-nio-8088-exec-8] c.s.c.mapper.UserMapper.selectByExample  : ==> Parameters: 5(Long)
+2020-04-15 17:50:31.009 DEBUG 4388 --- [http-nio-8088-exec-8] c.s.c.mapper.UserMapper.selectByExample  : <==      Total: 1
+2020-04-15 17:50:31.010 DEBUG 4388 --- [http-nio-8088-exec-8] c.s.c.mapper.UserMapper.selectByExample  : ==>  Preparing: select generate_id, name, token, gmt_create, gmt_modify, avatar_url, email, tags, password, github_url from user WHERE ( generate_id = ? ) 
+2020-04-15 17:50:31.011 DEBUG 4388 --- [http-nio-8088-exec-8] c.s.c.mapper.UserMapper.selectByExample  : ==> Parameters: 4(Long)
+2020-04-15 17:50:31.011 DEBUG 4388 --- [http-nio-8088-exec-8] c.s.c.mapper.UserMapper.selectByExample  : <==      Total: 1
+2020-04-15 17:50:31.012 DEBUG 4388 --- [http-nio-8088-exec-8] c.s.c.mapper.UserMapper.selectByExample  : ==>  Preparing: select generate_id, name, token, gmt_create, gmt_modify, avatar_url, email, tags, password, github_url from user WHERE ( generate_id = ? ) 
+2020-04-15 17:50:31.012 DEBUG 4388 --- [http-nio-8088-exec-8] c.s.c.mapper.UserMapper.selectByExample  : ==> Parameters: 4(Long)
+2020-04-15 17:50:31.013 DEBUG 4388 --- [http-nio-8088-exec-8] c.s.c.mapper.UserMapper.selectByExample  : <==      Total: 1
+2020-04-15 17:50:31.013 DEBUG 4388 --- [http-nio-8088-exec-8] c.s.c.mapper.UserMapper.selectByExample  : ==>  Preparing: select generate_id, name, token, gmt_create, gmt_modify, avatar_url, email, tags, password, github_url from user WHERE ( generate_id = ? ) 
+2020-04-15 17:50:31.013 DEBUG 4388 --- [http-nio-8088-exec-8] c.s.c.mapper.UserMapper.selectByExample  : ==> Parameters: 4(Long)
+2020-04-15 17:50:31.014 DEBUG 4388 --- [http-nio-8088-exec-8] c.s.c.mapper.UserMapper.selectByExample  : <==      Total: 1
+2020-04-15 17:50:31.015 DEBUG 4388 --- [http-nio-8088-exec-8] c.s.c.mapper.UserMapper.selectByExample  : ==>  Preparing: select generate_id, name, token, gmt_create, gmt_modify, avatar_url, email, tags, password, github_url from user WHERE ( generate_id = ? ) 
+2020-04-15 17:50:31.015 DEBUG 4388 --- [http-nio-8088-exec-8] c.s.c.mapper.UserMapper.selectByExample  : ==> Parameters: 4(Long)
+2020-04-15 17:50:31.016 DEBUG 4388 --- [http-nio-8088-exec-8] c.s.c.mapper.UserMapper.selectByExample  : <==      Total: 1
+2020-04-15 17:50:31.017 DEBUG 4388 --- [http-nio-8088-exec-8] c.s.c.mapper.UserMapper.selectByExample  : ==>  Preparing: select generate_id, name, token, gmt_create, gmt_modify, avatar_url, email, tags, password, github_url from user WHERE ( generate_id = ? ) 
+2020-04-15 17:50:31.017 DEBUG 4388 --- [http-nio-8088-exec-8] c.s.c.mapper.UserMapper.selectByExample  : ==> Parameters: 4(Long)
+2020-04-15 17:50:31.019 DEBUG 4388 --- [http-nio-8088-exec-8] c.s.c.mapper.UserMapper.selectByExample  : <==      Total: 1
+2020-04-15 17:50:31.020 DEBUG 4388 --- [http-nio-8088-exec-8] c.s.c.mapper.UserMapper.selectByExample  : ==>  Preparing: select generate_id, name, token, gmt_create, gmt_modify, avatar_url, email, tags, password, github_url from user WHERE ( generate_id = ? ) 
+2020-04-15 17:50:31.020 DEBUG 4388 --- [http-nio-8088-exec-8] c.s.c.mapper.UserMapper.selectByExample  : ==> Parameters: 5(Long)
+2020-04-15 17:50:31.021 DEBUG 4388 --- [http-nio-8088-exec-8] c.s.c.mapper.UserMapper.selectByExample  : <==      Total: 1
+2020-04-15 17:50:31.026 DEBUG 4388 --- [http-nio-8088-exec-8] c.s.c.m.NotifyMapper.countByExample      : ==>  Preparing: select count(*) from notify WHERE ( receiver = ? and status = ? ) 
+2020-04-15 17:50:31.027 DEBUG 4388 --- [http-nio-8088-exec-8] c.s.c.m.NotifyMapper.countByExample      : ==> Parameters: 5(Long), 0(Integer)
+2020-04-15 17:50:31.031 DEBUG 4388 --- [http-nio-8088-exec-8] c.s.c.m.NotifyMapper.countByExample      : <==      Total: 1
+2020-04-15 17:50:31.032 DEBUG 4388 --- [http-nio-8088-exec-8] c.s.c.m.NotifyMapper.countByExample      : ==>  Preparing: select count(*) from notify WHERE ( receiver = ? and status = ? ) 
+2020-04-15 17:50:31.032 DEBUG 4388 --- [http-nio-8088-exec-8] c.s.c.m.NotifyMapper.countByExample      : ==> Parameters: 5(Long), 0(Integer)
+2020-04-15 17:50:31.033 DEBUG 4388 --- [http-nio-8088-exec-8] c.s.c.m.NotifyMapper.countByExample      : <==      Total: 1
+2020-04-15 17:50:31.033 DEBUG 4388 --- [http-nio-8088-exec-8] c.s.c.m.Q.getViewMore                    : ==>  Preparing: select id,title,view_count from question order by view_count desc limit ?; 
+2020-04-15 17:50:31.033 DEBUG 4388 --- [http-nio-8088-exec-8] c.s.c.m.Q.getViewMore                    : ==> Parameters: 5(Integer)
+2020-04-15 17:50:31.034 DEBUG 4388 --- [http-nio-8088-exec-8] c.s.c.m.Q.getViewMore                    : <==      Total: 5
+2020-04-15 17:50:35.265 DEBUG 4388 --- [http-nio-8088-exec-1] c.s.c.mapper.UserMapper.selectByExample  : ==>  Preparing: select generate_id, name, token, gmt_create, gmt_modify, avatar_url, email, tags, password, github_url from user WHERE ( token = ? ) 
+2020-04-15 17:50:35.265 DEBUG 4388 --- [http-nio-8088-exec-1] c.s.c.mapper.UserMapper.selectByExample  : ==> Parameters: 6dc08d96-5ba3-41a7-8415-ef4eaa502079(String)
+2020-04-15 17:50:35.266 DEBUG 4388 --- [http-nio-8088-exec-1] c.s.c.mapper.UserMapper.selectByExample  : <==      Total: 1
+2020-04-15 17:50:35.270 DEBUG 4388 --- [http-nio-8088-exec-2] .Q.selectByExampleWithBLOBsWithRowbounds : ==>  Preparing: select id, title, tag, gmt_create, gmt_modify, creator_id, comment_count, view_count, like_count, recommend , description from question 
+2020-04-15 17:50:35.271 DEBUG 4388 --- [http-nio-8088-exec-2] .Q.selectByExampleWithBLOBsWithRowbounds : ==> Parameters: 
+2020-04-15 17:50:35.274 DEBUG 4388 --- [http-nio-8088-exec-2] c.s.c.m.QuestionMapper.countByExample    : ==>  Preparing: select count(*) from question 
+2020-04-15 17:50:35.275 DEBUG 4388 --- [http-nio-8088-exec-2] c.s.c.m.QuestionMapper.countByExample    : ==> Parameters: 
+2020-04-15 17:50:35.276 DEBUG 4388 --- [http-nio-8088-exec-2] c.s.c.m.QuestionMapper.countByExample    : <==      Total: 1
+2020-04-15 17:50:35.277 DEBUG 4388 --- [http-nio-8088-exec-2] c.s.c.mapper.UserMapper.selectByExample  : ==>  Preparing: select generate_id, name, token, gmt_create, gmt_modify, avatar_url, email, tags, password, github_url from user WHERE ( generate_id = ? ) 
+2020-04-15 17:50:35.277 DEBUG 4388 --- [http-nio-8088-exec-2] c.s.c.mapper.UserMapper.selectByExample  : ==> Parameters: 4(Long)
+2020-04-15 17:50:35.278 DEBUG 4388 --- [http-nio-8088-exec-2] c.s.c.mapper.UserMapper.selectByExample  : <==      Total: 1
+2020-04-15 17:50:35.278 DEBUG 4388 --- [http-nio-8088-exec-2] c.s.c.mapper.UserMapper.selectByExample  : ==>  Preparing: select generate_id, name, token, gmt_create, gmt_modify, avatar_url, email, tags, password, github_url from user WHERE ( generate_id = ? ) 
+2020-04-15 17:50:35.279 DEBUG 4388 --- [http-nio-8088-exec-2] c.s.c.mapper.UserMapper.selectByExample  : ==> Parameters: 5(Long)
+2020-04-15 17:50:35.279 DEBUG 4388 --- [http-nio-8088-exec-2] c.s.c.mapper.UserMapper.selectByExample  : <==      Total: 1
+2020-04-15 17:50:35.280 DEBUG 4388 --- [http-nio-8088-exec-2] c.s.c.mapper.UserMapper.selectByExample  : ==>  Preparing: select generate_id, name, token, gmt_create, gmt_modify, avatar_url, email, tags, password, github_url from user WHERE ( generate_id = ? ) 
+2020-04-15 17:50:35.280 DEBUG 4388 --- [http-nio-8088-exec-2] c.s.c.mapper.UserMapper.selectByExample  : ==> Parameters: 4(Long)
+2020-04-15 17:50:35.281 DEBUG 4388 --- [http-nio-8088-exec-2] c.s.c.mapper.UserMapper.selectByExample  : <==      Total: 1
+2020-04-15 17:50:35.282 DEBUG 4388 --- [http-nio-8088-exec-2] c.s.c.mapper.UserMapper.selectByExample  : ==>  Preparing: select generate_id, name, token, gmt_create, gmt_modify, avatar_url, email, tags, password, github_url from user WHERE ( generate_id = ? ) 
+2020-04-15 17:50:35.282 DEBUG 4388 --- [http-nio-8088-exec-2] c.s.c.mapper.UserMapper.selectByExample  : ==> Parameters: 4(Long)
+2020-04-15 17:50:35.283 DEBUG 4388 --- [http-nio-8088-exec-2] c.s.c.mapper.UserMapper.selectByExample  : <==      Total: 1
+2020-04-15 17:50:35.284 DEBUG 4388 --- [http-nio-8088-exec-2] c.s.c.mapper.UserMapper.selectByExample  : ==>  Preparing: select generate_id, name, token, gmt_create, gmt_modify, avatar_url, email, tags, password, github_url from user WHERE ( generate_id = ? ) 
+2020-04-15 17:50:35.284 DEBUG 4388 --- [http-nio-8088-exec-2] c.s.c.mapper.UserMapper.selectByExample  : ==> Parameters: 4(Long)
+2020-04-15 17:50:35.285 DEBUG 4388 --- [http-nio-8088-exec-2] c.s.c.mapper.UserMapper.selectByExample  : <==      Total: 1
+2020-04-15 17:50:35.286 DEBUG 4388 --- [http-nio-8088-exec-2] c.s.c.mapper.UserMapper.selectByExample  : ==>  Preparing: select generate_id, name, token, gmt_create, gmt_modify, avatar_url, email, tags, password, github_url from user WHERE ( generate_id = ? ) 
+2020-04-15 17:50:35.286 DEBUG 4388 --- [http-nio-8088-exec-2] c.s.c.mapper.UserMapper.selectByExample  : ==> Parameters: 4(Long)
+2020-04-15 17:50:35.287 DEBUG 4388 --- [http-nio-8088-exec-2] c.s.c.mapper.UserMapper.selectByExample  : <==      Total: 1
+2020-04-15 17:50:35.287 DEBUG 4388 --- [http-nio-8088-exec-2] c.s.c.mapper.UserMapper.selectByExample  : ==>  Preparing: select generate_id, name, token, gmt_create, gmt_modify, avatar_url, email, tags, password, github_url from user WHERE ( generate_id = ? ) 
+2020-04-15 17:50:35.288 DEBUG 4388 --- [http-nio-8088-exec-2] c.s.c.mapper.UserMapper.selectByExample  : ==> Parameters: 4(Long)
+2020-04-15 17:50:35.288 DEBUG 4388 --- [http-nio-8088-exec-2] c.s.c.mapper.UserMapper.selectByExample  : <==      Total: 1
+2020-04-15 17:50:35.290 DEBUG 4388 --- [http-nio-8088-exec-2] c.s.c.mapper.UserMapper.selectByExample  : ==>  Preparing: select generate_id, name, token, gmt_create, gmt_modify, avatar_url, email, tags, password, github_url from user WHERE ( generate_id = ? ) 
+2020-04-15 17:50:35.290 DEBUG 4388 --- [http-nio-8088-exec-2] c.s.c.mapper.UserMapper.selectByExample  : ==> Parameters: 5(Long)
+2020-04-15 17:50:35.292 DEBUG 4388 --- [http-nio-8088-exec-2] c.s.c.mapper.UserMapper.selectByExample  : <==      Total: 1
+2020-04-15 17:50:35.292 DEBUG 4388 --- [http-nio-8088-exec-2] c.s.c.m.Q.getViewMore                    : ==>  Preparing: select id,title,view_count from question order by view_count desc limit ?; 
+2020-04-15 17:50:35.292 DEBUG 4388 --- [http-nio-8088-exec-2] c.s.c.m.Q.getViewMore                    : ==> Parameters: 5(Integer)
+2020-04-15 17:50:35.294 DEBUG 4388 --- [http-nio-8088-exec-2] c.s.c.m.Q.getViewMore                    : <==      Total: 5
+2020-04-15 19:19:09.445 DEBUG 4388 --- [http-nio-8088-exec-6] .Q.selectByExampleWithBLOBsWithRowbounds : ==>  Preparing: select id, title, tag, gmt_create, gmt_modify, creator_id, comment_count, view_count, like_count, recommend , description from question 
+2020-04-15 19:19:09.456 DEBUG 4388 --- [http-nio-8088-exec-6] .Q.selectByExampleWithBLOBsWithRowbounds : ==> Parameters: 
+2020-04-15 19:19:09.476 DEBUG 4388 --- [http-nio-8088-exec-6] c.s.c.m.QuestionMapper.countByExample    : ==>  Preparing: select count(*) from question 
+2020-04-15 19:19:09.477 DEBUG 4388 --- [http-nio-8088-exec-6] c.s.c.m.QuestionMapper.countByExample    : ==> Parameters: 
+2020-04-15 19:19:09.485 DEBUG 4388 --- [http-nio-8088-exec-6] c.s.c.m.QuestionMapper.countByExample    : <==      Total: 1
+2020-04-15 19:19:09.497 DEBUG 4388 --- [http-nio-8088-exec-6] c.s.c.mapper.UserMapper.selectByExample  : ==>  Preparing: select generate_id, name, token, gmt_create, gmt_modify, avatar_url, email, tags, password, github_url from user WHERE ( generate_id = ? ) 
+2020-04-15 19:19:09.497 DEBUG 4388 --- [http-nio-8088-exec-6] c.s.c.mapper.UserMapper.selectByExample  : ==> Parameters: 4(Long)
+2020-04-15 19:19:09.504 DEBUG 4388 --- [http-nio-8088-exec-6] c.s.c.mapper.UserMapper.selectByExample  : <==      Total: 1
+2020-04-15 19:19:09.506 DEBUG 4388 --- [http-nio-8088-exec-6] c.s.c.mapper.UserMapper.selectByExample  : ==>  Preparing: select generate_id, name, token, gmt_create, gmt_modify, avatar_url, email, tags, password, github_url from user WHERE ( generate_id = ? ) 
+2020-04-15 19:19:09.506 DEBUG 4388 --- [http-nio-8088-exec-6] c.s.c.mapper.UserMapper.selectByExample  : ==> Parameters: 5(Long)
+2020-04-15 19:19:09.508 DEBUG 4388 --- [http-nio-8088-exec-6] c.s.c.mapper.UserMapper.selectByExample  : <==      Total: 1
+2020-04-15 19:19:09.510 DEBUG 4388 --- [http-nio-8088-exec-6] c.s.c.mapper.UserMapper.selectByExample  : ==>  Preparing: select generate_id, name, token, gmt_create, gmt_modify, avatar_url, email, tags, password, github_url from user WHERE ( generate_id = ? ) 
+2020-04-15 19:19:09.510 DEBUG 4388 --- [http-nio-8088-exec-6] c.s.c.mapper.UserMapper.selectByExample  : ==> Parameters: 4(Long)
+2020-04-15 19:19:09.511 DEBUG 4388 --- [http-nio-8088-exec-6] c.s.c.mapper.UserMapper.selectByExample  : <==      Total: 1
+2020-04-15 19:19:09.511 DEBUG 4388 --- [http-nio-8088-exec-6] c.s.c.mapper.UserMapper.selectByExample  : ==>  Preparing: select generate_id, name, token, gmt_create, gmt_modify, avatar_url, email, tags, password, github_url from user WHERE ( generate_id = ? ) 
+2020-04-15 19:19:09.511 DEBUG 4388 --- [http-nio-8088-exec-6] c.s.c.mapper.UserMapper.selectByExample  : ==> Parameters: 4(Long)
+2020-04-15 19:19:09.512 DEBUG 4388 --- [http-nio-8088-exec-6] c.s.c.mapper.UserMapper.selectByExample  : <==      Total: 1
+2020-04-15 19:19:09.513 DEBUG 4388 --- [http-nio-8088-exec-6] c.s.c.mapper.UserMapper.selectByExample  : ==>  Preparing: select generate_id, name, token, gmt_create, gmt_modify, avatar_url, email, tags, password, github_url from user WHERE ( generate_id = ? ) 
+2020-04-15 19:19:09.514 DEBUG 4388 --- [http-nio-8088-exec-6] c.s.c.mapper.UserMapper.selectByExample  : ==> Parameters: 4(Long)
+2020-04-15 19:19:09.515 DEBUG 4388 --- [http-nio-8088-exec-6] c.s.c.mapper.UserMapper.selectByExample  : <==      Total: 1
+2020-04-15 19:19:09.515 DEBUG 4388 --- [http-nio-8088-exec-6] c.s.c.mapper.UserMapper.selectByExample  : ==>  Preparing: select generate_id, name, token, gmt_create, gmt_modify, avatar_url, email, tags, password, github_url from user WHERE ( generate_id = ? ) 
+2020-04-15 19:19:09.516 DEBUG 4388 --- [http-nio-8088-exec-6] c.s.c.mapper.UserMapper.selectByExample  : ==> Parameters: 4(Long)
+2020-04-15 19:19:09.517 DEBUG 4388 --- [http-nio-8088-exec-6] c.s.c.mapper.UserMapper.selectByExample  : <==      Total: 1
+2020-04-15 19:19:09.517 DEBUG 4388 --- [http-nio-8088-exec-6] c.s.c.mapper.UserMapper.selectByExample  : ==>  Preparing: select generate_id, name, token, gmt_create, gmt_modify, avatar_url, email, tags, password, github_url from user WHERE ( generate_id = ? ) 
+2020-04-15 19:19:09.517 DEBUG 4388 --- [http-nio-8088-exec-6] c.s.c.mapper.UserMapper.selectByExample  : ==> Parameters: 4(Long)
+2020-04-15 19:19:09.518 DEBUG 4388 --- [http-nio-8088-exec-6] c.s.c.mapper.UserMapper.selectByExample  : <==      Total: 1
+2020-04-15 19:19:09.519 DEBUG 4388 --- [http-nio-8088-exec-6] c.s.c.mapper.UserMapper.selectByExample  : ==>  Preparing: select generate_id, name, token, gmt_create, gmt_modify, avatar_url, email, tags, password, github_url from user WHERE ( generate_id = ? ) 
+2020-04-15 19:19:09.519 DEBUG 4388 --- [http-nio-8088-exec-6] c.s.c.mapper.UserMapper.selectByExample  : ==> Parameters: 5(Long)
+2020-04-15 19:19:09.520 DEBUG 4388 --- [http-nio-8088-exec-6] c.s.c.mapper.UserMapper.selectByExample  : <==      Total: 1
+2020-04-15 19:19:09.522 DEBUG 4388 --- [http-nio-8088-exec-6] c.s.c.m.Q.getViewMore                    : ==>  Preparing: select id,title,view_count from question order by view_count desc limit ?; 
+2020-04-15 19:19:09.522 DEBUG 4388 --- [http-nio-8088-exec-6] c.s.c.m.Q.getViewMore                    : ==> Parameters: 5(Integer)
+2020-04-15 19:19:09.535 DEBUG 4388 --- [http-nio-8088-exec-6] c.s.c.m.Q.getViewMore                    : <==      Total: 5
+2020-04-15 19:19:24.736 DEBUG 4388 --- [http-nio-8088-exec-9] c.s.c.mapper.UserMapper.selectByExample  : ==>  Preparing: select generate_id, name, token, gmt_create, gmt_modify, avatar_url, email, tags, password, github_url from user WHERE ( email = ? and password = ? ) 
+2020-04-15 19:19:24.737 DEBUG 4388 --- [http-nio-8088-exec-9] c.s.c.mapper.UserMapper.selectByExample  : ==> Parameters: alice@qq.com(String), 1111(String)
+2020-04-15 19:19:24.739 DEBUG 4388 --- [http-nio-8088-exec-9] c.s.c.mapper.UserMapper.selectByExample  : <==      Total: 0
+2020-04-15 19:19:24.746 DEBUG 4388 --- [http-nio-8088-exec-1] .Q.selectByExampleWithBLOBsWithRowbounds : ==>  Preparing: select id, title, tag, gmt_create, gmt_modify, creator_id, comment_count, view_count, like_count, recommend , description from question 
+2020-04-15 19:19:24.748 DEBUG 4388 --- [http-nio-8088-exec-1] .Q.selectByExampleWithBLOBsWithRowbounds : ==> Parameters: 
+2020-04-15 19:19:24.750 DEBUG 4388 --- [http-nio-8088-exec-1] c.s.c.m.QuestionMapper.countByExample    : ==>  Preparing: select count(*) from question 
+2020-04-15 19:19:24.750 DEBUG 4388 --- [http-nio-8088-exec-1] c.s.c.m.QuestionMapper.countByExample    : ==> Parameters: 
+2020-04-15 19:19:24.752 DEBUG 4388 --- [http-nio-8088-exec-1] c.s.c.m.QuestionMapper.countByExample    : <==      Total: 1
+2020-04-15 19:19:24.752 DEBUG 4388 --- [http-nio-8088-exec-1] c.s.c.mapper.UserMapper.selectByExample  : ==>  Preparing: select generate_id, name, token, gmt_create, gmt_modify, avatar_url, email, tags, password, github_url from user WHERE ( generate_id = ? ) 
+2020-04-15 19:19:24.753 DEBUG 4388 --- [http-nio-8088-exec-1] c.s.c.mapper.UserMapper.selectByExample  : ==> Parameters: 4(Long)
+2020-04-15 19:19:24.753 DEBUG 4388 --- [http-nio-8088-exec-1] c.s.c.mapper.UserMapper.selectByExample  : <==      Total: 1
+2020-04-15 19:19:24.754 DEBUG 4388 --- [http-nio-8088-exec-1] c.s.c.mapper.UserMapper.selectByExample  : ==>  Preparing: select generate_id, name, token, gmt_create, gmt_modify, avatar_url, email, tags, password, github_url from user WHERE ( generate_id = ? ) 
+2020-04-15 19:19:24.754 DEBUG 4388 --- [http-nio-8088-exec-1] c.s.c.mapper.UserMapper.selectByExample  : ==> Parameters: 5(Long)
+2020-04-15 19:19:24.755 DEBUG 4388 --- [http-nio-8088-exec-1] c.s.c.mapper.UserMapper.selectByExample  : <==      Total: 1
+2020-04-15 19:19:24.756 DEBUG 4388 --- [http-nio-8088-exec-1] c.s.c.mapper.UserMapper.selectByExample  : ==>  Preparing: select generate_id, name, token, gmt_create, gmt_modify, avatar_url, email, tags, password, github_url from user WHERE ( generate_id = ? ) 
+2020-04-15 19:19:24.756 DEBUG 4388 --- [http-nio-8088-exec-1] c.s.c.mapper.UserMapper.selectByExample  : ==> Parameters: 4(Long)
+2020-04-15 19:19:24.757 DEBUG 4388 --- [http-nio-8088-exec-1] c.s.c.mapper.UserMapper.selectByExample  : <==      Total: 1
+2020-04-15 19:19:24.758 DEBUG 4388 --- [http-nio-8088-exec-1] c.s.c.mapper.UserMapper.selectByExample  : ==>  Preparing: select generate_id, name, token, gmt_create, gmt_modify, avatar_url, email, tags, password, github_url from user WHERE ( generate_id = ? ) 
+2020-04-15 19:19:24.758 DEBUG 4388 --- [http-nio-8088-exec-1] c.s.c.mapper.UserMapper.selectByExample  : ==> Parameters: 4(Long)
+2020-04-15 19:19:24.759 DEBUG 4388 --- [http-nio-8088-exec-1] c.s.c.mapper.UserMapper.selectByExample  : <==      Total: 1
+2020-04-15 19:19:24.759 DEBUG 4388 --- [http-nio-8088-exec-1] c.s.c.mapper.UserMapper.selectByExample  : ==>  Preparing: select generate_id, name, token, gmt_create, gmt_modify, avatar_url, email, tags, password, github_url from user WHERE ( generate_id = ? ) 
+2020-04-15 19:19:24.759 DEBUG 4388 --- [http-nio-8088-exec-1] c.s.c.mapper.UserMapper.selectByExample  : ==> Parameters: 4(Long)
+2020-04-15 19:19:24.760 DEBUG 4388 --- [http-nio-8088-exec-1] c.s.c.mapper.UserMapper.selectByExample  : <==      Total: 1
+2020-04-15 19:19:24.761 DEBUG 4388 --- [http-nio-8088-exec-1] c.s.c.mapper.UserMapper.selectByExample  : ==>  Preparing: select generate_id, name, token, gmt_create, gmt_modify, avatar_url, email, tags, password, github_url from user WHERE ( generate_id = ? ) 
+2020-04-15 19:19:24.761 DEBUG 4388 --- [http-nio-8088-exec-1] c.s.c.mapper.UserMapper.selectByExample  : ==> Parameters: 4(Long)
+2020-04-15 19:19:24.762 DEBUG 4388 --- [http-nio-8088-exec-1] c.s.c.mapper.UserMapper.selectByExample  : <==      Total: 1
+2020-04-15 19:19:24.763 DEBUG 4388 --- [http-nio-8088-exec-1] c.s.c.mapper.UserMapper.selectByExample  : ==>  Preparing: select generate_id, name, token, gmt_create, gmt_modify, avatar_url, email, tags, password, github_url from user WHERE ( generate_id = ? ) 
+2020-04-15 19:19:24.763 DEBUG 4388 --- [http-nio-8088-exec-1] c.s.c.mapper.UserMapper.selectByExample  : ==> Parameters: 4(Long)
+2020-04-15 19:19:24.764 DEBUG 4388 --- [http-nio-8088-exec-1] c.s.c.mapper.UserMapper.selectByExample  : <==      Total: 1
+2020-04-15 19:19:24.765 DEBUG 4388 --- [http-nio-8088-exec-1] c.s.c.mapper.UserMapper.selectByExample  : ==>  Preparing: select generate_id, name, token, gmt_create, gmt_modify, avatar_url, email, tags, password, github_url from user WHERE ( generate_id = ? ) 
+2020-04-15 19:19:24.765 DEBUG 4388 --- [http-nio-8088-exec-1] c.s.c.mapper.UserMapper.selectByExample  : ==> Parameters: 5(Long)
+2020-04-15 19:19:24.766 DEBUG 4388 --- [http-nio-8088-exec-1] c.s.c.mapper.UserMapper.selectByExample  : <==      Total: 1
+2020-04-15 19:19:24.766 DEBUG 4388 --- [http-nio-8088-exec-1] c.s.c.m.Q.getViewMore                    : ==>  Preparing: select id,title,view_count from question order by view_count desc limit ?; 
+2020-04-15 19:19:24.766 DEBUG 4388 --- [http-nio-8088-exec-1] c.s.c.m.Q.getViewMore                    : ==> Parameters: 5(Integer)
+2020-04-15 19:19:24.767 DEBUG 4388 --- [http-nio-8088-exec-1] c.s.c.m.Q.getViewMore                    : <==      Total: 5
+2020-04-15 19:21:55.191 DEBUG 4388 --- [http-nio-8088-exec-1] c.s.c.mapper.UserMapper.selectByExample  : ==>  Preparing: select generate_id, name, token, gmt_create, gmt_modify, avatar_url, email, tags, password, github_url from user WHERE ( email = ? and password = ? ) 
+2020-04-15 19:21:55.192 DEBUG 4388 --- [http-nio-8088-exec-1] c.s.c.mapper.UserMapper.selectByExample  : ==> Parameters: alice@qq.com(String), 2222(String)
+2020-04-15 19:21:55.193 DEBUG 4388 --- [http-nio-8088-exec-1] c.s.c.mapper.UserMapper.selectByExample  : <==      Total: 0
+2020-04-15 19:21:55.198 DEBUG 4388 --- [http-nio-8088-exec-2] .Q.selectByExampleWithBLOBsWithRowbounds : ==>  Preparing: select id, title, tag, gmt_create, gmt_modify, creator_id, comment_count, view_count, like_count, recommend , description from question 
+2020-04-15 19:21:55.199 DEBUG 4388 --- [http-nio-8088-exec-2] .Q.selectByExampleWithBLOBsWithRowbounds : ==> Parameters: 
+2020-04-15 19:21:55.201 DEBUG 4388 --- [http-nio-8088-exec-2] c.s.c.m.QuestionMapper.countByExample    : ==>  Preparing: select count(*) from question 
+2020-04-15 19:21:55.201 DEBUG 4388 --- [http-nio-8088-exec-2] c.s.c.m.QuestionMapper.countByExample    : ==> Parameters: 
+2020-04-15 19:21:55.203 DEBUG 4388 --- [http-nio-8088-exec-2] c.s.c.m.QuestionMapper.countByExample    : <==      Total: 1
+2020-04-15 19:21:55.204 DEBUG 4388 --- [http-nio-8088-exec-2] c.s.c.mapper.UserMapper.selectByExample  : ==>  Preparing: select generate_id, name, token, gmt_create, gmt_modify, avatar_url, email, tags, password, github_url from user WHERE ( generate_id = ? ) 
+2020-04-15 19:21:55.204 DEBUG 4388 --- [http-nio-8088-exec-2] c.s.c.mapper.UserMapper.selectByExample  : ==> Parameters: 4(Long)
+2020-04-15 19:21:55.205 DEBUG 4388 --- [http-nio-8088-exec-2] c.s.c.mapper.UserMapper.selectByExample  : <==      Total: 1
+2020-04-15 19:21:55.206 DEBUG 4388 --- [http-nio-8088-exec-2] c.s.c.mapper.UserMapper.selectByExample  : ==>  Preparing: select generate_id, name, token, gmt_create, gmt_modify, avatar_url, email, tags, password, github_url from user WHERE ( generate_id = ? ) 
+2020-04-15 19:21:55.206 DEBUG 4388 --- [http-nio-8088-exec-2] c.s.c.mapper.UserMapper.selectByExample  : ==> Parameters: 5(Long)
+2020-04-15 19:21:55.208 DEBUG 4388 --- [http-nio-8088-exec-2] c.s.c.mapper.UserMapper.selectByExample  : <==      Total: 1
+2020-04-15 19:21:55.209 DEBUG 4388 --- [http-nio-8088-exec-2] c.s.c.mapper.UserMapper.selectByExample  : ==>  Preparing: select generate_id, name, token, gmt_create, gmt_modify, avatar_url, email, tags, password, github_url from user WHERE ( generate_id = ? ) 
+2020-04-15 19:21:55.209 DEBUG 4388 --- [http-nio-8088-exec-2] c.s.c.mapper.UserMapper.selectByExample  : ==> Parameters: 4(Long)
+2020-04-15 19:21:55.210 DEBUG 4388 --- [http-nio-8088-exec-2] c.s.c.mapper.UserMapper.selectByExample  : <==      Total: 1
+2020-04-15 19:21:55.210 DEBUG 4388 --- [http-nio-8088-exec-2] c.s.c.mapper.UserMapper.selectByExample  : ==>  Preparing: select generate_id, name, token, gmt_create, gmt_modify, avatar_url, email, tags, password, github_url from user WHERE ( generate_id = ? ) 
+2020-04-15 19:21:55.211 DEBUG 4388 --- [http-nio-8088-exec-2] c.s.c.mapper.UserMapper.selectByExample  : ==> Parameters: 4(Long)
+2020-04-15 19:21:55.211 DEBUG 4388 --- [http-nio-8088-exec-2] c.s.c.mapper.UserMapper.selectByExample  : <==      Total: 1
+2020-04-15 19:21:55.212 DEBUG 4388 --- [http-nio-8088-exec-2] c.s.c.mapper.UserMapper.selectByExample  : ==>  Preparing: select generate_id, name, token, gmt_create, gmt_modify, avatar_url, email, tags, password, github_url from user WHERE ( generate_id = ? ) 
+2020-04-15 19:21:55.213 DEBUG 4388 --- [http-nio-8088-exec-2] c.s.c.mapper.UserMapper.selectByExample  : ==> Parameters: 4(Long)
+2020-04-15 19:21:55.214 DEBUG 4388 --- [http-nio-8088-exec-2] c.s.c.mapper.UserMapper.selectByExample  : <==      Total: 1
+2020-04-15 19:21:55.215 DEBUG 4388 --- [http-nio-8088-exec-2] c.s.c.mapper.UserMapper.selectByExample  : ==>  Preparing: select generate_id, name, token, gmt_create, gmt_modify, avatar_url, email, tags, password, github_url from user WHERE ( generate_id = ? ) 
+2020-04-15 19:21:55.215 DEBUG 4388 --- [http-nio-8088-exec-2] c.s.c.mapper.UserMapper.selectByExample  : ==> Parameters: 4(Long)
+2020-04-15 19:21:55.216 DEBUG 4388 --- [http-nio-8088-exec-2] c.s.c.mapper.UserMapper.selectByExample  : <==      Total: 1
+2020-04-15 19:21:55.216 DEBUG 4388 --- [http-nio-8088-exec-2] c.s.c.mapper.UserMapper.selectByExample  : ==>  Preparing: select generate_id, name, token, gmt_create, gmt_modify, avatar_url, email, tags, password, github_url from user WHERE ( generate_id = ? ) 
+2020-04-15 19:21:55.217 DEBUG 4388 --- [http-nio-8088-exec-2] c.s.c.mapper.UserMapper.selectByExample  : ==> Parameters: 4(Long)
+2020-04-15 19:21:55.218 DEBUG 4388 --- [http-nio-8088-exec-2] c.s.c.mapper.UserMapper.selectByExample  : <==      Total: 1
+2020-04-15 19:21:55.218 DEBUG 4388 --- [http-nio-8088-exec-2] c.s.c.mapper.UserMapper.selectByExample  : ==>  Preparing: select generate_id, name, token, gmt_create, gmt_modify, avatar_url, email, tags, password, github_url from user WHERE ( generate_id = ? ) 
+2020-04-15 19:21:55.218 DEBUG 4388 --- [http-nio-8088-exec-2] c.s.c.mapper.UserMapper.selectByExample  : ==> Parameters: 5(Long)
+2020-04-15 19:21:55.219 DEBUG 4388 --- [http-nio-8088-exec-2] c.s.c.mapper.UserMapper.selectByExample  : <==      Total: 1
+2020-04-15 19:21:55.220 DEBUG 4388 --- [http-nio-8088-exec-2] c.s.c.m.Q.getViewMore                    : ==>  Preparing: select id,title,view_count from question order by view_count desc limit ?; 
+2020-04-15 19:21:55.220 DEBUG 4388 --- [http-nio-8088-exec-2] c.s.c.m.Q.getViewMore                    : ==> Parameters: 5(Integer)
+2020-04-15 19:21:55.221 DEBUG 4388 --- [http-nio-8088-exec-2] c.s.c.m.Q.getViewMore                    : <==      Total: 5
+2020-04-15 19:22:03.372  INFO 12420 --- [main] c.s.community.CommunityApplication       : Starting CommunityApplication on DESKTOP-VCDINT4 with PID 12420 (E:\Java\community\target\classes started by sofency in E:\Java\community)
+2020-04-15 19:22:03.376  INFO 12420 --- [main] c.s.community.CommunityApplication       : No active profile set, falling back to default profiles: default
+2020-04-15 19:22:03.959  INFO 12420 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2020-04-15 19:22:03.960  INFO 12420 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2020-04-15 19:22:03.988  INFO 12420 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 15ms. Found 0 Redis repository interfaces.
+2020-04-15 19:22:04.202  INFO 12420 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-04-15 19:22:04.395  INFO 12420 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8088 (http)
+2020-04-15 19:22:04.401  INFO 12420 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2020-04-15 19:22:04.402  INFO 12420 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.30]
+2020-04-15 19:22:04.464  INFO 12420 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2020-04-15 19:22:04.465  INFO 12420 --- [main] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 1023 ms
+2020-04-15 19:22:05.188  INFO 12420 --- [main] o.s.s.c.ThreadPoolTaskScheduler          : Initializing ExecutorService 'taskScheduler'
+2020-04-15 19:22:05.272  INFO 12420 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8088 (http) with context path ''
+2020-04-15 19:22:05.274  INFO 12420 --- [main] c.s.community.CommunityApplication       : Started CommunityApplication in 2.417 seconds (JVM running for 3.18)
+2020-04-15 19:22:16.657  INFO 12420 --- [http-nio-8088-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2020-04-15 19:22:16.658  INFO 12420 --- [http-nio-8088-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2020-04-15 19:22:16.663  INFO 12420 --- [http-nio-8088-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 5 ms
+2020-04-15 19:22:22.328  INFO 12420 --- [http-nio-8088-exec-2] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2020-04-15 19:22:22.720  INFO 12420 --- [http-nio-8088-exec-2] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2020-04-15 19:22:22.725 DEBUG 12420 --- [http-nio-8088-exec-2] c.s.c.mapper.UserMapper.selectByExample  : ==>  Preparing: select generate_id, name, token, gmt_create, gmt_modify, avatar_url, email, tags, password, github_url from user WHERE ( email = ? and password = ? ) 
+2020-04-15 19:22:22.741 DEBUG 12420 --- [http-nio-8088-exec-2] c.s.c.mapper.UserMapper.selectByExample  : ==> Parameters: alice@qq.com(String), 222222(String)
+2020-04-15 19:22:22.754 DEBUG 12420 --- [http-nio-8088-exec-2] c.s.c.mapper.UserMapper.selectByExample  : <==      Total: 0
+2020-04-15 19:41:45.845  INFO 2560 --- [main] c.s.community.CommunityApplication       : Starting CommunityApplication on DESKTOP-VCDINT4 with PID 2560 (E:\Java\community\target\classes started by sofency in E:\Java\community)
+2020-04-15 19:41:45.848  INFO 2560 --- [main] c.s.community.CommunityApplication       : No active profile set, falling back to default profiles: default
+2020-04-15 19:41:46.512  INFO 2560 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2020-04-15 19:41:46.514  INFO 2560 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2020-04-15 19:41:46.546  INFO 2560 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 14ms. Found 0 Redis repository interfaces.
+2020-04-15 19:41:46.748  INFO 2560 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-04-15 19:41:46.928  INFO 2560 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8088 (http)
+2020-04-15 19:41:46.935  INFO 2560 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2020-04-15 19:41:46.935  INFO 2560 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.30]
+2020-04-15 19:41:46.994  INFO 2560 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2020-04-15 19:41:46.994  INFO 2560 --- [main] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 1017 ms
+2020-04-15 19:41:47.674  INFO 2560 --- [main] o.s.s.c.ThreadPoolTaskScheduler          : Initializing ExecutorService 'taskScheduler'
+2020-04-15 19:41:47.742  INFO 2560 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8088 (http) with context path ''
+2020-04-15 19:41:47.744  INFO 2560 --- [main] c.s.community.CommunityApplication       : Started CommunityApplication in 2.24 seconds (JVM running for 2.889)
+2020-04-15 19:41:52.026  INFO 2560 --- [http-nio-8088-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2020-04-15 19:41:52.026  INFO 2560 --- [http-nio-8088-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2020-04-15 19:41:52.032  INFO 2560 --- [http-nio-8088-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 6 ms
+2020-04-15 19:41:52.117  INFO 2560 --- [http-nio-8088-exec-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2020-04-15 19:41:52.630  INFO 2560 --- [http-nio-8088-exec-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2020-04-15 19:41:52.636 DEBUG 2560 --- [http-nio-8088-exec-1] c.s.c.mapper.UserMapper.selectByExample  : ==>  Preparing: select generate_id, name, token, gmt_create, gmt_modify, avatar_url, email, tags, password, github_url from user WHERE ( email = ? and password = ? ) 
+2020-04-15 19:41:52.652 DEBUG 2560 --- [http-nio-8088-exec-1] c.s.c.mapper.UserMapper.selectByExample  : ==> Parameters: alice@qq.com(String), 222222(String)
+2020-04-15 19:41:52.667 DEBUG 2560 --- [http-nio-8088-exec-1] c.s.c.mapper.UserMapper.selectByExample  : <==      Total: 0
+2020-04-15 19:43:24.141  INFO 19312 --- [main] c.s.community.CommunityApplication       : Starting CommunityApplication on DESKTOP-VCDINT4 with PID 19312 (E:\Java\community\target\classes started by sofency in E:\Java\community)
+2020-04-15 19:43:24.143  INFO 19312 --- [main] c.s.community.CommunityApplication       : No active profile set, falling back to default profiles: default
+2020-04-15 19:43:24.708  INFO 19312 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2020-04-15 19:43:24.715  INFO 19312 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2020-04-15 19:43:24.748  INFO 19312 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 20ms. Found 0 Redis repository interfaces.
+2020-04-15 19:43:24.979  INFO 19312 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-04-15 19:43:25.147  INFO 19312 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8088 (http)
+2020-04-15 19:43:25.153  INFO 19312 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2020-04-15 19:43:25.154  INFO 19312 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.30]
+2020-04-15 19:43:25.212  INFO 19312 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2020-04-15 19:43:25.213  INFO 19312 --- [main] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 1003 ms
+2020-04-15 19:43:25.833  INFO 19312 --- [main] o.s.s.c.ThreadPoolTaskScheduler          : Initializing ExecutorService 'taskScheduler'
+2020-04-15 19:43:25.892  INFO 19312 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8088 (http) with context path ''
+2020-04-15 19:43:25.894  INFO 19312 --- [main] c.s.community.CommunityApplication       : Started CommunityApplication in 2.132 seconds (JVM running for 2.931)
+2020-04-15 19:43:41.124  INFO 19312 --- [http-nio-8088-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2020-04-15 19:43:41.124  INFO 19312 --- [http-nio-8088-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2020-04-15 19:43:41.128  INFO 19312 --- [http-nio-8088-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 4 ms
+2020-04-15 19:45:19.223  INFO 14552 --- [main] c.s.community.CommunityApplication       : Starting CommunityApplication on DESKTOP-VCDINT4 with PID 14552 (E:\Java\community\target\classes started by sofency in E:\Java\community)
+2020-04-15 19:45:19.226  INFO 14552 --- [main] c.s.community.CommunityApplication       : No active profile set, falling back to default profiles: default
+2020-04-15 19:45:19.826  INFO 14552 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2020-04-15 19:45:19.828  INFO 14552 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2020-04-15 19:45:19.858  INFO 14552 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 15ms. Found 0 Redis repository interfaces.
+2020-04-15 19:45:20.069  INFO 14552 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-04-15 19:45:20.236  INFO 14552 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8088 (http)
+2020-04-15 19:45:20.241  INFO 14552 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2020-04-15 19:45:20.242  INFO 14552 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.30]
+2020-04-15 19:45:20.298  INFO 14552 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2020-04-15 19:45:20.298  INFO 14552 --- [main] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 1021 ms
+2020-04-15 19:45:20.907  INFO 14552 --- [main] o.s.s.c.ThreadPoolTaskScheduler          : Initializing ExecutorService 'taskScheduler'
+2020-04-15 19:45:20.965  INFO 14552 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8088 (http) with context path ''
+2020-04-15 19:45:20.967  INFO 14552 --- [main] c.s.community.CommunityApplication       : Started CommunityApplication in 2.139 seconds (JVM running for 2.865)
+2020-04-15 19:45:28.444  INFO 14552 --- [http-nio-8088-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2020-04-15 19:45:28.444  INFO 14552 --- [http-nio-8088-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2020-04-15 19:45:28.448  INFO 14552 --- [http-nio-8088-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 3 ms
+2020-04-15 19:46:17.737  INFO 13220 --- [main] c.s.community.CommunityApplication       : Starting CommunityApplication on DESKTOP-VCDINT4 with PID 13220 (E:\Java\community\target\classes started by sofency in E:\Java\community)
+2020-04-15 19:46:17.740  INFO 13220 --- [main] c.s.community.CommunityApplication       : No active profile set, falling back to default profiles: default
+2020-04-15 19:46:18.277  INFO 13220 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2020-04-15 19:46:18.279  INFO 13220 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2020-04-15 19:46:18.303  INFO 13220 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 15ms. Found 0 Redis repository interfaces.
+2020-04-15 19:46:18.494  INFO 13220 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-04-15 19:46:18.665  INFO 13220 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8088 (http)
+2020-04-15 19:46:18.671  INFO 13220 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2020-04-15 19:46:18.671  INFO 13220 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.30]
+2020-04-15 19:46:18.727  INFO 13220 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2020-04-15 19:46:18.727  INFO 13220 --- [main] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 937 ms
+2020-04-15 19:46:19.328  INFO 13220 --- [main] o.s.s.c.ThreadPoolTaskScheduler          : Initializing ExecutorService 'taskScheduler'
+2020-04-15 19:46:19.387  INFO 13220 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8088 (http) with context path ''
+2020-04-15 19:46:19.388  INFO 13220 --- [main] c.s.community.CommunityApplication       : Started CommunityApplication in 1.936 seconds (JVM running for 2.508)
+2020-04-15 19:46:40.706  INFO 13220 --- [http-nio-8088-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2020-04-15 19:46:40.707  INFO 13220 --- [http-nio-8088-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2020-04-15 19:46:40.711  INFO 13220 --- [http-nio-8088-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 4 ms
+2020-04-15 19:48:44.561  INFO 8704 --- [main] c.s.community.CommunityApplication       : Starting CommunityApplication on DESKTOP-VCDINT4 with PID 8704 (E:\Java\community\target\classes started by sofency in E:\Java\community)
+2020-04-15 19:48:44.564  INFO 8704 --- [main] c.s.community.CommunityApplication       : No active profile set, falling back to default profiles: default
+2020-04-15 19:48:45.124  INFO 8704 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2020-04-15 19:48:45.126  INFO 8704 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2020-04-15 19:48:45.148  INFO 8704 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 13ms. Found 0 Redis repository interfaces.
+2020-04-15 19:48:45.346  INFO 8704 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-04-15 19:48:45.516  INFO 8704 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8088 (http)
+2020-04-15 19:48:45.522  INFO 8704 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2020-04-15 19:48:45.522  INFO 8704 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.30]
+2020-04-15 19:48:45.575  INFO 8704 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2020-04-15 19:48:45.575  INFO 8704 --- [main] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 958 ms
+2020-04-15 19:48:46.206  INFO 8704 --- [main] o.s.s.c.ThreadPoolTaskScheduler          : Initializing ExecutorService 'taskScheduler'
+2020-04-15 19:48:46.268  INFO 8704 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8088 (http) with context path ''
+2020-04-15 19:48:46.270  INFO 8704 --- [main] c.s.community.CommunityApplication       : Started CommunityApplication in 1.992 seconds (JVM running for 2.575)
+2020-04-15 19:48:47.815  INFO 8704 --- [http-nio-8088-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2020-04-15 19:48:47.815  INFO 8704 --- [http-nio-8088-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2020-04-15 19:48:47.820  INFO 8704 --- [http-nio-8088-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 5 ms
+2020-04-15 19:48:53.021  INFO 8704 --- [http-nio-8088-exec-6] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2020-04-15 19:48:53.393  INFO 8704 --- [http-nio-8088-exec-6] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2020-04-15 19:48:53.398 DEBUG 8704 --- [http-nio-8088-exec-6] c.s.c.mapper.UserMapper.selectByExample  : ==>  Preparing: select generate_id, name, token, gmt_create, gmt_modify, avatar_url, email, tags, password, github_url from user WHERE ( email = ? and password = ? ) 
+2020-04-15 19:48:53.413 DEBUG 8704 --- [http-nio-8088-exec-6] c.s.c.mapper.UserMapper.selectByExample  : ==> Parameters: alice@qq.com(String), 111(String)
+2020-04-15 19:48:53.426 DEBUG 8704 --- [http-nio-8088-exec-6] c.s.c.mapper.UserMapper.selectByExample  : <==      Total: 0
+2020-04-15 19:49:41.610 DEBUG 8704 --- [http-nio-8088-exec-2] c.s.c.mapper.UserMapper.selectByExample  : ==>  Preparing: select generate_id, name, token, gmt_create, gmt_modify, avatar_url, email, tags, password, github_url from user WHERE ( email = ? and password = ? ) 
+2020-04-15 19:49:41.611 DEBUG 8704 --- [http-nio-8088-exec-2] c.s.c.mapper.UserMapper.selectByExample  : ==> Parameters: alice@qq.com(String), 111(String)
+2020-04-15 19:49:41.612 DEBUG 8704 --- [http-nio-8088-exec-2] c.s.c.mapper.UserMapper.selectByExample  : <==      Total: 0
+2020-04-15 19:49:50.501 DEBUG 8704 --- [http-nio-8088-exec-3] c.s.c.mapper.UserMapper.selectByExample  : ==>  Preparing: select generate_id, name, token, gmt_create, gmt_modify, avatar_url, email, tags, password, github_url from user WHERE ( email = ? and password = ? ) 
+2020-04-15 19:49:50.502 DEBUG 8704 --- [http-nio-8088-exec-3] c.s.c.mapper.UserMapper.selectByExample  : ==> Parameters: alice@qq.com(String), 110(String)
+2020-04-15 19:49:50.506 DEBUG 8704 --- [http-nio-8088-exec-3] c.s.c.mapper.UserMapper.selectByExample  : <==      Total: 1
+2020-04-15 19:49:51.777 DEBUG 8704 --- [http-nio-8088-exec-7] .Q.selectByExampleWithBLOBsWithRowbounds : ==>  Preparing: select id, title, tag, gmt_create, gmt_modify, creator_id, comment_count, view_count, like_count, recommend , description from question 
+2020-04-15 19:49:51.778 DEBUG 8704 --- [http-nio-8088-exec-7] .Q.selectByExampleWithBLOBsWithRowbounds : ==> Parameters: 
+2020-04-15 19:49:51.785 DEBUG 8704 --- [http-nio-8088-exec-7] c.s.c.m.QuestionMapper.countByExample    : ==>  Preparing: select count(*) from question 
+2020-04-15 19:49:51.785 DEBUG 8704 --- [http-nio-8088-exec-7] c.s.c.m.QuestionMapper.countByExample    : ==> Parameters: 
+2020-04-15 19:49:51.788 DEBUG 8704 --- [http-nio-8088-exec-7] c.s.c.m.QuestionMapper.countByExample    : <==      Total: 1
+2020-04-15 19:49:51.789 DEBUG 8704 --- [http-nio-8088-exec-7] c.s.c.mapper.UserMapper.selectByExample  : ==>  Preparing: select generate_id, name, token, gmt_create, gmt_modify, avatar_url, email, tags, password, github_url from user WHERE ( generate_id = ? ) 
+2020-04-15 19:49:51.789 DEBUG 8704 --- [http-nio-8088-exec-7] c.s.c.mapper.UserMapper.selectByExample  : ==> Parameters: 4(Long)
+2020-04-15 19:49:51.791 DEBUG 8704 --- [http-nio-8088-exec-7] c.s.c.mapper.UserMapper.selectByExample  : <==      Total: 1
+2020-04-15 19:49:51.810 DEBUG 8704 --- [http-nio-8088-exec-7] c.s.c.mapper.UserMapper.selectByExample  : ==>  Preparing: select generate_id, name, token, gmt_create, gmt_modify, avatar_url, email, tags, password, github_url from user WHERE ( generate_id = ? ) 
+2020-04-15 19:49:51.810 DEBUG 8704 --- [http-nio-8088-exec-7] c.s.c.mapper.UserMapper.selectByExample  : ==> Parameters: 5(Long)
+2020-04-15 19:49:51.812 DEBUG 8704 --- [http-nio-8088-exec-7] c.s.c.mapper.UserMapper.selectByExample  : <==      Total: 1
+2020-04-15 19:49:51.812 DEBUG 8704 --- [http-nio-8088-exec-7] c.s.c.mapper.UserMapper.selectByExample  : ==>  Preparing: select generate_id, name, token, gmt_create, gmt_modify, avatar_url, email, tags, password, github_url from user WHERE ( generate_id = ? ) 
+2020-04-15 19:49:51.813 DEBUG 8704 --- [http-nio-8088-exec-7] c.s.c.mapper.UserMapper.selectByExample  : ==> Parameters: 4(Long)
+2020-04-15 19:49:51.814 DEBUG 8704 --- [http-nio-8088-exec-7] c.s.c.mapper.UserMapper.selectByExample  : <==      Total: 1
+2020-04-15 19:49:51.814 DEBUG 8704 --- [http-nio-8088-exec-7] c.s.c.mapper.UserMapper.selectByExample  : ==>  Preparing: select generate_id, name, token, gmt_create, gmt_modify, avatar_url, email, tags, password, github_url from user WHERE ( generate_id = ? ) 
+2020-04-15 19:49:51.814 DEBUG 8704 --- [http-nio-8088-exec-7] c.s.c.mapper.UserMapper.selectByExample  : ==> Parameters: 4(Long)
+2020-04-15 19:49:51.815 DEBUG 8704 --- [http-nio-8088-exec-7] c.s.c.mapper.UserMapper.selectByExample  : <==      Total: 1
+2020-04-15 19:49:51.816 DEBUG 8704 --- [http-nio-8088-exec-7] c.s.c.mapper.UserMapper.selectByExample  : ==>  Preparing: select generate_id, name, token, gmt_create, gmt_modify, avatar_url, email, tags, password, github_url from user WHERE ( generate_id = ? ) 
+2020-04-15 19:49:51.816 DEBUG 8704 --- [http-nio-8088-exec-7] c.s.c.mapper.UserMapper.selectByExample  : ==> Parameters: 4(Long)
+2020-04-15 19:49:51.817 DEBUG 8704 --- [http-nio-8088-exec-7] c.s.c.mapper.UserMapper.selectByExample  : <==      Total: 1
+2020-04-15 19:49:51.817 DEBUG 8704 --- [http-nio-8088-exec-7] c.s.c.mapper.UserMapper.selectByExample  : ==>  Preparing: select generate_id, name, token, gmt_create, gmt_modify, avatar_url, email, tags, password, github_url from user WHERE ( generate_id = ? ) 
+2020-04-15 19:49:51.817 DEBUG 8704 --- [http-nio-8088-exec-7] c.s.c.mapper.UserMapper.selectByExample  : ==> Parameters: 4(Long)
+2020-04-15 19:49:51.818 DEBUG 8704 --- [http-nio-8088-exec-7] c.s.c.mapper.UserMapper.selectByExample  : <==      Total: 1
+2020-04-15 19:49:51.819 DEBUG 8704 --- [http-nio-8088-exec-7] c.s.c.mapper.UserMapper.selectByExample  : ==>  Preparing: select generate_id, name, token, gmt_create, gmt_modify, avatar_url, email, tags, password, github_url from user WHERE ( generate_id = ? ) 
+2020-04-15 19:49:51.819 DEBUG 8704 --- [http-nio-8088-exec-7] c.s.c.mapper.UserMapper.selectByExample  : ==> Parameters: 4(Long)
+2020-04-15 19:49:51.820 DEBUG 8704 --- [http-nio-8088-exec-7] c.s.c.mapper.UserMapper.selectByExample  : <==      Total: 1
+2020-04-15 19:49:51.820 DEBUG 8704 --- [http-nio-8088-exec-7] c.s.c.mapper.UserMapper.selectByExample  : ==>  Preparing: select generate_id, name, token, gmt_create, gmt_modify, avatar_url, email, tags, password, github_url from user WHERE ( generate_id = ? ) 
+2020-04-15 19:49:51.820 DEBUG 8704 --- [http-nio-8088-exec-7] c.s.c.mapper.UserMapper.selectByExample  : ==> Parameters: 5(Long)
+2020-04-15 19:49:51.821 DEBUG 8704 --- [http-nio-8088-exec-7] c.s.c.mapper.UserMapper.selectByExample  : <==      Total: 1
+2020-04-15 19:49:51.824 DEBUG 8704 --- [http-nio-8088-exec-7] c.s.c.m.NotifyMapper.countByExample      : ==>  Preparing: select count(*) from notify WHERE ( receiver = ? and status = ? ) 
+2020-04-15 19:49:51.825 DEBUG 8704 --- [http-nio-8088-exec-7] c.s.c.m.NotifyMapper.countByExample      : ==> Parameters: 5(Long), 0(Integer)
+2020-04-15 19:49:51.828 DEBUG 8704 --- [http-nio-8088-exec-7] c.s.c.m.NotifyMapper.countByExample      : <==      Total: 1
+2020-04-15 19:49:51.829 DEBUG 8704 --- [http-nio-8088-exec-7] c.s.c.m.NotifyMapper.countByExample      : ==>  Preparing: select count(*) from notify WHERE ( receiver = ? and status = ? ) 
+2020-04-15 19:49:51.829 DEBUG 8704 --- [http-nio-8088-exec-7] c.s.c.m.NotifyMapper.countByExample      : ==> Parameters: 5(Long), 0(Integer)
+2020-04-15 19:49:51.830 DEBUG 8704 --- [http-nio-8088-exec-7] c.s.c.m.NotifyMapper.countByExample      : <==      Total: 1
+2020-04-15 19:49:51.831 DEBUG 8704 --- [http-nio-8088-exec-7] c.s.c.m.Q.getViewMore                    : ==>  Preparing: select id,title,view_count from question order by view_count desc limit ?; 
+2020-04-15 19:49:51.831 DEBUG 8704 --- [http-nio-8088-exec-7] c.s.c.m.Q.getViewMore                    : ==> Parameters: 5(Integer)
+2020-04-15 19:49:51.834 DEBUG 8704 --- [http-nio-8088-exec-7] c.s.c.m.Q.getViewMore                    : <==      Total: 5
+2020-04-15 19:50:35.020  INFO 16196 --- [main] c.s.community.CommunityApplication       : Starting CommunityApplication on DESKTOP-VCDINT4 with PID 16196 (E:\Java\community\target\classes started by sofency in E:\Java\community)
+2020-04-15 19:50:35.022  INFO 16196 --- [main] c.s.community.CommunityApplication       : No active profile set, falling back to default profiles: default
+2020-04-15 19:50:35.785  INFO 16196 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2020-04-15 19:50:35.786  INFO 16196 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2020-04-15 19:50:35.813  INFO 16196 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 18ms. Found 0 Redis repository interfaces.
+2020-04-15 19:50:36.062  INFO 16196 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-04-15 19:50:36.250  INFO 16196 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8088 (http)
+2020-04-15 19:50:36.256  INFO 16196 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2020-04-15 19:50:36.256  INFO 16196 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.30]
+2020-04-15 19:50:36.315  INFO 16196 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2020-04-15 19:50:36.315  INFO 16196 --- [main] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 1248 ms
+2020-04-15 19:50:37.086  INFO 16196 --- [main] o.s.s.c.ThreadPoolTaskScheduler          : Initializing ExecutorService 'taskScheduler'
+2020-04-15 19:50:37.151  INFO 16196 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8088 (http) with context path ''
+2020-04-15 19:50:37.153  INFO 16196 --- [main] c.s.community.CommunityApplication       : Started CommunityApplication in 2.4 seconds (JVM running for 2.928)
+2020-04-15 19:50:37.533  INFO 16196 --- [http-nio-8088-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2020-04-15 19:50:37.533  INFO 16196 --- [http-nio-8088-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2020-04-15 19:50:37.539  INFO 16196 --- [http-nio-8088-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 6 ms
+2020-04-15 19:50:37.577  INFO 16196 --- [http-nio-8088-exec-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2020-04-15 19:50:37.922  INFO 16196 --- [http-nio-8088-exec-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2020-04-15 19:50:37.927 DEBUG 16196 --- [http-nio-8088-exec-1] c.s.c.mapper.UserMapper.selectByExample  : ==>  Preparing: select generate_id, name, token, gmt_create, gmt_modify, avatar_url, email, tags, password, github_url from user WHERE ( token = ? ) 
+2020-04-15 19:50:37.945 DEBUG 16196 --- [http-nio-8088-exec-1] c.s.c.mapper.UserMapper.selectByExample  : ==> Parameters: 6dc08d96-5ba3-41a7-8415-ef4eaa502079(String)
+2020-04-15 19:50:37.976 DEBUG 16196 --- [http-nio-8088-exec-1] c.s.c.mapper.UserMapper.selectByExample  : <==      Total: 1
+2020-04-15 19:50:38.013 DEBUG 16196 --- [http-nio-8088-exec-2] .Q.selectByExampleWithBLOBsWithRowbounds : ==>  Preparing: select id, title, tag, gmt_create, gmt_modify, creator_id, comment_count, view_count, like_count, recommend , description from question 
+2020-04-15 19:50:38.014 DEBUG 16196 --- [http-nio-8088-exec-2] .Q.selectByExampleWithBLOBsWithRowbounds : ==> Parameters: 
+2020-04-15 19:50:38.021 DEBUG 16196 --- [http-nio-8088-exec-2] c.s.c.m.QuestionMapper.countByExample    : ==>  Preparing: select count(*) from question 
+2020-04-15 19:50:38.021 DEBUG 16196 --- [http-nio-8088-exec-2] c.s.c.m.QuestionMapper.countByExample    : ==> Parameters: 
+2020-04-15 19:50:38.024 DEBUG 16196 --- [http-nio-8088-exec-2] c.s.c.m.QuestionMapper.countByExample    : <==      Total: 1
+2020-04-15 19:50:38.024 DEBUG 16196 --- [http-nio-8088-exec-2] c.s.c.mapper.UserMapper.selectByExample  : ==>  Preparing: select generate_id, name, token, gmt_create, gmt_modify, avatar_url, email, tags, password, github_url from user WHERE ( generate_id = ? ) 
+2020-04-15 19:50:38.025 DEBUG 16196 --- [http-nio-8088-exec-2] c.s.c.mapper.UserMapper.selectByExample  : ==> Parameters: 4(Long)
+2020-04-15 19:50:38.026 DEBUG 16196 --- [http-nio-8088-exec-2] c.s.c.mapper.UserMapper.selectByExample  : <==      Total: 1
+2020-04-15 19:50:38.037 DEBUG 16196 --- [http-nio-8088-exec-2] c.s.c.mapper.UserMapper.selectByExample  : ==>  Preparing: select generate_id, name, token, gmt_create, gmt_modify, avatar_url, email, tags, password, github_url from user WHERE ( generate_id = ? ) 
+2020-04-15 19:50:38.037 DEBUG 16196 --- [http-nio-8088-exec-2] c.s.c.mapper.UserMapper.selectByExample  : ==> Parameters: 5(Long)
+2020-04-15 19:50:38.038 DEBUG 16196 --- [http-nio-8088-exec-2] c.s.c.mapper.UserMapper.selectByExample  : <==      Total: 1
+2020-04-15 19:50:38.039 DEBUG 16196 --- [http-nio-8088-exec-2] c.s.c.mapper.UserMapper.selectByExample  : ==>  Preparing: select generate_id, name, token, gmt_create, gmt_modify, avatar_url, email, tags, password, github_url from user WHERE ( generate_id = ? ) 
+2020-04-15 19:50:38.039 DEBUG 16196 --- [http-nio-8088-exec-2] c.s.c.mapper.UserMapper.selectByExample  : ==> Parameters: 4(Long)
+2020-04-15 19:50:38.040 DEBUG 16196 --- [http-nio-8088-exec-2] c.s.c.mapper.UserMapper.selectByExample  : <==      Total: 1
+2020-04-15 19:50:38.041 DEBUG 16196 --- [http-nio-8088-exec-2] c.s.c.mapper.UserMapper.selectByExample  : ==>  Preparing: select generate_id, name, token, gmt_create, gmt_modify, avatar_url, email, tags, password, github_url from user WHERE ( generate_id = ? ) 
+2020-04-15 19:50:38.041 DEBUG 16196 --- [http-nio-8088-exec-2] c.s.c.mapper.UserMapper.selectByExample  : ==> Parameters: 4(Long)
+2020-04-15 19:50:38.042 DEBUG 16196 --- [http-nio-8088-exec-2] c.s.c.mapper.UserMapper.selectByExample  : <==      Total: 1
+2020-04-15 19:50:38.043 DEBUG 16196 --- [http-nio-8088-exec-2] c.s.c.mapper.UserMapper.selectByExample  : ==>  Preparing: select generate_id, name, token, gmt_create, gmt_modify, avatar_url, email, tags, password, github_url from user WHERE ( generate_id = ? ) 
+2020-04-15 19:50:38.043 DEBUG 16196 --- [http-nio-8088-exec-2] c.s.c.mapper.UserMapper.selectByExample  : ==> Parameters: 4(Long)
+2020-04-15 19:50:38.044 DEBUG 16196 --- [http-nio-8088-exec-2] c.s.c.mapper.UserMapper.selectByExample  : <==      Total: 1
+2020-04-15 19:50:38.044 DEBUG 16196 --- [http-nio-8088-exec-2] c.s.c.mapper.UserMapper.selectByExample  : ==>  Preparing: select generate_id, name, token, gmt_create, gmt_modify, avatar_url, email, tags, password, github_url from user WHERE ( generate_id = ? ) 
+2020-04-15 19:50:38.045 DEBUG 16196 --- [http-nio-8088-exec-2] c.s.c.mapper.UserMapper.selectByExample  : ==> Parameters: 4(Long)
+2020-04-15 19:50:38.046 DEBUG 16196 --- [http-nio-8088-exec-2] c.s.c.mapper.UserMapper.selectByExample  : <==      Total: 1
+2020-04-15 19:50:38.046 DEBUG 16196 --- [http-nio-8088-exec-2] c.s.c.mapper.UserMapper.selectByExample  : ==>  Preparing: select generate_id, name, token, gmt_create, gmt_modify, avatar_url, email, tags, password, github_url from user WHERE ( generate_id = ? ) 
+2020-04-15 19:50:38.047 DEBUG 16196 --- [http-nio-8088-exec-2] c.s.c.mapper.UserMapper.selectByExample  : ==> Parameters: 4(Long)
+2020-04-15 19:50:38.048 DEBUG 16196 --- [http-nio-8088-exec-2] c.s.c.mapper.UserMapper.selectByExample  : <==      Total: 1
+2020-04-15 19:50:38.048 DEBUG 16196 --- [http-nio-8088-exec-2] c.s.c.mapper.UserMapper.selectByExample  : ==>  Preparing: select generate_id, name, token, gmt_create, gmt_modify, avatar_url, email, tags, password, github_url from user WHERE ( generate_id = ? ) 
+2020-04-15 19:50:38.048 DEBUG 16196 --- [http-nio-8088-exec-2] c.s.c.mapper.UserMapper.selectByExample  : ==> Parameters: 5(Long)
+2020-04-15 19:50:38.049 DEBUG 16196 --- [http-nio-8088-exec-2] c.s.c.mapper.UserMapper.selectByExample  : <==      Total: 1
+2020-04-15 19:50:38.050 DEBUG 16196 --- [http-nio-8088-exec-2] c.s.c.m.Q.getViewMore                    : ==>  Preparing: select id,title,view_count from question order by view_count desc limit ?; 
+2020-04-15 19:50:38.050 DEBUG 16196 --- [http-nio-8088-exec-2] c.s.c.m.Q.getViewMore                    : ==> Parameters: 5(Integer)
+2020-04-15 19:50:38.052 DEBUG 16196 --- [http-nio-8088-exec-2] c.s.c.m.Q.getViewMore                    : <==      Total: 5

@@ -26,12 +26,10 @@ import javax.servlet.http.HttpSession;
  */
 @Controller
 public class ProblemController {
-    private UserMapper userMapper;
     private QuestionService questionService;
     private NotifyService notifyService;
     @Autowired
-    public ProblemController(UserMapper userMapper, QuestionService questionService, NotifyService notifyService){
-        this.userMapper=userMapper;
+    public ProblemController(QuestionService questionService, NotifyService notifyService){
         this.notifyService=notifyService;
         this.questionService =questionService;
     }

@@ -1,9 +1,14 @@
 package com.sofency.community.controller;
 
+import com.alibaba.fastjson.JSON;
 import com.sofency.community.mapper.UserMapper;
 import com.sofency.community.pojo.User;
 import com.sofency.community.pojo.UserExample;
 import com.sofency.community.service.UserService;
+import okhttp3.MediaType;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -22,6 +27,7 @@ import java.util.Map;
  */
 @Controller
 public class RegisterController {
+    private String AppCode = "693d194c26a6464ba293f3add2a8d410";
     /**
      * @param forumUsers
      * @param session
@@ -35,7 +41,10 @@ public class RegisterController {
         this.userMapper=userMapper;
         this.userService=userService;
     }
-
+    @RequestMapping("/loginPage")
+    public String login(){
+        return "login";
+    }
     /**
      * 逻辑 首先根据用户输入的邮箱进行查询是否该用户注册过
      * 如果没有注册过就进行注册  否则注册失败
@@ -58,5 +67,28 @@ public class RegisterController {
         userService.updateOrInsert(user);//添加用户的信息  成功之后返回1 不成功返回0
         map.put("registered",true);
         return map;
+    }
+
+    //以后使用
+    //发送短信验证吗
+    @ResponseBody
+    @RequestMapping("/sendMsg")
+    public String sendMessage(String telephone){
+        MediaType mediaType = MediaType.get("application/json;charset=utf-8");
+        OkHttpClient client = new OkHttpClient();
+        int code = (int) (Math.random()*9000+1000);
+        //构建请求 将请求体进行绑定到请求中
+        Request request = new Request.Builder().url("http://smsapi.api51.cn/code/?code="+code+"&mobile="+telephone)
+                .get().build();
+        //进行响应
+        String msg = null;
+        try(Response response = client.newCall(request).execute()){
+            System.out.println(response.body());
+            System.out.println(response.body().string());
+            msg=response.body().toString();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return msg ;
     }
 }

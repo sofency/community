@@ -35,6 +35,29 @@ function submitForm() {
         })
     }
 }
+function submitLogin() {
+    const email = $("#login_email").val();
+    const password = $("#login_password").val();
+    $.ajax({
+        url:"/login",
+        method:"post",
+        contentType:"application/json",
+        dataType:"json",
+        data:JSON.stringify({
+            "password":password,
+            "email":email
+        }),
+        success:function (data) {
+            if(data.code==200){
+                window.location.href="/";
+            }else{//成功之后切换到登录选项
+                $("#email_pwd").text(data.msg);
+                $("#login_password").val("");//清空密码
+            }
+        }
+    })
+}
+
 function showUnderline(obj) {
     $(obj).css({
         "border-bottom":"2px solid red"
@@ -52,9 +75,9 @@ function choose(obj) {
     if(Object.is(obj,register[0])){//注册
         $(login).removeClass("active");
         $(obj).addClass("active");
-        $(".register").css("display","block");//显示注解界面
+        $(".register").css("display","block");//显示注册界面
         $(".register-btn").css("display","block");
-        $(".login").css("display","none");//显示注解界面
+        $(".login").css("display","none");//显示注册界面
         $(".btn-div-login").css("display","none");
 
     }else{
