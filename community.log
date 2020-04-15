@@ -4107,3 +4107,776 @@ org.thymeleaf.exceptions.TemplateInputException: Error resolving fragment: "~{na
 	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) [tomcat-embed-core-9.0.30.jar:9.0.30]
 	at java.lang.Thread.run(Thread.java:748) [na:1.8.0_144]
 
+2020-04-15 11:01:55.484  INFO 3252 --- [main] c.s.community.CommunityApplication       : Starting CommunityApplication on DESKTOP-VCDINT4 with PID 3252 (E:\Java\community\target\classes started by sofency in E:\Java\community)
+2020-04-15 11:01:55.487  INFO 3252 --- [main] c.s.community.CommunityApplication       : No active profile set, falling back to default profiles: default
+2020-04-15 11:01:56.099  INFO 3252 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2020-04-15 11:01:56.101  INFO 3252 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2020-04-15 11:01:56.143  INFO 3252 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 21ms. Found 0 Redis repository interfaces.
+2020-04-15 11:01:56.405  INFO 3252 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-04-15 11:01:56.596  INFO 3252 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8088 (http)
+2020-04-15 11:01:56.603  INFO 3252 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2020-04-15 11:01:56.603  INFO 3252 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.30]
+2020-04-15 11:01:56.670  INFO 3252 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2020-04-15 11:01:56.670  INFO 3252 --- [main] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 1124 ms
+2020-04-15 11:01:57.361  INFO 3252 --- [main] o.s.s.c.ThreadPoolTaskScheduler          : Initializing ExecutorService 'taskScheduler'
+2020-04-15 11:01:57.422  INFO 3252 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8088 (http) with context path ''
+2020-04-15 11:01:57.424  INFO 3252 --- [main] c.s.community.CommunityApplication       : Started CommunityApplication in 2.309 seconds (JVM running for 3.593)
+2020-04-15 11:02:01.224  INFO 3252 --- [http-nio-8088-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2020-04-15 11:02:01.225  INFO 3252 --- [http-nio-8088-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2020-04-15 11:02:01.231  INFO 3252 --- [http-nio-8088-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 6 ms
+2020-04-15 11:02:01.276  INFO 3252 --- [http-nio-8088-exec-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2020-04-15 11:02:01.744  INFO 3252 --- [http-nio-8088-exec-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2020-04-15 11:02:01.751 DEBUG 3252 --- [http-nio-8088-exec-1] .Q.selectByExampleWithBLOBsWithRowbounds : ==>  Preparing: select id, title, tag, gmt_create, gmt_modify, creator_id, comment_count, view_count, like_count, recommend , description from question 
+2020-04-15 11:02:01.772 DEBUG 3252 --- [http-nio-8088-exec-1] .Q.selectByExampleWithBLOBsWithRowbounds : ==> Parameters: 
+2020-04-15 11:02:01.806 DEBUG 3252 --- [http-nio-8088-exec-1] c.s.c.m.QuestionMapper.countByExample    : ==>  Preparing: select count(*) from question 
+2020-04-15 11:02:01.807 DEBUG 3252 --- [http-nio-8088-exec-1] c.s.c.m.QuestionMapper.countByExample    : ==> Parameters: 
+2020-04-15 11:02:01.810 DEBUG 3252 --- [http-nio-8088-exec-1] c.s.c.m.QuestionMapper.countByExample    : <==      Total: 1
+2020-04-15 11:02:01.823 DEBUG 3252 --- [http-nio-8088-exec-1] c.s.c.mapper.UserMapper.selectByExample  : ==>  Preparing: select generate_id, name, token, gmt_create, gmt_modify, avatar_url, email, tags, password, github_url from user WHERE ( generate_id = ? ) 
+2020-04-15 11:02:01.824 DEBUG 3252 --- [http-nio-8088-exec-1] c.s.c.mapper.UserMapper.selectByExample  : ==> Parameters: 4(Long)
+2020-04-15 11:02:01.827 DEBUG 3252 --- [http-nio-8088-exec-1] c.s.c.mapper.UserMapper.selectByExample  : <==      Total: 1
+2020-04-15 11:02:01.838 DEBUG 3252 --- [http-nio-8088-exec-1] c.s.c.mapper.UserMapper.selectByExample  : ==>  Preparing: select generate_id, name, token, gmt_create, gmt_modify, avatar_url, email, tags, password, github_url from user WHERE ( generate_id = ? ) 
+2020-04-15 11:02:01.838 DEBUG 3252 --- [http-nio-8088-exec-1] c.s.c.mapper.UserMapper.selectByExample  : ==> Parameters: 5(Long)
+2020-04-15 11:02:01.839 DEBUG 3252 --- [http-nio-8088-exec-1] c.s.c.mapper.UserMapper.selectByExample  : <==      Total: 1
+2020-04-15 11:02:01.840 DEBUG 3252 --- [http-nio-8088-exec-1] c.s.c.mapper.UserMapper.selectByExample  : ==>  Preparing: select generate_id, name, token, gmt_create, gmt_modify, avatar_url, email, tags, password, github_url from user WHERE ( generate_id = ? ) 
+2020-04-15 11:02:01.840 DEBUG 3252 --- [http-nio-8088-exec-1] c.s.c.mapper.UserMapper.selectByExample  : ==> Parameters: 4(Long)
+2020-04-15 11:02:01.841 DEBUG 3252 --- [http-nio-8088-exec-1] c.s.c.mapper.UserMapper.selectByExample  : <==      Total: 1
+2020-04-15 11:02:01.842 DEBUG 3252 --- [http-nio-8088-exec-1] c.s.c.mapper.UserMapper.selectByExample  : ==>  Preparing: select generate_id, name, token, gmt_create, gmt_modify, avatar_url, email, tags, password, github_url from user WHERE ( generate_id = ? ) 
+2020-04-15 11:02:01.842 DEBUG 3252 --- [http-nio-8088-exec-1] c.s.c.mapper.UserMapper.selectByExample  : ==> Parameters: 4(Long)
+2020-04-15 11:02:01.843 DEBUG 3252 --- [http-nio-8088-exec-1] c.s.c.mapper.UserMapper.selectByExample  : <==      Total: 1
+2020-04-15 11:02:01.844 DEBUG 3252 --- [http-nio-8088-exec-1] c.s.c.mapper.UserMapper.selectByExample  : ==>  Preparing: select generate_id, name, token, gmt_create, gmt_modify, avatar_url, email, tags, password, github_url from user WHERE ( generate_id = ? ) 
+2020-04-15 11:02:01.844 DEBUG 3252 --- [http-nio-8088-exec-1] c.s.c.mapper.UserMapper.selectByExample  : ==> Parameters: 4(Long)
+2020-04-15 11:02:01.845 DEBUG 3252 --- [http-nio-8088-exec-1] c.s.c.mapper.UserMapper.selectByExample  : <==      Total: 1
+2020-04-15 11:02:01.847 DEBUG 3252 --- [http-nio-8088-exec-1] c.s.c.mapper.UserMapper.selectByExample  : ==>  Preparing: select generate_id, name, token, gmt_create, gmt_modify, avatar_url, email, tags, password, github_url from user WHERE ( generate_id = ? ) 
+2020-04-15 11:02:01.847 DEBUG 3252 --- [http-nio-8088-exec-1] c.s.c.mapper.UserMapper.selectByExample  : ==> Parameters: 4(Long)
+2020-04-15 11:02:01.848 DEBUG 3252 --- [http-nio-8088-exec-1] c.s.c.mapper.UserMapper.selectByExample  : <==      Total: 1
+2020-04-15 11:02:01.850 DEBUG 3252 --- [http-nio-8088-exec-1] c.s.c.mapper.UserMapper.selectByExample  : ==>  Preparing: select generate_id, name, token, gmt_create, gmt_modify, avatar_url, email, tags, password, github_url from user WHERE ( generate_id = ? ) 
+2020-04-15 11:02:01.850 DEBUG 3252 --- [http-nio-8088-exec-1] c.s.c.mapper.UserMapper.selectByExample  : ==> Parameters: 4(Long)
+2020-04-15 11:02:01.852 DEBUG 3252 --- [http-nio-8088-exec-1] c.s.c.mapper.UserMapper.selectByExample  : <==      Total: 1
+2020-04-15 11:02:01.853 DEBUG 3252 --- [http-nio-8088-exec-1] c.s.c.mapper.UserMapper.selectByExample  : ==>  Preparing: select generate_id, name, token, gmt_create, gmt_modify, avatar_url, email, tags, password, github_url from user WHERE ( generate_id = ? ) 
+2020-04-15 11:02:01.853 DEBUG 3252 --- [http-nio-8088-exec-1] c.s.c.mapper.UserMapper.selectByExample  : ==> Parameters: 5(Long)
+2020-04-15 11:02:01.854 DEBUG 3252 --- [http-nio-8088-exec-1] c.s.c.mapper.UserMapper.selectByExample  : <==      Total: 1
+2020-04-15 11:02:01.859 DEBUG 3252 --- [http-nio-8088-exec-1] c.s.c.m.Q.getViewMore                    : ==>  Preparing: select id,title,view_count from question order by view_count desc limit ?; 
+2020-04-15 11:02:01.859 DEBUG 3252 --- [http-nio-8088-exec-1] c.s.c.m.Q.getViewMore                    : ==> Parameters: 5(Integer)
+2020-04-15 11:02:01.861 DEBUG 3252 --- [http-nio-8088-exec-1] c.s.c.m.Q.getViewMore                    : <==      Total: 5
+2020-04-15 11:02:02.167 ERROR 3252 --- [http-nio-8088-exec-1] org.thymeleaf.TemplateEngine             : [THYMELEAF][http-nio-8088-exec-1] Exception processing template "index": An error happened during template parsing (template: "class path resource [templates/index.html]")
+
+org.thymeleaf.exceptions.TemplateInputException: An error happened during template parsing (template: "class path resource [templates/index.html]")
+	at org.thymeleaf.templateparser.markup.AbstractMarkupTemplateParser.parse(AbstractMarkupTemplateParser.java:241) ~[thymeleaf-3.0.11.RELEASE.jar:3.0.11.RELEASE]
+	at org.thymeleaf.templateparser.markup.AbstractMarkupTemplateParser.parseStandalone(AbstractMarkupTemplateParser.java:100) ~[thymeleaf-3.0.11.RELEASE.jar:3.0.11.RELEASE]
+	at org.thymeleaf.engine.TemplateManager.parseAndProcess(TemplateManager.java:666) ~[thymeleaf-3.0.11.RELEASE.jar:3.0.11.RELEASE]
+	at org.thymeleaf.TemplateEngine.process(TemplateEngine.java:1098) [thymeleaf-3.0.11.RELEASE.jar:3.0.11.RELEASE]
+	at org.thymeleaf.TemplateEngine.process(TemplateEngine.java:1072) [thymeleaf-3.0.11.RELEASE.jar:3.0.11.RELEASE]
+	at org.thymeleaf.spring5.view.ThymeleafView.renderFragment(ThymeleafView.java:362) [thymeleaf-spring5-3.0.11.RELEASE.jar:3.0.11.RELEASE]
+	at org.thymeleaf.spring5.view.ThymeleafView.render(ThymeleafView.java:189) [thymeleaf-spring5-3.0.11.RELEASE.jar:3.0.11.RELEASE]
+	at org.springframework.web.servlet.DispatcherServlet.render(DispatcherServlet.java:1373) [spring-webmvc-5.2.3.RELEASE.jar:5.2.3.RELEASE]
+	at org.springframework.web.servlet.DispatcherServlet.processDispatchResult(DispatcherServlet.java:1118) [spring-webmvc-5.2.3.RELEASE.jar:5.2.3.RELEASE]
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1057) [spring-webmvc-5.2.3.RELEASE.jar:5.2.3.RELEASE]
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:943) [spring-webmvc-5.2.3.RELEASE.jar:5.2.3.RELEASE]
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1006) [spring-webmvc-5.2.3.RELEASE.jar:5.2.3.RELEASE]
+	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:898) [spring-webmvc-5.2.3.RELEASE.jar:5.2.3.RELEASE]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:634) [tomcat-embed-core-9.0.30.jar:9.0.30]
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:883) [spring-webmvc-5.2.3.RELEASE.jar:5.2.3.RELEASE]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:741) [tomcat-embed-core-9.0.30.jar:9.0.30]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:231) [tomcat-embed-core-9.0.30.jar:9.0.30]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) [tomcat-embed-core-9.0.30.jar:9.0.30]
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53) [tomcat-embed-websocket-9.0.30.jar:9.0.30]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) [tomcat-embed-core-9.0.30.jar:9.0.30]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) [tomcat-embed-core-9.0.30.jar:9.0.30]
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201) [spring-web-5.2.3.RELEASE.jar:5.2.3.RELEASE]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119) [spring-web-5.2.3.RELEASE.jar:5.2.3.RELEASE]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) [tomcat-embed-core-9.0.30.jar:9.0.30]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) [tomcat-embed-core-9.0.30.jar:9.0.30]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:202) [tomcat-embed-core-9.0.30.jar:9.0.30]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:96) [tomcat-embed-core-9.0.30.jar:9.0.30]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:541) [tomcat-embed-core-9.0.30.jar:9.0.30]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:139) [tomcat-embed-core-9.0.30.jar:9.0.30]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92) [tomcat-embed-core-9.0.30.jar:9.0.30]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74) [tomcat-embed-core-9.0.30.jar:9.0.30]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:343) [tomcat-embed-core-9.0.30.jar:9.0.30]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:367) [tomcat-embed-core-9.0.30.jar:9.0.30]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65) [tomcat-embed-core-9.0.30.jar:9.0.30]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:860) [tomcat-embed-core-9.0.30.jar:9.0.30]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1598) [tomcat-embed-core-9.0.30.jar:9.0.30]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49) [tomcat-embed-core-9.0.30.jar:9.0.30]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149) [na:1.8.0_144]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624) [na:1.8.0_144]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) [tomcat-embed-core-9.0.30.jar:9.0.30]
+	at java.lang.Thread.run(Thread.java:748) [na:1.8.0_144]
+Caused by: org.attoparser.ParseException: Error resolving fragment: "~{navigation :: foot}": template or fragment could not be resolved (template: "index" - line 74, col 21)
+	at org.attoparser.MarkupParser.parseDocument(MarkupParser.java:393) ~[attoparser-2.0.5.RELEASE.jar:2.0.5.RELEASE]
+	at org.attoparser.MarkupParser.parse(MarkupParser.java:257) ~[attoparser-2.0.5.RELEASE.jar:2.0.5.RELEASE]
+	at org.thymeleaf.templateparser.markup.AbstractMarkupTemplateParser.parse(AbstractMarkupTemplateParser.java:230) ~[thymeleaf-3.0.11.RELEASE.jar:3.0.11.RELEASE]
+	... 40 common frames omitted
+Caused by: org.thymeleaf.exceptions.TemplateInputException: Error resolving fragment: "~{navigation :: foot}": template or fragment could not be resolved (template: "index" - line 74, col 21)
+	at org.thymeleaf.standard.expression.FragmentExpression.resolveExecutedFragmentExpression(FragmentExpression.java:619) ~[thymeleaf-3.0.11.RELEASE.jar:3.0.11.RELEASE]
+	at org.thymeleaf.standard.processor.AbstractStandardFragmentInsertionTagProcessor.computeFragment(AbstractStandardFragmentInsertionTagProcessor.java:379) ~[thymeleaf-3.0.11.RELEASE.jar:3.0.11.RELEASE]
+	at org.thymeleaf.standard.processor.AbstractStandardFragmentInsertionTagProcessor.doProcess(AbstractStandardFragmentInsertionTagProcessor.java:110) ~[thymeleaf-3.0.11.RELEASE.jar:3.0.11.RELEASE]
+	at org.thymeleaf.processor.element.AbstractAttributeTagProcessor.doProcess(AbstractAttributeTagProcessor.java:74) ~[thymeleaf-3.0.11.RELEASE.jar:3.0.11.RELEASE]
+	at org.thymeleaf.processor.element.AbstractElementTagProcessor.process(AbstractElementTagProcessor.java:95) ~[thymeleaf-3.0.11.RELEASE.jar:3.0.11.RELEASE]
+	at org.thymeleaf.util.ProcessorConfigurationUtils$ElementTagProcessorWrapper.process(ProcessorConfigurationUtils.java:633) ~[thymeleaf-3.0.11.RELEASE.jar:3.0.11.RELEASE]
+	at org.thymeleaf.engine.ProcessorTemplateHandler.handleOpenElement(ProcessorTemplateHandler.java:1314) ~[thymeleaf-3.0.11.RELEASE.jar:3.0.11.RELEASE]
+	at org.thymeleaf.engine.TemplateHandlerAdapterMarkupHandler.handleOpenElementEnd(TemplateHandlerAdapterMarkupHandler.java:304) ~[thymeleaf-3.0.11.RELEASE.jar:3.0.11.RELEASE]
+	at org.thymeleaf.templateparser.markup.InlinedOutputExpressionMarkupHandler$InlineMarkupAdapterPreProcessorHandler.handleOpenElementEnd(InlinedOutputExpressionMarkupHandler.java:278) ~[thymeleaf-3.0.11.RELEASE.jar:3.0.11.RELEASE]
+	at org.thymeleaf.standard.inline.OutputExpressionInlinePreProcessorHandler.handleOpenElementEnd(OutputExpressionInlinePreProcessorHandler.java:186) ~[thymeleaf-3.0.11.RELEASE.jar:3.0.11.RELEASE]
+	at org.thymeleaf.templateparser.markup.InlinedOutputExpressionMarkupHandler.handleOpenElementEnd(InlinedOutputExpressionMarkupHandler.java:124) ~[thymeleaf-3.0.11.RELEASE.jar:3.0.11.RELEASE]
+	at org.attoparser.HtmlElement.handleOpenElementEnd(HtmlElement.java:109) ~[attoparser-2.0.5.RELEASE.jar:2.0.5.RELEASE]
+	at org.attoparser.HtmlMarkupHandler.handleOpenElementEnd(HtmlMarkupHandler.java:297) ~[attoparser-2.0.5.RELEASE.jar:2.0.5.RELEASE]
+	at org.attoparser.MarkupEventProcessorHandler.handleOpenElementEnd(MarkupEventProcessorHandler.java:402) ~[attoparser-2.0.5.RELEASE.jar:2.0.5.RELEASE]
+	at org.attoparser.ParsingElementMarkupUtil.parseOpenElement(ParsingElementMarkupUtil.java:159) ~[attoparser-2.0.5.RELEASE.jar:2.0.5.RELEASE]
+	at org.attoparser.MarkupParser.parseBuffer(MarkupParser.java:710) ~[attoparser-2.0.5.RELEASE.jar:2.0.5.RELEASE]
+	at org.attoparser.MarkupParser.parseDocument(MarkupParser.java:301) ~[attoparser-2.0.5.RELEASE.jar:2.0.5.RELEASE]
+	... 42 common frames omitted
+
+2020-04-15 11:02:02.171 ERROR 3252 --- [http-nio-8088-exec-1] o.a.c.c.C.[.[.[/].[dispatcherServlet]    : Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed; nested exception is org.thymeleaf.exceptions.TemplateInputException: An error happened during template parsing (template: "class path resource [templates/index.html]")] with root cause
+
+org.thymeleaf.exceptions.TemplateInputException: Error resolving fragment: "~{navigation :: foot}": template or fragment could not be resolved (template: "index" - line 74, col 21)
+	at org.thymeleaf.standard.expression.FragmentExpression.resolveExecutedFragmentExpression(FragmentExpression.java:619) ~[thymeleaf-3.0.11.RELEASE.jar:3.0.11.RELEASE]
+	at org.thymeleaf.standard.processor.AbstractStandardFragmentInsertionTagProcessor.computeFragment(AbstractStandardFragmentInsertionTagProcessor.java:379) ~[thymeleaf-3.0.11.RELEASE.jar:3.0.11.RELEASE]
+	at org.thymeleaf.standard.processor.AbstractStandardFragmentInsertionTagProcessor.doProcess(AbstractStandardFragmentInsertionTagProcessor.java:110) ~[thymeleaf-3.0.11.RELEASE.jar:3.0.11.RELEASE]
+	at org.thymeleaf.processor.element.AbstractAttributeTagProcessor.doProcess(AbstractAttributeTagProcessor.java:74) ~[thymeleaf-3.0.11.RELEASE.jar:3.0.11.RELEASE]
+	at org.thymeleaf.processor.element.AbstractElementTagProcessor.process(AbstractElementTagProcessor.java:95) ~[thymeleaf-3.0.11.RELEASE.jar:3.0.11.RELEASE]
+	at org.thymeleaf.util.ProcessorConfigurationUtils$ElementTagProcessorWrapper.process(ProcessorConfigurationUtils.java:633) ~[thymeleaf-3.0.11.RELEASE.jar:3.0.11.RELEASE]
+	at org.thymeleaf.engine.ProcessorTemplateHandler.handleOpenElement(ProcessorTemplateHandler.java:1314) ~[thymeleaf-3.0.11.RELEASE.jar:3.0.11.RELEASE]
+	at org.thymeleaf.engine.TemplateHandlerAdapterMarkupHandler.handleOpenElementEnd(TemplateHandlerAdapterMarkupHandler.java:304) ~[thymeleaf-3.0.11.RELEASE.jar:3.0.11.RELEASE]
+	at org.thymeleaf.templateparser.markup.InlinedOutputExpressionMarkupHandler$InlineMarkupAdapterPreProcessorHandler.handleOpenElementEnd(InlinedOutputExpressionMarkupHandler.java:278) ~[thymeleaf-3.0.11.RELEASE.jar:3.0.11.RELEASE]
+	at org.thymeleaf.standard.inline.OutputExpressionInlinePreProcessorHandler.handleOpenElementEnd(OutputExpressionInlinePreProcessorHandler.java:186) ~[thymeleaf-3.0.11.RELEASE.jar:3.0.11.RELEASE]
+	at org.thymeleaf.templateparser.markup.InlinedOutputExpressionMarkupHandler.handleOpenElementEnd(InlinedOutputExpressionMarkupHandler.java:124) ~[thymeleaf-3.0.11.RELEASE.jar:3.0.11.RELEASE]
+	at org.attoparser.HtmlElement.handleOpenElementEnd(HtmlElement.java:109) ~[attoparser-2.0.5.RELEASE.jar:2.0.5.RELEASE]
+	at org.attoparser.HtmlMarkupHandler.handleOpenElementEnd(HtmlMarkupHandler.java:297) ~[attoparser-2.0.5.RELEASE.jar:2.0.5.RELEASE]
+	at org.attoparser.MarkupEventProcessorHandler.handleOpenElementEnd(MarkupEventProcessorHandler.java:402) ~[attoparser-2.0.5.RELEASE.jar:2.0.5.RELEASE]
+	at org.attoparser.ParsingElementMarkupUtil.parseOpenElement(ParsingElementMarkupUtil.java:159) ~[attoparser-2.0.5.RELEASE.jar:2.0.5.RELEASE]
+	at org.attoparser.MarkupParser.parseBuffer(MarkupParser.java:710) ~[attoparser-2.0.5.RELEASE.jar:2.0.5.RELEASE]
+	at org.attoparser.MarkupParser.parseDocument(MarkupParser.java:301) ~[attoparser-2.0.5.RELEASE.jar:2.0.5.RELEASE]
+	at org.attoparser.MarkupParser.parse(MarkupParser.java:257) ~[attoparser-2.0.5.RELEASE.jar:2.0.5.RELEASE]
+	at org.thymeleaf.templateparser.markup.AbstractMarkupTemplateParser.parse(AbstractMarkupTemplateParser.java:230) ~[thymeleaf-3.0.11.RELEASE.jar:3.0.11.RELEASE]
+	at org.thymeleaf.templateparser.markup.AbstractMarkupTemplateParser.parseStandalone(AbstractMarkupTemplateParser.java:100) ~[thymeleaf-3.0.11.RELEASE.jar:3.0.11.RELEASE]
+	at org.thymeleaf.engine.TemplateManager.parseAndProcess(TemplateManager.java:666) ~[thymeleaf-3.0.11.RELEASE.jar:3.0.11.RELEASE]
+	at org.thymeleaf.TemplateEngine.process(TemplateEngine.java:1098) ~[thymeleaf-3.0.11.RELEASE.jar:3.0.11.RELEASE]
+	at org.thymeleaf.TemplateEngine.process(TemplateEngine.java:1072) ~[thymeleaf-3.0.11.RELEASE.jar:3.0.11.RELEASE]
+	at org.thymeleaf.spring5.view.ThymeleafView.renderFragment(ThymeleafView.java:362) ~[thymeleaf-spring5-3.0.11.RELEASE.jar:3.0.11.RELEASE]
+	at org.thymeleaf.spring5.view.ThymeleafView.render(ThymeleafView.java:189) ~[thymeleaf-spring5-3.0.11.RELEASE.jar:3.0.11.RELEASE]
+	at org.springframework.web.servlet.DispatcherServlet.render(DispatcherServlet.java:1373) ~[spring-webmvc-5.2.3.RELEASE.jar:5.2.3.RELEASE]
+	at org.springframework.web.servlet.DispatcherServlet.processDispatchResult(DispatcherServlet.java:1118) ~[spring-webmvc-5.2.3.RELEASE.jar:5.2.3.RELEASE]
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1057) ~[spring-webmvc-5.2.3.RELEASE.jar:5.2.3.RELEASE]
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:943) ~[spring-webmvc-5.2.3.RELEASE.jar:5.2.3.RELEASE]
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1006) ~[spring-webmvc-5.2.3.RELEASE.jar:5.2.3.RELEASE]
+	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:898) ~[spring-webmvc-5.2.3.RELEASE.jar:5.2.3.RELEASE]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:634) ~[tomcat-embed-core-9.0.30.jar:9.0.30]
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:883) ~[spring-webmvc-5.2.3.RELEASE.jar:5.2.3.RELEASE]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:741) ~[tomcat-embed-core-9.0.30.jar:9.0.30]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:231) ~[tomcat-embed-core-9.0.30.jar:9.0.30]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) ~[tomcat-embed-core-9.0.30.jar:9.0.30]
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53) ~[tomcat-embed-websocket-9.0.30.jar:9.0.30]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) ~[tomcat-embed-core-9.0.30.jar:9.0.30]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) ~[tomcat-embed-core-9.0.30.jar:9.0.30]
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201) ~[spring-web-5.2.3.RELEASE.jar:5.2.3.RELEASE]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119) ~[spring-web-5.2.3.RELEASE.jar:5.2.3.RELEASE]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) ~[tomcat-embed-core-9.0.30.jar:9.0.30]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) ~[tomcat-embed-core-9.0.30.jar:9.0.30]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:202) ~[tomcat-embed-core-9.0.30.jar:9.0.30]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:96) [tomcat-embed-core-9.0.30.jar:9.0.30]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:541) [tomcat-embed-core-9.0.30.jar:9.0.30]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:139) [tomcat-embed-core-9.0.30.jar:9.0.30]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92) [tomcat-embed-core-9.0.30.jar:9.0.30]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74) [tomcat-embed-core-9.0.30.jar:9.0.30]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:343) [tomcat-embed-core-9.0.30.jar:9.0.30]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:367) [tomcat-embed-core-9.0.30.jar:9.0.30]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65) [tomcat-embed-core-9.0.30.jar:9.0.30]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:860) [tomcat-embed-core-9.0.30.jar:9.0.30]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1598) [tomcat-embed-core-9.0.30.jar:9.0.30]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49) [tomcat-embed-core-9.0.30.jar:9.0.30]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149) [na:1.8.0_144]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624) [na:1.8.0_144]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) [tomcat-embed-core-9.0.30.jar:9.0.30]
+	at java.lang.Thread.run(Thread.java:748) [na:1.8.0_144]
+
+2020-04-15 11:02:16.507 DEBUG 3252 --- [http-nio-8088-exec-8] .Q.selectByExampleWithBLOBsWithRowbounds : ==>  Preparing: select id, title, tag, gmt_create, gmt_modify, creator_id, comment_count, view_count, like_count, recommend , description from question 
+2020-04-15 11:02:16.507 DEBUG 3252 --- [http-nio-8088-exec-8] .Q.selectByExampleWithBLOBsWithRowbounds : ==> Parameters: 
+2020-04-15 11:02:16.512 DEBUG 3252 --- [http-nio-8088-exec-8] c.s.c.m.QuestionMapper.countByExample    : ==>  Preparing: select count(*) from question 
+2020-04-15 11:02:16.513 DEBUG 3252 --- [http-nio-8088-exec-8] c.s.c.m.QuestionMapper.countByExample    : ==> Parameters: 
+2020-04-15 11:02:16.523 DEBUG 3252 --- [http-nio-8088-exec-8] c.s.c.m.QuestionMapper.countByExample    : <==      Total: 1
+2020-04-15 11:02:16.525 DEBUG 3252 --- [http-nio-8088-exec-8] c.s.c.mapper.UserMapper.selectByExample  : ==>  Preparing: select generate_id, name, token, gmt_create, gmt_modify, avatar_url, email, tags, password, github_url from user WHERE ( generate_id = ? ) 
+2020-04-15 11:02:16.525 DEBUG 3252 --- [http-nio-8088-exec-8] c.s.c.mapper.UserMapper.selectByExample  : ==> Parameters: 4(Long)
+2020-04-15 11:02:16.526 DEBUG 3252 --- [http-nio-8088-exec-8] c.s.c.mapper.UserMapper.selectByExample  : <==      Total: 1
+2020-04-15 11:02:16.527 DEBUG 3252 --- [http-nio-8088-exec-8] c.s.c.mapper.UserMapper.selectByExample  : ==>  Preparing: select generate_id, name, token, gmt_create, gmt_modify, avatar_url, email, tags, password, github_url from user WHERE ( generate_id = ? ) 
+2020-04-15 11:02:16.527 DEBUG 3252 --- [http-nio-8088-exec-8] c.s.c.mapper.UserMapper.selectByExample  : ==> Parameters: 5(Long)
+2020-04-15 11:02:16.529 DEBUG 3252 --- [http-nio-8088-exec-8] c.s.c.mapper.UserMapper.selectByExample  : <==      Total: 1
+2020-04-15 11:02:16.530 DEBUG 3252 --- [http-nio-8088-exec-8] c.s.c.mapper.UserMapper.selectByExample  : ==>  Preparing: select generate_id, name, token, gmt_create, gmt_modify, avatar_url, email, tags, password, github_url from user WHERE ( generate_id = ? ) 
+2020-04-15 11:02:16.531 DEBUG 3252 --- [http-nio-8088-exec-8] c.s.c.mapper.UserMapper.selectByExample  : ==> Parameters: 4(Long)
+2020-04-15 11:02:16.534 DEBUG 3252 --- [http-nio-8088-exec-8] c.s.c.mapper.UserMapper.selectByExample  : <==      Total: 1
+2020-04-15 11:02:16.536 DEBUG 3252 --- [http-nio-8088-exec-8] c.s.c.mapper.UserMapper.selectByExample  : ==>  Preparing: select generate_id, name, token, gmt_create, gmt_modify, avatar_url, email, tags, password, github_url from user WHERE ( generate_id = ? ) 
+2020-04-15 11:02:16.536 DEBUG 3252 --- [http-nio-8088-exec-8] c.s.c.mapper.UserMapper.selectByExample  : ==> Parameters: 4(Long)
+2020-04-15 11:02:16.538 DEBUG 3252 --- [http-nio-8088-exec-8] c.s.c.mapper.UserMapper.selectByExample  : <==      Total: 1
+2020-04-15 11:02:16.539 DEBUG 3252 --- [http-nio-8088-exec-8] c.s.c.mapper.UserMapper.selectByExample  : ==>  Preparing: select generate_id, name, token, gmt_create, gmt_modify, avatar_url, email, tags, password, github_url from user WHERE ( generate_id = ? ) 
+2020-04-15 11:02:16.540 DEBUG 3252 --- [http-nio-8088-exec-8] c.s.c.mapper.UserMapper.selectByExample  : ==> Parameters: 4(Long)
+2020-04-15 11:02:16.542 DEBUG 3252 --- [http-nio-8088-exec-8] c.s.c.mapper.UserMapper.selectByExample  : <==      Total: 1
+2020-04-15 11:02:16.543 DEBUG 3252 --- [http-nio-8088-exec-8] c.s.c.mapper.UserMapper.selectByExample  : ==>  Preparing: select generate_id, name, token, gmt_create, gmt_modify, avatar_url, email, tags, password, github_url from user WHERE ( generate_id = ? ) 
+2020-04-15 11:02:16.543 DEBUG 3252 --- [http-nio-8088-exec-8] c.s.c.mapper.UserMapper.selectByExample  : ==> Parameters: 4(Long)
+2020-04-15 11:02:16.544 DEBUG 3252 --- [http-nio-8088-exec-8] c.s.c.mapper.UserMapper.selectByExample  : <==      Total: 1
+2020-04-15 11:02:16.546 DEBUG 3252 --- [http-nio-8088-exec-8] c.s.c.mapper.UserMapper.selectByExample  : ==>  Preparing: select generate_id, name, token, gmt_create, gmt_modify, avatar_url, email, tags, password, github_url from user WHERE ( generate_id = ? ) 
+2020-04-15 11:02:16.546 DEBUG 3252 --- [http-nio-8088-exec-8] c.s.c.mapper.UserMapper.selectByExample  : ==> Parameters: 4(Long)
+2020-04-15 11:02:16.548 DEBUG 3252 --- [http-nio-8088-exec-8] c.s.c.mapper.UserMapper.selectByExample  : <==      Total: 1
+2020-04-15 11:02:16.550 DEBUG 3252 --- [http-nio-8088-exec-8] c.s.c.mapper.UserMapper.selectByExample  : ==>  Preparing: select generate_id, name, token, gmt_create, gmt_modify, avatar_url, email, tags, password, github_url from user WHERE ( generate_id = ? ) 
+2020-04-15 11:02:16.551 DEBUG 3252 --- [http-nio-8088-exec-8] c.s.c.mapper.UserMapper.selectByExample  : ==> Parameters: 5(Long)
+2020-04-15 11:02:16.554 DEBUG 3252 --- [http-nio-8088-exec-8] c.s.c.mapper.UserMapper.selectByExample  : <==      Total: 1
+2020-04-15 11:02:16.556 DEBUG 3252 --- [http-nio-8088-exec-8] c.s.c.m.Q.getViewMore                    : ==>  Preparing: select id,title,view_count from question order by view_count desc limit ?; 
+2020-04-15 11:02:16.557 DEBUG 3252 --- [http-nio-8088-exec-8] c.s.c.m.Q.getViewMore                    : ==> Parameters: 5(Integer)
+2020-04-15 11:02:16.558 DEBUG 3252 --- [http-nio-8088-exec-8] c.s.c.m.Q.getViewMore                    : <==      Total: 5
+2020-04-15 11:02:23.881 DEBUG 3252 --- [http-nio-8088-exec-7] .Q.selectByExampleWithBLOBsWithRowbounds : ==>  Preparing: select id, title, tag, gmt_create, gmt_modify, creator_id, comment_count, view_count, like_count, recommend , description from question 
+2020-04-15 11:02:23.882 DEBUG 3252 --- [http-nio-8088-exec-7] .Q.selectByExampleWithBLOBsWithRowbounds : ==> Parameters: 
+2020-04-15 11:02:23.886 DEBUG 3252 --- [http-nio-8088-exec-7] c.s.c.m.QuestionMapper.countByExample    : ==>  Preparing: select count(*) from question 
+2020-04-15 11:02:23.887 DEBUG 3252 --- [http-nio-8088-exec-7] c.s.c.m.QuestionMapper.countByExample    : ==> Parameters: 
+2020-04-15 11:02:23.888 DEBUG 3252 --- [http-nio-8088-exec-7] c.s.c.m.QuestionMapper.countByExample    : <==      Total: 1
+2020-04-15 11:02:23.889 DEBUG 3252 --- [http-nio-8088-exec-7] c.s.c.mapper.UserMapper.selectByExample  : ==>  Preparing: select generate_id, name, token, gmt_create, gmt_modify, avatar_url, email, tags, password, github_url from user WHERE ( generate_id = ? ) 
+2020-04-15 11:02:23.889 DEBUG 3252 --- [http-nio-8088-exec-7] c.s.c.mapper.UserMapper.selectByExample  : ==> Parameters: 4(Long)
+2020-04-15 11:02:23.890 DEBUG 3252 --- [http-nio-8088-exec-7] c.s.c.mapper.UserMapper.selectByExample  : <==      Total: 1
+2020-04-15 11:02:23.891 DEBUG 3252 --- [http-nio-8088-exec-7] c.s.c.mapper.UserMapper.selectByExample  : ==>  Preparing: select generate_id, name, token, gmt_create, gmt_modify, avatar_url, email, tags, password, github_url from user WHERE ( generate_id = ? ) 
+2020-04-15 11:02:23.891 DEBUG 3252 --- [http-nio-8088-exec-7] c.s.c.mapper.UserMapper.selectByExample  : ==> Parameters: 5(Long)
+2020-04-15 11:02:23.892 DEBUG 3252 --- [http-nio-8088-exec-7] c.s.c.mapper.UserMapper.selectByExample  : <==      Total: 1
+2020-04-15 11:02:23.893 DEBUG 3252 --- [http-nio-8088-exec-7] c.s.c.mapper.UserMapper.selectByExample  : ==>  Preparing: select generate_id, name, token, gmt_create, gmt_modify, avatar_url, email, tags, password, github_url from user WHERE ( generate_id = ? ) 
+2020-04-15 11:02:23.894 DEBUG 3252 --- [http-nio-8088-exec-7] c.s.c.mapper.UserMapper.selectByExample  : ==> Parameters: 4(Long)
+2020-04-15 11:02:23.895 DEBUG 3252 --- [http-nio-8088-exec-7] c.s.c.mapper.UserMapper.selectByExample  : <==      Total: 1
+2020-04-15 11:02:23.896 DEBUG 3252 --- [http-nio-8088-exec-7] c.s.c.mapper.UserMapper.selectByExample  : ==>  Preparing: select generate_id, name, token, gmt_create, gmt_modify, avatar_url, email, tags, password, github_url from user WHERE ( generate_id = ? ) 
+2020-04-15 11:02:23.896 DEBUG 3252 --- [http-nio-8088-exec-7] c.s.c.mapper.UserMapper.selectByExample  : ==> Parameters: 4(Long)
+2020-04-15 11:02:23.897 DEBUG 3252 --- [http-nio-8088-exec-7] c.s.c.mapper.UserMapper.selectByExample  : <==      Total: 1
+2020-04-15 11:02:23.897 DEBUG 3252 --- [http-nio-8088-exec-7] c.s.c.mapper.UserMapper.selectByExample  : ==>  Preparing: select generate_id, name, token, gmt_create, gmt_modify, avatar_url, email, tags, password, github_url from user WHERE ( generate_id = ? ) 
+2020-04-15 11:02:23.898 DEBUG 3252 --- [http-nio-8088-exec-7] c.s.c.mapper.UserMapper.selectByExample  : ==> Parameters: 4(Long)
+2020-04-15 11:02:23.899 DEBUG 3252 --- [http-nio-8088-exec-7] c.s.c.mapper.UserMapper.selectByExample  : <==      Total: 1
+2020-04-15 11:02:23.899 DEBUG 3252 --- [http-nio-8088-exec-7] c.s.c.mapper.UserMapper.selectByExample  : ==>  Preparing: select generate_id, name, token, gmt_create, gmt_modify, avatar_url, email, tags, password, github_url from user WHERE ( generate_id = ? ) 
+2020-04-15 11:02:23.900 DEBUG 3252 --- [http-nio-8088-exec-7] c.s.c.mapper.UserMapper.selectByExample  : ==> Parameters: 4(Long)
+2020-04-15 11:02:23.900 DEBUG 3252 --- [http-nio-8088-exec-7] c.s.c.mapper.UserMapper.selectByExample  : <==      Total: 1
+2020-04-15 11:02:23.901 DEBUG 3252 --- [http-nio-8088-exec-7] c.s.c.mapper.UserMapper.selectByExample  : ==>  Preparing: select generate_id, name, token, gmt_create, gmt_modify, avatar_url, email, tags, password, github_url from user WHERE ( generate_id = ? ) 
+2020-04-15 11:02:23.901 DEBUG 3252 --- [http-nio-8088-exec-7] c.s.c.mapper.UserMapper.selectByExample  : ==> Parameters: 4(Long)
+2020-04-15 11:02:23.902 DEBUG 3252 --- [http-nio-8088-exec-7] c.s.c.mapper.UserMapper.selectByExample  : <==      Total: 1
+2020-04-15 11:02:23.903 DEBUG 3252 --- [http-nio-8088-exec-7] c.s.c.mapper.UserMapper.selectByExample  : ==>  Preparing: select generate_id, name, token, gmt_create, gmt_modify, avatar_url, email, tags, password, github_url from user WHERE ( generate_id = ? ) 
+2020-04-15 11:02:23.904 DEBUG 3252 --- [http-nio-8088-exec-7] c.s.c.mapper.UserMapper.selectByExample  : ==> Parameters: 5(Long)
+2020-04-15 11:02:23.904 DEBUG 3252 --- [http-nio-8088-exec-7] c.s.c.mapper.UserMapper.selectByExample  : <==      Total: 1
+2020-04-15 11:02:23.905 DEBUG 3252 --- [http-nio-8088-exec-7] c.s.c.m.Q.getViewMore                    : ==>  Preparing: select id,title,view_count from question order by view_count desc limit ?; 
+2020-04-15 11:02:23.905 DEBUG 3252 --- [http-nio-8088-exec-7] c.s.c.m.Q.getViewMore                    : ==> Parameters: 5(Integer)
+2020-04-15 11:02:23.906 DEBUG 3252 --- [http-nio-8088-exec-7] c.s.c.m.Q.getViewMore                    : <==      Total: 5
+2020-04-15 11:02:23.924 ERROR 3252 --- [http-nio-8088-exec-7] org.thymeleaf.TemplateEngine             : [THYMELEAF][http-nio-8088-exec-7] Exception processing template "index": An error happened during template parsing (template: "class path resource [templates/index.html]")
+
+org.thymeleaf.exceptions.TemplateInputException: An error happened during template parsing (template: "class path resource [templates/index.html]")
+	at org.thymeleaf.templateparser.markup.AbstractMarkupTemplateParser.parse(AbstractMarkupTemplateParser.java:241) ~[thymeleaf-3.0.11.RELEASE.jar:3.0.11.RELEASE]
+	at org.thymeleaf.templateparser.markup.AbstractMarkupTemplateParser.parseStandalone(AbstractMarkupTemplateParser.java:100) ~[thymeleaf-3.0.11.RELEASE.jar:3.0.11.RELEASE]
+	at org.thymeleaf.engine.TemplateManager.parseAndProcess(TemplateManager.java:666) ~[thymeleaf-3.0.11.RELEASE.jar:3.0.11.RELEASE]
+	at org.thymeleaf.TemplateEngine.process(TemplateEngine.java:1098) [thymeleaf-3.0.11.RELEASE.jar:3.0.11.RELEASE]
+	at org.thymeleaf.TemplateEngine.process(TemplateEngine.java:1072) [thymeleaf-3.0.11.RELEASE.jar:3.0.11.RELEASE]
+	at org.thymeleaf.spring5.view.ThymeleafView.renderFragment(ThymeleafView.java:362) [thymeleaf-spring5-3.0.11.RELEASE.jar:3.0.11.RELEASE]
+	at org.thymeleaf.spring5.view.ThymeleafView.render(ThymeleafView.java:189) [thymeleaf-spring5-3.0.11.RELEASE.jar:3.0.11.RELEASE]
+	at org.springframework.web.servlet.DispatcherServlet.render(DispatcherServlet.java:1373) [spring-webmvc-5.2.3.RELEASE.jar:5.2.3.RELEASE]
+	at org.springframework.web.servlet.DispatcherServlet.processDispatchResult(DispatcherServlet.java:1118) [spring-webmvc-5.2.3.RELEASE.jar:5.2.3.RELEASE]
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1057) [spring-webmvc-5.2.3.RELEASE.jar:5.2.3.RELEASE]
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:943) [spring-webmvc-5.2.3.RELEASE.jar:5.2.3.RELEASE]
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1006) [spring-webmvc-5.2.3.RELEASE.jar:5.2.3.RELEASE]
+	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:898) [spring-webmvc-5.2.3.RELEASE.jar:5.2.3.RELEASE]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:634) [tomcat-embed-core-9.0.30.jar:9.0.30]
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:883) [spring-webmvc-5.2.3.RELEASE.jar:5.2.3.RELEASE]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:741) [tomcat-embed-core-9.0.30.jar:9.0.30]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:231) [tomcat-embed-core-9.0.30.jar:9.0.30]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) [tomcat-embed-core-9.0.30.jar:9.0.30]
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53) [tomcat-embed-websocket-9.0.30.jar:9.0.30]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) [tomcat-embed-core-9.0.30.jar:9.0.30]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) [tomcat-embed-core-9.0.30.jar:9.0.30]
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201) [spring-web-5.2.3.RELEASE.jar:5.2.3.RELEASE]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119) [spring-web-5.2.3.RELEASE.jar:5.2.3.RELEASE]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) [tomcat-embed-core-9.0.30.jar:9.0.30]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) [tomcat-embed-core-9.0.30.jar:9.0.30]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:202) [tomcat-embed-core-9.0.30.jar:9.0.30]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:96) [tomcat-embed-core-9.0.30.jar:9.0.30]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:541) [tomcat-embed-core-9.0.30.jar:9.0.30]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:139) [tomcat-embed-core-9.0.30.jar:9.0.30]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92) [tomcat-embed-core-9.0.30.jar:9.0.30]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74) [tomcat-embed-core-9.0.30.jar:9.0.30]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:343) [tomcat-embed-core-9.0.30.jar:9.0.30]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:367) [tomcat-embed-core-9.0.30.jar:9.0.30]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65) [tomcat-embed-core-9.0.30.jar:9.0.30]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:860) [tomcat-embed-core-9.0.30.jar:9.0.30]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1598) [tomcat-embed-core-9.0.30.jar:9.0.30]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49) [tomcat-embed-core-9.0.30.jar:9.0.30]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149) [na:1.8.0_144]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624) [na:1.8.0_144]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) [tomcat-embed-core-9.0.30.jar:9.0.30]
+	at java.lang.Thread.run(Thread.java:748) [na:1.8.0_144]
+Caused by: org.attoparser.ParseException: Error resolving fragment: "~{navigation :: foot}": template or fragment could not be resolved (template: "index" - line 74, col 21)
+	at org.attoparser.MarkupParser.parseDocument(MarkupParser.java:393) ~[attoparser-2.0.5.RELEASE.jar:2.0.5.RELEASE]
+	at org.attoparser.MarkupParser.parse(MarkupParser.java:257) ~[attoparser-2.0.5.RELEASE.jar:2.0.5.RELEASE]
+	at org.thymeleaf.templateparser.markup.AbstractMarkupTemplateParser.parse(AbstractMarkupTemplateParser.java:230) ~[thymeleaf-3.0.11.RELEASE.jar:3.0.11.RELEASE]
+	... 40 common frames omitted
+Caused by: org.thymeleaf.exceptions.TemplateInputException: Error resolving fragment: "~{navigation :: foot}": template or fragment could not be resolved (template: "index" - line 74, col 21)
+	at org.thymeleaf.standard.expression.FragmentExpression.resolveExecutedFragmentExpression(FragmentExpression.java:619) ~[thymeleaf-3.0.11.RELEASE.jar:3.0.11.RELEASE]
+	at org.thymeleaf.standard.processor.AbstractStandardFragmentInsertionTagProcessor.computeFragment(AbstractStandardFragmentInsertionTagProcessor.java:379) ~[thymeleaf-3.0.11.RELEASE.jar:3.0.11.RELEASE]
+	at org.thymeleaf.standard.processor.AbstractStandardFragmentInsertionTagProcessor.doProcess(AbstractStandardFragmentInsertionTagProcessor.java:110) ~[thymeleaf-3.0.11.RELEASE.jar:3.0.11.RELEASE]
+	at org.thymeleaf.processor.element.AbstractAttributeTagProcessor.doProcess(AbstractAttributeTagProcessor.java:74) ~[thymeleaf-3.0.11.RELEASE.jar:3.0.11.RELEASE]
+	at org.thymeleaf.processor.element.AbstractElementTagProcessor.process(AbstractElementTagProcessor.java:95) ~[thymeleaf-3.0.11.RELEASE.jar:3.0.11.RELEASE]
+	at org.thymeleaf.util.ProcessorConfigurationUtils$ElementTagProcessorWrapper.process(ProcessorConfigurationUtils.java:633) ~[thymeleaf-3.0.11.RELEASE.jar:3.0.11.RELEASE]
+	at org.thymeleaf.engine.ProcessorTemplateHandler.handleOpenElement(ProcessorTemplateHandler.java:1314) ~[thymeleaf-3.0.11.RELEASE.jar:3.0.11.RELEASE]
+	at org.thymeleaf.engine.TemplateHandlerAdapterMarkupHandler.handleOpenElementEnd(TemplateHandlerAdapterMarkupHandler.java:304) ~[thymeleaf-3.0.11.RELEASE.jar:3.0.11.RELEASE]
+	at org.thymeleaf.templateparser.markup.InlinedOutputExpressionMarkupHandler$InlineMarkupAdapterPreProcessorHandler.handleOpenElementEnd(InlinedOutputExpressionMarkupHandler.java:278) ~[thymeleaf-3.0.11.RELEASE.jar:3.0.11.RELEASE]
+	at org.thymeleaf.standard.inline.OutputExpressionInlinePreProcessorHandler.handleOpenElementEnd(OutputExpressionInlinePreProcessorHandler.java:186) ~[thymeleaf-3.0.11.RELEASE.jar:3.0.11.RELEASE]
+	at org.thymeleaf.templateparser.markup.InlinedOutputExpressionMarkupHandler.handleOpenElementEnd(InlinedOutputExpressionMarkupHandler.java:124) ~[thymeleaf-3.0.11.RELEASE.jar:3.0.11.RELEASE]
+	at org.attoparser.HtmlElement.handleOpenElementEnd(HtmlElement.java:109) ~[attoparser-2.0.5.RELEASE.jar:2.0.5.RELEASE]
+	at org.attoparser.HtmlMarkupHandler.handleOpenElementEnd(HtmlMarkupHandler.java:297) ~[attoparser-2.0.5.RELEASE.jar:2.0.5.RELEASE]
+	at org.attoparser.MarkupEventProcessorHandler.handleOpenElementEnd(MarkupEventProcessorHandler.java:402) ~[attoparser-2.0.5.RELEASE.jar:2.0.5.RELEASE]
+	at org.attoparser.ParsingElementMarkupUtil.parseOpenElement(ParsingElementMarkupUtil.java:159) ~[attoparser-2.0.5.RELEASE.jar:2.0.5.RELEASE]
+	at org.attoparser.MarkupParser.parseBuffer(MarkupParser.java:710) ~[attoparser-2.0.5.RELEASE.jar:2.0.5.RELEASE]
+	at org.attoparser.MarkupParser.parseDocument(MarkupParser.java:301) ~[attoparser-2.0.5.RELEASE.jar:2.0.5.RELEASE]
+	... 42 common frames omitted
+
+2020-04-15 11:02:23.925 ERROR 3252 --- [http-nio-8088-exec-7] o.a.c.c.C.[.[.[/].[dispatcherServlet]    : Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed; nested exception is org.thymeleaf.exceptions.TemplateInputException: An error happened during template parsing (template: "class path resource [templates/index.html]")] with root cause
+
+org.thymeleaf.exceptions.TemplateInputException: Error resolving fragment: "~{navigation :: foot}": template or fragment could not be resolved (template: "index" - line 74, col 21)
+	at org.thymeleaf.standard.expression.FragmentExpression.resolveExecutedFragmentExpression(FragmentExpression.java:619) ~[thymeleaf-3.0.11.RELEASE.jar:3.0.11.RELEASE]
+	at org.thymeleaf.standard.processor.AbstractStandardFragmentInsertionTagProcessor.computeFragment(AbstractStandardFragmentInsertionTagProcessor.java:379) ~[thymeleaf-3.0.11.RELEASE.jar:3.0.11.RELEASE]
+	at org.thymeleaf.standard.processor.AbstractStandardFragmentInsertionTagProcessor.doProcess(AbstractStandardFragmentInsertionTagProcessor.java:110) ~[thymeleaf-3.0.11.RELEASE.jar:3.0.11.RELEASE]
+	at org.thymeleaf.processor.element.AbstractAttributeTagProcessor.doProcess(AbstractAttributeTagProcessor.java:74) ~[thymeleaf-3.0.11.RELEASE.jar:3.0.11.RELEASE]
+	at org.thymeleaf.processor.element.AbstractElementTagProcessor.process(AbstractElementTagProcessor.java:95) ~[thymeleaf-3.0.11.RELEASE.jar:3.0.11.RELEASE]
+	at org.thymeleaf.util.ProcessorConfigurationUtils$ElementTagProcessorWrapper.process(ProcessorConfigurationUtils.java:633) ~[thymeleaf-3.0.11.RELEASE.jar:3.0.11.RELEASE]
+	at org.thymeleaf.engine.ProcessorTemplateHandler.handleOpenElement(ProcessorTemplateHandler.java:1314) ~[thymeleaf-3.0.11.RELEASE.jar:3.0.11.RELEASE]
+	at org.thymeleaf.engine.TemplateHandlerAdapterMarkupHandler.handleOpenElementEnd(TemplateHandlerAdapterMarkupHandler.java:304) ~[thymeleaf-3.0.11.RELEASE.jar:3.0.11.RELEASE]
+	at org.thymeleaf.templateparser.markup.InlinedOutputExpressionMarkupHandler$InlineMarkupAdapterPreProcessorHandler.handleOpenElementEnd(InlinedOutputExpressionMarkupHandler.java:278) ~[thymeleaf-3.0.11.RELEASE.jar:3.0.11.RELEASE]
+	at org.thymeleaf.standard.inline.OutputExpressionInlinePreProcessorHandler.handleOpenElementEnd(OutputExpressionInlinePreProcessorHandler.java:186) ~[thymeleaf-3.0.11.RELEASE.jar:3.0.11.RELEASE]
+	at org.thymeleaf.templateparser.markup.InlinedOutputExpressionMarkupHandler.handleOpenElementEnd(InlinedOutputExpressionMarkupHandler.java:124) ~[thymeleaf-3.0.11.RELEASE.jar:3.0.11.RELEASE]
+	at org.attoparser.HtmlElement.handleOpenElementEnd(HtmlElement.java:109) ~[attoparser-2.0.5.RELEASE.jar:2.0.5.RELEASE]
+	at org.attoparser.HtmlMarkupHandler.handleOpenElementEnd(HtmlMarkupHandler.java:297) ~[attoparser-2.0.5.RELEASE.jar:2.0.5.RELEASE]
+	at org.attoparser.MarkupEventProcessorHandler.handleOpenElementEnd(MarkupEventProcessorHandler.java:402) ~[attoparser-2.0.5.RELEASE.jar:2.0.5.RELEASE]
+	at org.attoparser.ParsingElementMarkupUtil.parseOpenElement(ParsingElementMarkupUtil.java:159) ~[attoparser-2.0.5.RELEASE.jar:2.0.5.RELEASE]
+	at org.attoparser.MarkupParser.parseBuffer(MarkupParser.java:710) ~[attoparser-2.0.5.RELEASE.jar:2.0.5.RELEASE]
+	at org.attoparser.MarkupParser.parseDocument(MarkupParser.java:301) ~[attoparser-2.0.5.RELEASE.jar:2.0.5.RELEASE]
+	at org.attoparser.MarkupParser.parse(MarkupParser.java:257) ~[attoparser-2.0.5.RELEASE.jar:2.0.5.RELEASE]
+	at org.thymeleaf.templateparser.markup.AbstractMarkupTemplateParser.parse(AbstractMarkupTemplateParser.java:230) ~[thymeleaf-3.0.11.RELEASE.jar:3.0.11.RELEASE]
+	at org.thymeleaf.templateparser.markup.AbstractMarkupTemplateParser.parseStandalone(AbstractMarkupTemplateParser.java:100) ~[thymeleaf-3.0.11.RELEASE.jar:3.0.11.RELEASE]
+	at org.thymeleaf.engine.TemplateManager.parseAndProcess(TemplateManager.java:666) ~[thymeleaf-3.0.11.RELEASE.jar:3.0.11.RELEASE]
+	at org.thymeleaf.TemplateEngine.process(TemplateEngine.java:1098) ~[thymeleaf-3.0.11.RELEASE.jar:3.0.11.RELEASE]
+	at org.thymeleaf.TemplateEngine.process(TemplateEngine.java:1072) ~[thymeleaf-3.0.11.RELEASE.jar:3.0.11.RELEASE]
+	at org.thymeleaf.spring5.view.ThymeleafView.renderFragment(ThymeleafView.java:362) ~[thymeleaf-spring5-3.0.11.RELEASE.jar:3.0.11.RELEASE]
+	at org.thymeleaf.spring5.view.ThymeleafView.render(ThymeleafView.java:189) ~[thymeleaf-spring5-3.0.11.RELEASE.jar:3.0.11.RELEASE]
+	at org.springframework.web.servlet.DispatcherServlet.render(DispatcherServlet.java:1373) ~[spring-webmvc-5.2.3.RELEASE.jar:5.2.3.RELEASE]
+	at org.springframework.web.servlet.DispatcherServlet.processDispatchResult(DispatcherServlet.java:1118) ~[spring-webmvc-5.2.3.RELEASE.jar:5.2.3.RELEASE]
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1057) ~[spring-webmvc-5.2.3.RELEASE.jar:5.2.3.RELEASE]
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:943) ~[spring-webmvc-5.2.3.RELEASE.jar:5.2.3.RELEASE]
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1006) ~[spring-webmvc-5.2.3.RELEASE.jar:5.2.3.RELEASE]
+	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:898) ~[spring-webmvc-5.2.3.RELEASE.jar:5.2.3.RELEASE]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:634) ~[tomcat-embed-core-9.0.30.jar:9.0.30]
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:883) ~[spring-webmvc-5.2.3.RELEASE.jar:5.2.3.RELEASE]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:741) ~[tomcat-embed-core-9.0.30.jar:9.0.30]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:231) ~[tomcat-embed-core-9.0.30.jar:9.0.30]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) ~[tomcat-embed-core-9.0.30.jar:9.0.30]
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53) ~[tomcat-embed-websocket-9.0.30.jar:9.0.30]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) ~[tomcat-embed-core-9.0.30.jar:9.0.30]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) ~[tomcat-embed-core-9.0.30.jar:9.0.30]
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201) ~[spring-web-5.2.3.RELEASE.jar:5.2.3.RELEASE]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119) ~[spring-web-5.2.3.RELEASE.jar:5.2.3.RELEASE]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) ~[tomcat-embed-core-9.0.30.jar:9.0.30]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) ~[tomcat-embed-core-9.0.30.jar:9.0.30]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:202) ~[tomcat-embed-core-9.0.30.jar:9.0.30]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:96) [tomcat-embed-core-9.0.30.jar:9.0.30]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:541) [tomcat-embed-core-9.0.30.jar:9.0.30]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:139) [tomcat-embed-core-9.0.30.jar:9.0.30]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92) [tomcat-embed-core-9.0.30.jar:9.0.30]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74) [tomcat-embed-core-9.0.30.jar:9.0.30]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:343) [tomcat-embed-core-9.0.30.jar:9.0.30]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:367) [tomcat-embed-core-9.0.30.jar:9.0.30]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65) [tomcat-embed-core-9.0.30.jar:9.0.30]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:860) [tomcat-embed-core-9.0.30.jar:9.0.30]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1598) [tomcat-embed-core-9.0.30.jar:9.0.30]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49) [tomcat-embed-core-9.0.30.jar:9.0.30]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149) [na:1.8.0_144]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624) [na:1.8.0_144]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) [tomcat-embed-core-9.0.30.jar:9.0.30]
+	at java.lang.Thread.run(Thread.java:748) [na:1.8.0_144]
+
+2020-04-15 11:02:42.230 DEBUG 3252 --- [http-nio-8088-exec-10] .Q.selectByExampleWithBLOBsWithRowbounds : ==>  Preparing: select id, title, tag, gmt_create, gmt_modify, creator_id, comment_count, view_count, like_count, recommend , description from question 
+2020-04-15 11:02:42.230 DEBUG 3252 --- [http-nio-8088-exec-10] .Q.selectByExampleWithBLOBsWithRowbounds : ==> Parameters: 
+2020-04-15 11:02:42.233 DEBUG 3252 --- [http-nio-8088-exec-10] c.s.c.m.QuestionMapper.countByExample    : ==>  Preparing: select count(*) from question 
+2020-04-15 11:02:42.233 DEBUG 3252 --- [http-nio-8088-exec-10] c.s.c.m.QuestionMapper.countByExample    : ==> Parameters: 
+2020-04-15 11:02:42.234 DEBUG 3252 --- [http-nio-8088-exec-10] c.s.c.m.QuestionMapper.countByExample    : <==      Total: 1
+2020-04-15 11:02:42.235 DEBUG 3252 --- [http-nio-8088-exec-10] c.s.c.mapper.UserMapper.selectByExample  : ==>  Preparing: select generate_id, name, token, gmt_create, gmt_modify, avatar_url, email, tags, password, github_url from user WHERE ( generate_id = ? ) 
+2020-04-15 11:02:42.236 DEBUG 3252 --- [http-nio-8088-exec-10] c.s.c.mapper.UserMapper.selectByExample  : ==> Parameters: 4(Long)
+2020-04-15 11:02:42.237 DEBUG 3252 --- [http-nio-8088-exec-10] c.s.c.mapper.UserMapper.selectByExample  : <==      Total: 1
+2020-04-15 11:02:42.238 DEBUG 3252 --- [http-nio-8088-exec-10] c.s.c.mapper.UserMapper.selectByExample  : ==>  Preparing: select generate_id, name, token, gmt_create, gmt_modify, avatar_url, email, tags, password, github_url from user WHERE ( generate_id = ? ) 
+2020-04-15 11:02:42.239 DEBUG 3252 --- [http-nio-8088-exec-10] c.s.c.mapper.UserMapper.selectByExample  : ==> Parameters: 5(Long)
+2020-04-15 11:02:42.240 DEBUG 3252 --- [http-nio-8088-exec-10] c.s.c.mapper.UserMapper.selectByExample  : <==      Total: 1
+2020-04-15 11:02:42.241 DEBUG 3252 --- [http-nio-8088-exec-10] c.s.c.mapper.UserMapper.selectByExample  : ==>  Preparing: select generate_id, name, token, gmt_create, gmt_modify, avatar_url, email, tags, password, github_url from user WHERE ( generate_id = ? ) 
+2020-04-15 11:02:42.242 DEBUG 3252 --- [http-nio-8088-exec-10] c.s.c.mapper.UserMapper.selectByExample  : ==> Parameters: 4(Long)
+2020-04-15 11:02:42.242 DEBUG 3252 --- [http-nio-8088-exec-10] c.s.c.mapper.UserMapper.selectByExample  : <==      Total: 1
+2020-04-15 11:02:42.243 DEBUG 3252 --- [http-nio-8088-exec-10] c.s.c.mapper.UserMapper.selectByExample  : ==>  Preparing: select generate_id, name, token, gmt_create, gmt_modify, avatar_url, email, tags, password, github_url from user WHERE ( generate_id = ? ) 
+2020-04-15 11:02:42.243 DEBUG 3252 --- [http-nio-8088-exec-10] c.s.c.mapper.UserMapper.selectByExample  : ==> Parameters: 4(Long)
+2020-04-15 11:02:42.244 DEBUG 3252 --- [http-nio-8088-exec-10] c.s.c.mapper.UserMapper.selectByExample  : <==      Total: 1
+2020-04-15 11:02:42.245 DEBUG 3252 --- [http-nio-8088-exec-10] c.s.c.mapper.UserMapper.selectByExample  : ==>  Preparing: select generate_id, name, token, gmt_create, gmt_modify, avatar_url, email, tags, password, github_url from user WHERE ( generate_id = ? ) 
+2020-04-15 11:02:42.245 DEBUG 3252 --- [http-nio-8088-exec-10] c.s.c.mapper.UserMapper.selectByExample  : ==> Parameters: 4(Long)
+2020-04-15 11:02:42.246 DEBUG 3252 --- [http-nio-8088-exec-10] c.s.c.mapper.UserMapper.selectByExample  : <==      Total: 1
+2020-04-15 11:02:42.247 DEBUG 3252 --- [http-nio-8088-exec-10] c.s.c.mapper.UserMapper.selectByExample  : ==>  Preparing: select generate_id, name, token, gmt_create, gmt_modify, avatar_url, email, tags, password, github_url from user WHERE ( generate_id = ? ) 
+2020-04-15 11:02:42.247 DEBUG 3252 --- [http-nio-8088-exec-10] c.s.c.mapper.UserMapper.selectByExample  : ==> Parameters: 4(Long)
+2020-04-15 11:02:42.248 DEBUG 3252 --- [http-nio-8088-exec-10] c.s.c.mapper.UserMapper.selectByExample  : <==      Total: 1
+2020-04-15 11:02:42.249 DEBUG 3252 --- [http-nio-8088-exec-10] c.s.c.mapper.UserMapper.selectByExample  : ==>  Preparing: select generate_id, name, token, gmt_create, gmt_modify, avatar_url, email, tags, password, github_url from user WHERE ( generate_id = ? ) 
+2020-04-15 11:02:42.250 DEBUG 3252 --- [http-nio-8088-exec-10] c.s.c.mapper.UserMapper.selectByExample  : ==> Parameters: 4(Long)
+2020-04-15 11:02:42.250 DEBUG 3252 --- [http-nio-8088-exec-10] c.s.c.mapper.UserMapper.selectByExample  : <==      Total: 1
+2020-04-15 11:02:42.251 DEBUG 3252 --- [http-nio-8088-exec-10] c.s.c.mapper.UserMapper.selectByExample  : ==>  Preparing: select generate_id, name, token, gmt_create, gmt_modify, avatar_url, email, tags, password, github_url from user WHERE ( generate_id = ? ) 
+2020-04-15 11:02:42.251 DEBUG 3252 --- [http-nio-8088-exec-10] c.s.c.mapper.UserMapper.selectByExample  : ==> Parameters: 5(Long)
+2020-04-15 11:02:42.252 DEBUG 3252 --- [http-nio-8088-exec-10] c.s.c.mapper.UserMapper.selectByExample  : <==      Total: 1
+2020-04-15 11:02:42.253 DEBUG 3252 --- [http-nio-8088-exec-10] c.s.c.m.Q.getViewMore                    : ==>  Preparing: select id,title,view_count from question order by view_count desc limit ?; 
+2020-04-15 11:02:42.253 DEBUG 3252 --- [http-nio-8088-exec-10] c.s.c.m.Q.getViewMore                    : ==> Parameters: 5(Integer)
+2020-04-15 11:02:42.255 DEBUG 3252 --- [http-nio-8088-exec-10] c.s.c.m.Q.getViewMore                    : <==      Total: 5
+2020-04-15 11:02:42.271 ERROR 3252 --- [http-nio-8088-exec-10] org.thymeleaf.TemplateEngine             : [THYMELEAF][http-nio-8088-exec-10] Exception processing template "index": An error happened during template parsing (template: "class path resource [templates/index.html]")
+
+org.thymeleaf.exceptions.TemplateInputException: An error happened during template parsing (template: "class path resource [templates/index.html]")
+	at org.thymeleaf.templateparser.markup.AbstractMarkupTemplateParser.parse(AbstractMarkupTemplateParser.java:241) ~[thymeleaf-3.0.11.RELEASE.jar:3.0.11.RELEASE]
+	at org.thymeleaf.templateparser.markup.AbstractMarkupTemplateParser.parseStandalone(AbstractMarkupTemplateParser.java:100) ~[thymeleaf-3.0.11.RELEASE.jar:3.0.11.RELEASE]
+	at org.thymeleaf.engine.TemplateManager.parseAndProcess(TemplateManager.java:666) ~[thymeleaf-3.0.11.RELEASE.jar:3.0.11.RELEASE]
+	at org.thymeleaf.TemplateEngine.process(TemplateEngine.java:1098) [thymeleaf-3.0.11.RELEASE.jar:3.0.11.RELEASE]
+	at org.thymeleaf.TemplateEngine.process(TemplateEngine.java:1072) [thymeleaf-3.0.11.RELEASE.jar:3.0.11.RELEASE]
+	at org.thymeleaf.spring5.view.ThymeleafView.renderFragment(ThymeleafView.java:362) [thymeleaf-spring5-3.0.11.RELEASE.jar:3.0.11.RELEASE]
+	at org.thymeleaf.spring5.view.ThymeleafView.render(ThymeleafView.java:189) [thymeleaf-spring5-3.0.11.RELEASE.jar:3.0.11.RELEASE]
+	at org.springframework.web.servlet.DispatcherServlet.render(DispatcherServlet.java:1373) [spring-webmvc-5.2.3.RELEASE.jar:5.2.3.RELEASE]
+	at org.springframework.web.servlet.DispatcherServlet.processDispatchResult(DispatcherServlet.java:1118) [spring-webmvc-5.2.3.RELEASE.jar:5.2.3.RELEASE]
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1057) [spring-webmvc-5.2.3.RELEASE.jar:5.2.3.RELEASE]
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:943) [spring-webmvc-5.2.3.RELEASE.jar:5.2.3.RELEASE]
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1006) [spring-webmvc-5.2.3.RELEASE.jar:5.2.3.RELEASE]
+	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:898) [spring-webmvc-5.2.3.RELEASE.jar:5.2.3.RELEASE]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:634) [tomcat-embed-core-9.0.30.jar:9.0.30]
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:883) [spring-webmvc-5.2.3.RELEASE.jar:5.2.3.RELEASE]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:741) [tomcat-embed-core-9.0.30.jar:9.0.30]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:231) [tomcat-embed-core-9.0.30.jar:9.0.30]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) [tomcat-embed-core-9.0.30.jar:9.0.30]
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53) [tomcat-embed-websocket-9.0.30.jar:9.0.30]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) [tomcat-embed-core-9.0.30.jar:9.0.30]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) [tomcat-embed-core-9.0.30.jar:9.0.30]
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201) [spring-web-5.2.3.RELEASE.jar:5.2.3.RELEASE]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119) [spring-web-5.2.3.RELEASE.jar:5.2.3.RELEASE]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) [tomcat-embed-core-9.0.30.jar:9.0.30]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) [tomcat-embed-core-9.0.30.jar:9.0.30]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:202) [tomcat-embed-core-9.0.30.jar:9.0.30]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:96) [tomcat-embed-core-9.0.30.jar:9.0.30]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:541) [tomcat-embed-core-9.0.30.jar:9.0.30]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:139) [tomcat-embed-core-9.0.30.jar:9.0.30]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92) [tomcat-embed-core-9.0.30.jar:9.0.30]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74) [tomcat-embed-core-9.0.30.jar:9.0.30]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:343) [tomcat-embed-core-9.0.30.jar:9.0.30]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:367) [tomcat-embed-core-9.0.30.jar:9.0.30]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65) [tomcat-embed-core-9.0.30.jar:9.0.30]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:860) [tomcat-embed-core-9.0.30.jar:9.0.30]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1598) [tomcat-embed-core-9.0.30.jar:9.0.30]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49) [tomcat-embed-core-9.0.30.jar:9.0.30]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149) [na:1.8.0_144]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624) [na:1.8.0_144]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) [tomcat-embed-core-9.0.30.jar:9.0.30]
+	at java.lang.Thread.run(Thread.java:748) [na:1.8.0_144]
+Caused by: org.attoparser.ParseException: Error resolving fragment: "~{navigation :: foot}": template or fragment could not be resolved (template: "index" - line 74, col 21)
+	at org.attoparser.MarkupParser.parseDocument(MarkupParser.java:393) ~[attoparser-2.0.5.RELEASE.jar:2.0.5.RELEASE]
+	at org.attoparser.MarkupParser.parse(MarkupParser.java:257) ~[attoparser-2.0.5.RELEASE.jar:2.0.5.RELEASE]
+	at org.thymeleaf.templateparser.markup.AbstractMarkupTemplateParser.parse(AbstractMarkupTemplateParser.java:230) ~[thymeleaf-3.0.11.RELEASE.jar:3.0.11.RELEASE]
+	... 40 common frames omitted
+Caused by: org.thymeleaf.exceptions.TemplateInputException: Error resolving fragment: "~{navigation :: foot}": template or fragment could not be resolved (template: "index" - line 74, col 21)
+	at org.thymeleaf.standard.expression.FragmentExpression.resolveExecutedFragmentExpression(FragmentExpression.java:619) ~[thymeleaf-3.0.11.RELEASE.jar:3.0.11.RELEASE]
+	at org.thymeleaf.standard.processor.AbstractStandardFragmentInsertionTagProcessor.computeFragment(AbstractStandardFragmentInsertionTagProcessor.java:399) ~[thymeleaf-3.0.11.RELEASE.jar:3.0.11.RELEASE]
+	at org.thymeleaf.standard.processor.AbstractStandardFragmentInsertionTagProcessor.doProcess(AbstractStandardFragmentInsertionTagProcessor.java:110) ~[thymeleaf-3.0.11.RELEASE.jar:3.0.11.RELEASE]
+	at org.thymeleaf.processor.element.AbstractAttributeTagProcessor.doProcess(AbstractAttributeTagProcessor.java:74) ~[thymeleaf-3.0.11.RELEASE.jar:3.0.11.RELEASE]
+	at org.thymeleaf.processor.element.AbstractElementTagProcessor.process(AbstractElementTagProcessor.java:95) ~[thymeleaf-3.0.11.RELEASE.jar:3.0.11.RELEASE]
+	at org.thymeleaf.util.ProcessorConfigurationUtils$ElementTagProcessorWrapper.process(ProcessorConfigurationUtils.java:633) ~[thymeleaf-3.0.11.RELEASE.jar:3.0.11.RELEASE]
+	at org.thymeleaf.engine.ProcessorTemplateHandler.handleOpenElement(ProcessorTemplateHandler.java:1314) ~[thymeleaf-3.0.11.RELEASE.jar:3.0.11.RELEASE]
+	at org.thymeleaf.engine.TemplateHandlerAdapterMarkupHandler.handleOpenElementEnd(TemplateHandlerAdapterMarkupHandler.java:304) ~[thymeleaf-3.0.11.RELEASE.jar:3.0.11.RELEASE]
+	at org.thymeleaf.templateparser.markup.InlinedOutputExpressionMarkupHandler$InlineMarkupAdapterPreProcessorHandler.handleOpenElementEnd(InlinedOutputExpressionMarkupHandler.java:278) ~[thymeleaf-3.0.11.RELEASE.jar:3.0.11.RELEASE]
+	at org.thymeleaf.standard.inline.OutputExpressionInlinePreProcessorHandler.handleOpenElementEnd(OutputExpressionInlinePreProcessorHandler.java:186) ~[thymeleaf-3.0.11.RELEASE.jar:3.0.11.RELEASE]
+	at org.thymeleaf.templateparser.markup.InlinedOutputExpressionMarkupHandler.handleOpenElementEnd(InlinedOutputExpressionMarkupHandler.java:124) ~[thymeleaf-3.0.11.RELEASE.jar:3.0.11.RELEASE]
+	at org.attoparser.HtmlElement.handleOpenElementEnd(HtmlElement.java:109) ~[attoparser-2.0.5.RELEASE.jar:2.0.5.RELEASE]
+	at org.attoparser.HtmlMarkupHandler.handleOpenElementEnd(HtmlMarkupHandler.java:297) ~[attoparser-2.0.5.RELEASE.jar:2.0.5.RELEASE]
+	at org.attoparser.MarkupEventProcessorHandler.handleOpenElementEnd(MarkupEventProcessorHandler.java:402) ~[attoparser-2.0.5.RELEASE.jar:2.0.5.RELEASE]
+	at org.attoparser.ParsingElementMarkupUtil.parseOpenElement(ParsingElementMarkupUtil.java:159) ~[attoparser-2.0.5.RELEASE.jar:2.0.5.RELEASE]
+	at org.attoparser.MarkupParser.parseBuffer(MarkupParser.java:710) ~[attoparser-2.0.5.RELEASE.jar:2.0.5.RELEASE]
+	at org.attoparser.MarkupParser.parseDocument(MarkupParser.java:301) ~[attoparser-2.0.5.RELEASE.jar:2.0.5.RELEASE]
+	... 42 common frames omitted
+
+2020-04-15 11:02:42.274 ERROR 3252 --- [http-nio-8088-exec-10] o.a.c.c.C.[.[.[/].[dispatcherServlet]    : Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed; nested exception is org.thymeleaf.exceptions.TemplateInputException: An error happened during template parsing (template: "class path resource [templates/index.html]")] with root cause
+
+org.thymeleaf.exceptions.TemplateInputException: Error resolving fragment: "~{navigation :: foot}": template or fragment could not be resolved (template: "index" - line 74, col 21)
+	at org.thymeleaf.standard.expression.FragmentExpression.resolveExecutedFragmentExpression(FragmentExpression.java:619) ~[thymeleaf-3.0.11.RELEASE.jar:3.0.11.RELEASE]
+	at org.thymeleaf.standard.processor.AbstractStandardFragmentInsertionTagProcessor.computeFragment(AbstractStandardFragmentInsertionTagProcessor.java:399) ~[thymeleaf-3.0.11.RELEASE.jar:3.0.11.RELEASE]
+	at org.thymeleaf.standard.processor.AbstractStandardFragmentInsertionTagProcessor.doProcess(AbstractStandardFragmentInsertionTagProcessor.java:110) ~[thymeleaf-3.0.11.RELEASE.jar:3.0.11.RELEASE]
+	at org.thymeleaf.processor.element.AbstractAttributeTagProcessor.doProcess(AbstractAttributeTagProcessor.java:74) ~[thymeleaf-3.0.11.RELEASE.jar:3.0.11.RELEASE]
+	at org.thymeleaf.processor.element.AbstractElementTagProcessor.process(AbstractElementTagProcessor.java:95) ~[thymeleaf-3.0.11.RELEASE.jar:3.0.11.RELEASE]
+	at org.thymeleaf.util.ProcessorConfigurationUtils$ElementTagProcessorWrapper.process(ProcessorConfigurationUtils.java:633) ~[thymeleaf-3.0.11.RELEASE.jar:3.0.11.RELEASE]
+	at org.thymeleaf.engine.ProcessorTemplateHandler.handleOpenElement(ProcessorTemplateHandler.java:1314) ~[thymeleaf-3.0.11.RELEASE.jar:3.0.11.RELEASE]
+	at org.thymeleaf.engine.TemplateHandlerAdapterMarkupHandler.handleOpenElementEnd(TemplateHandlerAdapterMarkupHandler.java:304) ~[thymeleaf-3.0.11.RELEASE.jar:3.0.11.RELEASE]
+	at org.thymeleaf.templateparser.markup.InlinedOutputExpressionMarkupHandler$InlineMarkupAdapterPreProcessorHandler.handleOpenElementEnd(InlinedOutputExpressionMarkupHandler.java:278) ~[thymeleaf-3.0.11.RELEASE.jar:3.0.11.RELEASE]
+	at org.thymeleaf.standard.inline.OutputExpressionInlinePreProcessorHandler.handleOpenElementEnd(OutputExpressionInlinePreProcessorHandler.java:186) ~[thymeleaf-3.0.11.RELEASE.jar:3.0.11.RELEASE]
+	at org.thymeleaf.templateparser.markup.InlinedOutputExpressionMarkupHandler.handleOpenElementEnd(InlinedOutputExpressionMarkupHandler.java:124) ~[thymeleaf-3.0.11.RELEASE.jar:3.0.11.RELEASE]
+	at org.attoparser.HtmlElement.handleOpenElementEnd(HtmlElement.java:109) ~[attoparser-2.0.5.RELEASE.jar:2.0.5.RELEASE]
+	at org.attoparser.HtmlMarkupHandler.handleOpenElementEnd(HtmlMarkupHandler.java:297) ~[attoparser-2.0.5.RELEASE.jar:2.0.5.RELEASE]
+	at org.attoparser.MarkupEventProcessorHandler.handleOpenElementEnd(MarkupEventProcessorHandler.java:402) ~[attoparser-2.0.5.RELEASE.jar:2.0.5.RELEASE]
+	at org.attoparser.ParsingElementMarkupUtil.parseOpenElement(ParsingElementMarkupUtil.java:159) ~[attoparser-2.0.5.RELEASE.jar:2.0.5.RELEASE]
+	at org.attoparser.MarkupParser.parseBuffer(MarkupParser.java:710) ~[attoparser-2.0.5.RELEASE.jar:2.0.5.RELEASE]
+	at org.attoparser.MarkupParser.parseDocument(MarkupParser.java:301) ~[attoparser-2.0.5.RELEASE.jar:2.0.5.RELEASE]
+	at org.attoparser.MarkupParser.parse(MarkupParser.java:257) ~[attoparser-2.0.5.RELEASE.jar:2.0.5.RELEASE]
+	at org.thymeleaf.templateparser.markup.AbstractMarkupTemplateParser.parse(AbstractMarkupTemplateParser.java:230) ~[thymeleaf-3.0.11.RELEASE.jar:3.0.11.RELEASE]
+	at org.thymeleaf.templateparser.markup.AbstractMarkupTemplateParser.parseStandalone(AbstractMarkupTemplateParser.java:100) ~[thymeleaf-3.0.11.RELEASE.jar:3.0.11.RELEASE]
+	at org.thymeleaf.engine.TemplateManager.parseAndProcess(TemplateManager.java:666) ~[thymeleaf-3.0.11.RELEASE.jar:3.0.11.RELEASE]
+	at org.thymeleaf.TemplateEngine.process(TemplateEngine.java:1098) ~[thymeleaf-3.0.11.RELEASE.jar:3.0.11.RELEASE]
+	at org.thymeleaf.TemplateEngine.process(TemplateEngine.java:1072) ~[thymeleaf-3.0.11.RELEASE.jar:3.0.11.RELEASE]
+	at org.thymeleaf.spring5.view.ThymeleafView.renderFragment(ThymeleafView.java:362) ~[thymeleaf-spring5-3.0.11.RELEASE.jar:3.0.11.RELEASE]
+	at org.thymeleaf.spring5.view.ThymeleafView.render(ThymeleafView.java:189) ~[thymeleaf-spring5-3.0.11.RELEASE.jar:3.0.11.RELEASE]
+	at org.springframework.web.servlet.DispatcherServlet.render(DispatcherServlet.java:1373) ~[spring-webmvc-5.2.3.RELEASE.jar:5.2.3.RELEASE]
+	at org.springframework.web.servlet.DispatcherServlet.processDispatchResult(DispatcherServlet.java:1118) ~[spring-webmvc-5.2.3.RELEASE.jar:5.2.3.RELEASE]
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1057) ~[spring-webmvc-5.2.3.RELEASE.jar:5.2.3.RELEASE]
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:943) ~[spring-webmvc-5.2.3.RELEASE.jar:5.2.3.RELEASE]
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1006) ~[spring-webmvc-5.2.3.RELEASE.jar:5.2.3.RELEASE]
+	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:898) ~[spring-webmvc-5.2.3.RELEASE.jar:5.2.3.RELEASE]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:634) ~[tomcat-embed-core-9.0.30.jar:9.0.30]
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:883) ~[spring-webmvc-5.2.3.RELEASE.jar:5.2.3.RELEASE]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:741) ~[tomcat-embed-core-9.0.30.jar:9.0.30]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:231) ~[tomcat-embed-core-9.0.30.jar:9.0.30]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) ~[tomcat-embed-core-9.0.30.jar:9.0.30]
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53) ~[tomcat-embed-websocket-9.0.30.jar:9.0.30]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) ~[tomcat-embed-core-9.0.30.jar:9.0.30]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) ~[tomcat-embed-core-9.0.30.jar:9.0.30]
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201) ~[spring-web-5.2.3.RELEASE.jar:5.2.3.RELEASE]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119) ~[spring-web-5.2.3.RELEASE.jar:5.2.3.RELEASE]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) ~[tomcat-embed-core-9.0.30.jar:9.0.30]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) ~[tomcat-embed-core-9.0.30.jar:9.0.30]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:202) ~[tomcat-embed-core-9.0.30.jar:9.0.30]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:96) [tomcat-embed-core-9.0.30.jar:9.0.30]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:541) [tomcat-embed-core-9.0.30.jar:9.0.30]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:139) [tomcat-embed-core-9.0.30.jar:9.0.30]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92) [tomcat-embed-core-9.0.30.jar:9.0.30]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74) [tomcat-embed-core-9.0.30.jar:9.0.30]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:343) [tomcat-embed-core-9.0.30.jar:9.0.30]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:367) [tomcat-embed-core-9.0.30.jar:9.0.30]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65) [tomcat-embed-core-9.0.30.jar:9.0.30]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:860) [tomcat-embed-core-9.0.30.jar:9.0.30]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1598) [tomcat-embed-core-9.0.30.jar:9.0.30]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49) [tomcat-embed-core-9.0.30.jar:9.0.30]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149) [na:1.8.0_144]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624) [na:1.8.0_144]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) [tomcat-embed-core-9.0.30.jar:9.0.30]
+	at java.lang.Thread.run(Thread.java:748) [na:1.8.0_144]
+
+2020-04-15 11:03:15.673 DEBUG 3252 --- [http-nio-8088-exec-3] .Q.selectByExampleWithBLOBsWithRowbounds : ==>  Preparing: select id, title, tag, gmt_create, gmt_modify, creator_id, comment_count, view_count, like_count, recommend , description from question 
+2020-04-15 11:03:15.673 DEBUG 3252 --- [http-nio-8088-exec-3] .Q.selectByExampleWithBLOBsWithRowbounds : ==> Parameters: 
+2020-04-15 11:03:15.676 DEBUG 3252 --- [http-nio-8088-exec-3] c.s.c.m.QuestionMapper.countByExample    : ==>  Preparing: select count(*) from question 
+2020-04-15 11:03:15.676 DEBUG 3252 --- [http-nio-8088-exec-3] c.s.c.m.QuestionMapper.countByExample    : ==> Parameters: 
+2020-04-15 11:03:15.678 DEBUG 3252 --- [http-nio-8088-exec-3] c.s.c.m.QuestionMapper.countByExample    : <==      Total: 1
+2020-04-15 11:03:15.678 DEBUG 3252 --- [http-nio-8088-exec-3] c.s.c.mapper.UserMapper.selectByExample  : ==>  Preparing: select generate_id, name, token, gmt_create, gmt_modify, avatar_url, email, tags, password, github_url from user WHERE ( generate_id = ? ) 
+2020-04-15 11:03:15.679 DEBUG 3252 --- [http-nio-8088-exec-3] c.s.c.mapper.UserMapper.selectByExample  : ==> Parameters: 4(Long)
+2020-04-15 11:03:15.680 DEBUG 3252 --- [http-nio-8088-exec-3] c.s.c.mapper.UserMapper.selectByExample  : <==      Total: 1
+2020-04-15 11:03:15.681 DEBUG 3252 --- [http-nio-8088-exec-3] c.s.c.mapper.UserMapper.selectByExample  : ==>  Preparing: select generate_id, name, token, gmt_create, gmt_modify, avatar_url, email, tags, password, github_url from user WHERE ( generate_id = ? ) 
+2020-04-15 11:03:15.681 DEBUG 3252 --- [http-nio-8088-exec-3] c.s.c.mapper.UserMapper.selectByExample  : ==> Parameters: 5(Long)
+2020-04-15 11:03:15.683 DEBUG 3252 --- [http-nio-8088-exec-3] c.s.c.mapper.UserMapper.selectByExample  : <==      Total: 1
+2020-04-15 11:03:15.683 DEBUG 3252 --- [http-nio-8088-exec-3] c.s.c.mapper.UserMapper.selectByExample  : ==>  Preparing: select generate_id, name, token, gmt_create, gmt_modify, avatar_url, email, tags, password, github_url from user WHERE ( generate_id = ? ) 
+2020-04-15 11:03:15.684 DEBUG 3252 --- [http-nio-8088-exec-3] c.s.c.mapper.UserMapper.selectByExample  : ==> Parameters: 4(Long)
+2020-04-15 11:03:15.685 DEBUG 3252 --- [http-nio-8088-exec-3] c.s.c.mapper.UserMapper.selectByExample  : <==      Total: 1
+2020-04-15 11:03:15.687 DEBUG 3252 --- [http-nio-8088-exec-3] c.s.c.mapper.UserMapper.selectByExample  : ==>  Preparing: select generate_id, name, token, gmt_create, gmt_modify, avatar_url, email, tags, password, github_url from user WHERE ( generate_id = ? ) 
+2020-04-15 11:03:15.687 DEBUG 3252 --- [http-nio-8088-exec-3] c.s.c.mapper.UserMapper.selectByExample  : ==> Parameters: 4(Long)
+2020-04-15 11:03:15.688 DEBUG 3252 --- [http-nio-8088-exec-3] c.s.c.mapper.UserMapper.selectByExample  : <==      Total: 1
+2020-04-15 11:03:15.689 DEBUG 3252 --- [http-nio-8088-exec-3] c.s.c.mapper.UserMapper.selectByExample  : ==>  Preparing: select generate_id, name, token, gmt_create, gmt_modify, avatar_url, email, tags, password, github_url from user WHERE ( generate_id = ? ) 
+2020-04-15 11:03:15.689 DEBUG 3252 --- [http-nio-8088-exec-3] c.s.c.mapper.UserMapper.selectByExample  : ==> Parameters: 4(Long)
+2020-04-15 11:03:15.690 DEBUG 3252 --- [http-nio-8088-exec-3] c.s.c.mapper.UserMapper.selectByExample  : <==      Total: 1
+2020-04-15 11:03:15.691 DEBUG 3252 --- [http-nio-8088-exec-3] c.s.c.mapper.UserMapper.selectByExample  : ==>  Preparing: select generate_id, name, token, gmt_create, gmt_modify, avatar_url, email, tags, password, github_url from user WHERE ( generate_id = ? ) 
+2020-04-15 11:03:15.691 DEBUG 3252 --- [http-nio-8088-exec-3] c.s.c.mapper.UserMapper.selectByExample  : ==> Parameters: 4(Long)
+2020-04-15 11:03:15.692 DEBUG 3252 --- [http-nio-8088-exec-3] c.s.c.mapper.UserMapper.selectByExample  : <==      Total: 1
+2020-04-15 11:03:15.693 DEBUG 3252 --- [http-nio-8088-exec-3] c.s.c.mapper.UserMapper.selectByExample  : ==>  Preparing: select generate_id, name, token, gmt_create, gmt_modify, avatar_url, email, tags, password, github_url from user WHERE ( generate_id = ? ) 
+2020-04-15 11:03:15.693 DEBUG 3252 --- [http-nio-8088-exec-3] c.s.c.mapper.UserMapper.selectByExample  : ==> Parameters: 4(Long)
+2020-04-15 11:03:15.694 DEBUG 3252 --- [http-nio-8088-exec-3] c.s.c.mapper.UserMapper.selectByExample  : <==      Total: 1
+2020-04-15 11:03:15.695 DEBUG 3252 --- [http-nio-8088-exec-3] c.s.c.mapper.UserMapper.selectByExample  : ==>  Preparing: select generate_id, name, token, gmt_create, gmt_modify, avatar_url, email, tags, password, github_url from user WHERE ( generate_id = ? ) 
+2020-04-15 11:03:15.696 DEBUG 3252 --- [http-nio-8088-exec-3] c.s.c.mapper.UserMapper.selectByExample  : ==> Parameters: 5(Long)
+2020-04-15 11:03:15.697 DEBUG 3252 --- [http-nio-8088-exec-3] c.s.c.mapper.UserMapper.selectByExample  : <==      Total: 1
+2020-04-15 11:03:15.698 DEBUG 3252 --- [http-nio-8088-exec-3] c.s.c.m.Q.getViewMore                    : ==>  Preparing: select id,title,view_count from question order by view_count desc limit ?; 
+2020-04-15 11:03:15.698 DEBUG 3252 --- [http-nio-8088-exec-3] c.s.c.m.Q.getViewMore                    : ==> Parameters: 5(Integer)
+2020-04-15 11:03:15.699 DEBUG 3252 --- [http-nio-8088-exec-3] c.s.c.m.Q.getViewMore                    : <==      Total: 5
+2020-04-15 11:03:31.575 DEBUG 3252 --- [http-nio-8088-exec-6] .Q.selectByExampleWithBLOBsWithRowbounds : ==>  Preparing: select id, title, tag, gmt_create, gmt_modify, creator_id, comment_count, view_count, like_count, recommend , description from question 
+2020-04-15 11:03:31.576 DEBUG 3252 --- [http-nio-8088-exec-6] .Q.selectByExampleWithBLOBsWithRowbounds : ==> Parameters: 
+2020-04-15 11:03:31.578 DEBUG 3252 --- [http-nio-8088-exec-6] c.s.c.m.QuestionMapper.countByExample    : ==>  Preparing: select count(*) from question 
+2020-04-15 11:03:31.578 DEBUG 3252 --- [http-nio-8088-exec-6] c.s.c.m.QuestionMapper.countByExample    : ==> Parameters: 
+2020-04-15 11:03:31.580 DEBUG 3252 --- [http-nio-8088-exec-6] c.s.c.m.QuestionMapper.countByExample    : <==      Total: 1
+2020-04-15 11:03:31.581 DEBUG 3252 --- [http-nio-8088-exec-6] c.s.c.mapper.UserMapper.selectByExample  : ==>  Preparing: select generate_id, name, token, gmt_create, gmt_modify, avatar_url, email, tags, password, github_url from user WHERE ( generate_id = ? ) 
+2020-04-15 11:03:31.581 DEBUG 3252 --- [http-nio-8088-exec-6] c.s.c.mapper.UserMapper.selectByExample  : ==> Parameters: 4(Long)
+2020-04-15 11:03:31.583 DEBUG 3252 --- [http-nio-8088-exec-6] c.s.c.mapper.UserMapper.selectByExample  : <==      Total: 1
+2020-04-15 11:03:31.583 DEBUG 3252 --- [http-nio-8088-exec-6] c.s.c.mapper.UserMapper.selectByExample  : ==>  Preparing: select generate_id, name, token, gmt_create, gmt_modify, avatar_url, email, tags, password, github_url from user WHERE ( generate_id = ? ) 
+2020-04-15 11:03:31.584 DEBUG 3252 --- [http-nio-8088-exec-6] c.s.c.mapper.UserMapper.selectByExample  : ==> Parameters: 5(Long)
+2020-04-15 11:03:31.585 DEBUG 3252 --- [http-nio-8088-exec-6] c.s.c.mapper.UserMapper.selectByExample  : <==      Total: 1
+2020-04-15 11:03:31.585 DEBUG 3252 --- [http-nio-8088-exec-6] c.s.c.mapper.UserMapper.selectByExample  : ==>  Preparing: select generate_id, name, token, gmt_create, gmt_modify, avatar_url, email, tags, password, github_url from user WHERE ( generate_id = ? ) 
+2020-04-15 11:03:31.585 DEBUG 3252 --- [http-nio-8088-exec-6] c.s.c.mapper.UserMapper.selectByExample  : ==> Parameters: 4(Long)
+2020-04-15 11:03:31.586 DEBUG 3252 --- [http-nio-8088-exec-6] c.s.c.mapper.UserMapper.selectByExample  : <==      Total: 1
+2020-04-15 11:03:31.587 DEBUG 3252 --- [http-nio-8088-exec-6] c.s.c.mapper.UserMapper.selectByExample  : ==>  Preparing: select generate_id, name, token, gmt_create, gmt_modify, avatar_url, email, tags, password, github_url from user WHERE ( generate_id = ? ) 
+2020-04-15 11:03:31.587 DEBUG 3252 --- [http-nio-8088-exec-6] c.s.c.mapper.UserMapper.selectByExample  : ==> Parameters: 4(Long)
+2020-04-15 11:03:31.589 DEBUG 3252 --- [http-nio-8088-exec-6] c.s.c.mapper.UserMapper.selectByExample  : <==      Total: 1
+2020-04-15 11:03:31.589 DEBUG 3252 --- [http-nio-8088-exec-6] c.s.c.mapper.UserMapper.selectByExample  : ==>  Preparing: select generate_id, name, token, gmt_create, gmt_modify, avatar_url, email, tags, password, github_url from user WHERE ( generate_id = ? ) 
+2020-04-15 11:03:31.589 DEBUG 3252 --- [http-nio-8088-exec-6] c.s.c.mapper.UserMapper.selectByExample  : ==> Parameters: 4(Long)
+2020-04-15 11:03:31.590 DEBUG 3252 --- [http-nio-8088-exec-6] c.s.c.mapper.UserMapper.selectByExample  : <==      Total: 1
+2020-04-15 11:03:31.591 DEBUG 3252 --- [http-nio-8088-exec-6] c.s.c.mapper.UserMapper.selectByExample  : ==>  Preparing: select generate_id, name, token, gmt_create, gmt_modify, avatar_url, email, tags, password, github_url from user WHERE ( generate_id = ? ) 
+2020-04-15 11:03:31.591 DEBUG 3252 --- [http-nio-8088-exec-6] c.s.c.mapper.UserMapper.selectByExample  : ==> Parameters: 4(Long)
+2020-04-15 11:03:31.592 DEBUG 3252 --- [http-nio-8088-exec-6] c.s.c.mapper.UserMapper.selectByExample  : <==      Total: 1
+2020-04-15 11:03:31.593 DEBUG 3252 --- [http-nio-8088-exec-6] c.s.c.mapper.UserMapper.selectByExample  : ==>  Preparing: select generate_id, name, token, gmt_create, gmt_modify, avatar_url, email, tags, password, github_url from user WHERE ( generate_id = ? ) 
+2020-04-15 11:03:31.593 DEBUG 3252 --- [http-nio-8088-exec-6] c.s.c.mapper.UserMapper.selectByExample  : ==> Parameters: 4(Long)
+2020-04-15 11:03:31.594 DEBUG 3252 --- [http-nio-8088-exec-6] c.s.c.mapper.UserMapper.selectByExample  : <==      Total: 1
+2020-04-15 11:03:31.595 DEBUG 3252 --- [http-nio-8088-exec-6] c.s.c.mapper.UserMapper.selectByExample  : ==>  Preparing: select generate_id, name, token, gmt_create, gmt_modify, avatar_url, email, tags, password, github_url from user WHERE ( generate_id = ? ) 
+2020-04-15 11:03:31.595 DEBUG 3252 --- [http-nio-8088-exec-6] c.s.c.mapper.UserMapper.selectByExample  : ==> Parameters: 5(Long)
+2020-04-15 11:03:31.596 DEBUG 3252 --- [http-nio-8088-exec-6] c.s.c.mapper.UserMapper.selectByExample  : <==      Total: 1
+2020-04-15 11:03:31.597 DEBUG 3252 --- [http-nio-8088-exec-6] c.s.c.m.Q.getViewMore                    : ==>  Preparing: select id,title,view_count from question order by view_count desc limit ?; 
+2020-04-15 11:03:31.597 DEBUG 3252 --- [http-nio-8088-exec-6] c.s.c.m.Q.getViewMore                    : ==> Parameters: 5(Integer)
+2020-04-15 11:03:31.598 DEBUG 3252 --- [http-nio-8088-exec-6] c.s.c.m.Q.getViewMore                    : <==      Total: 5
+2020-04-15 11:03:49.864 DEBUG 3252 --- [http-nio-8088-exec-9] c.s.c.mapper.UserMapper.selectByExample  : ==>  Preparing: select generate_id, name, token, gmt_create, gmt_modify, avatar_url, email, tags, password, github_url from user WHERE ( email = ? and password = ? ) 
+2020-04-15 11:03:49.864 DEBUG 3252 --- [http-nio-8088-exec-9] c.s.c.mapper.UserMapper.selectByExample  : ==> Parameters: alice@qq.com(String), 110(String)
+2020-04-15 11:03:49.870 DEBUG 3252 --- [http-nio-8088-exec-9] c.s.c.mapper.UserMapper.selectByExample  : <==      Total: 1
+2020-04-15 11:03:49.878 DEBUG 3252 --- [http-nio-8088-exec-10] .Q.selectByExampleWithBLOBsWithRowbounds : ==>  Preparing: select id, title, tag, gmt_create, gmt_modify, creator_id, comment_count, view_count, like_count, recommend , description from question 
+2020-04-15 11:03:49.878 DEBUG 3252 --- [http-nio-8088-exec-10] .Q.selectByExampleWithBLOBsWithRowbounds : ==> Parameters: 
+2020-04-15 11:03:49.881 DEBUG 3252 --- [http-nio-8088-exec-10] c.s.c.m.QuestionMapper.countByExample    : ==>  Preparing: select count(*) from question 
+2020-04-15 11:03:49.881 DEBUG 3252 --- [http-nio-8088-exec-10] c.s.c.m.QuestionMapper.countByExample    : ==> Parameters: 
+2020-04-15 11:03:49.883 DEBUG 3252 --- [http-nio-8088-exec-10] c.s.c.m.QuestionMapper.countByExample    : <==      Total: 1
+2020-04-15 11:03:49.884 DEBUG 3252 --- [http-nio-8088-exec-10] c.s.c.mapper.UserMapper.selectByExample  : ==>  Preparing: select generate_id, name, token, gmt_create, gmt_modify, avatar_url, email, tags, password, github_url from user WHERE ( generate_id = ? ) 
+2020-04-15 11:03:49.884 DEBUG 3252 --- [http-nio-8088-exec-10] c.s.c.mapper.UserMapper.selectByExample  : ==> Parameters: 4(Long)
+2020-04-15 11:03:49.884 DEBUG 3252 --- [http-nio-8088-exec-10] c.s.c.mapper.UserMapper.selectByExample  : <==      Total: 1
+2020-04-15 11:03:49.885 DEBUG 3252 --- [http-nio-8088-exec-10] c.s.c.mapper.UserMapper.selectByExample  : ==>  Preparing: select generate_id, name, token, gmt_create, gmt_modify, avatar_url, email, tags, password, github_url from user WHERE ( generate_id = ? ) 
+2020-04-15 11:03:49.885 DEBUG 3252 --- [http-nio-8088-exec-10] c.s.c.mapper.UserMapper.selectByExample  : ==> Parameters: 5(Long)
+2020-04-15 11:03:49.886 DEBUG 3252 --- [http-nio-8088-exec-10] c.s.c.mapper.UserMapper.selectByExample  : <==      Total: 1
+2020-04-15 11:03:49.886 DEBUG 3252 --- [http-nio-8088-exec-10] c.s.c.mapper.UserMapper.selectByExample  : ==>  Preparing: select generate_id, name, token, gmt_create, gmt_modify, avatar_url, email, tags, password, github_url from user WHERE ( generate_id = ? ) 
+2020-04-15 11:03:49.886 DEBUG 3252 --- [http-nio-8088-exec-10] c.s.c.mapper.UserMapper.selectByExample  : ==> Parameters: 4(Long)
+2020-04-15 11:03:49.887 DEBUG 3252 --- [http-nio-8088-exec-10] c.s.c.mapper.UserMapper.selectByExample  : <==      Total: 1
+2020-04-15 11:03:49.888 DEBUG 3252 --- [http-nio-8088-exec-10] c.s.c.mapper.UserMapper.selectByExample  : ==>  Preparing: select generate_id, name, token, gmt_create, gmt_modify, avatar_url, email, tags, password, github_url from user WHERE ( generate_id = ? ) 
+2020-04-15 11:03:49.888 DEBUG 3252 --- [http-nio-8088-exec-10] c.s.c.mapper.UserMapper.selectByExample  : ==> Parameters: 4(Long)
+2020-04-15 11:03:49.888 DEBUG 3252 --- [http-nio-8088-exec-10] c.s.c.mapper.UserMapper.selectByExample  : <==      Total: 1
+2020-04-15 11:03:49.889 DEBUG 3252 --- [http-nio-8088-exec-10] c.s.c.mapper.UserMapper.selectByExample  : ==>  Preparing: select generate_id, name, token, gmt_create, gmt_modify, avatar_url, email, tags, password, github_url from user WHERE ( generate_id = ? ) 
+2020-04-15 11:03:49.889 DEBUG 3252 --- [http-nio-8088-exec-10] c.s.c.mapper.UserMapper.selectByExample  : ==> Parameters: 4(Long)
+2020-04-15 11:03:49.890 DEBUG 3252 --- [http-nio-8088-exec-10] c.s.c.mapper.UserMapper.selectByExample  : <==      Total: 1
+2020-04-15 11:03:49.890 DEBUG 3252 --- [http-nio-8088-exec-10] c.s.c.mapper.UserMapper.selectByExample  : ==>  Preparing: select generate_id, name, token, gmt_create, gmt_modify, avatar_url, email, tags, password, github_url from user WHERE ( generate_id = ? ) 
+2020-04-15 11:03:49.890 DEBUG 3252 --- [http-nio-8088-exec-10] c.s.c.mapper.UserMapper.selectByExample  : ==> Parameters: 4(Long)
+2020-04-15 11:03:49.891 DEBUG 3252 --- [http-nio-8088-exec-10] c.s.c.mapper.UserMapper.selectByExample  : <==      Total: 1
+2020-04-15 11:03:49.891 DEBUG 3252 --- [http-nio-8088-exec-10] c.s.c.mapper.UserMapper.selectByExample  : ==>  Preparing: select generate_id, name, token, gmt_create, gmt_modify, avatar_url, email, tags, password, github_url from user WHERE ( generate_id = ? ) 
+2020-04-15 11:03:49.891 DEBUG 3252 --- [http-nio-8088-exec-10] c.s.c.mapper.UserMapper.selectByExample  : ==> Parameters: 4(Long)
+2020-04-15 11:03:49.892 DEBUG 3252 --- [http-nio-8088-exec-10] c.s.c.mapper.UserMapper.selectByExample  : <==      Total: 1
+2020-04-15 11:03:49.892 DEBUG 3252 --- [http-nio-8088-exec-10] c.s.c.mapper.UserMapper.selectByExample  : ==>  Preparing: select generate_id, name, token, gmt_create, gmt_modify, avatar_url, email, tags, password, github_url from user WHERE ( generate_id = ? ) 
+2020-04-15 11:03:49.892 DEBUG 3252 --- [http-nio-8088-exec-10] c.s.c.mapper.UserMapper.selectByExample  : ==> Parameters: 5(Long)
+2020-04-15 11:03:49.893 DEBUG 3252 --- [http-nio-8088-exec-10] c.s.c.mapper.UserMapper.selectByExample  : <==      Total: 1
+2020-04-15 11:03:49.895 DEBUG 3252 --- [http-nio-8088-exec-10] c.s.c.m.NotifyMapper.countByExample      : ==>  Preparing: select count(*) from notify WHERE ( receiver = ? and status = ? ) 
+2020-04-15 11:03:49.896 DEBUG 3252 --- [http-nio-8088-exec-10] c.s.c.m.NotifyMapper.countByExample      : ==> Parameters: 5(Long), 0(Integer)
+2020-04-15 11:03:49.897 DEBUG 3252 --- [http-nio-8088-exec-10] c.s.c.m.NotifyMapper.countByExample      : <==      Total: 1
+2020-04-15 11:03:49.897 DEBUG 3252 --- [http-nio-8088-exec-10] c.s.c.m.NotifyMapper.countByExample      : ==>  Preparing: select count(*) from notify WHERE ( receiver = ? and status = ? ) 
+2020-04-15 11:03:49.898 DEBUG 3252 --- [http-nio-8088-exec-10] c.s.c.m.NotifyMapper.countByExample      : ==> Parameters: 5(Long), 0(Integer)
+2020-04-15 11:03:49.898 DEBUG 3252 --- [http-nio-8088-exec-10] c.s.c.m.NotifyMapper.countByExample      : <==      Total: 1
+2020-04-15 11:03:49.898 DEBUG 3252 --- [http-nio-8088-exec-10] c.s.c.m.Q.getViewMore                    : ==>  Preparing: select id,title,view_count from question order by view_count desc limit ?; 
+2020-04-15 11:03:49.899 DEBUG 3252 --- [http-nio-8088-exec-10] c.s.c.m.Q.getViewMore                    : ==> Parameters: 5(Integer)
+2020-04-15 11:03:49.899 DEBUG 3252 --- [http-nio-8088-exec-10] c.s.c.m.Q.getViewMore                    : <==      Total: 5
+2020-04-15 11:03:57.774 DEBUG 3252 --- [http-nio-8088-exec-1] c.s.c.mapper.UserMapper.selectByExample  : ==>  Preparing: select generate_id, name, token, gmt_create, gmt_modify, avatar_url, email, tags, password, github_url from user WHERE ( token = ? ) 
+2020-04-15 11:03:57.774 DEBUG 3252 --- [http-nio-8088-exec-1] c.s.c.mapper.UserMapper.selectByExample  : ==> Parameters: 6dc08d96-5ba3-41a7-8415-ef4eaa502079(String)
+2020-04-15 11:03:57.775 DEBUG 3252 --- [http-nio-8088-exec-1] c.s.c.mapper.UserMapper.selectByExample  : <==      Total: 1
+2020-04-15 11:03:57.779 DEBUG 3252 --- [http-nio-8088-exec-1] .Q.selectByExampleWithBLOBsWithRowbounds : ==>  Preparing: select id, title, tag, gmt_create, gmt_modify, creator_id, comment_count, view_count, like_count, recommend , description from question WHERE ( creator_id = ? ) 
+2020-04-15 11:03:57.780 DEBUG 3252 --- [http-nio-8088-exec-1] .Q.selectByExampleWithBLOBsWithRowbounds : ==> Parameters: 5(Long)
+2020-04-15 11:03:57.781 DEBUG 3252 --- [http-nio-8088-exec-1] .Q.selectByExampleWithBLOBsWithRowbounds : <==      Total: 2
+2020-04-15 11:03:57.782 DEBUG 3252 --- [http-nio-8088-exec-1] c.s.c.mapper.UserMapper.selectByExample  : ==>  Preparing: select generate_id, name, token, gmt_create, gmt_modify, avatar_url, email, tags, password, github_url from user WHERE ( generate_id = ? ) 
+2020-04-15 11:03:57.782 DEBUG 3252 --- [http-nio-8088-exec-1] c.s.c.mapper.UserMapper.selectByExample  : ==> Parameters: 5(Long)
+2020-04-15 11:03:57.783 DEBUG 3252 --- [http-nio-8088-exec-1] c.s.c.mapper.UserMapper.selectByExample  : <==      Total: 1
+2020-04-15 11:03:57.784 DEBUG 3252 --- [http-nio-8088-exec-1] c.s.c.mapper.UserMapper.selectByExample  : ==>  Preparing: select generate_id, name, token, gmt_create, gmt_modify, avatar_url, email, tags, password, github_url from user WHERE ( generate_id = ? ) 
+2020-04-15 11:03:57.784 DEBUG 3252 --- [http-nio-8088-exec-1] c.s.c.mapper.UserMapper.selectByExample  : ==> Parameters: 5(Long)
+2020-04-15 11:03:57.785 DEBUG 3252 --- [http-nio-8088-exec-1] c.s.c.mapper.UserMapper.selectByExample  : <==      Total: 1
+2020-04-15 11:03:57.785 DEBUG 3252 --- [http-nio-8088-exec-1] c.s.c.m.QuestionMapper.countByExample    : ==>  Preparing: select count(*) from question 
+2020-04-15 11:03:57.785 DEBUG 3252 --- [http-nio-8088-exec-1] c.s.c.m.QuestionMapper.countByExample    : ==> Parameters: 
+2020-04-15 11:03:57.786 DEBUG 3252 --- [http-nio-8088-exec-1] c.s.c.m.QuestionMapper.countByExample    : <==      Total: 1
+2020-04-15 11:03:57.788 DEBUG 3252 --- [http-nio-8088-exec-1] c.s.c.m.N.selectByExampleWithRowbounds   : ==>  Preparing: select id, receiver, sender, status, type, gmt_create, parent_id from notify WHERE ( receiver = ? ) order by status ASC,gmt_create desc 
+2020-04-15 11:03:57.788 DEBUG 3252 --- [http-nio-8088-exec-1] c.s.c.m.N.selectByExampleWithRowbounds   : ==> Parameters: 5(Long)
+2020-04-15 11:03:57.789 DEBUG 3252 --- [http-nio-8088-exec-1] c.s.c.m.N.selectByExampleWithRowbounds   : <==      Total: 1
+2020-04-15 11:03:57.789 DEBUG 3252 --- [http-nio-8088-exec-1] c.s.c.mapper.UserMapper.selectByExample  : ==>  Preparing: select generate_id, name, token, gmt_create, gmt_modify, avatar_url, email, tags, password, github_url from user WHERE ( generate_id = ? ) 
+2020-04-15 11:03:57.790 DEBUG 3252 --- [http-nio-8088-exec-1] c.s.c.mapper.UserMapper.selectByExample  : ==> Parameters: 4(Long)
+2020-04-15 11:03:57.790 DEBUG 3252 --- [http-nio-8088-exec-1] c.s.c.mapper.UserMapper.selectByExample  : <==      Total: 1
+2020-04-15 11:03:57.791 DEBUG 3252 --- [http-nio-8088-exec-1] c.s.c.m.Q.selectByPrimaryKey             : ==>  Preparing: select id, title, tag, gmt_create, gmt_modify, creator_id, comment_count, view_count, like_count, recommend , description from question where id = ? 
+2020-04-15 11:03:57.791 DEBUG 3252 --- [http-nio-8088-exec-1] c.s.c.m.Q.selectByPrimaryKey             : ==> Parameters: 5(Long)
+2020-04-15 11:03:57.792 DEBUG 3252 --- [http-nio-8088-exec-1] c.s.c.m.Q.selectByPrimaryKey             : <==      Total: 1
+2020-04-15 11:03:57.800 DEBUG 3252 --- [http-nio-8088-exec-1] c.s.c.m.NotifyMapper.countByExample      : ==>  Preparing: select count(*) from notify WHERE ( receiver = ? ) 
+2020-04-15 11:03:57.800 DEBUG 3252 --- [http-nio-8088-exec-1] c.s.c.m.NotifyMapper.countByExample      : ==> Parameters: 5(Long)
+2020-04-15 11:03:57.801 DEBUG 3252 --- [http-nio-8088-exec-1] c.s.c.m.NotifyMapper.countByExample      : <==      Total: 1
+2020-04-15 11:04:00.331 DEBUG 3252 --- [http-nio-8088-exec-8] c.s.c.mapper.UserMapper.selectByExample  : ==>  Preparing: select generate_id, name, token, gmt_create, gmt_modify, avatar_url, email, tags, password, github_url from user WHERE ( token = ? ) 
+2020-04-15 11:04:00.332 DEBUG 3252 --- [http-nio-8088-exec-8] c.s.c.mapper.UserMapper.selectByExample  : ==> Parameters: 6dc08d96-5ba3-41a7-8415-ef4eaa502079(String)
+2020-04-15 11:04:00.333 DEBUG 3252 --- [http-nio-8088-exec-8] c.s.c.mapper.UserMapper.selectByExample  : <==      Total: 1
+2020-04-15 11:04:00.334 DEBUG 3252 --- [http-nio-8088-exec-8] .Q.selectByExampleWithBLOBsWithRowbounds : ==>  Preparing: select id, title, tag, gmt_create, gmt_modify, creator_id, comment_count, view_count, like_count, recommend , description from question WHERE ( creator_id = ? ) 
+2020-04-15 11:04:00.334 DEBUG 3252 --- [http-nio-8088-exec-8] .Q.selectByExampleWithBLOBsWithRowbounds : ==> Parameters: 5(Long)
+2020-04-15 11:04:00.335 DEBUG 3252 --- [http-nio-8088-exec-8] .Q.selectByExampleWithBLOBsWithRowbounds : <==      Total: 2
+2020-04-15 11:04:00.336 DEBUG 3252 --- [http-nio-8088-exec-8] c.s.c.mapper.UserMapper.selectByExample  : ==>  Preparing: select generate_id, name, token, gmt_create, gmt_modify, avatar_url, email, tags, password, github_url from user WHERE ( generate_id = ? ) 
+2020-04-15 11:04:00.336 DEBUG 3252 --- [http-nio-8088-exec-8] c.s.c.mapper.UserMapper.selectByExample  : ==> Parameters: 5(Long)
+2020-04-15 11:04:00.337 DEBUG 3252 --- [http-nio-8088-exec-8] c.s.c.mapper.UserMapper.selectByExample  : <==      Total: 1
+2020-04-15 11:04:00.338 DEBUG 3252 --- [http-nio-8088-exec-8] c.s.c.mapper.UserMapper.selectByExample  : ==>  Preparing: select generate_id, name, token, gmt_create, gmt_modify, avatar_url, email, tags, password, github_url from user WHERE ( generate_id = ? ) 
+2020-04-15 11:04:00.338 DEBUG 3252 --- [http-nio-8088-exec-8] c.s.c.mapper.UserMapper.selectByExample  : ==> Parameters: 5(Long)
+2020-04-15 11:04:00.338 DEBUG 3252 --- [http-nio-8088-exec-8] c.s.c.mapper.UserMapper.selectByExample  : <==      Total: 1
+2020-04-15 11:04:00.338 DEBUG 3252 --- [http-nio-8088-exec-8] c.s.c.m.QuestionMapper.countByExample    : ==>  Preparing: select count(*) from question 
+2020-04-15 11:04:00.339 DEBUG 3252 --- [http-nio-8088-exec-8] c.s.c.m.QuestionMapper.countByExample    : ==> Parameters: 
+2020-04-15 11:04:00.340 DEBUG 3252 --- [http-nio-8088-exec-8] c.s.c.m.QuestionMapper.countByExample    : <==      Total: 1
+2020-04-15 11:04:01.354 DEBUG 3252 --- [http-nio-8088-exec-2] c.s.c.mapper.UserMapper.selectByExample  : ==>  Preparing: select generate_id, name, token, gmt_create, gmt_modify, avatar_url, email, tags, password, github_url from user WHERE ( token = ? ) 
+2020-04-15 11:04:01.355 DEBUG 3252 --- [http-nio-8088-exec-2] c.s.c.mapper.UserMapper.selectByExample  : ==> Parameters: 6dc08d96-5ba3-41a7-8415-ef4eaa502079(String)
+2020-04-15 11:04:01.355 DEBUG 3252 --- [http-nio-8088-exec-2] c.s.c.mapper.UserMapper.selectByExample  : <==      Total: 1
+2020-04-15 11:04:01.357 DEBUG 3252 --- [http-nio-8088-exec-2] .Q.selectByExampleWithBLOBsWithRowbounds : ==>  Preparing: select id, title, tag, gmt_create, gmt_modify, creator_id, comment_count, view_count, like_count, recommend , description from question WHERE ( creator_id = ? ) 
+2020-04-15 11:04:01.357 DEBUG 3252 --- [http-nio-8088-exec-2] .Q.selectByExampleWithBLOBsWithRowbounds : ==> Parameters: 5(Long)
+2020-04-15 11:04:01.358 DEBUG 3252 --- [http-nio-8088-exec-2] .Q.selectByExampleWithBLOBsWithRowbounds : <==      Total: 2
+2020-04-15 11:04:01.358 DEBUG 3252 --- [http-nio-8088-exec-2] c.s.c.mapper.UserMapper.selectByExample  : ==>  Preparing: select generate_id, name, token, gmt_create, gmt_modify, avatar_url, email, tags, password, github_url from user WHERE ( generate_id = ? ) 
+2020-04-15 11:04:01.358 DEBUG 3252 --- [http-nio-8088-exec-2] c.s.c.mapper.UserMapper.selectByExample  : ==> Parameters: 5(Long)
+2020-04-15 11:04:01.359 DEBUG 3252 --- [http-nio-8088-exec-2] c.s.c.mapper.UserMapper.selectByExample  : <==      Total: 1
+2020-04-15 11:04:01.359 DEBUG 3252 --- [http-nio-8088-exec-2] c.s.c.mapper.UserMapper.selectByExample  : ==>  Preparing: select generate_id, name, token, gmt_create, gmt_modify, avatar_url, email, tags, password, github_url from user WHERE ( generate_id = ? ) 
+2020-04-15 11:04:01.359 DEBUG 3252 --- [http-nio-8088-exec-2] c.s.c.mapper.UserMapper.selectByExample  : ==> Parameters: 5(Long)
+2020-04-15 11:04:01.360 DEBUG 3252 --- [http-nio-8088-exec-2] c.s.c.mapper.UserMapper.selectByExample  : <==      Total: 1
+2020-04-15 11:04:01.360 DEBUG 3252 --- [http-nio-8088-exec-2] c.s.c.m.QuestionMapper.countByExample    : ==>  Preparing: select count(*) from question 
+2020-04-15 11:04:01.360 DEBUG 3252 --- [http-nio-8088-exec-2] c.s.c.m.QuestionMapper.countByExample    : ==> Parameters: 
+2020-04-15 11:04:01.362 DEBUG 3252 --- [http-nio-8088-exec-2] c.s.c.m.QuestionMapper.countByExample    : <==      Total: 1
+2020-04-15 11:04:01.363 DEBUG 3252 --- [http-nio-8088-exec-2] c.s.c.m.N.selectByExampleWithRowbounds   : ==>  Preparing: select id, receiver, sender, status, type, gmt_create, parent_id from notify WHERE ( receiver = ? ) order by status ASC,gmt_create desc 
+2020-04-15 11:04:01.363 DEBUG 3252 --- [http-nio-8088-exec-2] c.s.c.m.N.selectByExampleWithRowbounds   : ==> Parameters: 5(Long)
+2020-04-15 11:04:01.365 DEBUG 3252 --- [http-nio-8088-exec-2] c.s.c.m.N.selectByExampleWithRowbounds   : <==      Total: 1
+2020-04-15 11:04:01.365 DEBUG 3252 --- [http-nio-8088-exec-2] c.s.c.mapper.UserMapper.selectByExample  : ==>  Preparing: select generate_id, name, token, gmt_create, gmt_modify, avatar_url, email, tags, password, github_url from user WHERE ( generate_id = ? ) 
+2020-04-15 11:04:01.365 DEBUG 3252 --- [http-nio-8088-exec-2] c.s.c.mapper.UserMapper.selectByExample  : ==> Parameters: 4(Long)
+2020-04-15 11:04:01.366 DEBUG 3252 --- [http-nio-8088-exec-2] c.s.c.mapper.UserMapper.selectByExample  : <==      Total: 1
+2020-04-15 11:04:01.366 DEBUG 3252 --- [http-nio-8088-exec-2] c.s.c.m.Q.selectByPrimaryKey             : ==>  Preparing: select id, title, tag, gmt_create, gmt_modify, creator_id, comment_count, view_count, like_count, recommend , description from question where id = ? 
+2020-04-15 11:04:01.367 DEBUG 3252 --- [http-nio-8088-exec-2] c.s.c.m.Q.selectByPrimaryKey             : ==> Parameters: 5(Long)
+2020-04-15 11:04:01.367 DEBUG 3252 --- [http-nio-8088-exec-2] c.s.c.m.Q.selectByPrimaryKey             : <==      Total: 1
+2020-04-15 11:04:01.368 DEBUG 3252 --- [http-nio-8088-exec-2] c.s.c.m.NotifyMapper.countByExample      : ==>  Preparing: select count(*) from notify WHERE ( receiver = ? ) 
+2020-04-15 11:04:01.368 DEBUG 3252 --- [http-nio-8088-exec-2] c.s.c.m.NotifyMapper.countByExample      : ==> Parameters: 5(Long)
+2020-04-15 11:04:01.368 DEBUG 3252 --- [http-nio-8088-exec-2] c.s.c.m.NotifyMapper.countByExample      : <==      Total: 1
+2020-04-15 11:04:02.834 DEBUG 3252 --- [http-nio-8088-exec-6] c.s.c.mapper.UserMapper.selectByExample  : ==>  Preparing: select generate_id, name, token, gmt_create, gmt_modify, avatar_url, email, tags, password, github_url from user WHERE ( token = ? ) 
+2020-04-15 11:04:02.834 DEBUG 3252 --- [http-nio-8088-exec-6] c.s.c.mapper.UserMapper.selectByExample  : ==> Parameters: 6dc08d96-5ba3-41a7-8415-ef4eaa502079(String)
+2020-04-15 11:04:02.835 DEBUG 3252 --- [http-nio-8088-exec-6] c.s.c.mapper.UserMapper.selectByExample  : <==      Total: 1
+2020-04-15 11:04:02.836 DEBUG 3252 --- [http-nio-8088-exec-6] .Q.selectByExampleWithBLOBsWithRowbounds : ==>  Preparing: select id, title, tag, gmt_create, gmt_modify, creator_id, comment_count, view_count, like_count, recommend , description from question WHERE ( creator_id = ? ) 
+2020-04-15 11:04:02.836 DEBUG 3252 --- [http-nio-8088-exec-6] .Q.selectByExampleWithBLOBsWithRowbounds : ==> Parameters: 5(Long)
+2020-04-15 11:04:02.837 DEBUG 3252 --- [http-nio-8088-exec-6] .Q.selectByExampleWithBLOBsWithRowbounds : <==      Total: 2
+2020-04-15 11:04:02.838 DEBUG 3252 --- [http-nio-8088-exec-6] c.s.c.mapper.UserMapper.selectByExample  : ==>  Preparing: select generate_id, name, token, gmt_create, gmt_modify, avatar_url, email, tags, password, github_url from user WHERE ( generate_id = ? ) 
+2020-04-15 11:04:02.838 DEBUG 3252 --- [http-nio-8088-exec-6] c.s.c.mapper.UserMapper.selectByExample  : ==> Parameters: 5(Long)
+2020-04-15 11:04:02.839 DEBUG 3252 --- [http-nio-8088-exec-6] c.s.c.mapper.UserMapper.selectByExample  : <==      Total: 1
+2020-04-15 11:04:02.839 DEBUG 3252 --- [http-nio-8088-exec-6] c.s.c.mapper.UserMapper.selectByExample  : ==>  Preparing: select generate_id, name, token, gmt_create, gmt_modify, avatar_url, email, tags, password, github_url from user WHERE ( generate_id = ? ) 
+2020-04-15 11:04:02.839 DEBUG 3252 --- [http-nio-8088-exec-6] c.s.c.mapper.UserMapper.selectByExample  : ==> Parameters: 5(Long)
+2020-04-15 11:04:02.840 DEBUG 3252 --- [http-nio-8088-exec-6] c.s.c.mapper.UserMapper.selectByExample  : <==      Total: 1
+2020-04-15 11:04:02.840 DEBUG 3252 --- [http-nio-8088-exec-6] c.s.c.m.QuestionMapper.countByExample    : ==>  Preparing: select count(*) from question 
+2020-04-15 11:04:02.840 DEBUG 3252 --- [http-nio-8088-exec-6] c.s.c.m.QuestionMapper.countByExample    : ==> Parameters: 
+2020-04-15 11:04:02.841 DEBUG 3252 --- [http-nio-8088-exec-6] c.s.c.m.QuestionMapper.countByExample    : <==      Total: 1
+2020-04-15 11:04:04.666 DEBUG 3252 --- [http-nio-8088-exec-7] c.s.c.mapper.UserMapper.selectByExample  : ==>  Preparing: select generate_id, name, token, gmt_create, gmt_modify, avatar_url, email, tags, password, github_url from user WHERE ( token = ? ) 
+2020-04-15 11:04:04.666 DEBUG 3252 --- [http-nio-8088-exec-7] c.s.c.mapper.UserMapper.selectByExample  : ==> Parameters: 6dc08d96-5ba3-41a7-8415-ef4eaa502079(String)
+2020-04-15 11:04:04.667 DEBUG 3252 --- [http-nio-8088-exec-7] c.s.c.mapper.UserMapper.selectByExample  : <==      Total: 1
+2020-04-15 11:04:09.494 DEBUG 3252 --- [http-nio-8088-exec-10] .Q.selectByExampleWithBLOBsWithRowbounds : ==>  Preparing: select id, title, tag, gmt_create, gmt_modify, creator_id, comment_count, view_count, like_count, recommend , description from question 
+2020-04-15 11:04:09.494 DEBUG 3252 --- [http-nio-8088-exec-10] .Q.selectByExampleWithBLOBsWithRowbounds : ==> Parameters: 
+2020-04-15 11:04:09.497 DEBUG 3252 --- [http-nio-8088-exec-10] c.s.c.m.QuestionMapper.countByExample    : ==>  Preparing: select count(*) from question 
+2020-04-15 11:04:09.497 DEBUG 3252 --- [http-nio-8088-exec-10] c.s.c.m.QuestionMapper.countByExample    : ==> Parameters: 
+2020-04-15 11:04:09.499 DEBUG 3252 --- [http-nio-8088-exec-10] c.s.c.m.QuestionMapper.countByExample    : <==      Total: 1
+2020-04-15 11:04:09.499 DEBUG 3252 --- [http-nio-8088-exec-10] c.s.c.mapper.UserMapper.selectByExample  : ==>  Preparing: select generate_id, name, token, gmt_create, gmt_modify, avatar_url, email, tags, password, github_url from user WHERE ( generate_id = ? ) 
+2020-04-15 11:04:09.499 DEBUG 3252 --- [http-nio-8088-exec-10] c.s.c.mapper.UserMapper.selectByExample  : ==> Parameters: 4(Long)
+2020-04-15 11:04:09.500 DEBUG 3252 --- [http-nio-8088-exec-10] c.s.c.mapper.UserMapper.selectByExample  : <==      Total: 1
+2020-04-15 11:04:09.501 DEBUG 3252 --- [http-nio-8088-exec-10] c.s.c.mapper.UserMapper.selectByExample  : ==>  Preparing: select generate_id, name, token, gmt_create, gmt_modify, avatar_url, email, tags, password, github_url from user WHERE ( generate_id = ? ) 
+2020-04-15 11:04:09.501 DEBUG 3252 --- [http-nio-8088-exec-10] c.s.c.mapper.UserMapper.selectByExample  : ==> Parameters: 5(Long)
+2020-04-15 11:04:09.504 DEBUG 3252 --- [http-nio-8088-exec-10] c.s.c.mapper.UserMapper.selectByExample  : <==      Total: 1
+2020-04-15 11:04:09.505 DEBUG 3252 --- [http-nio-8088-exec-10] c.s.c.mapper.UserMapper.selectByExample  : ==>  Preparing: select generate_id, name, token, gmt_create, gmt_modify, avatar_url, email, tags, password, github_url from user WHERE ( generate_id = ? ) 
+2020-04-15 11:04:09.505 DEBUG 3252 --- [http-nio-8088-exec-10] c.s.c.mapper.UserMapper.selectByExample  : ==> Parameters: 4(Long)
+2020-04-15 11:04:09.506 DEBUG 3252 --- [http-nio-8088-exec-10] c.s.c.mapper.UserMapper.selectByExample  : <==      Total: 1
+2020-04-15 11:04:09.506 DEBUG 3252 --- [http-nio-8088-exec-10] c.s.c.mapper.UserMapper.selectByExample  : ==>  Preparing: select generate_id, name, token, gmt_create, gmt_modify, avatar_url, email, tags, password, github_url from user WHERE ( generate_id = ? ) 
+2020-04-15 11:04:09.506 DEBUG 3252 --- [http-nio-8088-exec-10] c.s.c.mapper.UserMapper.selectByExample  : ==> Parameters: 4(Long)
+2020-04-15 11:04:09.507 DEBUG 3252 --- [http-nio-8088-exec-10] c.s.c.mapper.UserMapper.selectByExample  : <==      Total: 1
+2020-04-15 11:04:09.507 DEBUG 3252 --- [http-nio-8088-exec-10] c.s.c.mapper.UserMapper.selectByExample  : ==>  Preparing: select generate_id, name, token, gmt_create, gmt_modify, avatar_url, email, tags, password, github_url from user WHERE ( generate_id = ? ) 
+2020-04-15 11:04:09.507 DEBUG 3252 --- [http-nio-8088-exec-10] c.s.c.mapper.UserMapper.selectByExample  : ==> Parameters: 4(Long)
+2020-04-15 11:04:09.508 DEBUG 3252 --- [http-nio-8088-exec-10] c.s.c.mapper.UserMapper.selectByExample  : <==      Total: 1
+2020-04-15 11:04:09.508 DEBUG 3252 --- [http-nio-8088-exec-10] c.s.c.mapper.UserMapper.selectByExample  : ==>  Preparing: select generate_id, name, token, gmt_create, gmt_modify, avatar_url, email, tags, password, github_url from user WHERE ( generate_id = ? ) 
+2020-04-15 11:04:09.508 DEBUG 3252 --- [http-nio-8088-exec-10] c.s.c.mapper.UserMapper.selectByExample  : ==> Parameters: 4(Long)
+2020-04-15 11:04:09.509 DEBUG 3252 --- [http-nio-8088-exec-10] c.s.c.mapper.UserMapper.selectByExample  : <==      Total: 1
+2020-04-15 11:04:09.509 DEBUG 3252 --- [http-nio-8088-exec-10] c.s.c.mapper.UserMapper.selectByExample  : ==>  Preparing: select generate_id, name, token, gmt_create, gmt_modify, avatar_url, email, tags, password, github_url from user WHERE ( generate_id = ? ) 
+2020-04-15 11:04:09.509 DEBUG 3252 --- [http-nio-8088-exec-10] c.s.c.mapper.UserMapper.selectByExample  : ==> Parameters: 4(Long)
+2020-04-15 11:04:09.510 DEBUG 3252 --- [http-nio-8088-exec-10] c.s.c.mapper.UserMapper.selectByExample  : <==      Total: 1
+2020-04-15 11:04:09.510 DEBUG 3252 --- [http-nio-8088-exec-10] c.s.c.mapper.UserMapper.selectByExample  : ==>  Preparing: select generate_id, name, token, gmt_create, gmt_modify, avatar_url, email, tags, password, github_url from user WHERE ( generate_id = ? ) 
+2020-04-15 11:04:09.510 DEBUG 3252 --- [http-nio-8088-exec-10] c.s.c.mapper.UserMapper.selectByExample  : ==> Parameters: 5(Long)
+2020-04-15 11:04:09.511 DEBUG 3252 --- [http-nio-8088-exec-10] c.s.c.mapper.UserMapper.selectByExample  : <==      Total: 1
+2020-04-15 11:04:09.511 DEBUG 3252 --- [http-nio-8088-exec-10] c.s.c.m.NotifyMapper.countByExample      : ==>  Preparing: select count(*) from notify WHERE ( receiver = ? and status = ? ) 
+2020-04-15 11:04:09.511 DEBUG 3252 --- [http-nio-8088-exec-10] c.s.c.m.NotifyMapper.countByExample      : ==> Parameters: 5(Long), 0(Integer)
+2020-04-15 11:04:09.512 DEBUG 3252 --- [http-nio-8088-exec-10] c.s.c.m.NotifyMapper.countByExample      : <==      Total: 1
+2020-04-15 11:04:09.512 DEBUG 3252 --- [http-nio-8088-exec-10] c.s.c.m.NotifyMapper.countByExample      : ==>  Preparing: select count(*) from notify WHERE ( receiver = ? and status = ? ) 
+2020-04-15 11:04:09.512 DEBUG 3252 --- [http-nio-8088-exec-10] c.s.c.m.NotifyMapper.countByExample      : ==> Parameters: 5(Long), 0(Integer)
+2020-04-15 11:04:09.513 DEBUG 3252 --- [http-nio-8088-exec-10] c.s.c.m.NotifyMapper.countByExample      : <==      Total: 1
+2020-04-15 11:04:09.513 DEBUG 3252 --- [http-nio-8088-exec-10] c.s.c.m.Q.getViewMore                    : ==>  Preparing: select id,title,view_count from question order by view_count desc limit ?; 
+2020-04-15 11:04:09.513 DEBUG 3252 --- [http-nio-8088-exec-10] c.s.c.m.Q.getViewMore                    : ==> Parameters: 5(Integer)
+2020-04-15 11:04:09.514 DEBUG 3252 --- [http-nio-8088-exec-10] c.s.c.m.Q.getViewMore                    : <==      Total: 5

@@ -4,7 +4,10 @@ ThymeLeaf做前端模板引擎<br>
 bootstrap做样式框架<br>
 Mysql做存储容器 <br>
 Mybatis做数据库支持
-
+设置定时任务执行脚本 jsoup爬取新闻
+根据不同标签 使用线程池获取相关问题。
+功能介绍
+用户注册，登录，发布问题，以及评论，回复，通知，搜索问题，信息修改，热门话题 ，相关话题 以及每日互联网新闻等功能
 ***创建的sql脚本***
 用户表
 ```sql
@@ -75,10 +78,29 @@ create table notify
     comment '通知消息';
 
 ```
+标签库
+```sql
+create table tags
+(
+    id       int auto_increment
+        primary key,
+    tag_name varchar(20) null
+);
+```
+每日新闻
+```sql
+create table news
+(
+    id          int auto_increment
+        primary key,
+    content_url varchar(100) null,
+    img_url     varchar(100) null,
+    title       varchar(50)  null,
+    date_txt    varchar(200) null
+);
+```
 ```bash
-#执行mybatis生成器
 mvn -Dmybatis.generator.overwrite=true mybatis-generator:generate
 ```
-mvn -Dmybatis.generator.overwrite=true mybatis-generator:generate
 开源markdown语法库地址
 [Edit.md](https://pandao.github.io/editor.md/en.html)
