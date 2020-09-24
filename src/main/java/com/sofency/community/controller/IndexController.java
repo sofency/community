@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.util.List;
-import java.util.Random;
 
 /**
  * @auther sofency
@@ -25,33 +24,34 @@ import java.util.Random;
 public class IndexController {
     private QuestionService questionService;
     private NotifyService notifyService;
+
     @Autowired
-    public IndexController(QuestionService questionService,NotifyService notifyService){
-        this.notifyService=notifyService;
-        this.questionService=questionService;
+    public IndexController(QuestionService questionService, NotifyService notifyService) {
+        this.notifyService = notifyService;
+        this.questionService = questionService;
     }
 
     @GetMapping("/")
     public String index(Model model,
-                        @RequestParam(name = "page",defaultValue="1") Integer page,
-                        @RequestParam(name = "size",defaultValue = "8") Integer size,HttpServletRequest request){
+                        @RequestParam(name = "page", defaultValue = "1") Integer page,
+                        @RequestParam(name = "size", defaultValue = "8") Integer size, HttpServletRequest request) {
 
-        PaginationDTO paginationDTO=null;
-        Integer unreadCount =0;//存储未读的信息
+        PaginationDTO paginationDTO = null;
+        Integer unreadCount = 0;//存储未读的信息
         String search = request.getParameter("search");//获取请求参数
-        paginationDTO= questionService.getPaginationDto(page,size,search);//获取页面的信息
+        paginationDTO = questionService.getPaginationDto(page, size, search);//获取页面的信息
         HttpSession session = request.getSession();
         User user = (User) session.getAttribute("user");
-        if(user!=null&&user.getGenerateId()!=0){//判断不是游客
+        if (user != null && user.getGenerateId() != 0) {//判断不是游客
             paginationDTO.setNotifyNum(notifyService.count(user.getGenerateId()));//设置返回信息的个数
             unreadCount = notifyService.count(user.getGenerateId());//统计未读消息的个数到session中
         }
-        session.setAttribute("unreadCount",unreadCount);
-        model.addAttribute("questions",paginationDTO);
-        model.addAttribute("search",search);
+        session.setAttribute("unreadCount", unreadCount);
+        model.addAttribute("questions", paginationDTO);
+        model.addAttribute("search", search);
         //热门的问题
         List<HotQuesDTO> hotQuesDTO = questionService.getViewCountMore(5);
-        model.addAttribute("hotQues",hotQuesDTO);
+        model.addAttribute("hotQues", hotQuesDTO);
         return "index";
     }
 }

@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="/static/css/index.css">
     <script src="/static/js/default-image.js"></script>
     <script>
-        function chooseImg(){
+        function chooseImg() {
             console.log(123);
             //获取input file的files文件数组;
             //$('#filed')获取的是jQuery对象，.get(0)转为原生对象;
@@ -19,39 +19,42 @@
             //使用该对象读取file文件
             reader.readAsDataURL(file);
             //读取文件成功后执行的方法函数
-            reader.onload=function(e){
+            reader.onload = function (e) {
                 console.log(e);
                 //选择所要显示图片的img，要赋值给img的src就是e中target下result里面
                 //的base64编码格式的地址
                 $('#imgShow').get(0).src = e.target.result;
             }
         }
+
         function changeBtn() {
-            $(".info-detail").css("display","none");
-            $(".info-change").css("display","block");
+            $(".info-detail").css("display", "none");
+            $(".info-change").css("display", "block");
         }
+
         function cancelInfo() {
-            $(".info-detail").css("display","block");
-            $(".info-change").css("display","none");
+            $(".info-detail").css("display", "block");
+            $(".info-change").css("display", "none");
         }
-        function  changeImgInfo() {
+
+        function changeImgInfo() {
             const files = document.getElementById("filed").files;
             const generateId = document.getElementById("imgGenerateId").valueOf();
             console.log(files);
             console.log(generateId);
-            if(files==null||files.length==0){
+            if (files == null || files.length == 0) {
                 alert("请选择要上传的图片");
-            }else{
-                const  object = document.getElementById("uploadImg");
+            } else {
+                const object = document.getElementById("uploadImg");
                 const formData = new FormData(object);
                 console.log(formData);
                 $.ajax({
-                    url:"/upload",
-                    type:"post",
-                    data:formData,
-                    contentType:false, //- 必须false才会自动加上正确的Content-Type
+                    url: "/upload",
+                    type: "post",
+                    data: formData,
+                    contentType: false, //- 必须false才会自动加上正确的Content-Type
                     processData: false, //- 必须false才会避开jQuery对 formdata 的默认处理,XMLHttpRequest会对 formdata 进行正确的处理
-                    success:function(res) {
+                    success: function (res) {
                         if (res.flag == true) {
                             alert("图片更新成功");
                         } else {
@@ -63,15 +66,15 @@
         }
 
         function changeInfo() {
-            const  object = document.getElementById("changeInfoForm");
+            const object = document.getElementById("changeInfoForm");
             const formData = new FormData(object);
             $.ajax({
-                url:"/changeInfo",
-                type:"post",
-                data:formData,
-                contentType:false, //- 必须false才会自动加上正确的Content-Type
+                url: "/changeInfo",
+                type: "post",
+                data: formData,
+                contentType: false, //- 必须false才会自动加上正确的Content-Type
                 processData: false, //- 必须false才会避开jQuery对 formdata 的默认处理,XMLHttpRequest会对 formdata 进行正确的处理
-                success:function(res) {
+                success: function (res) {
                     if (res.flag == true) {
                         alert("资料更新完毕");
                     } else {
@@ -83,7 +86,7 @@
     </script>
 </head>
 <body>
-<div class="container"   style="padding-top: 30px;">
+<div class="container" style="padding-top: 30px;">
     <h1>个人资料</h1>
     <hr>
     <div class="content">
@@ -99,9 +102,10 @@
                 </div>
             </div>
             <div class="choose col-lg-4 col-md-4 col-sm-4 col-xs-4">
-                <form method="post" enctype="multipart/form-data" style="display: flex;"  id="uploadImg">
+                <form method="post" enctype="multipart/form-data" style="display: flex;" id="uploadImg">
                     <input type="hidden" name="generateId" id="imgGenerateId" th:value="${userDTO.generateId}">
-                    <input type="file" name="file" id="filed" value="点击选择图片" accept="image/jpeg,image/png,image/jpg" onchange="chooseImg()">
+                    <input type="file" name="file" id="filed" value="点击选择图片" accept="image/jpeg,image/png,image/jpg"
+                           onchange="chooseImg()">
                     <input type="button" value="替换" onclick="changeImgInfo()">
                 </form>
             </div>
@@ -117,12 +121,13 @@
                     擅长领域:
                     <span th:each="tag:${userDTO.tags}" th:text="tag" class="badge badge-info"></span>
                 </li>
-                <li>入站日期:<span th:text="${#dates.format(userDTO.gmtCreate,'yyyy-MM-dd HH:mm:ss')}"></span><li>
+                <li>入站日期:<span th:text="${#dates.format(userDTO.gmtCreate,'yyyy-MM-dd HH:mm:ss')}"></span>
+                <li>
             </ul>
             <!--修改界面-->
             <ul class="left col-lg-8 col-md-8 col-sm-8 col-xs-8 info-change" style="display: none">
                 <form role="form" class="form-change" action="" id="changeInfoForm">
-                  <input type="hidden" name="generateId" th:value="${userDTO.generateId}">
+                    <input type="hidden" name="generateId" th:value="${userDTO.generateId}">
                     <li>
                         <div class="form-group form-inline">
                             <label for="name" class="col-lg-2 info-left">昵称:</label>
@@ -131,20 +136,23 @@
                     </li>
                     <li>
                         <div class="form-group form-inline">
-                            <label for="email" class="col-lg-2 info-left" >邮箱:</label>
-                            <input class="form-control" type="email" name="email" th:value="${userDTO.email}" id="email">
+                            <label for="email" class="col-lg-2 info-left">邮箱:</label>
+                            <input class="form-control" type="email" name="email" th:value="${userDTO.email}"
+                                   id="email">
                         </div>
                     </li>
                     <li>
                         <div class="form-group form-inline">
                             <label for="githubUrl" class="col-lg-2 info-left">githubUrl:</label>
-                            <input class="form-control" type="text" name="githubUrl" th:value="${userDTO.githubUrl}" id="githubUrl">
+                            <input class="form-control" type="text" name="githubUrl" th:value="${userDTO.githubUrl}"
+                                   id="githubUrl">
                         </div>
                     </li>
                     <li>
                         <div class="form-group form-inline">
                             <label for="tags" class="col-lg-2 info-left">擅长领域:</label>
-                            <input class="form-control" type="text" name="tags" th:value="${userDTO.tags}" id="tags"><span class="ml-2" style="font-size: 10px;color: red">请使用逗号分隔开</span>
+                            <input class="form-control" type="text" name="tags" th:value="${userDTO.tags}"
+                                   id="tags"><span class="ml-2" style="font-size: 10px;color: red">请使用逗号分隔开</span>
                         </div>
                     </li>
                     <li class="form-btn text-center">
@@ -156,7 +164,7 @@
                 </form>
             </ul>
             <div class="info-change-btn col-lg-4 col-md-4 col-sm-4 col-xs-4">
-                <input  type="button" value="修改资料" onclick="changeBtn()">
+                <input type="button" value="修改资料" onclick="changeBtn()">
             </div>
         </div>
     </div>

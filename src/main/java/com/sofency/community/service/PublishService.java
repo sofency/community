@@ -15,18 +15,19 @@ import org.springframework.stereotype.Service;
 @Service
 public class PublishService {
     private QuestionMapper questionMapper;
+
     @Autowired
-    public PublishService(QuestionMapper questionMapper){
-        this.questionMapper= questionMapper;
+    public PublishService(QuestionMapper questionMapper) {
+        this.questionMapper = questionMapper;
     }
 
     public Question createOrUpdate(Question question) {
-        if(question.getId()==0){//说明是发布
+        if (question.getId() == 0) {//说明是发布
             question.setGmtCreate(System.currentTimeMillis());//设置创建时间
             questionMapper.insert(question);
-        }else{//说明是修改
+        } else {//说明是修改
             Question oldQuestion = questionMapper.selectByPrimaryKey(question.getId());
-            if(!oldQuestion.equals(question)){
+            if (!oldQuestion.equals(question)) {
                 questionMapper.updateByPrimaryKeySelective(question);
             }
         }

@@ -29,20 +29,21 @@ public class UserService {
     public UserService(UserMapper userMapper) {
         this.userMapper = userMapper;
     }
+
     public void updateOrInsert(User user) {
-        User temp=null;
-        if(user.getGenerateId()!= null){
+        User temp = null;
+        if (user.getGenerateId() != null) {
             UserExample example = new UserExample();
             example.createCriteria().andGenerateIdEqualTo(user.getGenerateId());
             List<User> list = userMapper.selectByExample(example);
-            if(list.size()!=0){
-                temp =list.get(0);
-            }else{
-                temp=null;
+            if (list.size() != 0) {
+                temp = list.get(0);
+            } else {
+                temp = null;
             }
         }
-        if(temp!=null){
-            if(!user.equals(temp)){//如果用户变化才进行更新操作
+        if (temp != null) {
+            if (!user.equals(temp)) {//如果用户变化才进行更新操作
                 temp.setGenerateId(user.getGenerateId());
                 temp.setAvatarUrl(user.getAvatarUrl());
                 temp.setGmtModify(System.currentTimeMillis());
@@ -54,7 +55,7 @@ public class UserService {
                 temp.setName(user.getName());
                 userMapper.updateByPrimaryKey(temp);//更新用户
             }
-        }else{
+        } else {
             String UUID = java.util.UUID.randomUUID().toString();
             user.setToken(UUID);
             user.setGmtCreate(System.currentTimeMillis());
@@ -64,22 +65,22 @@ public class UserService {
     }
 
     //获取用户的信息
-    public UserDTO getInfo(Long generateId){
+    public UserDTO getInfo(Long generateId) {
         //根据generateId 查询用户的信息
         User user = userMapper.selectByPrimaryKey(generateId);
-        if(user==null){
+        if (user == null) {
             throw new CustomException(CustomExceptionCode.USER_NOT_EXIST);
         }
-        String tag= user.getTags();
+        String tag = user.getTags();
         UserDTO userDTO = new UserDTO();
-        List<String> list=null;
-        if(tag!=null){
+        List<String> list = null;
+        if (tag != null) {
             String[] tags = tag.split(",");
-            list= Arrays.asList(tags);
+            list = Arrays.asList(tags);
             userDTO.setTagList(list);
         }
-        BeanUtil.copyProperties(user,userDTO,true, CopyOptions.create().
+        BeanUtil.copyProperties(user, userDTO, true, CopyOptions.create().
                 setIgnoreError(true).setIgnoreNullValue(true));
-        return  userDTO;
+        return userDTO;
     }
 }

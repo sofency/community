@@ -27,27 +27,29 @@ public class NginxController {
 
     private NginxService nginxService;
     private UserMapper userMapper;
+
     @Autowired
-    public NginxController(NginxService nginxService,UserMapper userMapper){
-        this.nginxService=nginxService;
-        this.userMapper=userMapper;
+    public NginxController(NginxService nginxService, UserMapper userMapper) {
+        this.nginxService = nginxService;
+        this.userMapper = userMapper;
     }
+
     /**
      * 可上传图片、视频，只需在nginx配置中配置可识别的后缀
      */
     @PostMapping("/upload")
-    public JSONObject pictureUpload(@RequestParam(value = "file",required = false) MultipartFile image,
-                                    @RequestParam(value = "editormd-image-file",required = false) MultipartFile file,
-                                    @RequestParam(value = "generateId",required = false) Long generateId,
+    public JSONObject pictureUpload(@RequestParam(value = "file", required = false) MultipartFile image,
+                                    @RequestParam(value = "editormd-image-file", required = false) MultipartFile file,
+                                    @RequestParam(value = "generateId", required = false) Long generateId,
                                     Model model) {
         //根据id查找到用户的信息 并且修改图片的url
-        JSONObject jsonObject=new JSONObject();
+        JSONObject jsonObject = new JSONObject();
         String imgUrl = "";
-        if(file!=null){//说明没有传入值 是文章上传图片
+        if (file != null) {//说明没有传入值 是文章上传图片
             Object result = nginxService.uploadPicture(file);
             try {
                 imgUrl = new ObjectMapper().writeValueAsString(result);
-                imgUrl = imgUrl.substring(1,imgUrl.length()-1);
+                imgUrl = imgUrl.substring(1, imgUrl.length() - 1);
             } catch (JsonProcessingException e) {
                 e.printStackTrace();
             }
@@ -55,12 +57,12 @@ public class NginxController {
             jsonObject.put("message", "上传成功");
             jsonObject.put("url", imgUrl);
         }
-        if(image!=null){//是用户修改图片
+        if (image != null) {//是用户修改图片
             long begin = System.currentTimeMillis();
             Object result = nginxService.uploadPicture(image);
             try {
                 imgUrl = new ObjectMapper().writeValueAsString(result);
-                imgUrl = imgUrl.substring(1,imgUrl.length()-1);
+                imgUrl = imgUrl.substring(1, imgUrl.length() - 1);
             } catch (JsonProcessingException e) {
                 e.printStackTrace();
             }
@@ -68,7 +70,7 @@ public class NginxController {
             user.setAvatarUrl(imgUrl);
             userMapper.updateByPrimaryKey(user);//更新信息
             long end = System.currentTimeMillis();
-            log.info("任务结束，共耗时：[" + (end-begin) + "]毫秒");
+            log.info("任务结束，共耗时：[" + (end - begin) + "]毫秒");
             jsonObject.put("flag", PersonInfoChangeEnums.CHANGED_IMAGE_SUCCESS.getFlag());
         }
         return jsonObject;

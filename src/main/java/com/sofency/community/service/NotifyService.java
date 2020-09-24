@@ -24,6 +24,7 @@ import java.util.List;
  * @date 2020/3/3 18:22
  * @package com.sofency.community.controller
  */
+
 /**
  * 通知层
  */
@@ -32,6 +33,7 @@ public class NotifyService {
     private UserMapper userMapper;
     private NotifyMapper notifyMapper;
     private QuestionMapper questionMapper;
+
     @Autowired
     public NotifyService(UserMapper userMapper, NotifyMapper notifyMapper, QuestionMapper questionMapper) {
         this.userMapper = userMapper;
@@ -40,7 +42,7 @@ public class NotifyService {
     }
 
     //查询未查看的通知的个数
-    public int count(Long currentId){//查询通知
+    public int count(Long currentId) {//查询通知
         NotifyExample example = new NotifyExample();
         example.createCriteria().
                 andReceiverEqualTo(currentId).
@@ -49,28 +51,30 @@ public class NotifyService {
         System.out.println(num);
         return num;
     }
+
     //获取分页的信息
 //    @Cacheable(cacheNames ="notify",key = "#page")
-    public PaginationDTO getPaginationDto(Integer page, Integer size,Long receiver){
-        Integer offset = size*(page-1);//获取偏移的位置
+    public PaginationDTO getPaginationDto(Integer page, Integer size, Long receiver) {
+        Integer offset = size * (page - 1);//获取偏移的位置
         NotifyExample notifyExample = new NotifyExample();
         notifyExample.createCriteria()
                 .andReceiverEqualTo(receiver);
         notifyExample.setOrderByClause("status ASC,gmt_create desc");//按照状态进行升序  按照时间降序
-        List<Notify> notifies = notifyMapper.selectByExampleWithRowbounds(notifyExample,new RowBounds(offset,size));
+        List<Notify> notifies = notifyMapper.selectByExampleWithRowbounds(notifyExample, new RowBounds(offset, size));
         List<NotifyDTO> notifyDTOS = new ArrayList<>();
-        this.forUtils(notifies,notifyDTOS);
+        this.forUtils(notifies, notifyDTOS);
         //使用规范代码
         PaginationDTO<NotifyDTO> paginationDTO = new PaginationDTO();
         //获取记录的总页数
-        Integer total= Math.toIntExact(notifyMapper.countByExample(notifyExample));
+        Integer total = Math.toIntExact(notifyMapper.countByExample(notifyExample));
 
-        paginationDTO.setPagination(total,page,size);//进行基本的初始化操作
+        paginationDTO.setPagination(total, page, size);//进行基本的初始化操作
         paginationDTO.setData(notifyDTOS);//添加问题列表
         return paginationDTO;//返回单个页面携带的详细信息
     }
-    private void forUtils(List<Notify> notifies, List<NotifyDTO> notifyDTOS){
-        for(Notify notify: notifies){
+
+    private void forUtils(List<Notify> notifies, List<NotifyDTO> notifyDTOS) {
+        for (Notify notify : notifies) {
             UserExample example = new UserExample();
             example.createCriteria().
                     andGenerateIdEqualTo(notify.getSender());//获取sender的用户信息
@@ -80,11 +84,11 @@ public class NotifyService {
             /**
              * copy receiver sender sattys gmt_create
              */
-            BeanUtil.copyProperties(notify,notifyDTO, true, CopyOptions.create().setIgnoreNullValue(true).setIgnoreError(true));
+            BeanUtil.copyProperties(notify, notifyDTO, true, CopyOptions.create().setIgnoreNullValue(true).setIgnoreError(true));
             notifyDTO.setUser(user.get(0));
-            if(notify.getType()==NotifyTypeEnums.NOTIFY_COMMENT.getType()){
+            if (notify.getType() == NotifyTypeEnums.NOTIFY_COMMENT.getType()) {
                 notifyDTO.setTypeName(NotifyTypeEnums.NOTIFY_COMMENT.getName());
-            }else {
+            } else {
                 notifyDTO.setTypeName(NotifyTypeEnums.NOTIFY_QUESTION.getName());
             }
             notifyDTO.setQuestion(question);

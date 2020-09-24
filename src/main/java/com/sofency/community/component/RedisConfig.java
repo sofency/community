@@ -15,7 +15,7 @@ import org.springframework.data.redis.serializer.RedisSerializationContext;
  * @auther sofency
  * @date 2020/3/11 20:38
  * @package com.sofency.community.config
- * @description  redis的配置信息
+ * @description redis的配置信息
  */
 @Configuration
 public class RedisConfig {

@@ -34,24 +34,24 @@ public class AuthorizeController {
     private UserService userService;//注入mapper
 
     @Autowired
-    public AuthorizeController(GithubProvider githubProvider,AccessTokenDTO accessTokenDTO,UserService userService){
-        this.accessTokenDTO=accessTokenDTO;
-        this.githubProvider=githubProvider;
-        this.userService=userService;
+    public AuthorizeController(GithubProvider githubProvider, AccessTokenDTO accessTokenDTO, UserService userService) {
+        this.accessTokenDTO = accessTokenDTO;
+        this.githubProvider = githubProvider;
+        this.userService = userService;
     }
+
     /**
      * @param code
      * @param state
      * @param request
      * @param response
-     * @return
-     * 第三方登录使用user表存储
+     * @return 第三方登录使用user表存储
      */
     @GetMapping("/callback")
-    public String callback(@RequestParam(name="code") String code,
-                           @RequestParam(name="state") String state,
+    public String callback(@RequestParam(name = "code") String code,
+                           @RequestParam(name = "state") String state,
                            HttpServletRequest request,
-                           HttpServletResponse response){
+                           HttpServletResponse response) {
         //java模拟http请求 使用okHttp
         accessTokenDTO.setState(state);
         accessTokenDTO.setCode(code);
@@ -59,7 +59,7 @@ public class AuthorizeController {
         String accessToken = githubProvider.getAccessToken(accessTokenDTO);
         //根据返回的token去github拿取用户的信息
         GithubUser githubUser = githubProvider.getUser(accessToken);
-        if(githubUser!=null){
+        if (githubUser != null) {
             //登陆成功  创建用户的信息
             User user = new User();
             String token = UUID.randomUUID().toString();
@@ -69,18 +69,18 @@ public class AuthorizeController {
             //进行插入操作
             userService.updateOrInsert(user);
             //存储会话
-            response.addCookie(new Cookie("token",token));//登录之后
+            response.addCookie(new Cookie("token", token));//登录之后
             return "redirect:/";
-        }else{
+        } else {
             throw new CustomException(CustomExceptionCode.AUTHORIZE_FAILED);
         }
     }
 
     @GetMapping("/logout")
-    public String loginout(HttpServletRequest request,HttpServletResponse response){
+    public String loginout(HttpServletRequest request, HttpServletResponse response) {
         request.getSession().removeAttribute("user");
         //删除cookie
-        Cookie cookie = new Cookie("token",null);
+        Cookie cookie = new Cookie("token", null);
         cookie.setMaxAge(0);
         response.addCookie(cookie);
         return "redirect:/";

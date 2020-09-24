@@ -6,9 +6,9 @@ package com.sofency.community.enums;
  * @package IntelliJ IDEA
  * @description
  */
-public enum  PersonInfoChangeEnums {
-    UNCHANGED_IMAGE(false,"未添加图片"),
-    CHANGED_IMAGE_SUCCESS(true,"更改图片成功");
+public enum PersonInfoChangeEnums {
+    UNCHANGED_IMAGE(false, "未添加图片"),
+    CHANGED_IMAGE_SUCCESS(true, "更改图片成功");
     private Boolean flag;
     private String msg;
 
@@ -20,8 +20,8 @@ public enum  PersonInfoChangeEnums {
         return msg;
     }
 
-    PersonInfoChangeEnums(Boolean flag, String msg){
-        this.msg=msg;
-        this.flag=flag;
+    PersonInfoChangeEnums(Boolean flag, String msg) {
+        this.msg = msg;
+        this.flag = flag;
     }
 }

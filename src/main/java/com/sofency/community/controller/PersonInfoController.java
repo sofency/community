@@ -28,18 +28,20 @@ public class PersonInfoController {
 
     private UserService UserService;
     private UserMapper userMapper;
+
     @Autowired
-    public PersonInfoController(UserService UserService,UserMapper userMapper){
+    public PersonInfoController(UserService UserService, UserMapper userMapper) {
         this.UserService = UserService;
         this.userMapper = userMapper;
     }
+
     @GetMapping("/personInfo/{generateId}")
-    public String personInfo(@PathVariable Long generateId, Model model){
+    public String personInfo(@PathVariable Long generateId, Model model) {
         //根据generateId 查询用户的信息
         UserDTO userDTO = UserService.getInfo(generateId);
-        if(userDTO!=null){
-            model.addAttribute("userDTO",userDTO);
-        }else{
+        if (userDTO != null) {
+            model.addAttribute("userDTO", userDTO);
+        } else {
             throw new CustomException(CustomExceptionCode.USER_NOT_EXIST);
         }
         return "person";
@@ -47,19 +49,19 @@ public class PersonInfoController {
 
     @ResponseBody
     @PostMapping("/changeInfo")
-    public Map<String,Boolean> changeInfo(User user){
-        Map<String,Boolean> map = new HashMap<>();
+    public Map<String, Boolean> changeInfo(User user) {
+        Map<String, Boolean> map = new HashMap<>();
         User user1 = userMapper.selectByPrimaryKey(user.getGenerateId());
-        if(user1==null){
-            map.put("flag",false);
-        }else{
+        if (user1 == null) {
+            map.put("flag", false);
+        } else {
             user1.setTags(user.getTags());
             user1.setGithubUrl(user.getGithubUrl());
             user1.setEmail(user.getEmail());
             user1.setName(user.getName());
             UserService.updateOrInsert(user1);
             System.out.println(user.getGenerateId());
-            map.put("flag",true);
+            map.put("flag", true);
         }
         return map;
     }

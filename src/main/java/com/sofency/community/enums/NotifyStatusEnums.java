@@ -6,7 +6,7 @@ package com.sofency.community.enums;
  * @package com.sofency.community.enums
  */
 public enum NotifyStatusEnums {
-    READ(1),UNREAD(0);
+    READ(1), UNREAD(0);
 
     private Integer status;
 

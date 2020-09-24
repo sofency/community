@@ -7,11 +7,13 @@
 <body>
 <div class="col-lg-3 col-md-12 col-sm-12 col-xs-12" th:fragment="choice">
     <div class="list-group">
-        <a th:href="@{'/profile/questions'}" th:class="${action} == 'questions'?'list-group-item active':'list-group-item'">我的问题</a>
+        <a th:href="@{'/profile/questions'}"
+           th:class="${action} == 'questions'?'list-group-item active':'list-group-item'">我的问题</a>
         <ul class="list-group">
             <a th:href="@{'/profile/reply'}">
                 <li class="list-group-item" th:class="${action} == 'reply'?'list-group-item active':'list-group-item'">
-                    <span class="badge" th:if="${notifyDTO!=null && notifyDTO.data !=null}" th:text="${notifyDTO.totalNum}"></span>
+                    <span class="badge" th:if="${notifyDTO!=null && notifyDTO.data !=null}"
+                          th:text="${notifyDTO.totalNum}"></span>
                     最新回复
                 </li>
             </a>

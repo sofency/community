@@ -6,6 +6,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.cache.annotation.EnableCaching;
+import org.springframework.context.annotation.EnableAspectJAutoProxy;
 import org.springframework.context.annotation.Import;
 import org.springframework.scheduling.annotation.EnableScheduling;
 
@@ -13,10 +14,10 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 @Import({SessionInterceptor.class})
 @SpringBootApplication
 @EnableConfigurationProperties
-@EnableCaching  //开启缓存
 @EnableScheduling
+@EnableAspectJAutoProxy
 public class CommunityApplication {
-	public static void main(String[] args) {
-		SpringApplication.run(CommunityApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(CommunityApplication.class, args);
+    }
 }

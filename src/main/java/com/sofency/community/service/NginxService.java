@@ -19,11 +19,13 @@ import java.io.InputStream;
 @Service
 @Slf4j
 public class NginxService {
-    private  FtpUtil ftpUtil;
+    private FtpUtil ftpUtil;
+
     @Autowired
     public NginxService(FtpUtil ftpUtil) {
-        this.ftpUtil =ftpUtil;
+        this.ftpUtil = ftpUtil;
     }
+
     public Object uploadPicture(MultipartFile uploadFile) {
         //1、给上传的图片生成新的文件名
         //1.1获取原始文件名
@@ -41,6 +43,6 @@ public class NginxService {
             e.printStackTrace();
         }
         //2.2调用FtpUtil工具类进行上传
-        return ftpUtil.putImages(input,newName);
+        return ftpUtil.putImages(input, newName);
     }
 }

@@ -12,14 +12,16 @@
 <!--发布的内容标签-->
 <div class="container content col-lg-10">
     <div class="row">
-        <div class="col-lg-9 col-md-12 col-sm-12 col-xs-12 padding" >
-            <h3><span class="glyphicon glyphicon-list" aria-hidden="true"></span>&nbsp;<span th:text="${type}"></span></h3>
+        <div class="col-lg-9 col-md-12 col-sm-12 col-xs-12 padding">
+            <h3><span class="glyphicon glyphicon-list" aria-hidden="true"></span>&nbsp;<span th:text="${type}"></span>
+            </h3>
             <hr>
             <!--问题列表-->
             <ul class="list-group list-group-flush">
                 <li class="list-group-item" th:each="notify:${notifyDTO.data}">
                     <span th:text="${notify.user.name}" style=""></span><span th:text="${notify.typeName}"></span>
-                    <a th:href="@{'/notification/'+${notify.question.id}+'/'+${notify.id}}"><span th:text="${notify.question.title}"></span></a>
+                    <a th:href="@{'/notification/'+${notify.question.id}+'/'+${notify.id}}"><span
+                            th:text="${notify.question.title}"></span></a>
                     <span class="badge badge-info" th:if="${notify.status==0}">未读</span>
                     <span class="float-right" th:text="${#dates.format(notify.gmtCreate,'yyyy-MM-dd HH:mm:ss')}"></span>
                 </li>
@@ -28,15 +30,18 @@
             <nav aria-label="Page navigation" class="mt-2">
                 <ul class="pagination">
                     <li th:if="${notifyDTO.hasPrevious}" class="page-item">
-                        <a th:href="@{'/profile/' +${action}(page=${notifyDTO.currentPage -1})}" aria-label="Previous" class="page-link">
+                        <a th:href="@{'/profile/' +${action}(page=${notifyDTO.currentPage -1})}" aria-label="Previous"
+                           class="page-link">
                             <span aria-hidden="true">&lt;</span>
                         </a>
                     </li>
-                    <li th:each="page: ${notifyDTO.pagesList}" th:class="${notifyDTO.currentPage == page}?'active':''" class="page-item">
+                    <li th:each="page: ${notifyDTO.pagesList}" th:class="${notifyDTO.currentPage == page}?'active':''"
+                        class="page-item">
                         <a th:href="@{'/profile/'+${action}(page=${page})}" th:text="${page}" class="page-link"></a>
                     </li>
                     <li th:if="${notifyDTO.hasNext}" class="page-item">
-                        <a th:href="@{'/profile/' +${action}(page=${notifyDTO.currentPage +1})}" aria-label="Next" class="page-link">
+                        <a th:href="@{'/profile/' +${action}(page=${notifyDTO.currentPage +1})}" aria-label="Next"
+                           class="page-link">
                             <span aria-hidden="true">&gt;</span>
                         </a>
                     </li>

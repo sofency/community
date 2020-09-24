@@ -23,22 +23,23 @@ import java.util.List;
 public class SessionInterceptor implements HandlerInterceptor {
     @Autowired
     UserMapper userMapper;
+
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
         //获取cookie
         Cookie[] cookies = request.getCookies();
         boolean flag = false;
-        if(cookies!=null){
-            for(Cookie cookie:cookies){
+        if (cookies != null) {
+            for (Cookie cookie : cookies) {
                 String token = cookie.getValue();
-                if("token".equals(cookie.getName())) {
+                if ("token".equals(cookie.getName())) {
                     //查找用户的信息
                     UserExample example = new UserExample();
                     example.createCriteria().andTokenEqualTo(token);
                     List<User> user = userMapper.selectByExample(example);
                     if (user.size() != 0) {
                         request.getSession().setAttribute("user", user.get(0));
-                    }else{//说明没有该用户的信息
+                    } else {//说明没有该用户的信息
                         throw new CustomException(CustomExceptionCode.LOGIN_EXCEPTION);
                     }
                     break;

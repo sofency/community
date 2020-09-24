@@ -6,15 +6,16 @@ package com.sofency.community.exception;
  * @package com.sofency.community.exception
  * @description 自定义异常
  */
-public class CustomException extends RuntimeException{
+public class CustomException extends RuntimeException {
     private String message;
     private Integer code;
-    public CustomException(CustomExceptionCode errorCode){
-        this.message=errorCode.getMessage();
-        this.code=errorCode.getCode();
+
+    public CustomException(CustomExceptionCode errorCode) {
+        this.message = errorCode.getMessage();
+        this.code = errorCode.getCode();
     }
 
-    public String getMessage(){
+    public String getMessage() {
         return this.message;
     }
 

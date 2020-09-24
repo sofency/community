@@ -1,50 +1,59 @@
-body{
+body {
     background: url('https://elasticsearch.cn/static/css/default/img/bg.jpg');
 }
-.content{
+
+.content {
     margin-top: 20px;
     background-color: #f7f7f7;
 }
-.content .padding{
+
+.content .padding {
     padding: 10px;
     border-right: 1px solid white;
 }
-.aw-user-name{
+
+.aw-user-name {
     color: #666;
     font-size: 12px;
     line-height: 20px;
     font-weight: normal;
 }
-.tip{
-    -webkit-tap-highlight-color: rgba(0,0,0,0);
+
+.tip {
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
     line-height: 160%;
-    font-family: candara,"Helvetica Neue",Helvetica,Arial,"PingFang SC","Hiragino Sans GB","WenQuanYi Micro Hei","Microsoft Yahei",sans-serif, -apple-system;
+    font-family: candara, "Helvetica Neue", Helvetica, Arial, "PingFang SC", "Hiragino Sans GB", "WenQuanYi Micro Hei", "Microsoft Yahei", sans-serif, -apple-system;
     -webkit-font-smoothing: antialiased;
     box-sizing: border-box;
     font-size: 12px;
     font-weight: normal;
     color: #999;
 }
-.tagInfo{
+
+.tagInfo {
     color: #999;
     font-size: 12px;
 }
-.tagInfo a:hover{
+
+.tagInfo a:hover {
     text-decoration: none;
 }
-.tagInfo span{
+
+.tagInfo span {
     display: inline-block;
     margin-right: 15px;
 }
-.text-user{
+
+.text-user {
     color: #155faa;
 }
 
-.text-999{
+.text-999 {
     color: #999;
 }
+
 /*描述信息*/
-.desc{
+.desc {
     font-size: 14px;
     color: #666;
     overflow: hidden;
@@ -53,21 +62,26 @@ body{
     display: -webkit-box;
     -webkit-line-clamp: 3;
 }
-.btn-comment{
+
+.btn-comment {
     margin-top: 10px;
 }
-.margin-top-0{
+
+.margin-top-0 {
     margin-top: 0;
 }
-.media{
+
+.media {
     padding-bottom: 5px;
     border-bottom: 1px solid #e0e0e0;
     margin-top: 15px;
 }
-.media-body h6{
+
+.media-body h6 {
     margin-bottom: 6px;
 }
-.like-comment{
+
+.like-comment {
     width: 70px;
     display: flex;
     border: 1px solid #fff;
@@ -75,29 +89,35 @@ body{
     border-radius: 4px;
     margin-top: 11px
 }
-.common{
+
+.common {
     font-size: 17px;
     text-align: center;
     width: 35px;
     border-right: 1px solid #fff;
 }
-.common span{
+
+.common span {
     margin-left: 3px;
 }
-.common:hover{
+
+.common:hover {
     background-color: #fff;
 }
-.wrap-content{
+
+.wrap-content {
     margin-top: 10px;
     padding: 10px;
     border: 1px solid;
     border-radius: 10px;
 }
-.second-comment{
+
+.second-comment {
     margin-top: 10px;
     padding: 10px;
     border-bottom: 1px solid white;
 }
-.m-bottom{
+
+.m-bottom {
     margin-bottom: 10px;
 }

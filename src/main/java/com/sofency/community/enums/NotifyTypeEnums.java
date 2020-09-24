@@ -6,8 +6,8 @@ package com.sofency.community.enums;
  * @package com.sofency.community.enums
  */
 public enum NotifyTypeEnums {
-    NOTIFY_QUESTION(1,"回复了问题"),
-    NOTIFY_COMMENT(2,"回复了评论");
+    NOTIFY_QUESTION(1, "回复了问题"),
+    NOTIFY_COMMENT(2, "回复了评论");
 
     private Integer type;
     private String name;

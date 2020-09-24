@@ -7,7 +7,7 @@ import lombok.Data;
  * @auther sofency
  * @date 2020/3/1 20:22
  * @package com.sofency.community.dto
- * @description  返回的评论包装
+ * @description 返回的评论包装
  */
 @Data
 public class CommentDTO {

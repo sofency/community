@@ -11,7 +11,7 @@ import javax.xml.stream.events.Comment;
  */
 @Data
 public class CommentCreateDTO {
-    private  Long parentId;//问题id
+    private Long parentId;//问题id
     private int type;//评论的类型
     private long commentator;//评论人的id
     private String comment;//评论的内容

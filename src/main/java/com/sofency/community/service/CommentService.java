@@ -47,59 +47,60 @@ public class CommentService {
     //事务的注解
     @Transactional
     public void insert(Comment comment) {
-        if(comment.getParentId()==null|| comment.getParentId()==0){
+        if (comment.getParentId() == null || comment.getParentId() == 0) {
             //表示获取不到问题的id那么 就不能进行插入评论的操作
             throw new CustomException(CustomExceptionCode.QUESTION_NOT_FOUND);
         }
-        if(comment.getType()==null || !CommentTypeEnums.isExists(comment.getType())){
+        if (comment.getType() == null || !CommentTypeEnums.isExists(comment.getType())) {
             throw new CustomException(CustomExceptionCode.TYPE_PARAM_NOT_FOUNDED);
         }
 
-        if(comment.getType()==CommentTypeEnums.COMMENT.getType()){
-            CommentExample example1= new CommentExample();
+        if (comment.getType() == CommentTypeEnums.COMMENT.getType()) {
+            CommentExample example1 = new CommentExample();
             example1.createCriteria().andIdEqualTo(comment.getParentId())
                     .andTypeEqualTo(NotifyTypeEnums.NOTIFY_QUESTION.getType());
-            List<Comment> comment1= commentMapper.selectByExample(example1);//根据评论的父亲结点找到评论的结点
+            List<Comment> comment1 = commentMapper.selectByExample(example1);//根据评论的父亲结点找到评论的结点
 
-            Question question=null;
-            if(comment1.size()!=0){
+            Question question = null;
+            if (comment1.size() != 0) {
                 question = questionMapper.selectByPrimaryKey(comment1.get(0).getParentId());//
-            }else{
+            } else {
                 throw new CustomException(CustomExceptionCode.QUESTION_NOT_FOUND);
             }
             CommentExample example = new CommentExample();
             example.createCriteria().andIdEqualTo(comment.getParentId());  //id是问题或者评论的id
             List<Comment> dbComment = commentMapper.selectByExample(example);
-            if(dbComment.size()==0){//针对正在写评论时  原贴主删除评论的情况
+            if (dbComment.size() == 0) {//针对正在写评论时  原贴主删除评论的情况
                 throw new CustomException(CustomExceptionCode.COMMENT_NOT_FOUND);
             }
             commentMapper.insert(comment);//添加评论
             //通知用户
             Long receiver = commentMapper.selectByPrimaryKey(comment.getParentId()).getCommentator();
-            int type=NotifyTypeEnums.NOTIFY_COMMENT.getType();
-            this.insertNotify(comment,type,receiver,question.getId());
+            int type = NotifyTypeEnums.NOTIFY_COMMENT.getType();
+            this.insertNotify(comment, type, receiver, question.getId());
 
-        }else if(comment.getType()==CommentTypeEnums.QUESTION.getType()){
+        } else if (comment.getType() == CommentTypeEnums.QUESTION.getType()) {
             //回复问题
             //针对正在写评论  同时问题被删除的情况进行异常处理
             Question question = questionMapper.selectByPrimaryKey(comment.getParentId());
-            if(question==null){
+            if (question == null) {
                 throw new CustomException(CustomExceptionCode.QUESTION_NOT_FOUND);
             }
             commentMapper.insert(comment);
             //通知用户
             Long parentId = comment.getParentId();
-            Long receiver=questionMapper.selectByPrimaryKey(comment.getParentId()).getCreatorId();
-            int type=NotifyTypeEnums.NOTIFY_QUESTION.getType();
-            this.insertNotify(comment,type,receiver,parentId);
+            Long receiver = questionMapper.selectByPrimaryKey(comment.getParentId()).getCreatorId();
+            int type = NotifyTypeEnums.NOTIFY_QUESTION.getType();
+            this.insertNotify(comment, type, receiver, parentId);
             question.setCommentCount(1);
             questionCustomMapper.incrCommentCount(question);
-        }else{
+        } else {
             throw new CustomException(CustomExceptionCode.UN_KNOW_ERROR);//未知错误
         }
     }
+
     //通知的公用方法
-    private void insertNotify(Comment comment,Integer type,Long receiver,Long parentId){
+    private void insertNotify(Comment comment, Integer type, Long receiver, Long parentId) {
         Notify notify = new Notify();//通知的对象
         notify.setGmtCreate(System.currentTimeMillis());
         notify.setReceiver(receiver);
@@ -115,10 +116,10 @@ public class CommentService {
     public List<CommentDTO> listByQuestionId(Long id) {
         CommentExample example = new CommentExample();
         example.createCriteria().andParentIdEqualTo(id)
-                        .andTypeEqualTo(CommentTypeEnums.QUESTION.getType());
+                .andTypeEqualTo(CommentTypeEnums.QUESTION.getType());
         List<Comment> comments = commentMapper.selectByExample(example);//查找 出对于该问题的评论
 
-        if(comments.size()==0){
+        if (comments.size() == 0) {
             return null;//返回空
         }
         //不为空找出所有评论过的用户id
@@ -134,7 +135,7 @@ public class CommentService {
 
         List<CommentDTO> commentDTOS = comments.stream().map(comment -> {
             CommentDTO commentDTO = new CommentDTO();
-            BeanUtils.copyProperties(comment,commentDTO);
+            BeanUtils.copyProperties(comment, commentDTO);
             commentDTO.setUser(usermap.get(comment.getCommentator()));
             return commentDTO;
         }).collect(Collectors.toList());
@@ -143,14 +144,14 @@ public class CommentService {
 
     //根据父亲id查找二级评论
 //    @Cacheable(cacheNames = "commentSecond",key = "#parentId")
-    public List<CommentDTO> listByParentId(Long parentId){
+    public List<CommentDTO> listByParentId(Long parentId) {
         CommentExample example = new CommentExample();
         example.createCriteria()
                 .andTypeEqualTo(CommentTypeEnums.COMMENT.getType())
                 .andParentIdEqualTo(parentId);
-        List<Comment> comments  = commentMapper.selectByExample(example);
+        List<Comment> comments = commentMapper.selectByExample(example);
         //根据评论的creator查询用户的信息
-        if(comments.size()!=0){
+        if (comments.size() != 0) {
             Set<Long> creatorsId = comments.stream()
                     .map(comment -> comment.getCommentator()).collect(Collectors.toSet());
             //根据id查找用户
@@ -172,16 +173,16 @@ public class CommentService {
     }
 
     //选择插入评论信息
-    public void chooseInsert(User user,CommentCreateDTO commentCreateDTO) {
+    public void chooseInsert(User user, CommentCreateDTO commentCreateDTO) {
         Comment comment = new Comment();
         comment.setParentId(commentCreateDTO.getParentId());//要么是问题id 或者评论的id是主键
         comment.setType(commentCreateDTO.getType());
         comment.setContent(commentCreateDTO.getComment());
         comment.setGmtCreate(System.currentTimeMillis());
         comment.setGmtModify(System.currentTimeMillis());
-        if(user!=null){
+        if (user != null) {
             comment.setCommentator(user.getGenerateId());//设置评论人
-        }else{
+        } else {
             throw new CustomException(CustomExceptionCode.UN_KNOW_ERROR);
         }
         insert(comment);//插入评论

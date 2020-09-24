@@ -1,4 +1,4 @@
-.circle{
+.circle {
     width: 10px;
     height: 10px;
     background-color: grey;
@@ -6,28 +6,34 @@
     display: inline-block;
     margin-right: 5px;
 }
-.title .active{
+
+.title .active {
     color: #ea6f5a;
     border-bottom: 2px solid #ea6f5a;
 }
-.common-a{
+
+.common-a {
     padding: 10px;
     color: #969696;
     cursor: pointer;
     font-size: 18px;
     font-weight: 700;
 }
-a:hover,a:focus{
+
+a:hover, a:focus {
     color: #3f3f3f;
     text-decoration: none;
 }
-.title{
+
+.title {
     margin-bottom: 50px;
 }
-.modal-content{
-    padding:30px;
+
+.modal-content {
+    padding: 30px;
 }
-table{
+
+table {
     border-radius: 10px;
     margin-left: auto;
     margin-right: auto;
@@ -37,17 +43,21 @@ table{
     min-width: 300px !important;
     position: relative;
 }
-table tr{
+
+table tr {
     border: 1px solid #c0c0c0;
-    background-color: hsla(0,0%,71%,.1);
+    background-color: hsla(0, 0%, 71%, .1);
 }
-table tr td:first-child{
+
+table tr td:first-child {
     width: 45px;
 }
-table tr td:last-child{
+
+table tr td:last-child {
     width: 270px;
 }
-#errorPwd{
+
+#errorPwd {
     height: 50px;
     width: 142px;
     position: absolute;
@@ -56,8 +66,9 @@ table tr td:last-child{
     margin-left: 5px;
     right: -146px;
 }
-table input{
-    background-color:hsla(0,0%,100%,.1);
+
+table input {
+    background-color: hsla(0, 0%, 100%, .1);
     border: none;
     height: 50px;
     outline: none;
@@ -65,11 +76,13 @@ table input{
     width: 100%;
     padding-right: 10px;
 }
-.btn-div{
+
+.btn-div {
     text-align: center;
     margin-top: 29px;
 }
-#register-btn,#btn-login{
+
+#register-btn, #btn-login {
     width: 300px;
     height: 40px;
     border-radius: 20px;
@@ -77,10 +90,12 @@ table input{
     background: #3db922;
     color: white;
 }
-button:focus{
+
+button:focus {
     outline: 0;
 }
-.sign-up-msg{
+
+.sign-up-msg {
     margin: 10px 0;
     padding: 0;
     text-align: center;
@@ -88,17 +103,20 @@ button:focus{
     line-height: 20px;
     color: #969696;
 }
-.more-sign{
+
+.more-sign {
     margin-top: 50px;
     text-align: center;
 }
-.more-sign h6{
+
+.more-sign h6 {
     position: relative;
     margin: 0 0 10px;
     font-size: 12px;
     color: #b5b5b5;
 }
-.more-sign h6:after,.more-sign h6:before{
+
+.more-sign h6:after, .more-sign h6:before {
     content: "";
     border-top: 1px solid #b5b5b5;
     display: block;
@@ -106,38 +124,47 @@ button:focus{
     width: 60px;
     top: 5px;
 }
-.more-sign h6:before{
+
+.more-sign h6:before {
     left: 30px;
 }
-.more-sign h6:after{
+
+.more-sign h6:after {
     right: 30px;
 }
-.more-sign ul{
+
+.more-sign ul {
     margin-bottom: 10px;
     list-style: none;
 }
-.more-sign ul li{
+
+.more-sign ul li {
     margin: 0 5px;
     display: inline-block;
 }
-.more-sign ul li a img{
+
+.more-sign ul li a img {
     width: 50px;
     height: 50px;
     border-radius: 50%;
 }
-.hotQuest,.relativeQuestion{
+
+.hotQuest, .relativeQuestion {
     list-style: none;
     padding-left: 0;
     margin-top: 10px;
 }
-.hotQuest li,.relativeQuestion li{
+
+.hotQuest li, .relativeQuestion li {
     border-bottom: 1px solid #c0c0c0;
     height: 40px;
     line-height: 40px;
 }
-.hotQuest li a,.relativeQuestion li a{
+
+.hotQuest li a, .relativeQuestion li a {
     color: black;
 }
-.hotQuest li a:hover,.relativeQuestion li a:hover{
+
+.hotQuest li a:hover, .relativeQuestion li a:hover {
     color: red;
 }

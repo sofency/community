@@ -21,57 +21,69 @@ public class FtpUtil {
     /**
      * ftp服务器ip地址
      */
-    private  String host;
+    private String host;
+
     @Value("${ftp.host}")
-    public void setHost(String val){
+    public void setHost(String val) {
         this.host = val;
     }
+
     /**
      * 端口
      */
-    private  int port;
+    private int port;
+
     @Value("${ftp.port}")
-    public void setPort(int val){
+    public void setPort(int val) {
         this.port = val;
     }
+
     /**
      * 用户名
      */
-    private  String userName;
+    private String userName;
+
     @Value("${ftp.userName}")
-    public void setUserName(String val){
+    public void setUserName(String val) {
         this.userName = val;
     }
+
     /**
      * 密码
      */
     private String password;
+
     @Value("${ftp.password}")
-    public void setPassword(String val){
+    public void setPassword(String val) {
         this.password = val;
     }
+
     /**
      * 存放图片的根目录
      */
-    private  String rootPath;
+    private String rootPath;
+
     @Value("${ftp.rootPath}")
-    public void setRootPath(String val){
+    public void setRootPath(String val) {
         this.rootPath = val;
     }
+
     /**
      * 存放图片的路径
      */
-    private  String imgUrl;
+    private String imgUrl;
+
     @Value("${ftp.img.url}")
-    public void setImgUrl(String val){
+    public void setImgUrl(String val) {
         this.imgUrl = val;
     }
+
     /**
      * 获取linux服务器的连接
      */
-    private  ChannelSftp getChannel() throws Exception{
+    private ChannelSftp getChannel() throws Exception {
         JSch jsch = new JSch();
-        Session sshSession = jsch.getSession(userName,host,port);
+        Session sshSession = jsch.getSession(userName, host, port);
         //密码
         sshSession.setPassword(password);
         Properties sshConfig = new Properties();
@@ -82,51 +94,55 @@ public class FtpUtil {
         channel.connect();
         return (ChannelSftp) channel;
     }
+
     /**
      * ftp上传图片
+     *
      * @param inputStream 图片io流
-     * @param imagesName 图片名称
+     * @param imagesName  图片名称
      * @return urlStr 图片的存放路径
      */
-    public  String putImages(InputStream inputStream, String imagesName){
+    public String putImages(InputStream inputStream, String imagesName) {
         try {
             ChannelSftp sftp = getChannel();
-            String path = rootPath  + "images/";
-            createDir(path,sftp);
+            String path = rootPath + "images/";
+            createDir(path, sftp);
             //上传文件
             sftp.put(inputStream, path + imagesName);
             logger.info("上传成功！");
             sftp.quit();
             sftp.exit();
             //处理返回的路径
-            String resultFile = imgUrl  + imagesName;
+            String resultFile = imgUrl + imagesName;
             return resultFile;
         } catch (Exception e) {
             logger.error("上传失败：" + e.getMessage());
         }
         return "";
     }
+
     /**
      * 创建目录
      */
-    private  void createDir(String path,ChannelSftp sftp) throws SftpException {
+    private void createDir(String path, ChannelSftp sftp) throws SftpException {
         String[] folders = path.split("/");
         sftp.cd("/");
-        for ( String folder : folders ) {
-            if ( folder.length() > 0 ) {
+        for (String folder : folders) {
+            if (folder.length() > 0) {
                 try {
-                    sftp.cd( folder );
-                }catch ( SftpException e ) {
-                    sftp.mkdir( folder );
-                    sftp.cd( folder );
+                    sftp.cd(folder);
+                } catch (SftpException e) {
+                    sftp.mkdir(folder);
+                    sftp.cd(folder);
                 }
             }
         }
     }
+
     /**
      * 删除图片
      */
-    public  void delImages(String imagesName){
+    public void delImages(String imagesName) {
         try {
             ChannelSftp sftp = getChannel();
             String path = rootPath + imagesName;

@@ -30,35 +30,37 @@ import java.util.List;
 public class QuestionController {
     private QuestionService questionService;
     private CommentService commentService;
+
     /**
      * 查找问题到问题的详情页
      */
     @Autowired
-    public QuestionController(QuestionService questionService,CommentService commentService){
-        this.commentService=commentService;
-        this.questionService=questionService;
+    public QuestionController(QuestionService questionService, CommentService commentService) {
+        this.commentService = commentService;
+        this.questionService = questionService;
     }
 
     /**
      * 根据问题的id查询问题的详细信息
+     *
      * @param id
      * @param model
      * @param session
-     * @return  返回的数据包括 问题的详情 以及对该问题评论的用户 以及相关的评论信息
+     * @return 返回的数据包括 问题的详情 以及对该问题评论的用户 以及相关的评论信息
      */
     @GetMapping("/question/{id}")
-    public String getQuestionById(@PathVariable("id") Long id, Model model, HttpSession session){
+    public String getQuestionById(@PathVariable("id") Long id, Model model, HttpSession session) {
         QuestionDTO questionDTO = questionService.getQuestionDTOById(id);
-        if(questionDTO==null){
+        if (questionDTO == null) {
             throw new CustomException(CustomExceptionCode.QUESTION_NOT_FOUND);
         }
-        Long time=(System.currentTimeMillis()-questionDTO.getGmtCreate())/1000;
+        Long time = (System.currentTimeMillis() - questionDTO.getGmtCreate()) / 1000;
         String timeStr = TimeUtil.publishTime(time);
-        model.addAttribute("questionDTO",questionDTO);
-        model.addAttribute("time",timeStr);
+        model.addAttribute("questionDTO", questionDTO);
+        model.addAttribute("time", timeStr);
         //查找评论
         List<CommentDTO> comments = commentService.listByQuestionId(id);//根据id进行查找评论
-        model.addAttribute("comments",comments);
+        model.addAttribute("comments", comments);
         return "questionDetail";
     }
 }

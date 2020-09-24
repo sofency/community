@@ -1,44 +1,58 @@
-.user-info{
+.user-info {
     margin-right: 28px;
     font-size: 16px;
 }
-.information:nth-child(1){
+
+.information:nth-child(1) {
     position: relative;
 }
-.choose{
+
+.choose {
     position: absolute;
     right: 0;
 }
-.information ul{
+
+.information ul {
     margin-top: 20px;
     list-style: none;
     padding-left: 0;
 }
-.information ul li{
+
+.information ul li {
     line-height: 30px;
     font-size: 16px;
 }
-.information:nth-child(2){
+
+.information:nth-child(2) {
     margin-top: 20px;
     border-top: 1px solid #eee;
     position: relative;
 }
-.info-change-btn{
+
+.info-change-btn {
     float: right;
     position: absolute;
     right: 0;
     margin-top: 20px;
 }
-#filed{
+
+#filed {
     padding-left: 0;
 }
-.form-change label{
+
+.form-change label {
     padding-left: 0;
 }
-.form-btn{
+
+.form-btn {
     margin-top: 80px;
 }
-.form-btn button{
+
+.form-btn button {
     margin-right: 20px;
 }
-.info-left{text-align: left;margin-right: 20px}
+
+.info-left {
+    text-align: left;
+    margin-right: 20px
+}

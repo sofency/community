@@ -28,45 +28,47 @@ import javax.servlet.http.HttpSession;
 public class ProblemController {
     private QuestionService questionService;
     private NotifyService notifyService;
+
     @Autowired
-    public ProblemController(QuestionService questionService, NotifyService notifyService){
-        this.notifyService=notifyService;
-        this.questionService =questionService;
+    public ProblemController(QuestionService questionService, NotifyService notifyService) {
+        this.notifyService = notifyService;
+        this.questionService = questionService;
     }
+
     //Restful接口要使用@PathVariable注解
     @GetMapping("/profile/{action}")
     public ModelAndView problem(HttpServletRequest request,
-                                @RequestParam(name = "page",defaultValue="1") Integer page,
-                                @RequestParam(name = "size",defaultValue = "8") Integer size,
-                                @PathVariable("action") String action){
+                                @RequestParam(name = "page", defaultValue = "1") Integer page,
+                                @RequestParam(name = "size", defaultValue = "8") Integer size,
+                                @PathVariable("action") String action) {
         //从session里面拿取用户的信息
         ModelAndView modelAndView = new ModelAndView();
-        User user= (User) request.getSession().getAttribute("user");
-        Long creatorId=null;
-        if(user!=null){
+        User user = (User) request.getSession().getAttribute("user");
+        Long creatorId = null;
+        if (user != null) {
             creatorId = user.getGenerateId();//获取账户id
-        }else{
+        } else {
             throw new CustomException(CustomExceptionCode.NO_LOGIN);
         }
-        PaginationDTO<QuestionDTO> paginationDTO=null;
-        if(creatorId!=null){
-            paginationDTO= questionService.getPaginationDto(creatorId,page,size);//获取页面的信息
+        PaginationDTO<QuestionDTO> paginationDTO = null;
+        if (creatorId != null) {
+            paginationDTO = questionService.getPaginationDto(creatorId, page, size);//获取页面的信息
         }
-        if("reply".equals(action)){
-            modelAndView.addObject("replies","testDemo");
-            modelAndView.addObject("action","reply");
-            modelAndView.addObject("type","最近回复");
-            HttpSession session= request.getSession();
+        if ("reply".equals(action)) {
+            modelAndView.addObject("replies", "testDemo");
+            modelAndView.addObject("action", "reply");
+            modelAndView.addObject("type", "最近回复");
+            HttpSession session = request.getSession();
 
-            PaginationDTO<NotifyDTO> notifyDTO = notifyService.getPaginationDto(page,size,creatorId);//从session里面拿取
-            modelAndView.addObject("notifyDTO",notifyDTO);
+            PaginationDTO<NotifyDTO> notifyDTO = notifyService.getPaginationDto(page, size, creatorId);//从session里面拿取
+            modelAndView.addObject("notifyDTO", notifyDTO);
             modelAndView.setViewName("profile/replies");
-        }else if("questions".equals(action)){
-            modelAndView.addObject("questionById",paginationDTO);
-            modelAndView.addObject("type","我的问题");
-            modelAndView.addObject("action","questions");
+        } else if ("questions".equals(action)) {
+            modelAndView.addObject("questionById", paginationDTO);
+            modelAndView.addObject("type", "我的问题");
+            modelAndView.addObject("action", "questions");
             modelAndView.setViewName("profile/questions");
-        }else{//访问非法的时候
+        } else {//访问非法的时候
             throw new CustomException(CustomExceptionCode.PAGE_NOT_FOUND);
         }
 

@@ -15,7 +15,7 @@ public class ResultDTO<T> {
     private String message;
     private T data;
 
-    public static ResultDTO errorOf(Integer code,String message){
+    public static ResultDTO errorOf(Integer code, String message) {
         ResultDTO resultDTO = new ResultDTO();
         resultDTO.setCode(code);
         resultDTO.setMessage(message);
@@ -23,7 +23,7 @@ public class ResultDTO<T> {
     }
 
     public static ResultDTO errorOf(CustomExceptionCode noLogin) {
-        return errorOf(noLogin.getCode(),noLogin.getMessage());
+        return errorOf(noLogin.getCode(), noLogin.getMessage());
     }
 
     public static ResultDTO okOf(Object data) {
@@ -35,6 +35,6 @@ public class ResultDTO<T> {
     }
 
     public static ResultDTO errorOf(CustomException ex) {
-        return errorOf(ex.getCode(),ex.getMessage());
+        return errorOf(ex.getCode(), ex.getMessage());
     }
 }
