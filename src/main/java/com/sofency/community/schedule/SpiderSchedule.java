@@ -31,21 +31,17 @@ import java.util.List;
  */
 @Service
 @Slf4j
-public class Spider {
+public class SpiderSchedule {
     private NewsMapper newsMapper;
     private NewsCustomMapper newsCustomMapper;
     private QuestionMapper questionMapper;
     @Autowired
-    public Spider(NewsMapper newsMapper,
+    public SpiderSchedule(NewsMapper newsMapper,
                   NewsCustomMapper newsCustomMapper,
                   QuestionMapper questionMapper) {
         this.newsMapper = newsMapper;
         this.newsCustomMapper = newsCustomMapper;
         this.questionMapper = questionMapper;
-    }
-
-    public Spider(NewsMapper newsMapper) {
-        this.newsMapper = newsMapper;
     }
 
     @Scheduled(cron = "0 9 10 * * ?")
@@ -90,23 +86,4 @@ public class Spider {
         List<News> news = newsMapper.selectByExample(null);
         return news;
     }
-
-
-
-//    @Scheduled(fixedRate = 10000)
-//    public void HotTags(){
-//        int offset = 0;
-//        int limit = 5;
-//        log.info("hot tag schedule start {}",new Date());
-//        List<Question> list = new ArrayList<>();
-//        while(offset!=0|| list.size()== limit){
-//            list = questionMapper.selectByExampleWithRowbounds(new QuestionExample(),new RowBounds(offset,limit));
-//            for(Question question: list){
-//                log.info("list question : {}",question.getId());
-//            }
-//            offset++;
-//        }
-//
-//
-//    }
 }

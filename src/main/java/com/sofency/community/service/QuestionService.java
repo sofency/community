@@ -2,6 +2,7 @@ package com.sofency.community.service;
 
 import cn.hutool.core.bean.BeanUtil;
 import cn.hutool.core.bean.copier.CopyOptions;
+import com.mysql.cj.util.StringUtils;
 import com.sofency.community.dto.HotQuesDTO;
 import com.sofency.community.dto.PaginationDTO;
 import com.sofency.community.dto.QuestionDTO;
@@ -47,16 +48,20 @@ public class QuestionService {
      * @param search
      * @return
      */
-    public PaginationDTO getPaginationDto(Integer page, Integer size, String search) {
+    public PaginationDTO getPaginationDto(Integer page, Integer size, String search,String tag) {
         Integer offset = size * (page - 1);//获取偏移的位置
+        //搜索属性的封装类
+        RowBounds rowBounds = new RowBounds(offset, size);
         List<Question> questions = null;
         Integer total = 0;
-        if (search == "" || search == null) {
-            questions = questionMapper.selectByExampleWithBLOBsWithRowbounds(new QuestionExample(), new RowBounds(offset, size));
+        if (StringUtils.isNullOrEmpty(search)) {
+            if(StringUtils.isNullOrEmpty(tag)){//部根据标签查询
+                questions = questionMapper.selectByExampleWithBLOBsWithRowbounds(new QuestionExample(), new RowBounds(offset, size));
+            }else{//根据标签查询
+                questions = questionCustomMapper.selectByTag(tag,rowBounds);
+            }
             total = Math.toIntExact(questionMapper.countByExample(null));
-        } else {
-            //搜索属性的封装类
-            RowBounds rowBounds = new RowBounds(offset, size);
+        } else {//查询
             questions = questionCustomMapper.selectBySearchName(search, rowBounds);
             QuestionExample example = new QuestionExample();
             example.createCriteria().andTitleLike("%" + search + "%");

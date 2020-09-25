@@ -1,7 +1,7 @@
 package com.sofency.community.controller;
 
 import com.sofency.community.pojo.News;
-import com.sofency.community.schedule.Spider;
+import com.sofency.community.schedule.SpiderSchedule;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -18,10 +18,10 @@ import java.util.List;
 @Controller
 public class LookController {
 
-    private Spider spider;
+    private SpiderSchedule spider;
 
     @Autowired
-    public LookController(Spider spider) {
+    public LookController(SpiderSchedule spider) {
         this.spider = spider;
     }
 

@@ -1,5 +1,6 @@
 package com.sofency.community.controller;
 
+import com.sofency.community.cache.HotTagCache;
 import com.sofency.community.dto.HotQuesDTO;
 import com.sofency.community.dto.PaginationDTO;
 import com.sofency.community.pojo.User;
@@ -24,22 +25,28 @@ import java.util.List;
 public class IndexController {
     private QuestionService questionService;
     private NotifyService notifyService;
-
+    private HotTagCache hotTagCache;
     @Autowired
-    public IndexController(QuestionService questionService, NotifyService notifyService) {
+    public IndexController(QuestionService questionService,
+                           NotifyService notifyService,
+                           HotTagCache hotTagCache) {
         this.notifyService = notifyService;
         this.questionService = questionService;
+        this.hotTagCache = hotTagCache;
     }
 
     @GetMapping("/")
     public String index(Model model,
                         @RequestParam(name = "page", defaultValue = "1") Integer page,
-                        @RequestParam(name = "size", defaultValue = "8") Integer size, HttpServletRequest request) {
+                        @RequestParam(name = "size", defaultValue = "8") Integer size,
+                        @RequestParam(name = "search",required = false) String search,
+                        @RequestParam(name = "tag",required = false) String tag,
+
+                        HttpServletRequest request) {
 
         PaginationDTO paginationDTO = null;
         Integer unreadCount = 0;//存储未读的信息
-        String search = request.getParameter("search");//获取请求参数
-        paginationDTO = questionService.getPaginationDto(page, size, search);//获取页面的信息
+        paginationDTO = questionService.getPaginationDto(page, size, search,tag);//获取页面的信息
         HttpSession session = request.getSession();
         User user = (User) session.getAttribute("user");
         if (user != null && user.getGenerateId() != 0) {//判断不是游客
@@ -52,6 +59,9 @@ public class IndexController {
         //热门的问题
         List<HotQuesDTO> hotQuesDTO = questionService.getViewCountMore(5);
         model.addAttribute("hotQues", hotQuesDTO);
+        List<String> tags = hotTagCache.hots;
+        model.addAttribute("tags",tags);
+        model.addAttribute("tag",tag);
         return "index";
     }
 }

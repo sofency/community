@@ -138,4 +138,6 @@ public interface QuestionMapper {
      * @mbg.generated Mon Mar 23 23:04:11 CST 2020
      */
     int updateByPrimaryKey(Question record);
+
+
 }

@@ -23,6 +23,9 @@ public interface QuestionCustomMapper {
     //返回搜索的问题列表
     List<Question> selectBySearchName(String search, RowBounds rowBounds);
 
+    //根据标签搜索
+    List<Question> selectByTag(String tag,RowBounds rowBounds);
+
     //获取阅读最多的文章的id
     List<HotQuesDTO> getViewMore(int size);
 
