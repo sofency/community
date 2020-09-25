@@ -2,8 +2,10 @@ package com.sofency.community.mapper;
 
 import com.sofency.community.dto.HotQuesDTO;
 import com.sofency.community.pojo.Question;
+import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.session.RowBounds;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
@@ -12,7 +14,8 @@ import java.util.List;
  * @date 2020/2/29 17:47
  * @package com.sofency.community.mapper
  */
-@Component
+@Mapper
+@Repository
 public interface QuestionCustomMapper {
     //增加阅读数
     void incrView(Long id);
@@ -24,7 +27,7 @@ public interface QuestionCustomMapper {
     List<Question> selectBySearchName(String search, RowBounds rowBounds);
 
     //根据标签搜索
-    List<Question> selectByTag(String tag,RowBounds rowBounds);
+    List<Question> selectByTag(String tag, RowBounds rowBounds);
 
     //获取阅读最多的文章的id
     List<HotQuesDTO> getViewMore(int size);

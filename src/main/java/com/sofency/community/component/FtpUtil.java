@@ -1,10 +1,10 @@
 package com.sofency.community.component;
 
 import com.jcraft.jsch.*;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.stereotype.Component;
+import lombok.Data;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.context.annotation.PropertySource;
 
 import java.io.InputStream;
 import java.util.Properties;
@@ -15,68 +15,39 @@ import java.util.Properties;
  * @package IntelliJ IDEA
  * @description
  */
-@Component
+@Data
+@PropertySource("classpath:ftp.properties")
+@ConfigurationProperties(prefix = "ftp")
+@Slf4j
 public class FtpUtil {
-    private static Logger logger = LoggerFactory.getLogger(FtpUtil.class);
     /**
      * ftp服务器ip地址
      */
     private String host;
-
-    @Value("${ftp.host}")
-    public void setHost(String val) {
-        this.host = val;
-    }
-
     /**
      * 端口
      */
     private int port;
-
-    @Value("${ftp.port}")
-    public void setPort(int val) {
-        this.port = val;
-    }
 
     /**
      * 用户名
      */
     private String userName;
 
-    @Value("${ftp.userName}")
-    public void setUserName(String val) {
-        this.userName = val;
-    }
-
     /**
      * 密码
      */
     private String password;
-
-    @Value("${ftp.password}")
-    public void setPassword(String val) {
-        this.password = val;
-    }
 
     /**
      * 存放图片的根目录
      */
     private String rootPath;
 
-    @Value("${ftp.rootPath}")
-    public void setRootPath(String val) {
-        this.rootPath = val;
-    }
-
     /**
      * 存放图片的路径
      */
-    private String imgUrl;
-
-    @Value("${ftp.img.url}")
-    public void setImgUrl(String val) {
-        this.imgUrl = val;
-    }
+    private String url;
 
     /**
      * 获取linux服务器的连接
@@ -109,14 +80,14 @@ public class FtpUtil {
             createDir(path, sftp);
             //上传文件
             sftp.put(inputStream, path + imagesName);
-            logger.info("上传成功！");
+            log.info("上传成功！");
             sftp.quit();
             sftp.exit();
             //处理返回的路径
-            String resultFile = imgUrl + imagesName;
+            String resultFile = url + imagesName;
             return resultFile;
         } catch (Exception e) {
-            logger.error("上传失败：" + e.getMessage());
+            log.error("上传失败：" + e.getMessage());
         }
         return "";
     }

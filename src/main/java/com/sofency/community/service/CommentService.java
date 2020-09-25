@@ -10,8 +10,11 @@ import com.sofency.community.exception.CustomException;
 import com.sofency.community.exception.CustomExceptionCode;
 import com.sofency.community.mapper.*;
 import com.sofency.community.pojo.*;
+import com.sofency.community.utils.JsonUtils;
+import org.apache.kafka.clients.consumer.ConsumerRecord;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -112,7 +115,6 @@ public class CommentService {
     }
 
     //根据问题id查找评论
-//    @Cacheable(cacheNames = "commentFirst",key = "#id")
     public List<CommentDTO> listByQuestionId(Long id) {
         CommentExample example = new CommentExample();
         example.createCriteria().andParentIdEqualTo(id)
@@ -173,18 +175,17 @@ public class CommentService {
     }
 
     //选择插入评论信息
-    public void chooseInsert(User user, CommentCreateDTO commentCreateDTO) {
+    @KafkaListener(topics = "comment")
+    public void chooseInsert(String content) {
+        CommentCreateDTO commentCreateDTO = (CommentCreateDTO)JsonUtils.fromJson(content, CommentCreateDTO.class);
         Comment comment = new Comment();
         comment.setParentId(commentCreateDTO.getParentId());//要么是问题id 或者评论的id是主键
         comment.setType(commentCreateDTO.getType());
         comment.setContent(commentCreateDTO.getComment());
         comment.setGmtCreate(System.currentTimeMillis());
         comment.setGmtModify(System.currentTimeMillis());
-        if (user != null) {
-            comment.setCommentator(user.getGenerateId());//设置评论人
-        } else {
-            throw new CustomException(CustomExceptionCode.UN_KNOW_ERROR);
-        }
+        comment.setCommentator(commentCreateDTO.getCommentator());//设置评论人
+        System.out.println("sofency"+content);
         insert(comment);//插入评论
     }
 }

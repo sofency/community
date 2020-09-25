@@ -4,7 +4,10 @@ import com.sofency.community.dto.HotTagDTO;
 import lombok.Data;
 import org.springframework.stereotype.Component;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+import java.util.PriorityQueue;
 
 /**
  * @author sofency

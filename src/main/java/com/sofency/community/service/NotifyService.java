@@ -4,7 +4,6 @@ import cn.hutool.core.bean.BeanUtil;
 import cn.hutool.core.bean.copier.CopyOptions;
 import com.sofency.community.dto.NotifyDTO;
 import com.sofency.community.dto.PaginationDTO;
-import com.sofency.community.dto.QuestionDTO;
 import com.sofency.community.enums.NotifyStatusEnums;
 import com.sofency.community.enums.NotifyTypeEnums;
 import com.sofency.community.mapper.NotifyMapper;
@@ -13,7 +12,6 @@ import com.sofency.community.mapper.UserMapper;
 import com.sofency.community.pojo.*;
 import org.apache.ibatis.session.RowBounds;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -28,6 +26,7 @@ import java.util.List;
 /**
  * 通知层
  */
+
 @Service
 public class NotifyService {
     private UserMapper userMapper;
@@ -60,7 +59,9 @@ public class NotifyService {
         notifyExample.createCriteria()
                 .andReceiverEqualTo(receiver);
         notifyExample.setOrderByClause("status ASC,gmt_create desc");//按照状态进行升序  按照时间降序
-        List<Notify> notifies = notifyMapper.selectByExampleWithRowbounds(notifyExample, new RowBounds(offset, size));
+        List<Notify> notifies = notifyMapper.selectByExampleWithRowbounds(notifyExample,
+                new RowBounds(offset, size));
+
         List<NotifyDTO> notifyDTOS = new ArrayList<>();
         this.forUtils(notifies, notifyDTOS);
         //使用规范代码
@@ -72,6 +73,7 @@ public class NotifyService {
         paginationDTO.setData(notifyDTOS);//添加问题列表
         return paginationDTO;//返回单个页面携带的详细信息
     }
+
 
     private void forUtils(List<Notify> notifies, List<NotifyDTO> notifyDTOS) {
         for (Notify notify : notifies) {

@@ -33,7 +33,7 @@ public class HotTagSchedule {
     @Autowired
     HotTagCache hotTagCache;
 
-    @Scheduled(fixedRate = 10000)
+    @Scheduled(fixedRate = 1000000)
     public void hotTag(){
         int offset = 0;
         int limit = 50;

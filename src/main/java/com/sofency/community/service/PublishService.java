@@ -3,8 +3,6 @@ package com.sofency.community.service;
 import com.sofency.community.mapper.QuestionMapper;
 import com.sofency.community.pojo.Question;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.cache.annotation.CachePut;
-import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 /**

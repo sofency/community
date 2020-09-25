@@ -4,8 +4,6 @@ import com.sofency.community.dto.CommentDTO;
 import com.sofency.community.dto.QuestionDTO;
 import com.sofency.community.exception.CustomException;
 import com.sofency.community.exception.CustomExceptionCode;
-import com.sofency.community.pojo.Comment;
-import com.sofency.community.pojo.User;
 import com.sofency.community.service.CommentService;
 import com.sofency.community.service.QuestionService;
 import com.sofency.community.utils.TimeUtil;
@@ -13,9 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.Mapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.http.HttpSession;
 import java.util.List;

@@ -5,7 +5,6 @@ import com.sofency.community.dto.PaginationDTO;
 import com.sofency.community.dto.QuestionDTO;
 import com.sofency.community.exception.CustomException;
 import com.sofency.community.exception.CustomExceptionCode;
-import com.sofency.community.mapper.UserMapper;
 import com.sofency.community.pojo.User;
 import com.sofency.community.service.NotifyService;
 import com.sofency.community.service.QuestionService;
@@ -58,8 +57,6 @@ public class ProblemController {
             modelAndView.addObject("replies", "testDemo");
             modelAndView.addObject("action", "reply");
             modelAndView.addObject("type", "最近回复");
-            HttpSession session = request.getSession();
-
             PaginationDTO<NotifyDTO> notifyDTO = notifyService.getPaginationDto(page, size, creatorId);//从session里面拿取
             modelAndView.addObject("notifyDTO", notifyDTO);
             modelAndView.setViewName("profile/replies");

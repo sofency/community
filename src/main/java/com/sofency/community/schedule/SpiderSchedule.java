@@ -2,25 +2,18 @@ package com.sofency.community.schedule;
 
 import com.sofency.community.mapper.NewsCustomMapper;
 import com.sofency.community.mapper.NewsMapper;
-import com.sofency.community.mapper.QuestionMapper;
 import com.sofency.community.pojo.News;
-import com.sofency.community.pojo.Question;
-import com.sofency.community.pojo.QuestionExample;
-import lombok.extern.log4j.Log4j;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.ibatis.session.RowBounds;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 /**
@@ -34,14 +27,11 @@ import java.util.List;
 public class SpiderSchedule {
     private NewsMapper newsMapper;
     private NewsCustomMapper newsCustomMapper;
-    private QuestionMapper questionMapper;
     @Autowired
     public SpiderSchedule(NewsMapper newsMapper,
-                  NewsCustomMapper newsCustomMapper,
-                  QuestionMapper questionMapper) {
+                          NewsCustomMapper newsCustomMapper) {
         this.newsMapper = newsMapper;
         this.newsCustomMapper = newsCustomMapper;
-        this.questionMapper = questionMapper;
     }
 
     @Scheduled(cron = "0 9 10 * * ?")

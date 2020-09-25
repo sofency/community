@@ -1,7 +1,9 @@
 package com.sofency.community.mapper;
 
+import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Update;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
 
 /**
  * @author sofency
@@ -9,7 +11,8 @@ import org.springframework.stereotype.Component;
  * @package IntelliJ IDEA
  * @description
  */
-@Component
+@Mapper
+@Repository
 public interface NewsCustomMapper {
     //清空表里面的数据
     @Update("truncate table news")

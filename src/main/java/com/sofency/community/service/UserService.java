@@ -2,7 +2,6 @@ package com.sofency.community.service;
 
 import cn.hutool.core.bean.BeanUtil;
 import cn.hutool.core.bean.copier.CopyOptions;
-import com.sofency.community.dto.GithubUser;
 import com.sofency.community.dto.UserDTO;
 import com.sofency.community.exception.CustomException;
 import com.sofency.community.exception.CustomExceptionCode;
@@ -14,7 +13,6 @@ import org.springframework.stereotype.Service;
 
 import java.util.Arrays;
 import java.util.List;
-import java.util.UUID;
 
 /**
  * @auther sofency

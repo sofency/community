@@ -1,7 +1,5 @@
 package com.sofency.community.component;
 
-import org.springframework.stereotype.Component;
-
 import java.util.Random;
 
 /**

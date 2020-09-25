@@ -7,7 +7,9 @@ import com.sofency.community.exception.CustomExceptionCode;
 import com.sofency.community.pojo.Comment;
 import com.sofency.community.pojo.User;
 import com.sofency.community.service.CommentService;
+import com.sofency.community.utils.JsonUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
@@ -20,8 +22,12 @@ import java.util.List;
  * @package com.sofency.community.controller
  */
 @Controller
+@SuppressWarnings("all")
 public class CommentController {
     private CommentService commentService;
+
+    @Autowired
+    private KafkaTemplate kafkaTemplate;
 
     //构造器注入
     @Autowired
@@ -33,7 +39,6 @@ public class CommentController {
     @ResponseBody
     @RequestMapping(value = "/commentSubmit", method = RequestMethod.POST)
     public Object post(@RequestBody CommentCreateDTO commentCreateDTO, HttpServletRequest request) {
-        Comment comment = new Comment();
         //第三方登录
         User user = (User) request.getSession().getAttribute("user");
         //进行判断
@@ -43,7 +48,10 @@ public class CommentController {
             if (user.getGenerateId() == 0) {//游客方式
                 return ResultDTO.errorOf(CustomExceptionCode.NO_LOGIN);//用户没登录的情况
             } else {
-                commentService.chooseInsert(user, commentCreateDTO);
+                //借助消息中间件kafka异步发送消息
+                commentCreateDTO.setCommentator(user.getGenerateId());
+                String comment = JsonUtils.toJson(commentCreateDTO);
+                kafkaTemplate.send("comment",comment);
                 return ResultDTO.okOf(null);//表示请求成功
             }
         }

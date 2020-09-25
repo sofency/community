@@ -1,6 +1,5 @@
 package com.sofency.community.controller;
 
-import com.alibaba.fastjson.JSON;
 import com.sofency.community.mapper.UserMapper;
 import com.sofency.community.pojo.User;
 import com.sofency.community.pojo.UserExample;

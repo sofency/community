@@ -19,8 +19,8 @@ import java.io.InputStream;
 @Service
 @Slf4j
 public class NginxService {
-    private FtpUtil ftpUtil;
 
+    private FtpUtil ftpUtil;
     @Autowired
     public NginxService(FtpUtil ftpUtil) {
         this.ftpUtil = ftpUtil;

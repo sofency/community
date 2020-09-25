@@ -5,15 +5,11 @@ import com.sofency.community.exception.CustomException;
 import com.sofency.community.exception.CustomExceptionCode;
 import com.sofency.community.mapper.UserMapper;
 import com.sofency.community.pojo.User;
-import com.sofency.community.pojo.UserExample;
-import com.sofency.community.service.UserService;
-import org.apache.tomcat.util.http.fileupload.servlet.ServletFileUpload;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import javax.servlet.http.HttpServletRequest;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -26,11 +22,11 @@ import java.util.Map;
 @Controller
 public class PersonInfoController {
 
-    private UserService UserService;
+    private com.sofency.community.service.UserService UserService;
     private UserMapper userMapper;
 
     @Autowired
-    public PersonInfoController(UserService UserService, UserMapper userMapper) {
+    public PersonInfoController(com.sofency.community.service.UserService UserService, UserMapper userMapper) {
         this.UserService = UserService;
         this.userMapper = userMapper;
     }

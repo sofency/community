@@ -2,8 +2,6 @@ package com.sofency.community.dto;
 
 import lombok.Data;
 
-import javax.xml.stream.events.Comment;
-
 /**
  * @auther sofency
  * @date 2020/2/29 23:08

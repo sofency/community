@@ -7,11 +7,13 @@ import com.sofency.community.dto.HotQuesDTO;
 import com.sofency.community.dto.PaginationDTO;
 import com.sofency.community.dto.QuestionDTO;
 import com.sofency.community.mapper.QuestionCustomMapper;
-import com.sofency.community.mapper.UserMapper;
 import com.sofency.community.mapper.QuestionMapper;
-import com.sofency.community.pojo.*;
+import com.sofency.community.mapper.UserMapper;
+import com.sofency.community.pojo.Question;
+import com.sofency.community.pojo.QuestionExample;
+import com.sofency.community.pojo.User;
+import com.sofency.community.pojo.UserExample;
 import org.apache.ibatis.session.RowBounds;
-import org.apache.tomcat.util.threads.ThreadPoolExecutor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -46,6 +48,7 @@ public class QuestionService {
      * @param page
      * @param size
      * @param search
+     * @param tag
      * @return
      */
     public PaginationDTO getPaginationDto(Integer page, Integer size, String search,String tag) {

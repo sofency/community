@@ -4,7 +4,6 @@ import com.sofency.community.dto.AccessTokenDTO;
 import com.sofency.community.dto.GithubUser;
 import com.sofency.community.exception.CustomException;
 import com.sofency.community.exception.CustomExceptionCode;
-import com.sofency.community.mapper.UserMapper;
 import com.sofency.community.pojo.User;
 import com.sofency.community.provider.GithubProvider;
 import com.sofency.community.service.UserService;
