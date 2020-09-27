@@ -3,13 +3,13 @@ SpringBoot做框架支持<br>
 ThymeLeaf做前端模板引擎<br>
 bootstrap做样式框架<br>
 Mysql做存储容器 <br>
-Mybatis做数据库支持
-es做全文查询
-logstash做mysql和es数据同步
-kafka做评论回复
-设置定时任务执行脚本jsoup爬取新闻,定时器更新热门话题
-根据不同标签 使用线程池获取相关问题。
-功能介绍
+Mybatis做数据库支持<br>
+es做全文查询<br>
+logstash做mysql和es数据同步<br>
+kafka做评论回复<br>
+设置定时任务执行脚本jsoup爬取新闻,定时器更新热门话题<br>
+根据不同标签 使用线程池获取相关问题。<br>
+功能介绍<br>
 用户注册，登录，发布问题，以及评论，回复，通知，搜索问题，信息修改，热门话题 ，相关话题 以及每日互联网新闻等功能
 ***创建的sql脚本***
 用户表
