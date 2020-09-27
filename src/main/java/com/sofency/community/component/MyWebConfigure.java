@@ -1,5 +1,6 @@
 package com.sofency.community.component;
 
+import com.sofency.community.interceptor.AdInterceptor;
 import com.sofency.community.interceptor.SessionInterceptor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -28,11 +29,17 @@ public class MyWebConfigure extends WebMvcConfigurationSupport {
         return new SessionInterceptor();
     }
 
+    @Bean
+    public HandlerInterceptor getAdInterceptor(){
+        return new AdInterceptor();
+    }
+
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
         registry.addInterceptor(getSessionInterceptor()).addPathPatterns("/**").
                 excludePathPatterns("/static/**/**").excludePathPatterns("*.html").excludePathPatterns("/static/js/plugins/**/*.js")
                 .excludePathPatterns("/login", "/register", "/", "/commentGetSecond");
+        registry.addInterceptor(getAdInterceptor()).addPathPatterns("/**");
     }
 
     @Override

@@ -1,40 +1,40 @@
-<!--<?xml version="1.0" encoding="UTF-8"?>-->
-<!--<!DOCTYPE generatorConfiguration-->
-<!--        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"-->
-<!--        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">-->
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
 
-<!--<generatorConfiguration>-->
+<generatorConfiguration>
 
-<!--    <context id="DB2Tables" targetRuntime="MyBatis3">-->
-<!--        <plugin type="org.mybatis.generator.plugins.RowBoundsPlugin"></plugin>-->
-<!--        <jdbcConnection driverClass="com.mysql.cj.jdbc.Driver"-->
-<!--                        connectionURL="jdbc:mysql://localhost:3306/community"-->
-<!--                        userId="root"-->
-<!--                        password="19980120">-->
-<!--            <property name="serverTimezone" value="UTC"/>-->
-<!--            &lt;!&ndash;MySQL 不支持 schema 或者 catalog 所以需要添加这个&ndash;&gt;-->
-<!--            &lt;!&ndash;参考 : http://www.mybatis.org/generator/usage/mysql.html&ndash;&gt;-->
-<!--            <property name="nullCatalogMeansCurrent" value="true"/>-->
-<!--        </jdbcConnection>-->
+    <context id="DB2Tables" targetRuntime="MyBatis3">
+        <plugin type="org.mybatis.generator.plugins.RowBoundsPlugin"></plugin>
+        <jdbcConnection driverClass="com.mysql.cj.jdbc.Driver"
+                        connectionURL="jdbc:mysql://localhost:3306/community"
+                        userId="root"
+                        password="19980120">
+            <property name="serverTimezone" value="UTC"/>
+            <!--MySQL 不支持 schema 或者 catalog 所以需要添加这个-->
+            <!--参考 : http://www.mybatis.org/generator/usage/mysql.html-->
+            <property name="nullCatalogMeansCurrent" value="true"/>
+        </jdbcConnection>
 
-<!--        <javaTypeResolver>-->
-<!--            <property name="forceBigDecimals" value="false"/>-->
-<!--        </javaTypeResolver>-->
+        <javaTypeResolver>
+            <property name="forceBigDecimals" value="false"/>
+        </javaTypeResolver>
 
-<!--        <javaModelGenerator targetPackage="com.sofency.community.pojo" targetProject="src\main\java">-->
-<!--            <property name="enableSubPackages" value="true"/>-->
-<!--            <property name="trimStrings" value="true"/>-->
-<!--        </javaModelGenerator>-->
+        <javaModelGenerator targetPackage="com.sofency.community.pojo" targetProject="src\main\java">
+            <property name="enableSubPackages" value="true"/>
+            <property name="trimStrings" value="true"/>
+        </javaModelGenerator>
 
-<!--        <sqlMapGenerator targetPackage="com.sofency.community.mapper" targetProject="src\main\java">-->
-<!--            <property name="enableSubPackages" value="true"/>-->
-<!--        </sqlMapGenerator>-->
+        <sqlMapGenerator targetPackage="mapper" targetProject="src\main\resources">
+            <property name="enableSubPackages" value="true"/>
+        </sqlMapGenerator>
 
-<!--        <javaClientGenerator type="XMLMAPPER" targetPackage="com.sofency.community.mapper"-->
-<!--                             targetProject="src\main\java">-->
-<!--            <property name="enableSubPackages" value="true"/>-->
-<!--        </javaClientGenerator>-->
+        <javaClientGenerator type="XMLMAPPER" targetPackage="com.sofency.community.mapper"
+                             targetProject="src\main\java">
+            <property name="enableSubPackages" value="true"/>
+        </javaClientGenerator>
 
-<!--        <table tableName="news" domainObjectName="News"></table>-->
-<!--    </context>-->
-<!--</generatorConfiguration>-->
+        <table tableName="ad" domainObjectName="Ad"></table>
+    </context>
+</generatorConfiguration>

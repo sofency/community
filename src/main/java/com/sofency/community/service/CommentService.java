@@ -174,6 +174,7 @@ public class CommentService {
         return null;
     }
 
+
     //选择插入评论信息
     @KafkaListener(topics = "comment")
     public void chooseInsert(String content) {

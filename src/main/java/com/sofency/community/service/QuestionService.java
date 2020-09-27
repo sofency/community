@@ -13,13 +13,24 @@ import com.sofency.community.pojo.Question;
 import com.sofency.community.pojo.QuestionExample;
 import com.sofency.community.pojo.User;
 import com.sofency.community.pojo.UserExample;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.ibatis.session.RowBounds;
+import org.elasticsearch.action.search.SearchRequest;
+import org.elasticsearch.action.search.SearchResponse;
+import org.elasticsearch.client.RequestOptions;
+import org.elasticsearch.client.RestHighLevelClient;
+import org.elasticsearch.index.query.BoolQueryBuilder;
+import org.elasticsearch.index.query.MultiMatchQueryBuilder;
+import org.elasticsearch.index.query.QueryBuilders;
+import org.elasticsearch.search.SearchHit;
+import org.elasticsearch.search.SearchHits;
+import org.elasticsearch.search.builder.SearchSourceBuilder;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.io.IOException;
+import java.util.*;
 import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.FutureTask;
@@ -30,18 +41,99 @@ import java.util.concurrent.FutureTask;
  * @package com.sofency.community.service
  */
 @Service
+@Slf4j
 public class QuestionService {
+
     private QuestionMapper questionMapper;
     private QuestionCustomMapper questionCustomMapper;
     private UserMapper userMapper;
+    private RestHighLevelClient restHighLevelClient;
 
+    @Value("${community.question.index}")
+    private String index;
+
+    @Value("${community.question.type}")
+    private String type;//索引的类型
+
+    @Value("${community.question.source_field}")
+    private String sourceField;
     @Autowired
-    public QuestionService(QuestionMapper questionMapper, QuestionCustomMapper questionCustomMapper, UserMapper userMapper) {
+    public QuestionService(QuestionMapper questionMapper,
+                           QuestionCustomMapper questionCustomMapper,
+                           UserMapper userMapper,
+                           RestHighLevelClient restHighLevelClient) {
         this.questionMapper = questionMapper;
         this.questionCustomMapper = questionCustomMapper;
         this.userMapper = userMapper;
+        this.restHighLevelClient = restHighLevelClient;
     }
 
+
+    //搜索框进行查询操作
+    public List<Question> searchByEs(Integer offset,Integer size,String search) {
+        List<Question> list = new ArrayList<>();
+        //创建搜索请求
+        SearchRequest searchRequest = new SearchRequest(index);
+        //设置搜索的类型
+//        searchRequest.types(new String[]{type);
+        searchRequest.types(type);//设置查询的类型
+
+        //设置查询的参数
+        String[] source = sourceField.split(",");
+
+        SearchSourceBuilder searchSourceBuilder = new SearchSourceBuilder();
+        searchSourceBuilder.fetchSource(source,new String[]{});
+        searchSourceBuilder.from(offset).size(size);//分页
+
+        //查询方式
+        BoolQueryBuilder boolQueryBuilder = new BoolQueryBuilder();
+
+
+        MultiMatchQueryBuilder multiMatchQueryBuilder = QueryBuilders.multiMatchQuery(search, "title", "description", "tag")
+                .minimumShouldMatch("70%")
+                .field("title", 10);
+
+        boolQueryBuilder.must(multiMatchQueryBuilder);
+
+        //查询
+        searchSourceBuilder.query(boolQueryBuilder);
+        searchRequest.source(searchSourceBuilder);
+        try {
+            log.info(new Date()+"开始es查询");
+            SearchResponse response = restHighLevelClient.search(searchRequest, RequestOptions.DEFAULT);
+
+            for(SearchHit hit:response.getHits().getHits()){
+                Question question = new Question();
+                Map<String,Object> map = hit.getSourceAsMap();
+                Integer id = (Integer) map.get("id");
+                question.setId(Long.valueOf(id));
+                String title = (String) map.get("title");
+                question.setTitle(title);
+                String description = (String) map.get("description");
+                question.setDescription(description);
+                String tag = (String) map.get("tag");
+                question.setTag(tag);
+                Long gmt_create = (Long) map.get("gmt_create");
+                question.setGmtCreate(gmt_create);
+                Long gmt_modify = (Long) map.get("gmt_modify");
+                question.setGmtModify(gmt_modify);
+                Object creator_id =  map.get("creator_id");
+                question.setCreatorId(Long.valueOf((Integer)creator_id));
+                Integer comment_count = (Integer) map.get("comment_count");
+                question.setCommentCount(comment_count);
+                Integer view_count = (Integer) map.get("view_count");
+                question.setViewCount(view_count);
+                Integer like_count = (Integer) map.get("like_count");
+                question.setLikeCount(like_count);
+                Integer recommend = (Integer) map.get("recommend");
+                question.setRecommend(recommend);
+                list.add(question);
+            }
+        }catch (Exception o){
+            o.printStackTrace();
+        }
+        return list;
+    }
     /**
      * 获取问题列表
      *
@@ -58,17 +150,16 @@ public class QuestionService {
         List<Question> questions = null;
         Integer total = 0;
         if (StringUtils.isNullOrEmpty(search)) {
-            if(StringUtils.isNullOrEmpty(tag)){//部根据标签查询
+            if(StringUtils.isNullOrEmpty(tag)){//不根据标签查询
                 questions = questionMapper.selectByExampleWithBLOBsWithRowbounds(new QuestionExample(), new RowBounds(offset, size));
             }else{//根据标签查询
                 questions = questionCustomMapper.selectByTag(tag,rowBounds);
             }
             total = Math.toIntExact(questionMapper.countByExample(null));
         } else {//查询
-            questions = questionCustomMapper.selectBySearchName(search, rowBounds);
-            QuestionExample example = new QuestionExample();
-            example.createCriteria().andTitleLike("%" + search + "%");
-            total = Math.toIntExact(questionMapper.countByExample(example));
+            //使用es进行查询
+            questions=this.searchByEs(offset,size,search);
+            total = Math.toIntExact(questions.size());
             System.out.println("查询结果的总数" + total);
         }
         List<QuestionDTO> questionDTOS = new ArrayList<>();

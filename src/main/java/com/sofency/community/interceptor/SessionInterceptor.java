@@ -5,6 +5,7 @@ import com.sofency.community.exception.CustomExceptionCode;
 import com.sofency.community.mapper.UserMapper;
 import com.sofency.community.pojo.User;
 import com.sofency.community.pojo.UserExample;
+import com.sofency.community.service.AdService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.servlet.HandlerInterceptor;
 
@@ -23,11 +24,13 @@ public class SessionInterceptor implements HandlerInterceptor {
     @Autowired
     UserMapper userMapper;
 
+    @Autowired
+    AdService adService;
+
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
         //获取cookie
         Cookie[] cookies = request.getCookies();
-        boolean flag = false;
         if (cookies != null) {
             for (Cookie cookie : cookies) {
                 String token = cookie.getValue();

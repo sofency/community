@@ -92,7 +92,6 @@ public class DruidDataSourceConfiguration {
         DruidDataSource dataSource = new DruidDataSource();
         dataSource.setUrl("jdbc:mysql://localhost:3306/community?serverTimezone=UTC");
         dataSource.setUsername("root");
-//        dataSource.setDbType("com.alibaba.druid.pool.DruidDataSource");
         dataSource.setPassword("19980120");
         dataSource.setDriverClassName("com.mysql.cj.jdbc.Driver");
         dataSource.setTestOnReturn(true);
