@@ -4,7 +4,10 @@ ThymeLeaf做前端模板引擎<br>
 bootstrap做样式框架<br>
 Mysql做存储容器 <br>
 Mybatis做数据库支持
-设置定时任务执行脚本 jsoup爬取新闻
+es做全文查询
+logstash做mysql和es数据同步
+kafka做评论回复
+设置定时任务执行脚本jsoup爬取新闻,定时器更新热门话题
 根据不同标签 使用线程池获取相关问题。
 功能介绍
 用户注册，登录，发布问题，以及评论，回复，通知，搜索问题，信息修改，热门话题 ，相关话题 以及每日互联网新闻等功能
@@ -104,3 +107,117 @@ mvn -Dmybatis.generator.overwrite=true mybatis-generator:generate
 ```
 开源markdown语法库地址
 [Edit.md](https://pandao.github.io/editor.md/en.html)
+
+springboot整合es的步骤
+```$xslt
+1. 整合的重点就是如何做到es和mysql的数据一致性,这一步骤我们需要借助于logstash来实现,通过logstash和mysql建立联系,这样会以一定的方式订阅mysql的binglog日志,然后再同步到es中,这样就做到了数据一致性
+环境准备 
+elasticsearch-7.9.2
+logstash-7.9.2
+
+一. 安装es
+1. 下载之后需要修改配置 config/elsaticsearch.yml
+添加
+http.cors.enabled: true
+http.cors.allow-origin: "*"
+http.cors.allow-methods: OPTIONS, HEAD, GET, POST, PUT, DELETE
+http.cors.allow-headers: "X-Requested-With, Content-Type, Content-Length, X-User"
+
+二.安装logstash
+1. 官网下载
+    验证安装成功与否
+    在bin目录下创建logstash.conf
+    里面填写
+    input {
+        stdin{
+        }
+    } 
+     
+    output {
+        stdout{
+        }
+    }
+
+启动 logstash.bat -f logstash.conf 没报错就是成功
+
+2. 修改配置
+  在config下添加 mysql.conf 映射mysql
+
+  input {
+  	  stdin{
+  	  }
+      jdbc {
+        jdbc_connection_string => "jdbc:mysql://localhost:3306/community?&serverTimezone=GMT"
+        jdbc_user => "root"
+        jdbc_password => "19980120"
+        jdbc_driver_library => "F:/logstash-7.9.2/logstash-7.9.2/lib/mysql/mysql-connector-java-8.0.21.jar"
+        jdbc_driver_class => "com.mysql.cj.jdbc.Driver"
+        jdbc_paging_enabled => "true"
+        #单页最大值
+        jdbc_page_size => "50000"
+        #数据库的sql语句
+        #statement_filepath => "F:/logstash-7.9.2/logstash-7.9.2/config/question.sql"
+  	    statement => "select * from question where gmt_create > :sql_last_value"
+        schedule => "* * * * *"
+  	    record_last_run => true
+        #记录上次运行的时间戳
+  	    last_run_metadata_path => "F:/logstash-7.9.2/logstash-7.9.2/config/last_run_path"
+      }
+  }
+  
+  
+  output {
+      elasticsearch {
+          hosts => "localhost:9200"
+  		  #hosts => ["localhost:9200","localhost:9201","localhost:9203"]
+  		  #索引库名称
+          index => "question"
+          document_id => "%{id}"
+          document_type => "doc"
+          #模板文件
+  		  template => "F:/logstash-7.9.2/logstash-7.9.2/config/question_template.json"
+  		  template_name => "question"
+  		  template_overwrite => "true"
+      }
+      stdout {
+          codec => json_lines
+      }
+  }
+  
+  question_template.json
+  内容
+  {
+  	"mappings" : {
+  	
+  		"doc" : {
+  			"properties" : {
+  				"id" : {
+  					"type" : "keyword" 
+  				},
+  				"title" : {
+  					"analyzer" : "ik_max_word",
+  					"search_analyzer" : "ik_smart",
+  					"type" : "string"
+  				},
+  				"description" : {
+  					"analyzer" : "ik_max_word",
+  					"search_analyzer" : "ik_smart",
+  					"type" : "text"
+  				},
+  				"tag" : {
+  					"analyzer" : "ik_max_word",
+  					"search_analyzer" : "ik_smart",
+  					"type" : "string"
+  				}
+  			}
+  		}
+  	},
+  	"template":"question"
+  }
+3. 安装logstash-integration-jdbc 在7.9.2中已经包含了logstash-input-jdbc
+   bin/logstash.bat install logstash-integration-jdbc
+
+4.启动logstash
+  bin/logstash.bat -f config/mysql.conf
+
+```
