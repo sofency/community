@@ -48,7 +48,9 @@
                                       clip-rule="evenodd"></path>
                             </svg>
                         </td>
-                        <td><input type="password" placeholder="请确认密码" id="confirm" required><span id="errorPwd"></span>
+                        <td>
+                            <input type="password" placeholder="请确认密码" id="confirm" required>
+                            <span id="errorPwd"></span>
                         </td>
                     </tr>
                     <tr>
@@ -60,10 +62,38 @@
                                       clip-rule="evenodd"></path>
                             </svg>
                         </td>
-                        <td><input type="email" name="email" placeholder="请输入邮箱" id="email" onfocus="checkPwd()"
-                                   required></td>
+                        <td class="father" style="position: relative">
+                            <input type="email" name="email" placeholder="请输入邮箱" id="email" onfocus="checkPwd()" required>
+                            <button id="btn-code"
+                                    class="son"
+                                    style="position: absolute;
+                                    right: 0;
+                                    height: 50px;
+                                    border: 0px;
+                                    padding-left: 10px;
+                                    padding-right: 10px;
+                                    background-color: beige;
+                                    color: red;"
+                            onclick="getCode()">
+                                发送验证码
+                            </button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <svg class="bi bi-person" width="1.5em" height="1.5em" viewBox="0 0 20 20"
+                                 fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd"
+                                      d="M15 16s1 0 1-1-1-4-6-4-6 3-6 4 1 1 1 1h10zm-9.995-.944v-.002zM5.022 15h9.956a.274.274 0 00.014-.002l.008-.002c-.001-.246-.154-.986-.832-1.664C13.516 12.68 12.289 12 10 12c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664a1.05 1.05 0 00.022.004zm9.974.056v-.002zM10 9a2 2 0 100-4 2 2 0 000 4zm3-2a3 3 0 11-6 0 3 3 0 016 0z"
+                                      clip-rule="evenodd"></path>
+                            </svg>
+                        </td>
+                        <td>
+                            <input type="text" name="code" placeholder="请输入验证码" id="code"  required>
+                        </td>
                     </tr>
                 </table>
+                <span id="message"></span>
                 <div class="btn-div register-btn">
                     <button id="register-btn" onclick="submitForm()">注册</button>
                     <p class="sign-up-msg">点击 “注册” 即表示您同意并愿意遵守论坛<br>

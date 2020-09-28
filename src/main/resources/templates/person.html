@@ -116,10 +116,10 @@
                 <li>账户ID:<span th:text="${userDTO.generateId}"></span></li>
                 <li>昵称:<span th:text="${userDTO.name}"></span></li>
                 <li>邮箱:<span th:text="${userDTO.email}"></span></li>
-                <li>githubUrl:<span th:text="${userDTO.githubUrl}"></span></li>
+                <li>Github:<span th:text="${userDTO.githubUrl}"></span></li>
                 <li>
                     擅长领域:
-                    <span th:each="tag:${userDTO.tags}" th:text="tag" class="badge badge-info"></span>
+                    <span th:each="tag:${userDTO.tags}" th:text="${tag}" class="badge badge-info"></span>
                 </li>
                 <li>入站日期:<span th:text="${#dates.format(userDTO.gmtCreate,'yyyy-MM-dd HH:mm:ss')}"></span>
                 <li>

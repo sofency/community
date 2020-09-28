@@ -48,6 +48,7 @@ public class UserService {
                 temp.setName(user.getName());
                 temp.setEmail(user.getEmail());
                 temp.setPassword(user.getPassword());
+                temp.setGithubUrl(user.getGithubUrl());
                 temp.setToken(user.getToken());
                 temp.setTags(user.getTags());
                 temp.setName(user.getName());

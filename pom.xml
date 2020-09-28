@@ -53,23 +53,14 @@
                 </exclusion>
             </exclusions>
         </dependency>
+        <!--整合email-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-cache</artifactId>
+            <artifactId>spring-boot-starter-mail</artifactId>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-redis</artifactId>
-            <exclusions>
-                <exclusion>
-                    <groupId>redis.clients</groupId>
-                    <artifactId>jedis</artifactId>
-                </exclusion>
-                <exclusion>
-                    <groupId>io.lettuce</groupId>
-                    <artifactId>lettuce-core</artifactId>
-                </exclusion>
-            </exclusions>
         </dependency>
         <dependency>
             <groupId>redis.clients</groupId>
@@ -182,6 +173,11 @@
 <!--            <groupId>org.springframework.boot</groupId>-->
 <!--            <artifactId>spring-boot-starter-data-elasticsearch</artifactId>-->
 <!--        </dependency>-->
+        <dependency>
+            <groupId>com.sofency.top</groupId>
+            <artifactId>ftp-spring-boot-starter</artifactId>
+            <version>1.0</version>
+        </dependency>
         <!--集成es-->
         <dependency>
             <groupId>org.elasticsearch</groupId>

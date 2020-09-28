@@ -16,7 +16,8 @@ function checkPwd() {
 function submitForm() {
     const password = $("#inputPassword").val();
     const email = $("#email").val();
-    if (password != "" && email != "") {
+    const code = $("#code").val();
+    if (password !== "" && email !== "" && code !=="") {
         $.ajax({
             url: "/register",
             method: "post",
@@ -92,4 +93,40 @@ function choose(obj) {
         $(".login").css("display", "block");//显示注解界面
         $(".btn-div-login").css("display", "block");
     }
+}
+
+//获取验证码
+//点击之后
+//设置为60s之内不允许点击
+function getCode() {
+    const email = $("#email").val();
+    //不可点击
+    $("#btn-code").attr("disabled",true)
+        .css({"color":"black"});
+    let times = 60; //设置时间
+    let interval = setInterval(function () {
+        $("#btn-code").text(times+"秒之后重试");
+        times--;
+    },1000);
+
+    setTimeout(function () {
+        clearInterval(interval);
+        $("#btn-code").removeAttr("disabled").css({"color":"red"}).text("发送验证码");
+    },60*1000);
+
+    $.ajax({
+        url: "/getCode",
+        method: "get",
+        data: {
+            "email": email
+        },
+        success: function (data) {
+            if(!data.exist){
+                $("#message").text("邮件发送成功");
+            }else{
+                $("#message").text("该邮箱已经注册过");
+            }
+        }
+
+    })
 }

@@ -22,7 +22,6 @@ import java.util.Map;
  * @package IntelliJ IDEA
  * @description  热门标签的定时任务
  */
-
 @Component
 @Slf4j
 @SuppressWarnings("all")
@@ -33,7 +32,7 @@ public class HotTagSchedule {
     @Autowired
     HotTagCache hotTagCache;
 
-    @Scheduled(fixedRate = 1000000)
+    @Scheduled(fixedRate = 60*30*100)
     public void hotTag(){
         int offset = 0;
         int limit = 50;
