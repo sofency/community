@@ -1,3 +1,17 @@
+### 接下来的开发计划
+1. 开发积分模块<br> 预计周期9天  优先级高
+针对网站进行改造<br>
+用户发布文章进行增加相应的积分<br>
+登录积分奖励<br>
+限制每天发布文章的数据<br>
+
+2. 资源共享下载模块<br>  预计周期 5 days (前端1天,后端7天)<br>  优先级低
+主要提供同学学习编程的资源<br>
+两种渠道进行获取<br>
+1.关注公众号之后可以进行使用网站的资源<br>
+2.使用在网站上的积分进行兑换<br>
+
+
 ### 技术总结
 SpringBoot做框架支持<br>
 ThymeLeaf做前端模板引擎<br>
@@ -9,6 +23,7 @@ logstash做mysql和es数据同步<br>
 kafka做评论回复<br>
 设置定时任务执行脚本jsoup爬取新闻,定时器更新热门话题<br>
 根据不同标签 使用线程池获取相关问题。<br>
+邮箱验证注册<br>
 功能介绍<br>
 用户注册，登录，发布问题，以及评论，回复，通知，搜索问题，信息修改，热门话题 ，相关话题 以及每日互联网新闻等功能
 ***创建的sql脚本***
@@ -219,5 +234,8 @@ http.cors.allow-headers: "X-Requested-With, Content-Type, Content-Length, X-User
 
 4.启动logstash
   bin/logstash.bat -f config/mysql.conf
+
+
+
 
 ```
